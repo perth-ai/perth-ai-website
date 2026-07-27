@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+import cloudflare from "@astrojs/cloudflare";
+
 // Where this build is being served from. Used for canonical URLs and social
 // share tags, so it needs to match reality or link previews break.
 //
@@ -16,7 +18,10 @@ const site = process.env.SITE_URL || process.env.CF_PAGES_URL || 'http://localho
 // https://astro.build/config
 export default defineConfig({
   site,
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: cloudflare()
 });

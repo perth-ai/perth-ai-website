@@ -2,22 +2,36 @@
 import site from '../data/site.json';
 import Button from './Button.astro';
 
-// Set `links.lumaEmbedId` in src/data/site.json to your Luma calendar ID
-// (looks like "cal-AbC123..."). Find it in Luma under
+// Set `links.lumaEmbedId` in src/data/site.json. Find it in Luma under
 // Calendar → Settings → Embed. Once set, upcoming events appear here
 // automatically — no code changes needed when you add an event.
+//
+// You can paste either form and both work:
+//   - the bare calendar ID, e.g. "cal-AbC123"
+//   - the full iframe src from Luma's embed snippet, e.g.
+//     "https://luma.com/embed/calendar/cal-AbC123/events"
+//
+// Taking the full URL matters because Luma is migrating lu.ma → luma.com and
+// has changed this path before. Pasting their snippet verbatim always wins
+// over us reconstructing the URL from an ID.
 interface Props {
   height?: number;
 }
 const { height = 560 } = Astro.props;
-const embedId = site.links.lumaEmbedId;
+
+const configured = site.links.lumaEmbedId.trim();
+const embedSrc = configured.startsWith('http')
+  ? configured
+  : configured
+    ? `https://luma.com/embed/calendar/${configured}/events`
+    : '';
 ---
 
 {
-  embedId ? (
+  embedSrc ? (
     <div class="overflow-hidden rounded-2xl border border-ink-200 bg-white shadow-sm">
       <iframe
-        src={`https://lu.ma/embed/calendar/${embedId}/events`}
+        src={embedSrc}
         title="Upcoming Perth AI events"
         width="100%"
         height={height}

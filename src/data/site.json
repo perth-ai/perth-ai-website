@@ -1,8 +1,9 @@
 {
   "name": "Perth AI",
   "tagline": "Western Australia's community for people building with AI.",
-  "description": "Perth AI is a community for builders, startups, students, enterprises and product teams working with AI in Western Australia. Meet-ups, co-building sessions, workshops and networking — all on Whadjuk Noongar boodja.",
+  "description": "Perth AI is a community for builders, startups, students, enterprises and product teams working with AI in Western Australia. Meet-ups, co-building sessions, workshops and networking \u2014 all on Whadjuk Noongar boodja.",
   "email": "hello@perthai.org",
+  "_luma": "PLACEHOLDER: `luma` is a guess at the calendar URL and needs replacing with the real one. `lumaEmbedId` accepts either a bare calendar ID (cal-XXXX) or the full iframe src from Luma \u2192 Calendar \u2192 Settings \u2192 Embed; paste whichever and events appear automatically.",
   "links": {
     "luma": "https://lu.ma/perthai",
     "lumaEmbedId": "",

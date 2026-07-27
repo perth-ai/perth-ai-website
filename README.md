@@ -55,7 +55,9 @@ This is a working skeleton — these need real values:
       or a Cloudflare Pages Function before launch.
 - [ ] **Mailing list** — either leave it pointing at Luma, or put a form action into
       `mailingList.formAction` in `src/data/site.json`.
-- [ ] **Domain** — set `site` in `astro.config.mjs` and the sitemap line in `public/robots.txt`.
+- [ ] **Domain** — attach the custom domain in Cloudflare Pages, then set the `SITE_URL`
+      environment variable in the Pages project to that domain. This is also what lifts the
+      `noindex` guard, so don't set it until you actually want to be findable.
 - [ ] **Email address** — `hello@perthai.org` in `src/data/site.json` is a placeholder.
 - [ ] **Team** — `src/data/team.json` has placeholder entries.
 - [ ] **Sponsorship tiers** — the prices in `src/data/sponsors.json` are a starting point, not an
@@ -68,12 +70,36 @@ This is a working skeleton — these need real values:
 
 ## Deploying to Cloudflare Pages
 
-1. Push this repo to GitHub under the Perth AI org.
-2. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
-3. Build command `npm run build`, output directory `dist`. Framework preset: Astro.
-4. Deploy. Every push to `main` publishes; every PR gets its own preview URL.
+Connect once, in the Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**:
 
-Free tier covers this comfortably. `public/_headers` sets security headers and caching.
+| Setting | Value |
+| --- | --- |
+| Repository | `perth-ai/perth-ai-website` |
+| Production branch | `main` |
+| Framework preset | Astro |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+
+After that it runs itself. Every push to `main` publishes to the staging URL, and **every pull
+request gets its own preview URL** — which is the useful bit for iterating on design with other
+people: comment on the PR, push a commit, refresh the preview link.
+
+Node version comes from `.node-version`. Free tier covers all of this. `public/_headers` sets
+security headers and cache rules.
+
+### Staging vs production
+
+The site works out which environment it's in and behaves accordingly — you don't configure this
+per-deploy:
+
+- **Previews and `*.pages.dev`** send `noindex, nofollow` on every page, so the unfinished site
+  can't turn up in Google while you're sharing links around.
+- **Production** is any real custom domain. To switch it on, set a `SITE_URL` environment variable
+  in the Cloudflare Pages project settings to the live domain (e.g. `https://perthai.org`). That
+  removes the `noindex` and fixes canonical URLs in one step.
+
+Canonical and social-share URLs follow the deploy automatically, so a preview link pasted into
+Slack unfurls with the right title and description rather than pointing at production.
 
 ## Automation hooks
 

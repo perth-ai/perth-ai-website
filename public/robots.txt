@@ -1,4 +1,9 @@
+# Staging and preview builds also send a "noindex" robots meta tag on every
+# page (see src/layouts/Base.astro), which is what actually keeps the
+# pre-launch site out of search results.
+#
+# Once the real domain is live, add a sitemap here — that needs the
+# @astrojs/sitemap integration, which isn't installed yet.
+
 User-agent: *
 Allow: /
-
-Sitemap: https://perthai.org/sitemap-index.xml

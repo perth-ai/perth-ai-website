@@ -12,6 +12,13 @@ interface Props {
 const { title, description = site.description } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Only a real custom domain counts as production. Cloudflare preview builds,
+// the .pages.dev staging URL and local builds all tell search engines to stay
+// away, so a half-finished site never turns up in Google. Set SITE_URL to the
+// real domain (see astro.config.mjs) and this flips on by itself.
+const host = Astro.site?.hostname ?? '';
+const isProduction = host !== '' && host !== 'localhost' && !host.endsWith('.pages.dev');
 ---
 
 <!doctype html>
@@ -23,6 +30,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonical} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {!isProduction && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />

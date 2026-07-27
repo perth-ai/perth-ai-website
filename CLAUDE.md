@@ -68,6 +68,20 @@ Direct, warm, a bit dry. Short sentences. No hype, no "revolutionary", no "lever
 soup. Write like an organiser telling a friend what the community is, not like a landing page.
 Assume the reader is capable and busy.
 
+## Don't remove these dependencies
+
+`@emnapi/core` and `@emnapi/runtime` are in `devDependencies` and look like they do nothing. They
+are load-bearing. `@tailwindcss/oxide-wasm32-wasi` declares them as bundled dependencies, and npm
+won't write lock entries for bundled deps — so `npm ci` fails on Linux with
+`Missing: @emnapi/core from lock file`, even though everything works on macOS. Depending on them
+directly forces real lock entries and keeps the Cloudflare build green.
+
+Remove them and deploys break while local development stays fine. If Tailwind fixes this upstream,
+they can go.
+
+Regenerate the lockfile with npm 10.9.2 (`npx npm@10.9.2 install`) to match Cloudflare's npm —
+npm 11 prunes optional platform packages differently and produces a lockfile `npm ci` rejects.
+
 ## Things to be careful with
 
 - **Never invent real people, sponsors, or partner organisations.** If content needs a real name,

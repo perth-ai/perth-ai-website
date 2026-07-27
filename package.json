@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@emnapi/core": "^1.11.3",
+    "@emnapi/runtime": "^1.11.3",
     "@types/node": "^26.1.1",
     "typescript": "^5.8.3",
     "vite": "^6.4.3"

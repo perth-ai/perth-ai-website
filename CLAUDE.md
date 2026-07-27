@@ -52,8 +52,29 @@ public/         Static files served as-is (favicon, robots.txt, _headers)
 
 - **Mobile first.** Write the mobile layout, then add `sm:` / `md:` / `lg:` variants. Don't jump to
   3 columns at `sm:` — text gets crushed on tablets. Use `md:grid-cols-3` at the earliest.
-- **Use the tokens.** `sunset-*` (primary accent), `river-*` (secondary), `ink-*` (dark/text),
-  `sand-*` (page background). Never hardcode a hex outside `global.css`.
+- **Use the tokens.** Never hardcode a hex outside `global.css`. The palette comes from the Perth
+  AI event artwork — orange wordmark, pink-to-blue gradient, yellow splash:
+
+  | Token | Colour | Use for |
+  | --- | --- | --- |
+  | `sunset-*` | Brand orange | Primary accent — buttons, links, eyebrows on light |
+  | `azure-*` | Brand blue | Secondary accent, tags, links on dark |
+  | `coral-*` | Brand pink/red | Gradients with azure. Sparingly on its own |
+  | `sunbeam-*` | Yellow splash | Highlights on dark only |
+  | `ink-*` | Deep indigo | Body text, dark sections, footers |
+  | `sand-*` | Cool off-white | Page and muted section backgrounds |
+
+- **Contrast rules that are easy to get wrong** — these were measured, not guessed:
+  - **Never put white text on `sunset-500`.** It is 2.61:1 and fails WCAG AA outright. Orange
+    buttons use `text-ink-950` (7.50:1). This is why the buttons have dark labels.
+  - **Orange text on a light background must be `sunset-700`** (4.89:1). `sunset-600` is 3.34:1
+    and fails for body text.
+  - **`sunbeam-*` is 1.5:1 on white.** Dark backgrounds only, never text on light.
+  - `coral-500` is 3.90:1 with white — fine for large headings, not for body copy. The hero has a
+    scrim over the gradient for exactly this reason; don't remove it.
+
+  If you change a colour, recheck it. The ratio to beat is 4.5:1 for body text and 3:1 for
+  headings 24px+.
 - **Use `<Section>`** for page sections — it handles the max-width, padding, eyebrow/title/lead
   block and the light/muted/dark tones consistently.
 - **Zero client JavaScript by default.** The mobile menu is a `<details>` element on purpose. If a

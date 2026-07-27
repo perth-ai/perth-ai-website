@@ -20,11 +20,11 @@ const formatDate = (iso: string) =>
     <ul class="grid gap-4 sm:grid-cols-2">
       {upcoming.map((event) => (
         <li class="rounded-2xl border border-ink-200 bg-white p-6 transition-colors hover:border-ink-400">
-          <p class="text-xs font-semibold uppercase tracking-wider text-river-600">
+          <p class="text-xs font-semibold uppercase tracking-wider text-azure-600">
             {formatDate(event.date)} · {event.location}
           </p>
           <h3 class="mt-2 font-display text-lg font-semibold">
-            <a href={event.url} rel="noopener" class="hover:text-sunset-600">
+            <a href={event.url} rel="noopener" class="hover:text-sunset-700">
               {event.title}
             </a>
           </h3>
@@ -36,7 +36,7 @@ const formatDate = (iso: string) =>
   ) : (
     <p class="rounded-2xl border border-dashed border-ink-200 bg-white p-8 text-center text-ink-600">
       Nothing listed right now. Running an AI event in Perth? We'll happily promote it —{' '}
-      <a href="/get-involved#event-idea" class="font-medium text-sunset-600 hover:underline">
+      <a href="/get-involved#event-idea" class="font-medium text-sunset-700 hover:underline">
         send it through
       </a>
       .

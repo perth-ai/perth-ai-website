@@ -39,7 +39,7 @@ const formatDate = (date: Date) =>
                 {post.data.author}
               </p>
               <h2 class="mt-3 font-display text-xl font-semibold">
-                <a href={`/blog/${post.id}`} class="group-hover:text-sunset-600">
+                <a href={`/blog/${post.id}`} class="group-hover:text-sunset-700">
                   {post.data.title}
                 </a>
               </h2>
@@ -47,7 +47,7 @@ const formatDate = (date: Date) =>
               {post.data.tags.length > 0 && (
                 <ul class="mt-5 flex flex-wrap gap-2">
                   {post.data.tags.map((tag) => (
-                    <li class="rounded-full bg-river-100 px-2.5 py-1 text-xs font-medium text-river-600">
+                    <li class="rounded-full bg-azure-100 px-2.5 py-1 text-xs font-medium text-azure-600">
                       {tag}
                     </li>
                   ))}

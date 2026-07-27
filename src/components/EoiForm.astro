@@ -49,7 +49,7 @@ const inputClass =
       <div>
         <label for={`${id}-${field.name}`} class="block text-sm font-medium text-ink-800">
           {field.label}
-          {field.required && <span class="text-sunset-600"> *</span>}
+          {field.required && <span class="text-sunset-700"> *</span>}
         </label>
 
         {field.type === 'textarea' ? (
@@ -84,7 +84,7 @@ const inputClass =
 
   <button
     type="submit"
-    class="inline-flex w-full items-center justify-center rounded-xl bg-sunset-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-600 sm:w-auto"
+    class="inline-flex w-full items-center justify-center rounded-xl bg-sunset-500 px-5 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-sunset-600 sm:w-auto"
   >
     {submitLabel}
   </button>

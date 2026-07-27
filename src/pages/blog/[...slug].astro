@@ -20,7 +20,7 @@ const formatDate = (date: Date) =>
 <Base title={post.data.title} description={post.data.description}>
   <div class="border-b border-ink-100 bg-sand-100">
     <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
-      <a href="/blog" class="text-sm font-medium text-sunset-600 hover:underline">← All posts</a>
+      <a href="/blog" class="text-sm font-medium text-sunset-700 hover:underline">← All posts</a>
       <h1 class="mt-5 font-display text-4xl font-semibold text-balance sm:text-5xl">
         {post.data.title}
       </h1>
@@ -39,7 +39,7 @@ const formatDate = (date: Date) =>
              [&_p]:mt-5 [&_p]:leading-relaxed [&_p]:text-ink-700 [&_p]:text-lg
              [&_ul]:mt-5 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_ul]:text-ink-700
              [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-6 [&_ol]:text-ink-700
-             [&_a]:font-medium [&_a]:text-sunset-600 [&_a]:underline [&_a]:underline-offset-2
+             [&_a]:font-medium [&_a]:text-sunset-700 [&_a]:underline [&_a]:underline-offset-2
              [&_blockquote]:mt-6 [&_blockquote]:border-l-4 [&_blockquote]:border-sunset-500
              [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-ink-600
              [&_pre]:mt-6 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-ink-900 [&_pre]:p-5 [&_pre]:text-sm
@@ -55,7 +55,7 @@ const formatDate = (date: Date) =>
       post.data.tags.length > 0 && (
         <ul class="mt-12 flex flex-wrap gap-2 border-t border-ink-100 pt-8">
           {post.data.tags.map((tag) => (
-            <li class="rounded-full bg-river-100 px-3 py-1 text-xs font-medium text-river-600">
+            <li class="rounded-full bg-azure-100 px-3 py-1 text-xs font-medium text-azure-600">
               {tag}
             </li>
           ))}

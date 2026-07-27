@@ -1,0 +1,96 @@
+---
+import Logo from './Logo.astro';
+import site from '../data/site.json';
+
+const nav = [
+  { label: 'Events', href: '/events' },
+  { label: 'About', href: '/about' },
+  { label: 'Get involved', href: '/get-involved' },
+  { label: 'Sponsor', href: '/sponsor' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-ink-100 bg-sand-50/85 backdrop-blur supports-[backdrop-filter]:bg-sand-50/70"
+>
+  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3 sm:px-8">
+    <a href="/" class="flex shrink-0 items-center gap-2.5 font-display text-lg font-semibold">
+      <Logo class="h-8 w-8" />
+      <span>{site.name}</span>
+    </a>
+
+    <nav aria-label="Main" class="ml-auto hidden items-center gap-1 md:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isCurrent(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+              isCurrent(item.href)
+                ? 'bg-ink-100 text-ink-900'
+                : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={site.links.luma}
+        class="ml-2 rounded-lg bg-sunset-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sunset-600"
+      >
+        Next event
+      </a>
+    </nav>
+
+    <!-- Mobile menu: <details> so it works with zero JavaScript -->
+    <details class="group relative ml-auto md:hidden">
+      <summary
+        class="flex cursor-pointer items-center gap-2 rounded-lg border border-ink-200 px-3 py-2 text-sm font-medium marker:content-none [&::-webkit-details-marker]:hidden"
+      >
+        <span>Menu</span>
+        <svg
+          class="h-4 w-4 transition-transform group-open:rotate-180"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </summary>
+      <nav
+        aria-label="Main"
+        class="absolute right-0 mt-2 w-56 rounded-xl border border-ink-100 bg-sand-50 p-2 shadow-lg shadow-ink-900/10"
+      >
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+              class:list={[
+                'block rounded-lg px-3 py-2 text-sm font-medium',
+                isCurrent(item.href) ? 'bg-ink-100 text-ink-900' : 'text-ink-700 hover:bg-ink-50',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a
+          href={site.links.luma}
+          class="mt-1 block rounded-lg bg-sunset-500 px-3 py-2 text-center text-sm font-semibold text-white"
+        >
+          Next event
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>

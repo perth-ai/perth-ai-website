@@ -1,0 +1,25 @@
+{
+  "name": "Perth AI",
+  "tagline": "Western Australia's community for people building with AI.",
+  "description": "Perth AI is a community for builders, startups, students, enterprises and product teams working with AI in Western Australia. Meet-ups, co-building sessions, workshops and networking — all on Whadjuk Noongar boodja.",
+  "email": "hello@perthai.org",
+  "links": {
+    "luma": "https://lu.ma/perthai",
+    "lumaEmbedId": "",
+    "linkedin": "",
+    "slack": "",
+    "github": "",
+    "x": ""
+  },
+  "mailingList": {
+    "provider": "luma",
+    "formAction": "",
+    "note": "Leave formAction empty to send people straight to Luma. Paste a Mailchimp/Buttondown/Kit form action URL here to collect emails directly instead."
+  },
+  "summit": {
+    "name": "AI Disrupt Summit",
+    "blurb": "Our flagship event and a satellite of West Tech Fest.",
+    "url": "https://genai-community.pages.dev/summit/2025",
+    "when": "December 2025"
+  }
+}

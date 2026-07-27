@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import MailingList from '../components/MailingList.astro';
+import Button from '../components/Button.astro';
+import about from '../data/about.json';
+import team from '../data/team.json';
+import site from '../data/site.json';
+---
+
+<Base title="About" description={about.mission}>
+  <PageHero eyebrow="About us" title="Why Perth AI exists" lead={about.mission} />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <h2 class="font-display text-2xl font-semibold">How this started</h2>
+        <div class="mt-5 space-y-5 text-lg leading-relaxed text-ink-700">
+          {about.story.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+
+      <aside class="h-fit rounded-2xl border-l-4 border-sunset-500 bg-sand-100 p-7">
+        <h2 class="font-display text-xl font-semibold">Where we're headed</h2>
+        <p class="mt-4 leading-relaxed text-ink-700">{about.vision}</p>
+      </aside>
+    </div>
+  </Section>
+
+  <Section
+    tone="muted"
+    eyebrow="What we care about"
+    title="Our values"
+    lead="These aren't decoration. They're how we decide what to run and how to run it."
+  >
+    <ul class="grid gap-6 sm:grid-cols-2">
+      {
+        about.values.map((value, index) => (
+          <li class="rounded-2xl bg-white p-7">
+            <span class="font-display text-3xl font-semibold text-sunset-300">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-3 font-display text-lg font-semibold">{value.name}</h3>
+            <p class="mt-2 leading-relaxed text-ink-600">{value.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section
+    eyebrow="Meet the team"
+    title="The people behind it"
+    lead="All volunteers, all doing this around day jobs."
+  >
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        team.map((person) => (
+          <li class="rounded-2xl border border-ink-200 p-6">
+            <h3 class="font-display text-lg font-semibold">
+              {person.link ? (
+                <a href={person.link} rel="noopener" class="hover:text-sunset-600">
+                  {person.name}
+                </a>
+              ) : (
+                person.name
+              )}
+            </h3>
+            <p class="mt-1 text-sm font-medium text-sunset-600">{person.role}</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink-600">{person.bio}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-sand-100 p-7">
+      <h3 class="font-display text-lg font-semibold">Want to help run it?</h3>
+      <p class="mt-2 max-w-xl leading-relaxed text-ink-600">
+        We're always short of hands — greeting people at the door, running the camera, wrangling
+        speakers, keeping this site current. None of it takes much time and it's the easiest way to
+        meet everyone.
+      </p>
+      <Button href={`mailto:${site.email}?subject=Helping%20out%20with%20Perth%20AI`} class="mt-5">
+        Put your hand up
+      </Button>
+    </div>
+  </Section>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

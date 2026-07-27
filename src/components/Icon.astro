@@ -1,0 +1,34 @@
+---
+// Small inline icon set. Add new ones by adding a key to `paths`.
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = 'h-5 w-5' } = Astro.props;
+
+const paths: Record<string, string> = {
+  mic: 'M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm7-3a7 7 0 0 1-14 0M12 19v3',
+  hammer:
+    'M14.7 6.3a4 4 0 1 0 5 5L21 10 14 3l-1.3 1.3ZM15.5 9.5 5 20a2.1 2.1 0 0 1-3-3L12.5 6.5',
+  book: 'M12 6.5C10.5 5 8 4.5 4 5v13c4-.5 6.5 0 8 1.5m0-13c1.5-1.5 4-2 8-1.5v13c-4-.5-6.5 0-8 1.5m0-13v13',
+  coffee:
+    'M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Zm12 1h2a2.5 2.5 0 0 1 0 5h-2M7 2v2.5M11 2v2.5',
+  sparkle: 'M12 3l2 5.5L19.5 10 14 12l-2 5.5L10 12 4.5 10 10 8.5 12 3Z',
+  check: 'm5 13 4 4L19 7',
+  arrow: 'M5 12h14m-6-6 6 6-6 6',
+};
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={paths[name] ?? paths.sparkle}></path>
+</svg>

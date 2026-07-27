@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import EoiForm from '../components/EoiForm.astro';
+import MailingList from '../components/MailingList.astro';
+import forms from '../data/forms.json';
+import eventTypes from '../data/eventTypes.json';
+---
+
+<Base
+  title="Get involved"
+  description="Speak at a Perth AI event, propose a new event or mini group, offer a venue, or help run the community."
+>
+  <PageHero
+    eyebrow="Get involved"
+    title="This only works because people put their hand up"
+    lead="Speaking, hosting, suggesting, organising — pick whichever one you can actually see yourself doing."
+  />
+
+  {/* Speak */}
+  <Section id="speak" eyebrow="Call for speakers" title={forms.speak.title} lead={forms.speak.intro}>
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div class="space-y-5 text-ink-700">
+        <p class="leading-relaxed">
+          Talks run 15–30 minutes with questions after. You can bring slides or just a live demo and
+          a laptop — plenty of the best sessions have been someone talking over their own screen.
+        </p>
+        <p class="leading-relaxed">
+          If it's your first time speaking, say so. We'll pair you with an organiser who'll help you
+          shape the talk and do a run-through beforehand.
+        </p>
+        <div class="rounded-2xl bg-sand-100 p-6">
+          <h3 class="font-display font-semibold">Things we'd love to hear about</h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm marker:text-sunset-400">
+            <li>Something you shipped, and what broke on the way</li>
+            <li>An evaluation or testing approach that actually worked</li>
+            <li>A rollout inside a large organisation — including the political bits</li>
+            <li>A tool or technique you think everyone's sleeping on</li>
+            <li>A strong opinion you're prepared to defend in front of a room</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-ink-200 bg-white p-7">
+        <EoiForm
+          id="speak-form"
+          action={forms.speak.action}
+          subject="Perth AI — speaker offer"
+          submitLabel="Offer a talk"
+          fields={[
+            { name: 'name', label: 'Your name', required: true },
+            { name: 'email', label: 'Email', type: 'email', required: true },
+            { name: 'topic', label: 'What would you talk about?', type: 'textarea', required: true, placeholder: 'A sentence or two is plenty at this stage.' },
+            { name: 'experience', label: 'Spoken before?', type: 'select', options: ['First time — would like some help', 'Done it a few times', 'Very comfortable'] },
+            { name: 'links', label: 'Anything to link to (optional)', placeholder: 'LinkedIn, a repo, a previous talk…' },
+          ]}
+        />
+      </div>
+    </div>
+  </Section>
+
+  {/* Event ideas */}
+  <Section
+    id="event-idea"
+    tone="muted"
+    eyebrow="Expression of interest"
+    title={forms.eventIdea.title}
+    lead={forms.eventIdea.intro}
+  >
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div>
+        <p class="leading-relaxed text-ink-700">
+          Some of the best things we run started as someone saying "I wish there was a…". If enough
+          people want the same thing, we'll find a room and a date.
+        </p>
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+          {
+            eventTypes.map((type) => (
+              <li class="rounded-xl bg-white px-4 py-3 text-sm font-medium">{type.name}</li>
+            ))
+          }
+          <li class="rounded-xl bg-white px-4 py-3 text-sm font-medium text-ink-400">
+            Something else entirely
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-ink-200 bg-white p-7">
+        <EoiForm
+          id="event-idea-form"
+          action={forms.eventIdea.action}
+          subject="Perth AI — event idea"
+          submitLabel="Send the idea"
+          fields={[
+            { name: 'name', label: 'Your name', required: true },
+            { name: 'email', label: 'Email', type: 'email', required: true },
+            { name: 'format', label: 'What kind of thing?', type: 'select', options: [...eventTypes.map((t) => t.name), 'Mini group / recurring', 'Something else'] },
+            { name: 'idea', label: 'Tell us about it', type: 'textarea', required: true, placeholder: 'What is it, who is it for, and would you help run it?' },
+            { name: 'help', label: 'Would you help organise it?', type: 'select', options: ['Yes, happy to help run it', 'Maybe, depending on time', 'No — just want it to exist'] },
+          ]}
+        />
+      </div>
+    </div>
+  </Section>
+
+  {/* Space / sponsorship */}
+  <Section
+    id="space"
+    eyebrow="Venues & support"
+    title={forms.sponsor.title}
+    lead={forms.sponsor.intro}
+  >
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div class="space-y-5 text-ink-700">
+        <p class="leading-relaxed">
+          Venue is our single biggest constraint. If your office has a space that fits 30–60 people
+          on a weeknight and sits empty after six, you can single-handedly unblock a month of
+          events — and get a room full of the exact people you're probably trying to hire.
+        </p>
+        <p class="leading-relaxed">
+          Cash sponsorship keeps events free, covers food and drinks, and lets us put on the bigger
+          things like the Summit. Full detail on what that looks like is on the{' '}
+          <a href="/sponsor" class="font-medium text-sunset-600 hover:underline">sponsorship page</a>.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-ink-200 bg-white p-7">
+        <EoiForm
+          id="sponsor-form"
+          action={forms.sponsor.action}
+          subject="Perth AI — sponsorship or venue"
+          submitLabel="Start the conversation"
+          fields={[
+            { name: 'name', label: 'Your name', required: true },
+            { name: 'organisation', label: 'Organisation', required: true },
+            { name: 'email', label: 'Email', type: 'email', required: true },
+            { name: 'offering', label: 'What can you offer?', type: 'select', options: ['A venue', 'Cash sponsorship', 'Food and drinks', 'Prizes, hardware or credits', 'Not sure yet — let\'s talk'] },
+            { name: 'detail', label: 'Any detail that helps', type: 'textarea', placeholder: 'Capacity, availability, budget, what you\'d want out of it…' },
+          ]}
+        />
+      </div>
+    </div>
+  </Section>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

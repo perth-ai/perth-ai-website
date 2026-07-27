@@ -1,0 +1,62 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  tone?: 'light' | 'muted' | 'dark';
+  class?: string;
+}
+
+const { id, eyebrow, title, lead, tone = 'light', class: className = '' } = Astro.props;
+
+const tones = {
+  light: '',
+  muted: 'bg-sand-100',
+  dark: 'bg-ink-900 text-ink-100',
+};
+---
+
+<section id={id} class:list={['py-16 sm:py-24', tones[tone], className]}>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    {
+      (eyebrow || title || lead) && (
+        <div class="max-w-2xl">
+          {eyebrow && (
+            <p
+              class:list={[
+                'text-xs font-semibold uppercase tracking-[0.14em]',
+                tone === 'dark' ? 'text-river-400' : 'text-sunset-600',
+              ]}
+            >
+              {eyebrow}
+            </p>
+          )}
+          {title && (
+            <h2
+              class:list={[
+                'mt-3 text-3xl font-semibold sm:text-4xl',
+                tone === 'dark' ? 'text-white' : 'text-ink-900',
+              ]}
+            >
+              {title}
+            </h2>
+          )}
+          {lead && (
+            <p
+              class:list={[
+                'mt-4 text-lg leading-relaxed text-pretty',
+                tone === 'dark' ? 'text-ink-200/85' : 'text-ink-600',
+              ]}
+            >
+              {lead}
+            </p>
+          )}
+        </div>
+      )
+    }
+    <div class:list={[(eyebrow || title || lead) && 'mt-12']}>
+      <slot />
+    </div>
+  </div>
+</section>

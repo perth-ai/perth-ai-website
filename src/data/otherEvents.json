@@ -1,0 +1,14 @@
+{
+  "_note": "AI events around Perth run by other groups, cross-promoted here. This file is designed to be machine-writable — point your existing Slack event scraper at it and have it open a PR. Dates are ISO (YYYY-MM-DD); past events are filtered out automatically at build time.",
+  "updated": "",
+  "events": [
+    {
+      "title": "Example: WA Data & AI Meetup",
+      "date": "2099-01-01",
+      "host": "Some other excellent group",
+      "location": "Perth CBD",
+      "url": "https://example.com",
+      "blurb": "Delete this entry once real events are flowing in. It's here so you can see the layout."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+---
+
+<Base title="Page not found">
+  <div class="mx-auto flex max-w-2xl flex-col items-center px-5 py-28 text-center sm:px-8">
+    <p class="font-display text-6xl font-semibold text-sunset-300">404</p>
+    <h1 class="mt-5 font-display text-3xl font-semibold sm:text-4xl">This page isn't here</h1>
+    <p class="mt-4 leading-relaxed text-ink-600">
+      Either it moved or it never existed. Both happen.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <Button href="/">Back to the homepage</Button>
+      <Button href="/events" variant="ghost">See what's on</Button>
+    </div>
+  </div>
+</Base>

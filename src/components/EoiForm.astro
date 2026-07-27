@@ -1,0 +1,99 @@
+---
+import site from '../data/site.json';
+
+interface Field {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'textarea' | 'select';
+  required?: boolean;
+  placeholder?: string;
+  options?: string[];
+}
+
+interface Props {
+  id: string;
+  action: string;
+  subject: string;
+  fields: Field[];
+  submitLabel?: string;
+}
+
+const { id, action, subject, fields, submitLabel = 'Send' } = Astro.props;
+
+// No endpoint configured yet → fall back to the visitor's mail client.
+// See src/data/forms.json for how to wire up a real one.
+const usesMailto = !action;
+const formAction = action || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+
+const inputClass =
+  'mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500';
+---
+
+<form
+  id={id}
+  action={formAction}
+  method="post"
+  enctype={usesMailto ? 'text/plain' : undefined}
+  class="space-y-4"
+>
+  <!-- Honeypot: bots fill this in, humans never see it -->
+  <div class="hidden" aria-hidden="true">
+    <label>
+      Leave this empty
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+
+  {
+    fields.map((field) => (
+      <div>
+        <label for={`${id}-${field.name}`} class="block text-sm font-medium text-ink-800">
+          {field.label}
+          {field.required && <span class="text-sunset-600"> *</span>}
+        </label>
+
+        {field.type === 'textarea' ? (
+          <textarea
+            id={`${id}-${field.name}`}
+            name={field.name}
+            rows="4"
+            required={field.required}
+            placeholder={field.placeholder}
+            class={inputClass}
+          />
+        ) : field.type === 'select' ? (
+          <select id={`${id}-${field.name}`} name={field.name} required={field.required} class={inputClass}>
+            <option value="">Choose one…</option>
+            {(field.options ?? []).map((option) => (
+              <option value={option}>{option}</option>
+            ))}
+          </select>
+        ) : (
+          <input
+            id={`${id}-${field.name}`}
+            name={field.name}
+            type={field.type ?? 'text'}
+            required={field.required}
+            placeholder={field.placeholder}
+            class={inputClass}
+          />
+        )}
+      </div>
+    ))
+  }
+
+  <button
+    type="submit"
+    class="inline-flex w-full items-center justify-center rounded-xl bg-sunset-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-600 sm:w-auto"
+  >
+    {submitLabel}
+  </button>
+
+  <p class="text-xs text-ink-400">
+    {
+      usesMailto
+        ? `This opens your email app addressed to ${site.email}.`
+        : 'We only use your details to reply. No lists, no sharing.'
+    }
+  </p>
+</form>

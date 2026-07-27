@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Perth AI design tokens
+
+   This is the ONE file to edit if you want to change the site's look.
+   Everything else uses these names (bg-sunset-500, text-ink-900, etc).
+   Swap the hex values here and the whole site follows.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Deep navy — headers, footers, dark sections */
+  --color-ink-50: #f4f6fa;
+  --color-ink-100: #e4e9f2;
+  --color-ink-200: #c6d0e0;
+  --color-ink-400: #6d7f9c;
+  --color-ink-600: #35476a;
+  --color-ink-700: #22314c;
+  --color-ink-800: #16203a;
+  --color-ink-900: #0e1626;
+  --color-ink-950: #080d18;
+
+  /* Sunset orange — primary accent, buttons, highlights.
+     (Perth gets the best sunsets in the country. Fight us.) */
+  --color-sunset-100: #ffe8df;
+  --color-sunset-300: #ffb191;
+  --color-sunset-400: #ff8a5c;
+  --color-sunset-500: #ff6b35;
+  --color-sunset-600: #e8501c;
+  --color-sunset-700: #bd3c12;
+
+  /* River teal — secondary accent, links on dark, tags */
+  --color-river-100: #d5f5f2;
+  --color-river-300: #7bdcd4;
+  --color-river-400: #3ec9c0;
+  --color-river-500: #17a8a0;
+  --color-river-600: #0f7d78;
+
+  /* Warm off-white page background */
+  --color-sand-50: #fdfcfa;
+  --color-sand-100: #f7f4ef;
+  --color-sand-200: #ece6dc;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display:
+    'Inter Tight', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Stop anchor links from hiding content under the sticky header */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-sand-50 text-ink-900 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+
+  /* Visible keyboard focus everywhere — accessibility, don't remove */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sunset-500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

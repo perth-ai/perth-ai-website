@@ -1,0 +1,49 @@
+---
+import site from '../data/site.json';
+import Button from './Button.astro';
+
+const action = site.mailingList.formAction;
+---
+
+<div class="rounded-2xl bg-ink-900 px-6 py-12 text-center sm:px-12">
+  <h2 class="font-display text-3xl font-semibold text-white text-balance">
+    Hear about the next one
+  </h2>
+  <p class="mx-auto mt-4 max-w-lg text-ink-200/85 text-pretty">
+    Events, what we're planning, and the occasional thing worth reading. Roughly monthly, never
+    spam, unsubscribe whenever.
+  </p>
+
+  {
+    action ? (
+      <form action={action} method="post" class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+        <label for="mailing-list-email" class="sr-only">
+          Email address
+        </label>
+        <input
+          id="mailing-list-email"
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="flex-1 rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500"
+        />
+        <button
+          type="submit"
+          class="rounded-xl bg-sunset-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sunset-600"
+        >
+          Subscribe
+        </button>
+      </form>
+    ) : (
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href={site.links.luma} variant="primary">
+          Subscribe on Luma
+        </Button>
+        <Button href={`mailto:${site.email}`} variant="onDark">
+          Email us
+        </Button>
+      </div>
+    )
+  }
+</div>

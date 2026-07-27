@@ -1,0 +1,32 @@
+[
+  {
+    "name": "DDD Perth",
+    "url": "https://dddperth.com",
+    "blurb": "Perth's inclusive, non-profit software conference. Runs the best-value tech day of the year.",
+    "relationship": "Partner"
+  },
+  {
+    "name": "West Tech Fest",
+    "url": "https://westtechfest.com.au",
+    "blurb": "WA's flagship innovation and technology festival. Our AI Disrupt Summit runs as a satellite event.",
+    "relationship": "Partner"
+  },
+  {
+    "name": "Build Club",
+    "url": "https://www.buildclub.ai",
+    "blurb": "Australia's AI builder community — training, hackathons and a very high bar for shipping.",
+    "relationship": "Recommended"
+  },
+  {
+    "name": "MLAI",
+    "url": "https://mlai.au",
+    "blurb": "National machine learning and AI community running events across Australian capitals.",
+    "relationship": "Recommended"
+  },
+  {
+    "name": "WA AI Hub",
+    "url": "https://wahub.ai",
+    "blurb": "Connecting AI capability across Western Australian industry and research.",
+    "relationship": "Recommended"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Will Webster",
+    "role": "Organiser",
+    "bio": "Add a sentence or two here.",
+    "link": ""
+  },
+  {
+    "name": "Add an organiser",
+    "role": "Organiser",
+    "bio": "Copy this block for each person. Delete the ones you don't need. `link` is optional — LinkedIn, personal site, whatever they prefer.",
+    "link": ""
+  }
+]

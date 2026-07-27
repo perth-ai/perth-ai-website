@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Meet-ups",
+    "icon": "mic",
+    "description": "Speakers and panels. Someone shows you what they built and how, then we all argue about it over a drink."
+  },
+  {
+    "name": "Co-building sessions",
+    "icon": "hammer",
+    "description": "Bring your own project and work on it alongside other people doing the same. Quiet focus, loud breaks."
+  },
+  {
+    "name": "Workshops",
+    "icon": "book",
+    "description": "Hands-on learning sessions. Laptops open, something working by the end."
+  },
+  {
+    "name": "Networking",
+    "icon": "coffee",
+    "description": "Cafe catch-ups and Friday night drinks. No agenda, no slides."
+  },
+  {
+    "name": "Pop-ups",
+    "icon": "sparkle",
+    "description": "Someone interesting is in town, or something just happened that we all need to talk about. Short notice, worth it."
+  }
+]

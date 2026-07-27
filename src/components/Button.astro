@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost' | 'onDark';
+  class?: string;
+}
+
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+
+const variants = {
+  primary: 'bg-sunset-500 text-white hover:bg-sunset-600',
+  secondary: 'bg-ink-900 text-white hover:bg-ink-800',
+  ghost: 'border border-ink-200 text-ink-800 hover:border-ink-400 hover:bg-ink-50',
+  onDark: 'bg-white text-ink-900 hover:bg-ink-100',
+};
+
+const external = href.startsWith('http') || href.startsWith('mailto:');
+---
+
+<a
+  href={href}
+  rel={external && href.startsWith('http') ? 'noopener' : undefined}
+  class:list={[
+    'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors',
+    variants[variant],
+    className,
+  ]}
+>
+  <slot />
+</a>

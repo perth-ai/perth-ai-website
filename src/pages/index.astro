@@ -1,0 +1,256 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import LumaEmbed from '../components/LumaEmbed.astro';
+import OtherEvents from '../components/OtherEvents.astro';
+import MailingList from '../components/MailingList.astro';
+import site from '../data/site.json';
+import segments from '../data/segments.json';
+import eventTypes from '../data/eventTypes.json';
+import community from '../data/community.json';
+import team from '../data/team.json';
+
+const accentRing = {
+  sunset: 'border-t-sunset-500',
+  river: 'border-t-river-500',
+  ink: 'border-t-ink-600',
+};
+---
+
+<Base>
+  {/* Hero */}
+  <div class="relative overflow-hidden bg-ink-900">
+    <div
+      class="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-sunset-500/25 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-52 -left-32 h-[28rem] w-[28rem] rounded-full bg-river-500/20 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-river-400">
+        Perth, Western Australia
+      </p>
+      <h1
+        class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.08] text-white sm:text-6xl"
+      >
+        The people building with AI in Perth, in one room.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-200/85 text-pretty">
+        Meet-ups, co-building sessions, workshops and the odd Friday night at the pub. Free,
+        run by volunteers, and aimed squarely at people making things.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <Button href="/events" variant="primary">
+          See what's on
+          <Icon name="arrow" class="h-4 w-4" />
+        </Button>
+        <Button href="/get-involved" variant="onDark">Get involved</Button>
+      </div>
+    </div>
+  </div>
+
+  {/* Who it's for */}
+  <Section
+    eyebrow="Who it's for"
+    title="Three groups, one community"
+    lead="The problems look different depending on where you sit, so we run things for all three — and put them in the same room on purpose."
+  >
+    <div class="grid gap-6 lg:grid-cols-3">
+      {
+        segments.map((segment) => (
+          <article
+            class:list={[
+              'flex flex-col rounded-2xl border border-ink-100 border-t-4 bg-white p-7 shadow-sm',
+              accentRing[segment.accent as keyof typeof accentRing],
+            ]}
+          >
+            <h3 class="font-display text-xl font-semibold">{segment.title}</h3>
+            <p class="mt-3 leading-relaxed text-ink-600">{segment.summary}</p>
+            <ul class="mt-5 space-y-2.5 text-sm text-ink-700">
+              {segment.points.map((point) => (
+                <li class="flex gap-2.5">
+                  <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-sunset-500" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  {/* Upcoming events */}
+  <Section
+    id="events"
+    tone="muted"
+    eyebrow="What's on"
+    title="Upcoming events"
+    lead="Everything runs through Luma. Subscribe there and new events land in your calendar as we announce them."
+  >
+    <LumaEmbed />
+
+    <h3 class="mt-14 font-display text-xl font-semibold">The kinds of things we run</h3>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        eventTypes.map((type) => (
+          <li class="rounded-2xl bg-white p-6">
+            <Icon name={type.icon} class="h-6 w-6 text-sunset-500" />
+            <h4 class="mt-4 font-display text-base font-semibold">{type.name}</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ink-600">{type.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  {/* Flagship event */}
+  <Section>
+    <div
+      class="grid items-center gap-10 rounded-3xl bg-ink-900 px-8 py-12 sm:px-12 lg:grid-cols-[1.5fr_1fr]"
+    >
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-river-400">
+          Our flagship event
+        </p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+          {site.summit.name}
+        </h2>
+        <p class="mt-4 max-w-lg leading-relaxed text-ink-200/85 text-pretty">
+          {site.summit.blurb} A full day of talks, demos and hard questions about what AI actually changes
+          — for the people building it and the organisations trying to adopt it.
+        </p>
+      </div>
+      <div class="lg:justify-self-end">
+        <p class="text-sm text-ink-400">{site.summit.when}</p>
+        <Button href={site.summit.url} variant="onDark" class="mt-3">
+          Summit site
+          <Icon name="arrow" class="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  {/* Other events around Perth */}
+  <Section
+    tone="muted"
+    eyebrow="Beyond us"
+    title="Other AI events around Perth"
+    lead="We're not the only thing happening, and we'd rather you found the right room than only ours."
+  >
+    <OtherEvents />
+  </Section>
+
+  {/* Get involved */}
+  <Section
+    eyebrow="Get involved"
+    title="There's more than one way in"
+    lead="This runs on people putting their hand up. Any of these would genuinely help."
+  >
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          {
+            title: 'Speak',
+            body: "Twenty minutes on something you built or learned. We'll help you shape it.",
+            href: '/get-involved#speak',
+          },
+          {
+            title: 'Suggest an event',
+            body: 'Want a dreamers session, a study group, a regular co-build? Tell us.',
+            href: '/get-involved#event-idea',
+          },
+          {
+            title: 'Offer a space',
+            body: 'Got a room that fits 40 people on a weeknight? That solves our biggest constraint.',
+            href: '/get-involved#space',
+          },
+          {
+            title: 'Sponsor',
+            body: 'Keep events free for students and people between roles.',
+            href: '/sponsor',
+          },
+        ].map((card) => (
+          <a
+            href={card.href}
+            class="group flex flex-col rounded-2xl border border-ink-200 p-6 transition-colors hover:border-sunset-500 hover:bg-sunset-100/40"
+          >
+            <h3 class="font-display text-lg font-semibold">{card.title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{card.body}</p>
+            <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sunset-600">
+              Start here
+              <Icon name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  {/* Team */}
+  <Section
+    tone="muted"
+    eyebrow="Meet the team"
+    title="Run by volunteers"
+    lead="Nobody's paid for this. If you've been to an event, one of these people made it happen."
+  >
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        team.map((person) => (
+          <li class="rounded-2xl bg-white p-6">
+            <h3 class="font-display text-lg font-semibold">
+              {person.link ? (
+                <a href={person.link} rel="noopener" class="hover:text-sunset-600">
+                  {person.name}
+                </a>
+              ) : (
+                person.name
+              )}
+            </h3>
+            <p class="mt-1 text-sm font-medium text-sunset-600">{person.role}</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink-600">{person.bio}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  {/* Community links */}
+  <Section
+    eyebrow="Good company"
+    title="Groups we support and recommend"
+    lead="Perth's tech community is small enough that we all benefit from sending people to each other."
+  >
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        community.map((group) => (
+          <li class="rounded-2xl border border-ink-200 p-6 transition-colors hover:border-ink-400">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-display text-lg font-semibold">
+                <a href={group.url} rel="noopener" class="hover:text-sunset-600">
+                  {group.name}
+                </a>
+              </h3>
+              <span class="shrink-0 rounded-full bg-river-100 px-2.5 py-1 text-xs font-medium text-river-600">
+                {group.relationship}
+              </span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-ink-600">{group.blurb}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  {/* Mailing list */}
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

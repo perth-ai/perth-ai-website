@@ -1,0 +1,35 @@
+[
+  {
+    "id": "builders",
+    "title": "Builders, startups & students",
+    "summary": "You're shipping something. Maybe it's a weekend project, maybe it's a company. Either way you want people around you who get it.",
+    "points": [
+      "Co-building sessions — bring your project, work alongside others",
+      "Hands-on workshops on the tools people actually use",
+      "A room full of people who'll tell you the truth about your idea"
+    ],
+    "accent": "sunset"
+  },
+  {
+    "id": "enterprise",
+    "title": "AI-native enterprise",
+    "summary": "You're moving a large organisation from pilots to production, and the hard parts aren't the models.",
+    "points": [
+      "Practitioner talks on real rollouts — including the ones that went sideways",
+      "Governance, risk and change management, discussed candidly",
+      "Peers from other WA organisations solving the same problems"
+    ],
+    "accent": "river"
+  },
+  {
+    "id": "product",
+    "title": "Product & engineering",
+    "summary": "You're designing and building AI features, and the discipline is changing under your feet.",
+    "points": [
+      "Deep dives on evals, agents, context engineering and delivery",
+      "Design patterns for products where the output isn't deterministic",
+      "Show-and-tell from teams shipping to real users"
+    ],
+    "accent": "ink"
+  }
+]

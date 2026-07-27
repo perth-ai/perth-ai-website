@@ -1,0 +1,32 @@
+{
+  "mission": "To give everyone in Western Australia building with AI a place to learn in the open, meet the people doing it well, and ship better work because of it.",
+  "vision": "Perth is a long way from everywhere. That's been the excuse for a long time. We think it's an advantage — a small enough community that you can actually know everyone in it, and ambitious enough that the work stands up anywhere. We want Perth known for what it builds with AI, not for how far away it is.",
+  "values": [
+    {
+      "name": "Show the work",
+      "description": "Demos over slides. We'd rather see something half-working than hear about something hypothetical."
+    },
+    {
+      "name": "Everyone starts somewhere",
+      "description": "First-timers, career-changers and students are as welcome as principal engineers. Nobody gets talked down to."
+    },
+    {
+      "name": "Honest about the hard parts",
+      "description": "The failed pilots and the things that didn't work are more useful than the highlight reel. We make it safe to say so."
+    },
+    {
+      "name": "Free and open where we can be",
+      "description": "Events stay free or near-free. What we build for the community is open by default."
+    },
+    {
+      "name": "Local, not parochial",
+      "description": "We're proudly a Perth community and we hold ourselves to a global standard."
+    }
+  ],
+  "story": [
+    "Perth AI started the way most of these things do — a handful of people who kept running into each other at other events and figured there should be something for this.",
+    "There's a lot happening in AI in Western Australia and not much connecting it. Startups building product, enterprises working out what to do with it, researchers, students, and a steady stream of people arriving from other industries who want in. All of them learning the same lessons separately.",
+    "So we run events. Meet-ups with speakers, co-building sessions where you bring your own project, workshops, and the occasional Friday night at the pub. All of it free or close to it, and all of it aimed at people who are actually building things."
+  ],
+  "acknowledgement": "Perth AI meets on the lands of the Whadjuk people of the Noongar nation. We acknowledge them as the Traditional Owners, and pay our respects to Elders past and present."
+}

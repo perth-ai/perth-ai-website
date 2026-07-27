@@ -1,0 +1,44 @@
+---
+import site from '../data/site.json';
+import Button from './Button.astro';
+
+// Set `links.lumaEmbedId` in src/data/site.json to your Luma calendar ID
+// (looks like "cal-AbC123..."). Find it in Luma under
+// Calendar → Settings → Embed. Once set, upcoming events appear here
+// automatically — no code changes needed when you add an event.
+interface Props {
+  height?: number;
+}
+const { height = 560 } = Astro.props;
+const embedId = site.links.lumaEmbedId;
+---
+
+{
+  embedId ? (
+    <div class="overflow-hidden rounded-2xl border border-ink-200 bg-white shadow-sm">
+      <iframe
+        src={`https://lu.ma/embed/calendar/${embedId}/events`}
+        title="Upcoming Perth AI events"
+        width="100%"
+        height={height}
+        style="border: none;"
+        allowfullscreen
+        aria-hidden="false"
+        tabindex="0"
+        loading="lazy"
+      />
+    </div>
+  ) : (
+    <div class="rounded-2xl border border-dashed border-ink-200 bg-white p-10 text-center">
+      <h3 class="font-display text-xl font-semibold">Events live on Luma</h3>
+      <p class="mx-auto mt-3 max-w-md text-ink-600">
+        Every Perth AI event — meet-ups, co-building sessions, workshops and the rest — is listed
+        and ticketed on our Luma calendar. Subscribe there and you'll hear about each one as it
+        goes up.
+      </p>
+      <Button href={site.links.luma} class="mt-6">
+        View the Luma calendar
+      </Button>
+    </div>
+  )
+}

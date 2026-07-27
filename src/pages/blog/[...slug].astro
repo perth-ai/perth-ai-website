@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import MailingList from '../../components/MailingList.astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <div class="border-b border-ink-100 bg-sand-100">
+    <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
+      <a href="/blog" class="text-sm font-medium text-sunset-600 hover:underline">← All posts</a>
+      <h1 class="mt-5 font-display text-4xl font-semibold text-balance sm:text-5xl">
+        {post.data.title}
+      </h1>
+      <p class="mt-5 text-sm text-ink-600">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        {' · '}
+        {post.data.author}
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-3xl px-5 py-14 sm:px-8">
+    <article
+      class="prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight
+             [&_h2]:mt-12 [&_h2]:text-2xl [&_h3]:mt-9 [&_h3]:text-xl
+             [&_p]:mt-5 [&_p]:leading-relaxed [&_p]:text-ink-700 [&_p]:text-lg
+             [&_ul]:mt-5 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_ul]:text-ink-700
+             [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-6 [&_ol]:text-ink-700
+             [&_a]:font-medium [&_a]:text-sunset-600 [&_a]:underline [&_a]:underline-offset-2
+             [&_blockquote]:mt-6 [&_blockquote]:border-l-4 [&_blockquote]:border-sunset-500
+             [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-ink-600
+             [&_pre]:mt-6 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-ink-900 [&_pre]:p-5 [&_pre]:text-sm
+             [&_:not(pre)>code]:rounded [&_:not(pre)>code]:bg-ink-100 [&_:not(pre)>code]:px-1.5
+             [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:text-[0.9em]
+             [&_img]:mt-6 [&_img]:rounded-xl
+             [&_hr]:my-10 [&_hr]:border-ink-100"
+    >
+      <Content />
+    </article>
+
+    {
+      post.data.tags.length > 0 && (
+        <ul class="mt-12 flex flex-wrap gap-2 border-t border-ink-100 pt-8">
+          {post.data.tags.map((tag) => (
+            <li class="rounded-full bg-river-100 px-3 py-1 text-xs font-medium text-river-600">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

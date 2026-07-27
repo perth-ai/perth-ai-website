@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import LumaEmbed from '../components/LumaEmbed.astro';
+import OtherEvents from '../components/OtherEvents.astro';
+import MailingList from '../components/MailingList.astro';
+import Icon from '../components/Icon.astro';
+import Button from '../components/Button.astro';
+import eventTypes from '../data/eventTypes.json';
+import site from '../data/site.json';
+---
+
+<Base
+  title="Events"
+  description="Meet-ups, co-building sessions, workshops, networking and pop-ups — every Perth AI event, plus other AI events happening around Perth."
+>
+  <PageHero
+    eyebrow="What's on"
+    title="Events"
+    lead="Everything we run is listed on Luma. Most events are free, all of them are open to newcomers, and you never need to know anyone to turn up."
+  />
+
+  <Section>
+    <LumaEmbed height={640} />
+    <p class="mt-6 text-sm text-ink-600">
+      Prefer your calendar to do the work? <a
+        href={site.links.luma}
+        rel="noopener"
+        class="font-medium text-sunset-600 hover:underline">Subscribe to the Luma calendar</a
+      > and every new event shows up automatically.
+    </p>
+  </Section>
+
+  <Section
+    tone="muted"
+    eyebrow="Formats"
+    title="What to expect"
+    lead="Different events suit different moods. Here's what each one actually involves."
+  >
+    <ul class="grid gap-5 sm:grid-cols-2">
+      {
+        eventTypes.map((type) => (
+          <li class="flex gap-5 rounded-2xl bg-white p-7">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunset-100 text-sunset-600">
+              <Icon name={type.icon} class="h-5 w-5" />
+            </span>
+            <div>
+              <h3 class="font-display text-lg font-semibold">{type.name}</h3>
+              <p class="mt-2 leading-relaxed text-ink-600">{type.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section eyebrow="First time?" title="How it works">
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        [
+          {
+            step: 'Register on Luma',
+            body: "It's free. We only ask so we know how much food to order and the venue knows who's coming.",
+          },
+          {
+            step: 'Turn up on your own',
+            body: "Most people do. Someone will be at the door, and there's always a group of people who came alone talking to each other.",
+          },
+          {
+            step: 'Stay for the bit after',
+            body: 'The talks are good. The half hour afterwards is where the actual value is.',
+          },
+        ].map((item, index) => (
+          <div class="rounded-2xl border border-ink-200 p-7">
+            <span class="font-display text-3xl font-semibold text-sunset-300">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-3 font-display text-lg font-semibold">{item.step}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-600">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section
+    tone="muted"
+    eyebrow="Beyond us"
+    title="Other AI events around Perth"
+    lead="Run by other groups, worth your time. If you're running something, send it through and we'll list it."
+  >
+    <OtherEvents />
+  </Section>
+
+  <Section>
+    <div class="rounded-2xl border border-ink-200 p-8 sm:p-10">
+      <h2 class="font-display text-2xl font-semibold">Got something to say?</h2>
+      <p class="mt-3 max-w-xl leading-relaxed text-ink-600">
+        We're always looking for speakers, and the bar is lower than you think. If you've built
+        something, tried something that didn't work, or have strong opinions about how this stuff
+        should be done — that's a talk.
+      </p>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <Button href="/get-involved#speak">Offer a talk</Button>
+        <Button href="/get-involved#event-idea" variant="ghost">Suggest an event</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

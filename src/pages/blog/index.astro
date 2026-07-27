@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import MailingList from '../../components/MailingList.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title="Blog"
+  description="Write-ups, thought pieces and notes from Perth AI events and the people in the community."
+>
+  <PageHero
+    eyebrow="Blog"
+    title="Notes from the community"
+    lead="Event write-ups, opinions, and things worth reading from people in the Perth AI community."
+  />
+
+  <Section>
+    {
+      posts.length === 0 ? (
+        <p class="rounded-2xl border border-dashed border-ink-200 p-10 text-center text-ink-600">
+          Nothing published yet. Watch this space.
+        </p>
+      ) : (
+        <ul class="grid gap-6 md:grid-cols-2">
+          {posts.map((post) => (
+            <li class="group flex flex-col rounded-2xl border border-ink-200 p-7 transition-colors hover:border-sunset-500">
+              <p class="text-xs font-semibold uppercase tracking-wider text-ink-400">
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                {' · '}
+                {post.data.author}
+              </p>
+              <h2 class="mt-3 font-display text-xl font-semibold">
+                <a href={`/blog/${post.id}`} class="group-hover:text-sunset-600">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="mt-3 flex-1 leading-relaxed text-ink-600">{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <ul class="mt-5 flex flex-wrap gap-2">
+                  {post.data.tags.map((tag) => (
+                    <li class="rounded-full bg-river-100 px-2.5 py-1 text-xs font-medium text-river-600">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </Section>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

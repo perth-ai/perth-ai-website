@@ -1,0 +1,68 @@
+---
+import Logo from './Logo.astro';
+import site from '../data/site.json';
+import about from '../data/about.json';
+
+const social = [
+  { label: 'Luma', href: site.links.luma },
+  { label: 'LinkedIn', href: site.links.linkedin },
+  { label: 'Slack', href: site.links.slack },
+  { label: 'GitHub', href: site.links.github },
+].filter((s) => s.href);
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 bg-ink-900 text-ink-200">
+  <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 font-display text-lg font-semibold text-white">
+          <Logo class="h-8 w-8" />
+          <span>{site.name}</span>
+        </div>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-200/80">{site.tagline}</p>
+        <p class="mt-6 max-w-md text-xs leading-relaxed text-ink-400">{about.acknowledgement}</p>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-ink-400">Community</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a class="hover:text-river-300" href="/events">Events</a></li>
+          <li><a class="hover:text-river-300" href="/about">About us</a></li>
+          <li><a class="hover:text-river-300" href="/blog">Blog</a></li>
+          <li><a class="hover:text-river-300" href="/get-involved">Get involved</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-ink-400">Support us</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a class="hover:text-river-300" href="/sponsor">Sponsor Perth AI</a></li>
+          <li><a class="hover:text-river-300" href="/get-involved#speak">Speak at an event</a></li>
+          <li><a class="hover:text-river-300" href="/get-involved#space">Offer a space</a></li>
+          <li><a class="hover:text-river-300" href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-ink-700 pt-6 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} {site.name}. Run by volunteers in Perth, Western Australia.</p>
+      {
+        social.length > 0 && (
+          <ul class="flex gap-5">
+            {social.map((s) => (
+              <li>
+                <a class="hover:text-river-300" href={s.href}>
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</footer>

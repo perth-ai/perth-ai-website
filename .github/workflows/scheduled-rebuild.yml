@@ -1,0 +1,51 @@
+name: Scheduled rebuild
+
+# Rebuilds the site once a day so anything time-sensitive stays current.
+#
+# Why this is needed: the site is static, so "today" is frozen at build time.
+# Without a periodic rebuild, past events in src/data/otherEvents.json never
+# drop off the Events page. A daily build also picks up any new Luma events if
+# we ever move from the iframe embed to build-time rendering.
+#
+# Setup (one-off):
+#   1. Cloudflare dashboard → your Pages project → Settings → Builds & deployments
+#      → Deploy hooks → Add deploy hook. Branch: main. Copy the URL.
+#   2. Add it to this repo as a secret named CLOUDFLARE_DEPLOY_HOOK:
+#
+#        gh secret set CLOUDFLARE_DEPLOY_HOOK --repo perth-ai/perth-ai-website
+#
+#      That prompts for the value, so the URL never lands in a file or a
+#      terminal history. Anyone holding it can trigger builds, so treat it as
+#      a credential — it must not be committed.
+#
+# Until that secret exists this workflow runs and exits cleanly, so it is
+# harmless to merge before Cloudflare is wired up.
+
+on:
+  schedule:
+    # 19:00 UTC = 03:00 Perth (AWST, UTC+8). Quiet hours locally.
+    - cron: '0 19 * * *'
+  # Lets you trigger a rebuild by hand from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages build
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK is not set — skipping."
+            echo "See the setup notes at the top of this workflow file."
+            exit 0
+          fi
+
+          # --fail-with-body so a non-2xx response fails the job loudly rather
+          # than silently "succeeding" and leaving the site stale for weeks.
+          curl --silent --show-error --fail-with-body \
+               --retry 3 --retry-delay 10 --max-time 30 \
+               -X POST "$DEPLOY_HOOK"
+
+          echo "Deploy hook fired."

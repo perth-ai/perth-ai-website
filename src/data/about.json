@@ -25,6 +25,14 @@
     {
       "name": "Give first, no hard sell",
       "description": "You're here to contribute, not to pitch. Come with something to offer — a demo, an answer, an introduction — and leave the sales deck at home."
+    },
+    {
+      "name": "Experts and beginners, same room",
+      "description": "No separate track for people who've shipped and people who haven't yet. Mentorship happens because everyone's actually in the room together."
+    },
+    {
+      "name": "Build like it matters",
+      "description": "Bias, fairness and who gets affected aren't an afterthought. If it's worth shipping, it's worth thinking through properly."
     }
   ],
   "story": [

@@ -1,9 +1,39 @@
 [
   {
     "name": "Will Webster",
-    "role": "Organiser",
-    "bio": "Add a sentence or two here.",
+    "role": "Founder and Organiser",
+    "bio": "Founder of Cohezion, a Perth technical consultancy. Engineer, architect, and technical leader who's spent his career developering and shipping great products.",
     "link": ""
+  },
+  {
+    "name": "Susannah Soon",
+    "role": "Founder and Organiser",
+    "bio": "Associate Professor at Curtin University, with a PhD in AI from the University of Melbourne. Also hosts Build Club Perth and the AI Disrupt Summit.",
+    "link": ""
+  },
+  {
+    "name": "Timothy de Boer",
+    "role": "Founder and Organiser",
+    "bio": "Founding director of Interfuze, a Perth consultancy working with government, SME and enterprise clients. Started out as a Java and .NET contractor before moving into consulting.",
+    "link": ""
+  },
+  {
+    "name": "Kristina Gagalova",
+    "role": "Founder and Organiser",
+    "bio": "Bioinformatics scientist at Curtin University with a PhD in Bioinformatics. Works on machine learning and AI applied to biological sequences, and is a Nextflow Ambassador.",
+    "link": ""
+  },
+  {
+    "name": "Rajat Saddi",
+    "role": "Founder and Organiser",
+    "bio": "Ask Raj for a sentence or two here — couldn't find enough to draft one.",
+    "link": ""
+  },
+  {
+    "name": "Rafael Avigad",
+    "role": "Founder and Organiser",
+    "bio": "Principal Technical Consultant at Human Response Consulting, with over 20 years' experience building enterprise systems and applications.",
+    "link": "https://www.linkedin.com/in/rafael-avigad/"
   },
   {
     "name": "Add an organiser",

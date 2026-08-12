@@ -4,7 +4,7 @@ import site from '../data/site.json';
 interface Field {
   name: string;
   label: string;
-  type?: 'text' | 'email' | 'textarea' | 'select';
+  type?: 'text' | 'email' | 'textarea' | 'select' | 'checkboxes';
   required?: boolean;
   placeholder?: string;
   options?: string[];
@@ -45,41 +45,64 @@ const inputClass =
   </div>
 
   {
-    fields.map((field) => (
-      <div>
-        <label for={`${id}-${field.name}`} class="block text-sm font-medium text-ink-800">
-          {field.label}
-          {field.required && <span class="text-sunset-700"> *</span>}
-        </label>
-
-        {field.type === 'textarea' ? (
-          <textarea
-            id={`${id}-${field.name}`}
-            name={field.name}
-            rows="4"
-            required={field.required}
-            placeholder={field.placeholder}
-            class={inputClass}
-          />
-        ) : field.type === 'select' ? (
-          <select id={`${id}-${field.name}`} name={field.name} required={field.required} class={inputClass}>
-            <option value="">Choose one…</option>
-            {(field.options ?? []).map((option) => (
-              <option value={option}>{option}</option>
+    fields.map((field) =>
+      field.type === 'checkboxes' ? (
+        <fieldset>
+          <legend class="block text-sm font-medium text-ink-800">
+            {field.label}
+            {field.required && <span class="text-sunset-700"> *</span>}
+          </legend>
+          <div class="mt-2 space-y-2">
+            {(field.options ?? []).map((option, index) => (
+              <label class="flex items-center gap-2.5 text-sm text-ink-700">
+                <input
+                  id={`${id}-${field.name}-${index}`}
+                  name={field.name}
+                  type="checkbox"
+                  value={option}
+                  class="h-4 w-4 rounded border-ink-300 text-sunset-500 focus:ring-sunset-500"
+                />
+                {option}
+              </label>
             ))}
-          </select>
-        ) : (
-          <input
-            id={`${id}-${field.name}`}
-            name={field.name}
-            type={field.type ?? 'text'}
-            required={field.required}
-            placeholder={field.placeholder}
-            class={inputClass}
-          />
-        )}
-      </div>
-    ))
+          </div>
+        </fieldset>
+      ) : (
+        <div>
+          <label for={`${id}-${field.name}`} class="block text-sm font-medium text-ink-800">
+            {field.label}
+            {field.required && <span class="text-sunset-700"> *</span>}
+          </label>
+
+          {field.type === 'textarea' ? (
+            <textarea
+              id={`${id}-${field.name}`}
+              name={field.name}
+              rows="4"
+              required={field.required}
+              placeholder={field.placeholder}
+              class={inputClass}
+            />
+          ) : field.type === 'select' ? (
+            <select id={`${id}-${field.name}`} name={field.name} required={field.required} class={inputClass}>
+              <option value="">Choose one…</option>
+              {(field.options ?? []).map((option) => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={`${id}-${field.name}`}
+              name={field.name}
+              type={field.type ?? 'text'}
+              required={field.required}
+              placeholder={field.placeholder}
+              class={inputClass}
+            />
+          )}
+        </div>
+      )
+    )
   }
 
   <button

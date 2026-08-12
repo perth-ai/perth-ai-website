@@ -4,13 +4,10 @@ import Section from '../components/Section.astro';
 import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
 import LumaEmbed from '../components/LumaEmbed.astro';
-import OtherEvents from '../components/OtherEvents.astro';
 import MailingList from '../components/MailingList.astro';
 import site from '../data/site.json';
 import segments from '../data/segments.json';
 import eventTypes from '../data/eventTypes.json';
-import community from '../data/community.json';
-import team from '../data/team.json';
 
 const accentRing = {
   sunset: 'border-t-sunset-500',
@@ -55,8 +52,9 @@ const accentRing = {
         The people building with AI in Perth, in one room.
       </h1>
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/90 text-pretty">
-        Meet-ups, co-building sessions, workshops and the odd Friday night at the pub. Free,
-        run by volunteers, and aimed squarely at people making things.
+        Meet-ups, co-building sessions, workshops and the odd cafe catch-up or night at the pub.
+        Free, give-first, and run by volunteers — no pitches, just people building things and
+        helping each other do it.
       </p>
       <div class="mt-9 flex flex-col gap-3 sm:flex-row">
         <Button href="/events" variant="primary">
@@ -71,8 +69,8 @@ const accentRing = {
   {/* Who it's for */}
   <Section
     eyebrow="Who it's for"
-    title="Three groups, one community"
-    lead="The problems look different depending on where you sit, so we run things for all three — and put them in the same room on purpose."
+    title="Multiple groups, one community"
+    lead="The problems look different depending on where you sit, so we run things for all of them — and put them in the same room on purpose."
   >
     <div class="grid gap-6 lg:grid-cols-3">
       {
@@ -150,30 +148,15 @@ const accentRing = {
     </div>
   </Section>
 
-  {/* Other events around Perth */}
-  <Section
-    tone="muted"
-    eyebrow="Beyond us"
-    title="Other AI events around Perth"
-    lead="We're not the only thing happening, and we'd rather you found the right room than only ours."
-  >
-    <OtherEvents />
-  </Section>
-
   {/* Get involved */}
   <Section
     eyebrow="Get involved"
     title="There's more than one way in"
     lead="This runs on people putting their hand up. Any of these would genuinely help."
   >
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         [
-          {
-            title: 'Speak',
-            body: "Twenty minutes on something you built or learned. We'll help you shape it.",
-            href: '/get-involved#speak',
-          },
           {
             title: 'Suggest an event',
             body: 'Want a dreamers session, a study group, a regular co-build? Tell us.',
@@ -186,7 +169,7 @@ const accentRing = {
           },
           {
             title: 'Sponsor',
-            body: 'Keep events free for students and people between roles.',
+            body: 'Keep events free for everyone.',
             href: '/sponsor',
           },
         ].map((card) => (
@@ -206,59 +189,28 @@ const accentRing = {
     </div>
   </Section>
 
-  {/* Team */}
+  {/* Join the conversation */}
   <Section
-    tone="muted"
-    eyebrow="Meet the team"
-    title="Run by volunteers"
-    lead="Nobody's paid for this. If you've been to an event, one of these people made it happen."
+    eyebrow="Stay in the loop"
+    title="Join the conversation"
+    lead="Slack is where the day-to-day chat, job leads and event planning actually happen."
   >
-    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-col items-start gap-4 rounded-2xl border border-ink-200 bg-white p-7 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-ink-600">
+        Events, general chat, AI education and learning, and (soon) a jobs channel.
+      </p>
       {
-        team.map((person) => (
-          <li class="rounded-2xl bg-white p-6">
-            <h3 class="font-display text-lg font-semibold">
-              {person.link ? (
-                <a href={person.link} rel="noopener" class="hover:text-sunset-700">
-                  {person.name}
-                </a>
-              ) : (
-                person.name
-              )}
-            </h3>
-            <p class="mt-1 text-sm font-medium text-sunset-700">{person.role}</p>
-            <p class="mt-3 text-sm leading-relaxed text-ink-600">{person.bio}</p>
-          </li>
-        ))
+        site.links.slack ? (
+          <Button href={site.links.slack} variant="primary">
+            Join our Slack
+          </Button>
+        ) : (
+          <Button href={`mailto:${site.email}?subject=Slack%20invite`} variant="primary">
+            Ask for a Slack invite
+          </Button>
+        )
       }
-    </ul>
-  </Section>
-
-  {/* Community links */}
-  <Section
-    eyebrow="Good company"
-    title="Groups we support and recommend"
-    lead="Perth's tech community is small enough that we all benefit from sending people to each other."
-  >
-    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        community.map((group) => (
-          <li class="rounded-2xl border border-ink-200 p-6 transition-colors hover:border-ink-400">
-            <div class="flex items-start justify-between gap-3">
-              <h3 class="font-display text-lg font-semibold">
-                <a href={group.url} rel="noopener" class="hover:text-sunset-700">
-                  {group.name}
-                </a>
-              </h3>
-              <span class="shrink-0 rounded-full bg-azure-100 px-2.5 py-1 text-xs font-medium text-azure-600">
-                {group.relationship}
-              </span>
-            </div>
-            <p class="mt-3 text-sm leading-relaxed text-ink-600">{group.blurb}</p>
-          </li>
-        ))
-      }
-    </ul>
+    </div>
   </Section>
 
   {/* Mailing list */}

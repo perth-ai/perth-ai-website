@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import LumaEmbed from '../components/LumaEmbed.astro';
-import OtherEvents from '../components/OtherEvents.astro';
 import MailingList from '../components/MailingList.astro';
 import Icon from '../components/Icon.astro';
 import Button from '../components/Button.astro';
@@ -84,26 +83,15 @@ import site from '../data/site.json';
     </div>
   </Section>
 
-  <Section
-    tone="muted"
-    eyebrow="Beyond us"
-    title="Other AI events around Perth"
-    lead="Run by other groups, worth your time. If you're running something, send it through and we'll list it."
-  >
-    <OtherEvents />
-  </Section>
-
   <Section>
     <div class="rounded-2xl border border-ink-200 p-8 sm:p-10">
-      <h2 class="font-display text-2xl font-semibold">Got something to say?</h2>
+      <h2 class="font-display text-2xl font-semibold">Got an idea for an event?</h2>
       <p class="mt-3 max-w-xl leading-relaxed text-ink-600">
-        We're always looking for speakers, and the bar is lower than you think. If you've built
-        something, tried something that didn't work, or have strong opinions about how this stuff
-        should be done — that's a talk.
+        A dreamers session, a study group, a regular co-build — if you want it to exist, tell us
+        and we'll help make it happen.
       </p>
       <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-        <Button href="/get-involved#speak">Offer a talk</Button>
-        <Button href="/get-involved#event-idea" variant="ghost">Suggest an event</Button>
+        <Button href="/get-involved#event-idea">Suggest an event</Button>
       </div>
     </div>
   </Section>

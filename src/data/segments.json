@@ -11,17 +11,6 @@
     "accent": "sunset"
   },
   {
-    "id": "enterprise",
-    "title": "AI-native enterprise",
-    "summary": "You're moving a large organisation from pilots to production, and the hard parts aren't the models.",
-    "points": [
-      "Practitioner talks on real rollouts — including the ones that went sideways",
-      "Governance, risk and change management, discussed candidly",
-      "Peers from other WA organisations solving the same problems"
-    ],
-    "accent": "azure"
-  },
-  {
     "id": "product",
     "title": "Product & engineering",
     "summary": "You're designing and building AI features, and the discipline is changing under your feet.",
@@ -31,5 +20,16 @@
       "Show-and-tell from teams shipping to real users"
     ],
     "accent": "ink"
+  },
+  {
+    "id": "enterprise",
+    "title": "AI-native enterprise",
+    "summary": "You're moving a large organisation from pilots to production, and the hard parts aren't the models.",
+    "points": [
+      "Practitioner talks on real rollouts — including the ones that went sideways",
+      "Governance, risk and change management, discussed candidly",
+      "Peers from other WA organisations solving the same problems"
+    ],
+    "accent": "azure"
   }
 ]

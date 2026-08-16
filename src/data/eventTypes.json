@@ -2,7 +2,7 @@
   {
     "name": "Meet-ups",
     "icon": "mic",
-    "description": "Speakers and panels. Someone shows you what they built and how, then we all argue about it over a drink."
+    "description": "Speakers and panels — and sometimes someone jumps up with an impromptu pitch. Then we all argue about it over a drink."
   },
   {
     "name": "Co-building sessions",
@@ -22,6 +22,16 @@
   {
     "name": "Pop-ups",
     "icon": "sparkle",
-    "description": "Someone interesting is in town, or something just happened that we all need to talk about. Short notice, worth it."
+    "description": "Someone interesting is in town, office hours with someone useful, or something just happened that we all need to talk about. Short notice, worth it."
+  },
+  {
+    "name": "Big events",
+    "icon": "flag",
+    "description": "Conferences, hackathons, anniversary parties, and pitch nights that are deliberately a bit silly. Less frequent, worth clearing your calendar for."
+  },
+  {
+    "name": "Touch grass",
+    "icon": "tree",
+    "description": "Bush walks and the AI run club. Genuinely a recurring thing, not just an idea we had once."
   }
 ]

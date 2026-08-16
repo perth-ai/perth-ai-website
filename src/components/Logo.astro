@@ -6,11 +6,8 @@ interface Props {
 }
 const { class: className = '' } = Astro.props;
 
-// Drop the real quokka logo into public/ (SVG preferred, or a square PNG at
-// 2x the display size) and set `logo` in src/data/site.json to its path,
-// e.g. "/logo-quokka.svg". Until then the placeholder mark below is used —
-// a blue badge with an orange ring, echoing the event artwork without
-// pretending to be the mascot.
+// Falls back to the placeholder mark below (a blue badge with an orange
+// ring) if `logo` in src/data/site.json is ever cleared.
 const logo = (site as { logo?: string }).logo ?? '';
 ---
 

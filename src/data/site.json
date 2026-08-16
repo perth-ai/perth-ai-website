@@ -2,8 +2,7 @@
   "name": "Perth AI",
   "tagline": "Western Australia's community for people building with AI.",
   "description": "Perth AI is a community for builders, startups, students, enterprises and product teams working with AI in Western Australia. Meet-ups, co-building sessions, workshops and networking \u2014 all on Whadjuk Noongar boodja.",
-  "logo": "",
-  "_logo": "Path to the real Perth AI quokka logo in public/, e.g. '/logo-quokka.svg'. Leave empty to use the placeholder mark in src/components/Logo.astro.",
+  "logo": "/logo-perth-ai-quokka.png",
   "email": "hello@perthai.org.au",
   "_luma": "`lumaEmbedId` accepts either a bare calendar ID (cal-XXXX) or the full iframe src from Luma \u2192 Calendar \u2192 Settings \u2192 Embed; paste whichever and events appear automatically.",
   "links": {

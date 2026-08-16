@@ -58,7 +58,6 @@ This is a working skeleton — these need real values:
 - [ ] **Domain** — attach the custom domain in Cloudflare Pages, then set the `SITE_URL`
       environment variable in the Pages project to that domain. This is also what lifts the
       `noindex` guard, so don't set it until you actually want to be findable.
-- [ ] **Email address** — `hello@perthai.org` in `src/data/site.json` is a placeholder.
 - [ ] **Team** — `src/data/team.json` has placeholder entries.
 - [ ] **Sponsorship tiers** — the prices in `src/data/sponsors.json` are a starting point, not an
       agreed rate card.

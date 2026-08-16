@@ -8,7 +8,7 @@
   "_luma": "`lumaEmbedId` accepts either a bare calendar ID (cal-XXXX) or the full iframe src from Luma \u2192 Calendar \u2192 Settings \u2192 Embed; paste whichever and events appear automatically.",
   "links": {
     "luma": "https://luma.com/perthai",
-    "lumaEmbedId": "",
+    "lumaEmbedId": "https://luma.com/embed/calendar/cal-5FLOkSaphhpP5EL/events",
     "linkedin": "",
     "slack": "",
     "github": "",

@@ -5,9 +5,9 @@
   "logo": "",
   "_logo": "Path to the real Perth AI quokka logo in public/, e.g. '/logo-quokka.svg'. Leave empty to use the placeholder mark in src/components/Logo.astro.",
   "email": "hello@perthai.org.au",
-  "_luma": "PLACEHOLDER: `luma` is a guess at the calendar URL and needs replacing with the real one. `lumaEmbedId` accepts either a bare calendar ID (cal-XXXX) or the full iframe src from Luma \u2192 Calendar \u2192 Settings \u2192 Embed; paste whichever and events appear automatically.",
+  "_luma": "`lumaEmbedId` accepts either a bare calendar ID (cal-XXXX) or the full iframe src from Luma \u2192 Calendar \u2192 Settings \u2192 Embed; paste whichever and events appear automatically.",
   "links": {
-    "luma": "https://lu.ma/perthai",
+    "luma": "https://luma.com/perthai",
     "lumaEmbedId": "",
     "linkedin": "",
     "slack": "",

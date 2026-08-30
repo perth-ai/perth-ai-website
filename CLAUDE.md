@@ -132,3 +132,13 @@ npm run build
 
 If it builds, check the pages you touched at a narrow width as well as wide. Then commit on a
 branch and open a PR unless it's clearly a "ship".
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues (`perth-ai/perth-ai-website`), managed with the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.

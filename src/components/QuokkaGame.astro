@@ -1,0 +1,450 @@
+---
+---
+
+<div class="rounded-2xl border border-ink-200 bg-white p-4 sm:p-6">
+  <div class="mb-3 flex items-center justify-between text-sm font-medium text-ink-600">
+    <span>This page is gone. The quokka isn't going anywhere until you jump it.</span>
+    <span id="quokka-score" class="font-display text-base font-semibold text-ink-900">0</span>
+  </div>
+  <canvas
+    id="quokka-canvas"
+    width="600"
+    height="200"
+    class="h-auto w-full cursor-pointer rounded-xl bg-sand-100"
+    tabindex="0"
+    aria-label="Quokka runner game — dodge bikes, selfie sticks and beach umbrellas, jump to collect coffee cups, on Rottnest Island. Press space, up arrow, or tap to jump"
+  ></canvas>
+  <p class="mt-3 text-center text-xs text-ink-400">Space, ↑ or tap to jump — grab the coffee cups</p>
+</div>
+
+<script>
+  const canvas = document.getElementById('quokka-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const scoreEl = document.getElementById('quokka-score')!;
+
+  const WIDTH = 600;
+  const HEIGHT = 200;
+  const GROUND_Y = 160;
+  const OCEAN_TOP = GROUND_Y - 34;
+  const OCEAN_BOTTOM = GROUND_Y - 10;
+  const GRAVITY = 0.6;
+  const JUMP_VELOCITY = -11;
+  const COLLECT_BONUS = 100;
+
+  type ObstacleKind = 'bike' | 'selfie' | 'umbrella';
+
+  const OBSTACLE_TYPES: { kind: ObstacleKind; width: number; height: number }[] = [
+    { kind: 'bike', width: 36, height: 26 },
+    { kind: 'selfie', width: 10, height: 38 },
+    { kind: 'umbrella', width: 32, height: 32 },
+  ];
+
+  const COLLECTIBLE_ELEVATION = 55;
+  const COLLECTIBLE_W = 16;
+  const COLLECTIBLE_H = 18;
+
+  const quokka = { x: 40, y: 0, vy: 0, width: 34, height: 34, jumping: false };
+  let obstacles: { x: number; kind: ObstacleKind; width: number; height: number }[] = [];
+  let collectibles: { x: number; width: number; height: number }[] = [];
+  let speed = 6;
+  let frame = 0;
+  let nextObstacleFrame = 0;
+  let nextCollectibleFrame = 0;
+  let score = 0;
+  let running = false;
+  let gameOver = false;
+
+  function scheduleNextObstacle() {
+    nextObstacleFrame = frame + 55 + Math.random() * 55;
+  }
+
+  function scheduleNextCollectible() {
+    nextCollectibleFrame = frame + 130 + Math.random() * 110;
+  }
+
+  function reset() {
+    quokka.y = 0;
+    quokka.vy = 0;
+    quokka.jumping = false;
+    obstacles = [];
+    collectibles = [];
+    speed = 6;
+    frame = 0;
+    score = 0;
+    gameOver = false;
+    scheduleNextObstacle();
+    scheduleNextCollectible();
+  }
+
+  function jump() {
+    if (gameOver) {
+      reset();
+      running = true;
+      return;
+    }
+    running = true;
+    if (!quokka.jumping) {
+      quokka.vy = JUMP_VELOCITY;
+      quokka.jumping = true;
+    }
+  }
+
+  function spawnObstacle() {
+    const type = OBSTACLE_TYPES[Math.floor(Math.random() * OBSTACLE_TYPES.length)];
+    obstacles.push({ x: WIDTH + 20, ...type });
+  }
+
+  function spawnCollectible() {
+    collectibles.push({ x: WIDTH + 20, width: COLLECTIBLE_W, height: COLLECTIBLE_H });
+  }
+
+  function update() {
+    frame++;
+    quokka.vy += GRAVITY;
+    quokka.y += quokka.vy;
+    if (quokka.y > 0) {
+      quokka.y = 0;
+      quokka.vy = 0;
+      quokka.jumping = false;
+    }
+
+    if (frame >= nextObstacleFrame) {
+      spawnObstacle();
+      scheduleNextObstacle();
+    }
+    if (frame >= nextCollectibleFrame) {
+      spawnCollectible();
+      scheduleNextCollectible();
+    }
+
+    obstacles.forEach((o) => (o.x -= speed));
+    obstacles = obstacles.filter((o) => o.x + o.width > 0);
+
+    collectibles.forEach((c) => (c.x -= speed));
+
+    speed += 0.0025;
+    score += 1;
+
+    const qx = quokka.x;
+    const qy = GROUND_Y - quokka.height + quokka.y;
+
+    for (const o of obstacles) {
+      const oy = GROUND_Y - o.height;
+      if (qx < o.x + o.width && qx + quokka.width > o.x && qy < oy + o.height && qy + quokka.height > oy) {
+        gameOver = true;
+        running = false;
+        break;
+      }
+    }
+
+    collectibles = collectibles.filter((c) => {
+      if (c.x + c.width < 0) return false;
+      const cy = GROUND_Y - COLLECTIBLE_ELEVATION - c.height;
+      const collected = qx < c.x + c.width && qx + quokka.width > c.x && qy < cy + c.height && qy + quokka.height > cy;
+      if (collected) score += COLLECT_BONUS;
+      return !collected;
+    });
+  }
+
+  function roundRect(x: number, y: number, w: number, h: number, r: number) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawQuokka(x: number, y: number, w: number, h: number) {
+    const bodyCx = x + w * 0.42;
+    const bodyCy = y + h * 0.6;
+    const bodyRx = w * 0.42;
+    const bodyRy = h * 0.38;
+
+    const headCx = x + w * 0.72;
+    const headCy = y + h * 0.36;
+    const headR = w * 0.27;
+
+    ctx.fillStyle = '#f5811f';
+    ctx.beginPath();
+    ctx.ellipse(bodyCx, bodyCy, bodyRx, bodyRy, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    const bob = quokka.jumping ? 0 : Math.floor(frame / 6) % 2 === 0 ? -2 : 2;
+    ctx.fillStyle = '#0d1130';
+    roundRect(bodyCx - bodyRx * 0.55, bodyCy + bodyRy * 0.5 + bob, 8, 6, 2);
+    ctx.fill();
+    roundRect(bodyCx + bodyRx * 0.05, bodyCy + bodyRy * 0.5 - bob, 8, 6, 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#f5811f';
+    ctx.beginPath();
+    ctx.arc(headCx, headCy, headR, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(headCx - headR * 0.5, headCy - headR * 0.75, headR * 0.42, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#ffe9d6';
+    ctx.beginPath();
+    ctx.ellipse(headCx + headR * 0.35, headCy + headR * 0.35, headR * 0.55, headR * 0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    const eyeCx = headCx + headR * 0.32;
+    const eyeCy = headCy - headR * 0.12;
+    ctx.fillStyle = '#fcfcfe';
+    ctx.beginPath();
+    ctx.arc(eyeCx, eyeCy, headR * 0.3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#0d1130';
+    ctx.beginPath();
+    ctx.arc(eyeCx + headR * 0.06, eyeCy + headR * 0.05, headR * 0.16, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fcfcfe';
+    ctx.beginPath();
+    ctx.arc(eyeCx + headR * 0.02, eyeCy - headR * 0.02, headR * 0.05, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#0d1130';
+    ctx.beginPath();
+    ctx.arc(headCx + headR * 0.85, headCy + headR * 0.2, 1.6, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = '#0d1130';
+    ctx.lineWidth = 1.4;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.arc(headCx + headR * 0.35, headCy + headR * 0.15, headR * 0.5, 0.1 * Math.PI, 0.7 * Math.PI);
+    ctx.stroke();
+  }
+
+  function drawObstacle(o: { x: number; kind: ObstacleKind; width: number; height: number }) {
+    const oy = GROUND_Y - o.height;
+
+    if (o.kind === 'bike') {
+      const wheelR = o.height * 0.4;
+      const wheelCy = GROUND_Y - wheelR;
+      const rearCx = o.x + wheelR;
+      const frontCx = o.x + o.width - wheelR;
+      const hubX = o.x + o.width * 0.42;
+      const hubY = wheelCy - o.height * 0.35;
+
+      ctx.strokeStyle = '#232a5e';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(rearCx, wheelCy, wheelR, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(frontCx, wheelCy, wheelR, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(rearCx, wheelCy);
+      ctx.lineTo(hubX, hubY);
+      ctx.lineTo(frontCx, wheelCy);
+      ctx.moveTo(hubX, hubY);
+      ctx.lineTo(hubX + o.width * 0.16, oy);
+      ctx.stroke();
+    } else if (o.kind === 'selfie') {
+      ctx.strokeStyle = '#d62742';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(o.x + o.width / 2, GROUND_Y);
+      ctx.lineTo(o.x + o.width / 2, oy + 8);
+      ctx.stroke();
+      ctx.fillStyle = '#d62742';
+      roundRect(o.x, oy, o.width, 9, 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = '#1f26a3';
+      ctx.fillRect(o.x + o.width / 2 - 1.5, oy + o.height * 0.3, 3, o.height * 0.7);
+      ctx.beginPath();
+      ctx.moveTo(o.x, oy + o.height * 0.34);
+      ctx.quadraticCurveTo(o.x + o.width / 2, oy - o.height * 0.12, o.x + o.width, oy + o.height * 0.34);
+      ctx.lineTo(o.x + o.width, oy + o.height * 0.44);
+      ctx.quadraticCurveTo(o.x + o.width / 2, oy + o.height * 0.14, o.x, oy + o.height * 0.44);
+      ctx.closePath();
+      ctx.fillStyle = '#f5811f';
+      ctx.fill();
+    }
+  }
+
+  function drawCup(x: number, w: number, h: number) {
+    const cupY = GROUND_Y - COLLECTIBLE_ELEVATION - h;
+
+    ctx.strokeStyle = '#7a83b5';
+    ctx.lineWidth = 1.2;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(x + w * 0.32, cupY - 1);
+    ctx.quadraticCurveTo(x + w * 0.2, cupY - 7, x + w * 0.36, cupY - 11);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x + w * 0.68, cupY - 1);
+    ctx.quadraticCurveTo(x + w * 0.8, cupY - 7, x + w * 0.64, cupY - 11);
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffc629';
+    ctx.beginPath();
+    ctx.moveTo(x + w * 0.12, cupY + h * 0.28);
+    ctx.lineTo(x + w * 0.88, cupY + h * 0.28);
+    ctx.lineTo(x + w * 0.72, cupY + h);
+    ctx.lineTo(x + w * 0.28, cupY + h);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = '#0d1130';
+    ctx.fillRect(x, cupY, w, h * 0.24);
+  }
+
+  function drawCloud(x: number, y: number) {
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+    ctx.beginPath();
+    ctx.arc(x, y, 9, 0, Math.PI * 2);
+    ctx.arc(x + 11, y - 4, 7, 0, Math.PI * 2);
+    ctx.arc(x + 20, y, 8, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawRock(x: number, w: number, h: number) {
+    ctx.fillStyle = '#c9cde6';
+    ctx.beginPath();
+    ctx.ellipse(x, GROUND_Y - h * 0.3, w / 2, h / 2, 0, Math.PI, 0);
+    ctx.fill();
+  }
+
+  function drawLighthouse(x: number) {
+    const baseY = OCEAN_TOP + 4;
+    ctx.fillStyle = '#fcfcfe';
+    ctx.beginPath();
+    ctx.moveTo(x - 5, baseY);
+    ctx.lineTo(x + 5, baseY);
+    ctx.lineTo(x + 3, baseY - 34);
+    ctx.lineTo(x - 3, baseY - 34);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = '#c9cde6';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x - 4.5, baseY - 12);
+    ctx.lineTo(x + 4.5, baseY - 12);
+    ctx.stroke();
+
+    ctx.fillStyle = '#232a5e';
+    ctx.fillRect(x - 4, baseY - 40, 8, 6);
+    ctx.beginPath();
+    ctx.moveTo(x - 5, baseY - 40);
+    ctx.lineTo(x + 5, baseY - 40);
+    ctx.lineTo(x, baseY - 47);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawBackdrop() {
+    const sky = ctx.createLinearGradient(0, 0, 0, OCEAN_TOP);
+    sky.addColorStop(0, '#dfe2fb');
+    sky.addColorStop(1, '#f4f5fb');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, WIDTH, OCEAN_TOP);
+
+    ctx.fillStyle = '#ffd451';
+    ctx.beginPath();
+    ctx.arc(WIDTH - 56, 34, 15, 0, Math.PI * 2);
+    ctx.fill();
+
+    const cloudOffset = (frame * 0.15) % (WIDTH + 140);
+    drawCloud(WIDTH - cloudOffset + 60, 28);
+    drawCloud(WIDTH - cloudOffset - 200, 52);
+
+    drawLighthouse(WIDTH - 120);
+
+    const ocean = ctx.createLinearGradient(0, OCEAN_TOP, 0, OCEAN_BOTTOM);
+    ocean.addColorStop(0, '#8f97f0');
+    ocean.addColorStop(1, '#6771ea');
+    ctx.fillStyle = ocean;
+    ctx.fillRect(0, OCEAN_TOP, WIDTH, OCEAN_BOTTOM - OCEAN_TOP);
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+      const wy = OCEAN_TOP + 7 + i * 7;
+      const waveOffset = (frame * 0.4 + i * 30) % 40;
+      ctx.beginPath();
+      for (let x = -40 + waveOffset; x < WIDTH; x += 40) {
+        ctx.moveTo(x, wy);
+        ctx.quadraticCurveTo(x + 10, wy - 3, x + 20, wy);
+        ctx.quadraticCurveTo(x + 30, wy + 3, x + 40, wy);
+      }
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = '#e7e9f4';
+    ctx.fillRect(0, OCEAN_BOTTOM, WIDTH, GROUND_Y - OCEAN_BOTTOM + 1);
+
+    drawRock(130, 26, 12);
+    drawRock(480, 32, 14);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    drawBackdrop();
+
+    ctx.strokeStyle = '#c9cde6';
+    ctx.beginPath();
+    ctx.moveTo(0, GROUND_Y + 1);
+    ctx.lineTo(WIDTH, GROUND_Y + 1);
+    ctx.stroke();
+
+    collectibles.forEach((c) => drawCup(c.x, c.width, c.height));
+
+    obstacles.forEach(drawObstacle);
+
+    const qy = GROUND_Y - quokka.height + quokka.y;
+    drawQuokka(quokka.x, qy, quokka.width, quokka.height);
+
+    scoreEl.textContent = String(Math.floor(score / 5));
+
+    ctx.textAlign = 'center';
+    if (!running && !gameOver) {
+      ctx.fillStyle = '#3a4384';
+      ctx.font = '600 14px Inter, sans-serif';
+      ctx.fillText('Space, ↑ or tap to start', WIDTH / 2, HEIGHT / 2);
+    }
+
+    if (gameOver) {
+      ctx.fillStyle = 'rgba(13, 17, 48, 0.85)';
+      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+      ctx.fillStyle = '#fcfcfe';
+      ctx.font = '600 16px Inter, sans-serif';
+      ctx.fillText(`Game over — score ${Math.floor(score / 5)}`, WIDTH / 2, HEIGHT / 2 - 6);
+      ctx.font = '400 13px Inter, sans-serif';
+      ctx.fillText('Space, ↑ or tap to try again', WIDTH / 2, HEIGHT / 2 + 16);
+    }
+  }
+
+  function loop() {
+    if (running) update();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
+      e.preventDefault();
+      jump();
+    }
+  });
+  canvas.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    canvas.focus();
+    jump();
+  });
+
+  scheduleNextObstacle();
+  scheduleNextCollectible();
+  draw();
+  loop();
+</script>

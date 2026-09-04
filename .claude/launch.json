@@ -4,8 +4,59 @@
     {
       "name": "perth-ai-website",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 4321
+    },
+    {
+      "name": "header-variant-a",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-a",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-a",
+        "--port",
+        "4331"
+      ],
+      "port": 4331
+    },
+    {
+      "name": "header-variant-b",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-b",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-b",
+        "--port",
+        "4332"
+      ],
+      "port": 4332
+    },
+    {
+      "name": "header-variant-c",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-c",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-header-c",
+        "--port",
+        "4333"
+      ],
+      "port": 4333
     }
   ]
 }

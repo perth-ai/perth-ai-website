@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
 
 /* ---------------------------------------------------------------------------
    Perth AI design tokens
@@ -6,63 +8,78 @@
    This is the ONE file to edit if you want to change the site's look.
    Everything else uses these names (bg-sunset-500, text-ink-900, etc).
    Swap the hex values here and the whole site follows.
+
+   Source of truth: docs/branding/Perth AI Branding/Perth AI - Style Guide.pdf
+   The guide gives ONE hex per hue. The -500 step of each family is that exact
+   hex; every other step is derived from it and contrast-checked. If you change
+   an anchor, re-derive the ramp — don't nudge a single step by eye.
    --------------------------------------------------------------------------- */
-/* Palette taken from the Perth AI event artwork: the quokka wordmark's orange,
-   the pink-to-blue gradient behind it, and the yellow splash. */
 @theme {
-  /* Deep indigo — headers, footers, dark sections, body text.
-     Tinted towards the brand blue rather than a neutral navy. */
-  --color-ink-50: #f3f4fb;
-  --color-ink-100: #e6e8f5;
-  --color-ink-200: #c9cde6;
-  --color-ink-400: #7a83b5;
-  --color-ink-600: #3a4384;
-  --color-ink-700: #232a5e;
-  --color-ink-800: #171c45;
-  --color-ink-900: #0d1130;
-  --color-ink-950: #070a1f;
+  /* Deep navy #0B132B — the brand's base colour. Dark sections, headers,
+     footers, and body text on light. Saturation tapers off towards the light
+     end so the mid steps read as slate rather than vivid blue. */
+  --color-ink-50: #f2f4f7;
+  --color-ink-100: #e0e3eb;
+  --color-ink-200: #c4c8d4;
+  --color-ink-300: #99a0b8;
+  --color-ink-400: #6c789d;
+  --color-ink-600: #3e4b6f;
+  --color-ink-700: #232f52;
+  --color-ink-800: #141f3d;
+  --color-ink-900: #0b132b;
+  --color-ink-950: #050a17;
 
-  /* Brand orange — the PERTH AI wordmark and the rings around the speaker
-     photos. Primary accent: buttons, links, eyebrows. Reads well on both the
-     light background and the dark blue. */
-  --color-sunset-100: #ffe9d6;
-  --color-sunset-300: #ffc08a;
-  --color-sunset-400: #fa9d4d;
-  --color-sunset-500: #f5811f;
-  --color-sunset-600: #dd6a0d;
-  --color-sunset-700: #b3540a;
+  /* Brand orange #FF9E2C — primary accent. Buttons, eyebrows, highlights.
+     As a FILL it takes dark labels; as TEXT on light it must be sunset-700. */
+  --color-sunset-100: #ffecd6;
+  --color-sunset-300: #ffc785;
+  --color-sunset-400: #ffb257;
+  --color-sunset-500: #ff9e2c;
+  --color-sunset-600: #dc7700;
+  --color-sunset-700: #a05600;
 
-  /* Brand blue — the right-hand side of the poster gradient.
-     Secondary accent, tags, links on dark. */
-  --color-azure-100: #dfe2fb;
-  --color-azure-300: #8f97f0;
-  --color-azure-400: #6771ea;
-  --color-azure-500: #3f4ade;
-  --color-azure-600: #2b34c9;
-  --color-azure-700: #1f26a3;
+  /* Brand cyan #00C2FF — secondary accent. The "AI" in the wordmark.
+     Excellent on navy (8.90:1), unusable as text on light — use azure-700. */
+  --color-azure-100: #ccf3ff;
+  --color-azure-300: #5cd8ff;
+  --color-azure-400: #29ccff;
+  --color-azure-500: #00c2ff;
+  --color-azure-600: #009bcc;
+  --color-azure-700: #007195;
 
-  /* Brand pink/red — the left-hand side of the poster gradient.
-     Used with azure for gradients, sparingly on its own. */
-  --color-coral-100: #ffe0e5;
-  --color-coral-300: #ff9daa;
-  --color-coral-400: #f96b80;
-  --color-coral-500: #ee3b54;
-  --color-coral-600: #d62742;
+  /* Brand pink #FF6B8A — gradients with azure and orchid, sparingly alone. */
+  --color-coral-100: #ffd6df;
+  --color-coral-300: #ffa3b6;
+  --color-coral-500: #ff6b8a;
+  --color-coral-600: #ff4c72;
+  --color-coral-700: #d3002c;
 
-  /* Yellow splash. Highlights only — it fails contrast on white,
-     so never use it for text on a light background. */
-  --color-sunbeam-400: #ffd451;
-  --color-sunbeam-500: #ffc629;
+  /* Brand purple #7B3FE4 — the only accent that passes on a light background,
+     so it carries links and interactive text in light sections. */
+  --color-orchid-100: #e6dbfa;
+  --color-orchid-300: #b28fef;
+  --color-orchid-400: #9667ea;
+  --color-orchid-500: #7b3fe4;
+  --color-orchid-600: #6924e0;
+  --color-orchid-700: #571bc1;
 
-  /* Page background — a cool off-white that sits under the blues */
-  --color-sand-50: #fcfcfe;
-  --color-sand-100: #f4f5fb;
-  --color-sand-200: #e7e9f4;
+  /* Brand cream #FFECC2 — warm highlight on dark. Never text on light
+     (1.16:1 on white). Despite the name it is a cream, not a yellow. */
+  --color-sunbeam-400: #ffecc2;
+  --color-sunbeam-500: #ffdf99;
+
+  /* Brand light grey #E6E9EF — page and muted section backgrounds.
+     A cool grey, not a sand; the name is kept so components don't churn. */
+  --color-sand-50: #f9fafb;
+  --color-sand-100: #f0f2f5;
+  --color-sand-200: #e6e9ef;
 
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   --font-display:
-    'Inter Tight', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
 }
 
 @layer base {
@@ -83,7 +100,8 @@
     @apply font-display tracking-tight text-balance;
   }
 
-  /* Visible keyboard focus everywhere — accessibility, don't remove */
+  /* Visible keyboard focus everywhere — accessibility, don't remove.
+     Orange on light and on navy both clear 3:1 against their backgrounds. */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-sunset-500;
   }

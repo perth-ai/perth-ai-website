@@ -26,7 +26,8 @@ const isProduction = host !== '' && host !== 'localhost' && !host.endsWith('.pag
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
@@ -37,8 +38,12 @@ const isProduction = host !== '' && host !== 'localhost' && !host.endsWith('.pag
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL('/og-perth-ai.jpg', Astro.site ?? canonical)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name} logo`} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0e1626" />
+    <meta name="theme-color" content="#0b132b" />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body class="flex min-h-screen flex-col">

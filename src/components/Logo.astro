@@ -3,29 +3,71 @@ import site from '../data/site.json';
 
 interface Props {
   class?: string;
+  /**
+   * `wordmark` (default) — the full-colour quokka mark beside live "PERTH AI"
+   *   text. This is what the header and footer use.
+   * `lockup` — the designers' white/cyan horizontal lockup as a single image.
+   *   Correct pixel letterforms, but its quokka is a line-art outline rather
+   *   than the full-colour mascot, which reads as much less distinctive at
+   *   header size. Kept available for wide/inline contexts like a banner.
+   * `mark` — the quokka mark on its own, for tight spaces.
+   */
+  variant?: 'wordmark' | 'lockup' | 'mark';
+  /** Wordmark colour. `dark` = navy text, for light backgrounds. */
+  tone?: 'light' | 'dark';
 }
-const { class: className = '' } = Astro.props;
 
-// Falls back to the placeholder mark below (a blue badge with an orange
-// ring) if `logo` in src/data/site.json is ever cleared.
-const logo = (site as { logo?: string }).logo ?? '';
+const { class: className = '', variant = 'wordmark', tone = 'light' } = Astro.props;
+
+// The mark is the designers' icon/avatar artwork (Secondary Logo.png), cropped
+// to its cyan ring. The lockup is their "White Cyan Transparent" horizontal
+// secondary logo. Both are white-on-dark artwork: on a light background use
+// the Mono or BlackandWhite logo from docs/branding/ rather than recolouring.
+const MARK = '/perth-ai-mark.webp';
+const LOCKUP = '/perth-ai-lockup.webp';
 ---
 
 {
-  logo ? (
-    <img src={logo} alt={`${site.name} logo`} class={className} width="40" height="40" />
+  variant === 'lockup' ? (
+    <img
+      src={LOCKUP}
+      alt={site.name}
+      width="512"
+      height="160"
+      class:list={['h-9 w-auto shrink-0', className]}
+      loading="eager"
+      decoding="async"
+    />
+  ) : variant === 'mark' ? (
+    <img
+      src={MARK}
+      alt={site.name}
+      width="256"
+      height="256"
+      class:list={['h-9 w-9 shrink-0', className]}
+      loading="eager"
+      decoding="async"
+    />
   ) : (
-    <svg
-      class={className}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <circle cx="20" cy="20" r="19" class="fill-azure-600" />
-      <circle cx="20" cy="20" r="17.5" class="stroke-sunset-500" stroke-width="2.5" fill="none" />
-      <circle cx="20" cy="20" r="7" class="fill-sunset-500" />
-    </svg>
+    <span class="flex shrink-0 items-center gap-2.5">
+      <img
+        src={MARK}
+        alt=""
+        aria-hidden="true"
+        width="256"
+        height="256"
+        class:list={['h-9 w-9 shrink-0', className]}
+        loading="eager"
+        decoding="async"
+      />
+      <span
+        class:list={[
+          'font-display text-lg font-bold tracking-tight',
+          tone === 'dark' ? 'text-ink-900' : 'text-white',
+        ]}
+      >
+        PERTH <span class={tone === 'dark' ? 'text-azure-700' : 'text-azure-400'}>AI</span>
+      </span>
+    </span>
   )
 }

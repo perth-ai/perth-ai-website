@@ -1,14 +1,38 @@
 [
   {
     "name": "Will Webster",
-    "role": "Organiser",
-    "bio": "Add a sentence or two here.",
+    "role": "Founder and Sponsorship Lead",
+    "bio": "Founder of Cohezion, a Perth technical consultancy. Engineer, architect, and technical leader who's spent his career developering and shipping great products.",
     "link": ""
   },
   {
-    "name": "Add an organiser",
-    "role": "Organiser",
-    "bio": "Copy this block for each person. Delete the ones you don't need. `link` is optional — LinkedIn, personal site, whatever they prefer.",
+    "name": "Susannah Soon",
+    "role": "President and Founder",
+    "bio": "Associate Professor at Curtin University, with a PhD in AI from the University of Melbourne. Also hosts Build Club Perth and the AI Disrupt Summit.",
     "link": ""
+  },
+  {
+    "name": "Timothy de Boer",
+    "role": "Vice President and Founder",
+    "bio": "Founding director of Interfuze, a Perth consultancy working with government, SME and enterprise clients. Started out as a Java and .NET contractor before moving into consulting.",
+    "link": ""
+  },
+  {
+    "name": "Kristina Gagalova",
+    "role": "Founder and Volunteer Coordinator",
+    "bio": "Kristina is a scientist and bioinformatics researcher interested in AI and the surprising things we can discover at the intersection of biology and technology. She also enjoys mentoring students and startups, helping turn ideas into something practical.",
+    "link": ""
+  },
+  {
+    "name": "Rajat Saddi",
+    "role": "Founder, Workshops & Automation",
+    "bio": "Lead Consultant at Interfuze, leading digital transformation and DevOps work for Perth businesses and WA government agencies. Co-founder of STEMmates, with 20 years in IT and a Master's in Computer Science.",
+    "link": "https://www.linkedin.com/in/rajat-saddi-7b48024/"
+  },
+  {
+    "name": "Rafael Avigad",
+    "role": "Founder, Website & Automation",
+    "bio": "Principal Technical Consultant at Human Response Consulting, with over 20 years' experience building enterprise systems and applications.",
+    "link": "https://www.linkedin.com/in/rafael-avigad/"
   }
 ]

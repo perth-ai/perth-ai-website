@@ -18,6 +18,8 @@ pnpm-debug.log*
 
 # macOS
 .DS_Store
+__MACOSX/
+._*
 
 # editors
 .vscode/*
@@ -29,3 +31,5 @@ pnpm-debug.log*
 .dev.vars*
 !.dev.vars.example
 !.env.example
+# tooling
+.memsearch/

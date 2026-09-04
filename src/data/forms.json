@@ -1,18 +1,13 @@
 {
   "_note": "Paste a form endpoint URL into `action` for each form (Formspree, Tally, Getform, Netlify, a Cloudflare Pages Function, whatever you pick). If `action` is left empty the form falls back to opening the visitor's email client addressed to site.email — it works, but it's not great, so wire up a real endpoint before launch.",
-  "speak": {
-    "action": "",
-    "title": "Speak at an event",
-    "intro": "You don't need to be famous and it doesn't need to be polished. If you've built something, broken something, or learned something the hard way, that's a talk."
-  },
   "eventIdea": {
     "action": "",
     "title": "Propose an event or mini group",
-    "intro": "Dreamer sessions, casual catch-ups, hands-on learning, build-together spaces — if you want it to exist, tell us and we'll help make it happen."
+    "intro": "Dreamer sessions, casual catch-ups, hands-on learning, build-together spaces — if you want it to exist, tell us and we'll help make it happen. We read every one, but with a community this size we can't always reply."
   },
   "sponsor": {
     "action": "",
     "title": "Sponsor or host",
-    "intro": "Cash, venue, food, prizes or hardware — all of it helps, and all of it keeps events free for the people who come."
+    "intro": "Venue, food, prizes, hardware or paid sponsorship — all of it helps, and all of it keeps events free for the people who come."
   }
 }

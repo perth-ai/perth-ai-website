@@ -7,7 +7,6 @@ const nav = [
   { label: 'About', href: '/about' },
   { label: 'Get involved', href: '/get-involved' },
   { label: 'Sponsor', href: '/sponsor' },
-  { label: 'Blog', href: '/blog' },
 ];
 
 const path = Astro.url.pathname;
@@ -15,12 +14,11 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 ---
 
 <header
-  class="sticky top-0 z-40 border-b border-ink-100 bg-sand-50/85 backdrop-blur supports-[backdrop-filter]:bg-sand-50/70"
+  class="sticky top-0 z-40 border-b border-ink-800 bg-ink-900/90 backdrop-blur supports-[backdrop-filter]:bg-ink-900/75"
 >
   <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3 sm:px-8">
-    <a href="/" class="flex shrink-0 items-center gap-2.5 font-display text-lg font-semibold">
-      <Logo class="h-8 w-8" />
-      <span>{site.name}</span>
+    <a href="/" class="rounded-lg" aria-label={`${site.name} — home`}>
+      <Logo />
     </a>
 
     <nav aria-label="Main" class="ml-auto hidden items-center gap-1 md:flex">
@@ -32,8 +30,8 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
             class:list={[
               'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
               isCurrent(item.href)
-                ? 'bg-ink-100 text-ink-900'
-                : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900',
+                ? 'bg-ink-800 text-white'
+                : 'text-ink-200 hover:bg-ink-800 hover:text-white',
             ]}
           >
             {item.label}
@@ -51,7 +49,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
     <!-- Mobile menu: <details> so it works with zero JavaScript -->
     <details class="group relative ml-auto md:hidden">
       <summary
-        class="flex cursor-pointer items-center gap-2 rounded-lg border border-ink-200 px-3 py-2 text-sm font-medium marker:content-none [&::-webkit-details-marker]:hidden"
+        class="flex cursor-pointer items-center gap-2 rounded-lg border border-ink-400 px-3 py-2 text-sm font-medium text-ink-100 marker:content-none [&::-webkit-details-marker]:hidden"
       >
         <span>Menu</span>
         <svg
@@ -68,7 +66,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-2 w-56 rounded-xl border border-ink-100 bg-sand-50 p-2 shadow-lg shadow-ink-900/10"
+        class="absolute right-0 mt-2 w-56 rounded-xl border border-ink-700 bg-ink-800 p-2 shadow-lg shadow-ink-950/40"
       >
         {
           nav.map((item) => (
@@ -77,7 +75,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
               aria-current={isCurrent(item.href) ? 'page' : undefined}
               class:list={[
                 'block rounded-lg px-3 py-2 text-sm font-medium',
-                isCurrent(item.href) ? 'bg-ink-100 text-ink-900' : 'text-ink-700 hover:bg-ink-50',
+                isCurrent(item.href) ? 'bg-ink-700 text-white' : 'text-ink-200 hover:bg-ink-700',
               ]}
             >
               {item.label}

@@ -3,10 +3,8 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import MailingList from '../components/MailingList.astro';
-import Button from '../components/Button.astro';
 import about from '../data/about.json';
 import team from '../data/team.json';
-import site from '../data/site.json';
 ---
 
 <Base title="About" description={about.mission}>
@@ -73,18 +71,6 @@ import site from '../data/site.json';
         ))
       }
     </ul>
-
-    <div class="mt-10 rounded-2xl bg-sand-100 p-7">
-      <h3 class="font-display text-lg font-semibold">Want to help run it?</h3>
-      <p class="mt-2 max-w-xl leading-relaxed text-ink-600">
-        We're always short of hands — greeting people at the door, running the camera, wrangling
-        speakers, keeping this site current. None of it takes much time and it's the easiest way to
-        meet everyone.
-      </p>
-      <Button href={`mailto:${site.email}?subject=Helping%20out%20with%20Perth%20AI`} class="mt-5">
-        Put your hand up
-      </Button>
-    </div>
   </Section>
 
   <Section class="pt-0">

@@ -31,6 +31,23 @@ Perth AI Branding/
 - **Pixel art background** — a decorative asset. If used on the site, copy into `public/` and
   reference via a standard `<img>` or CSS `background-image`.
 
+## What has been applied
+
+The pack is live on the site as of the `feature/new-branding` work:
+
+| Asset | Where it ended up |
+| --- | --- |
+| Style guide palette | `src/styles/global.css` — each family's `-500` is the guide hex |
+| Space Grotesk + Inter | self-hosted via `@fontsource-variable/*`, imported in `global.css` |
+| Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp`, used in `Logo.astro` |
+| Main Logo | `public/og-perth-ai.jpg` — the 1200×630 Open Graph card |
+| Pixel Art Perth Background | `public/perth-skyline.webp` — homepage hero only |
+
+The header lockup is rebuilt in `Logo.astro` as the mark plus live text rather than using
+`Horizontal Secondary Logo.png`, because that file is a flat PNG with a baked white background
+and cannot sit on the navy header. **If the designers supply vector (SVG) versions — and a
+transparent horizontal lockup — swap them in; both are one-line changes.**
+
 ## Related
 
 - `src/styles/global.css` — `@theme` block (colour tokens)

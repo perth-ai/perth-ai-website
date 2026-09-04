@@ -17,27 +17,38 @@ const accentRing = {
 ---
 
 <Base>
-  {/* Hero — carries the coral-to-azure gradient from the event artwork.
-       Kept dark underneath so white text stays legible over every stop. */}
+  {/* Hero — the pixel-art Perth skyline from the branding pack, bottom-anchored
+       over the brand navy, with a scrim so white copy keeps its contrast.
+       The navy base shows through if the image fails to load. */}
   <div class="relative overflow-hidden bg-ink-950">
+    <img
+      src="/perth-skyline.webp"
+      alt=""
+      aria-hidden="true"
+      width="1600"
+      height="579"
+      class="pointer-events-none absolute inset-0 h-full w-full object-cover object-bottom opacity-60"
+    />
+    {/* Brand wash — coral through orchid to azure, the style guide's gradient */}
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-br from-coral-500 via-azure-600 to-azure-700 opacity-90"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-br from-coral-500/40 via-orchid-600/35 to-azure-600/45"
       aria-hidden="true"
     >
     </div>
     <div
-      class="pointer-events-none absolute -right-32 -top-40 h-[32rem] w-[32rem] rounded-full bg-sunset-500/35 blur-3xl"
+      class="pointer-events-none absolute -right-32 -top-40 h-[32rem] w-[32rem] rounded-full bg-sunset-500/25 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    {/* Scrim: the copy is left-aligned, so weight the darkening to the left
+        and to the bottom. Don't remove it — it is what makes the text pass. */}
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/40"
       aria-hidden="true"
     >
     </div>
     <div
-      class="pointer-events-none absolute -bottom-56 -left-40 h-[30rem] w-[30rem] rounded-full bg-coral-500/40 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
-    {/* Darkens the lower half so the body copy and buttons keep contrast */}
-    <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/20 to-transparent"
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-950 to-transparent"
       aria-hidden="true"
     >
     </div>

@@ -2,30 +2,46 @@
 import site from '../data/site.json';
 
 interface Props {
+  /** Extra classes for the mark itself. */
   class?: string;
+  /** Show the "PERTH AI" wordmark beside the mark. Off for tight spaces. */
+  withWordmark?: boolean;
+  /** Wordmark colour. `dark` = navy text for light backgrounds. */
+  tone?: 'light' | 'dark';
 }
-const { class: className = '' } = Astro.props;
 
-// Falls back to the placeholder mark below (a blue badge with an orange
-// ring) if `logo` in src/data/site.json is ever cleared.
-const logo = (site as { logo?: string }).logo ?? '';
+const { class: className = '', withWordmark = true, tone = 'light' } = Astro.props;
+
+// The branding pack ships PNGs only, so the header lockup is rebuilt here:
+// the icon/avatar mark (cropped from Secondary Logo.png) plus live text in
+// Space Grotesk. That keeps the wordmark crisp at any size and lets it flip
+// colour for dark and light backgrounds — the supplied horizontal lockup is a
+// flat PNG with a baked white background and can do neither.
+// Swap in the lockup as a single <img> if the designers send a vector.
+const mark = (site as { logo?: string }).logo ?? '/perth-ai-mark.webp';
 ---
 
-{
-  logo ? (
-    <img src={logo} alt={`${site.name} logo`} class={className} width="40" height="40" />
-  ) : (
-    <svg
-      class={className}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <circle cx="20" cy="20" r="19" class="fill-azure-600" />
-      <circle cx="20" cy="20" r="17.5" class="stroke-sunset-500" stroke-width="2.5" fill="none" />
-      <circle cx="20" cy="20" r="7" class="fill-sunset-500" />
-    </svg>
-  )
-}
+<span class="flex shrink-0 items-center gap-2.5">
+  <img
+    src={mark}
+    alt=""
+    aria-hidden="true"
+    width="36"
+    height="36"
+    class:list={['h-9 w-9 shrink-0', className]}
+    loading="eager"
+    decoding="async"
+  />
+  {
+    withWordmark && (
+      <span
+        class:list={[
+          'font-display text-lg font-bold tracking-tight',
+          tone === 'dark' ? 'text-ink-900' : 'text-white',
+        ]}
+      >
+        PERTH <span class={tone === 'dark' ? 'text-azure-700' : 'text-azure-400'}>AI</span>
+      </span>
+    )
+  }
+</span>

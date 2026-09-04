@@ -39,19 +39,29 @@ The pack is live on the site as of the `feature/new-branding` work:
 | --- | --- |
 | Style guide palette | `src/styles/global.css` — each family's `-500` is the guide hex |
 | Space Grotesk + Inter | self-hosted via `@fontsource-variable/*`, imported in `global.css` |
-| Horizontal Secondary Logo - White Cyan Transparent | `public/perth-ai-lockup.webp` — the header and footer logo |
-| Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp` — favicons, and `Logo.astro`'s `mark` variant |
+| Horizontal Secondary Logo - White Cyan Transparent | `public/perth-ai-lockup.webp` — `Logo.astro`'s `lockup` variant |
+| Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp` — the header and footer mark, plus favicons |
 | Main Logo | `public/og-perth-ai.jpg` — the 1200×630 Open Graph card |
 | Pixel Art Perth Background | `public/perth-skyline.webp` — homepage hero only |
 
 The designers supplied transparent versions of the horizontal lockup, so
-`Logo.astro` uses the real artwork rather than a rebuild. Both web assets are
-the **white-on-dark** colourway and only work on the navy — if a
-light-background header is ever needed, use the Mono or BlackandWhite logo
-rather than recolouring these.
+`Logo.astro` has a `lockup` variant that uses the real artwork. The header and
+footer do **not** use it: the dark-background lockup renders the quokka as a
+line-art outline rather than the full-colour mascot, which reads as much less
+distinctive at 36px. They pair the full-colour mark with live "PERTH AI" text
+in Space Grotesk instead.
 
-Still outstanding from the designers: **vector (SVG) versions** of the marks,
-which would sharpen the favicon and let the logo be recoloured.
+All the web artwork is the white-on-dark colourway and only works on the navy.
+For a light background use the Mono or BlackandWhite logo rather than
+recolouring these.
+
+Still wanted from the designers:
+
+- **Vector (SVG) versions** of the marks — would sharpen the favicon, which is
+  currently a downscaled raster, and allow recolouring.
+- **A dark-background horizontal lockup that keeps the full-colour quokka.**
+  The supplied dark version substitutes a line-art outline. With that, the
+  header could use the real lockup and its pixel letterforms.
 
 ## Related
 

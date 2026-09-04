@@ -1,12 +1,14 @@
 {
-  "_note": "Paste a form endpoint URL into `action` for each form (Formspree, Tally, Getform, Netlify, a Cloudflare Pages Function, whatever you pick). If `action` is left empty the form falls back to opening the visitor's email client addressed to site.email — it works, but it's not great, so wire up a real endpoint before launch.",
+  "_note": "Both forms post to Web3Forms. `action` is the shared endpoint; `accessKey` is the per-inbox key from web3forms.com — it is public by design (it ships in the HTML and only names the destination inbox), so it is fine in this file. While `accessKey` is still the PASTE_ placeholder the form falls back to opening the visitor's email client, so nothing is silently lost.",
   "eventIdea": {
-    "action": "",
+    "action": "https://api.web3forms.com/submit",
+    "accessKey": "PASTE_WEB3FORMS_ACCESS_KEY_HERE",
     "title": "Propose an event or mini group",
     "intro": "Dreamer sessions, casual catch-ups, hands-on learning, build-together spaces — if you want it to exist, tell us and we'll help make it happen. We read every one, but with a community this size we can't always reply."
   },
   "sponsor": {
-    "action": "",
+    "action": "https://api.web3forms.com/submit",
+    "accessKey": "PASTE_WEB3FORMS_ACCESS_KEY_HERE",
     "title": "Sponsor or host",
     "intro": "Venue, food, prizes, hardware or paid sponsorship — all of it helps, and all of it keeps events free for the people who come."
   }

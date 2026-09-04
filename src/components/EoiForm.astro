@@ -13,17 +13,26 @@ interface Field {
 interface Props {
   id: string;
   action: string;
+  accessKey?: string;
   subject: string;
   fields: Field[];
   submitLabel?: string;
 }
 
-const { id, action, subject, fields, submitLabel = 'Send' } = Astro.props;
+const { id, action, accessKey = '', subject, fields, submitLabel = 'Send' } = Astro.props;
 
-// No endpoint configured yet → fall back to the visitor's mail client.
-// See src/data/forms.json for how to wire up a real one.
-const usesMailto = !action;
-const formAction = action || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+// A form only posts for real once it has both an endpoint and a real access
+// key. Until then it falls back to the visitor's mail client, so a half-wired
+// form can't quietly swallow submissions. See src/data/forms.json.
+const isWired = Boolean(action) && Boolean(accessKey) && !accessKey.startsWith('PASTE_');
+const usesMailto = !isWired;
+const formAction = isWired ? action : `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+
+// Web3Forms wants an absolute redirect, so it comes from the site config:
+// localhost in dev, the .pages.dev URL on previews, the real domain once
+// SITE_URL is set (see astro.config.mjs). Without it the visitor would land on
+// Web3Forms' own thank-you page instead of ours.
+const thanksUrl = Astro.site ? new URL('/thanks', Astro.site).href : undefined;
 
 const inputClass =
   'mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500';
@@ -36,13 +45,23 @@ const inputClass =
   enctype={usesMailto ? 'text/plain' : undefined}
   class="space-y-4"
 >
-  <!-- Honeypot: bots fill this in, humans never see it -->
-  <div class="hidden" aria-hidden="true">
-    <label>
-      Leave this empty
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
-    </label>
-  </div>
+  {
+    isWired && (
+      <>
+        {/* Web3Forms' reserved fields. The access key is public by design —
+            it identifies the destination inbox, it isn't a secret. Reply-to is
+            picked up automatically from the field named "email". */}
+        <input type="hidden" name="access_key" value={accessKey} />
+        <input type="hidden" name="subject" value={subject} />
+        <input type="hidden" name="from_name" value={site.name} />
+        {thanksUrl && <input type="hidden" name="redirect" value={thanksUrl} />}
+      </>
+    )
+  }
+
+  {/* Honeypot: bots tick it, humans never see it. Web3Forms rejects any
+      submission where "botcheck" is set. */}
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" aria-hidden="true" />
 
   {
     fields.map((field) =>

@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import site from '../data/site.json';
 
 const nav = [
@@ -13,24 +12,44 @@ const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
 ---
 
-<header
-  class="sticky top-0 z-40 border-b border-ink-800 bg-ink-900/90 backdrop-blur supports-[backdrop-filter]:bg-ink-900/75"
->
+{/* Header — Variant B: the style guide's cyan → purple → pink gradient run as a
+    bright banner, with the lettering and nav carried on solid navy pills.
+
+    Why pills: measured against the gradient, no single text colour survives the
+    whole run. ink-950 is 9.57:1 on azure-500 and 7.27:1 on coral-500 but only
+    3.46:1 on orchid-500 in the middle; white is 5.71:1 on orchid-500 and fails
+    badly on both ends (2.07:1 and 2.72:1). So nothing reads directly on the
+    gradient — every label sits on a solid ink-950 fill instead (white 19:1,
+    ink-200 11.8:1), and the "Next event" CTA is a cream fill with a navy label
+    (16.9:1). Don't move a label onto the gradient itself.
+
+    The focus ring is overridden here too: the global ring is sunset-500 orange,
+    which this banner doesn't use. Items on the gradient take an ink-950 ring
+    (3.46:1 at worst, clears the 3:1 needed for a non-text indicator); items
+    inside a navy pill take a white ring, since navy on navy is invisible. */}
+<header class="sticky top-0 z-40 border-b border-ink-950/25 bg-gradient-to-r from-azure-500 via-orchid-500 to-coral-500">
   <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3 sm:px-8">
-    <a href="/" class="rounded-lg" aria-label={`${site.name} — home`}>
-      <Logo />
+    <a
+      href="/"
+      class="rounded-full bg-ink-950 px-4 py-2 font-display text-lg font-bold tracking-tight text-white shadow-sm shadow-ink-950/30 focus-visible:outline-ink-950"
+    >
+      PERTH <span class="text-azure-400">AI</span>
+      <span class="sr-only">— home</span>
     </a>
 
-    <nav aria-label="Main" class="ml-auto hidden items-center gap-1 md:flex">
+    <nav
+      aria-label="Main"
+      class="ml-auto hidden items-center gap-1 rounded-full bg-ink-950 p-1 shadow-sm shadow-ink-950/30 md:flex"
+    >
       {
         nav.map((item) => (
           <a
             href={item.href}
             aria-current={isCurrent(item.href) ? 'page' : undefined}
             class:list={[
-              'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+              'rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-white',
               isCurrent(item.href)
-                ? 'bg-ink-800 text-white'
+                ? 'bg-orchid-500 text-white'
                 : 'text-ink-200 hover:bg-ink-800 hover:text-white',
             ]}
           >
@@ -38,18 +57,19 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
           </a>
         ))
       }
-      <a
-        href={site.links.luma}
-        class="ml-2 rounded-lg bg-sunset-500 px-4 py-2 text-sm font-semibold text-ink-950 transition-colors hover:bg-sunset-600"
-      >
-        Next event
-      </a>
     </nav>
+
+    <a
+      href={site.links.luma}
+      class="hidden rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/30 transition-colors hover:bg-white focus-visible:outline-ink-950 md:block"
+    >
+      Next event
+    </a>
 
     <!-- Mobile menu: <details> so it works with zero JavaScript -->
     <details class="group relative ml-auto md:hidden">
       <summary
-        class="flex cursor-pointer items-center gap-2 rounded-lg border border-ink-400 px-3 py-2 text-sm font-medium text-ink-100 marker:content-none [&::-webkit-details-marker]:hidden"
+        class="flex cursor-pointer items-center gap-2 rounded-full bg-ink-950 px-3.5 py-2 text-sm font-medium text-white shadow-sm shadow-ink-950/30 marker:content-none focus-visible:outline-ink-950 [&::-webkit-details-marker]:hidden"
       >
         <span>Menu</span>
         <svg
@@ -66,7 +86,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-2 w-56 rounded-xl border border-ink-700 bg-ink-800 p-2 shadow-lg shadow-ink-950/40"
+        class="absolute right-0 mt-2 w-56 rounded-2xl border border-ink-700 bg-ink-950 p-2 shadow-lg shadow-ink-950/40"
       >
         {
           nav.map((item) => (
@@ -74,8 +94,10 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
               href={item.href}
               aria-current={isCurrent(item.href) ? 'page' : undefined}
               class:list={[
-                'block rounded-lg px-3 py-2 text-sm font-medium',
-                isCurrent(item.href) ? 'bg-ink-700 text-white' : 'text-ink-200 hover:bg-ink-700',
+                'block rounded-lg px-3 py-2 text-sm font-medium focus-visible:outline-white',
+                isCurrent(item.href)
+                  ? 'bg-orchid-500 text-white'
+                  : 'text-ink-200 hover:bg-ink-800 hover:text-white',
               ]}
             >
               {item.label}
@@ -84,7 +106,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
         }
         <a
           href={site.links.luma}
-          class="mt-1 block rounded-lg bg-sunset-500 px-3 py-2 text-center text-sm font-semibold text-ink-950"
+          class="mt-1 block rounded-lg bg-sunbeam-400 px-3 py-2 text-center text-sm font-semibold text-ink-950 focus-visible:outline-white"
         >
           Next event
         </a>

@@ -39,14 +39,19 @@ The pack is live on the site as of the `feature/new-branding` work:
 | --- | --- |
 | Style guide palette | `src/styles/global.css` — each family's `-500` is the guide hex |
 | Space Grotesk + Inter | self-hosted via `@fontsource-variable/*`, imported in `global.css` |
-| Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp`, used in `Logo.astro` |
+| Horizontal Secondary Logo - White Cyan Transparent | `public/perth-ai-lockup.webp` — the header and footer logo |
+| Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp` — favicons, and `Logo.astro`'s `mark` variant |
 | Main Logo | `public/og-perth-ai.jpg` — the 1200×630 Open Graph card |
 | Pixel Art Perth Background | `public/perth-skyline.webp` — homepage hero only |
 
-The header lockup is rebuilt in `Logo.astro` as the mark plus live text rather than using
-`Horizontal Secondary Logo.png`, because that file is a flat PNG with a baked white background
-and cannot sit on the navy header. **If the designers supply vector (SVG) versions — and a
-transparent horizontal lockup — swap them in; both are one-line changes.**
+The designers supplied transparent versions of the horizontal lockup, so
+`Logo.astro` uses the real artwork rather than a rebuild. Both web assets are
+the **white-on-dark** colourway and only work on the navy — if a
+light-background header is ever needed, use the Mono or BlackandWhite logo
+rather than recolouring these.
+
+Still outstanding from the designers: **vector (SVG) versions** of the marks,
+which would sharpen the favicon and let the logo be recoloured.
 
 ## Related
 

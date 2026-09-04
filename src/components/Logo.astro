@@ -2,46 +2,34 @@
 import site from '../data/site.json';
 
 interface Props {
-  /** Extra classes for the mark itself. */
+  /** Extra classes for the image. */
   class?: string;
-  /** Show the "PERTH AI" wordmark beside the mark. Off for tight spaces. */
-  withWordmark?: boolean;
-  /** Wordmark colour. `dark` = navy text for light backgrounds. */
-  tone?: 'light' | 'dark';
+  /** Full horizontal lockup (default) or the icon mark on its own. */
+  variant?: 'lockup' | 'mark';
 }
 
-const { class: className = '', withWordmark = true, tone = 'light' } = Astro.props;
+const { class: className = '', variant = 'lockup' } = Astro.props;
 
-// The branding pack ships PNGs only, so the header lockup is rebuilt here:
-// the icon/avatar mark (cropped from Secondary Logo.png) plus live text in
-// Space Grotesk. That keeps the wordmark crisp at any size and lets it flip
-// colour for dark and light backgrounds — the supplied horizontal lockup is a
-// flat PNG with a baked white background and can do neither.
-// Swap in the lockup as a single <img> if the designers send a vector.
-const mark = (site as { logo?: string }).logo ?? '/perth-ai-mark.webp';
+// Both assets are the designers' own artwork, cropped to their content box and
+// resized for the web. The lockup is the "White Cyan Transparent" horizontal
+// secondary logo, which the style guide names for website headers.
+//
+// IMPORTANT: both are the white-on-dark colourway, so they only work on the
+// navy. If a light-background header ever appears, use the Mono or
+// BlackandWhite logo from docs/branding/ instead of recolouring these.
+const assets = {
+  lockup: { src: '/perth-ai-lockup.webp', width: 512, height: 160, class: 'h-9 w-auto' },
+  mark: { src: '/perth-ai-mark.webp', width: 256, height: 256, class: 'h-9 w-9' },
+};
+const a = assets[variant];
 ---
 
-<span class="flex shrink-0 items-center gap-2.5">
-  <img
-    src={mark}
-    alt=""
-    aria-hidden="true"
-    width="36"
-    height="36"
-    class:list={['h-9 w-9 shrink-0', className]}
-    loading="eager"
-    decoding="async"
-  />
-  {
-    withWordmark && (
-      <span
-        class:list={[
-          'font-display text-lg font-bold tracking-tight',
-          tone === 'dark' ? 'text-ink-900' : 'text-white',
-        ]}
-      >
-        PERTH <span class={tone === 'dark' ? 'text-azure-700' : 'text-azure-400'}>AI</span>
-      </span>
-    )
-  }
-</span>
+<img
+  src={a.src}
+  alt={site.name}
+  width={a.width}
+  height={a.height}
+  class:list={[a.class, 'shrink-0', className]}
+  loading="eager"
+  decoding="async"
+/>

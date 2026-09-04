@@ -18,17 +18,15 @@ const accentRing = {
 
 <Base>
   {/* Hero — the pixel-art Perth skyline from the branding pack, bottom-anchored
-       over the brand navy, with a scrim so white copy keeps its contrast.
-       The navy base shows through if the image fails to load. */}
+       over the brand navy. The navy base shows through if the image fails.
+
+       Layer order matters here. The brand wash and the glow sit UNDERNEATH the
+       skyline so they tint the sky rather than dulling the buildings — the
+       artwork is meant to read as bright neon, the way it does in the style
+       guide. Only the text scrim goes over the top, and it is weighted hard to
+       the left where the copy is, falling away to nothing on the right so the
+       sun and the bridge stay vivid. */}
   <div class="relative overflow-hidden bg-ink-950">
-    <img
-      src="/perth-skyline.webp"
-      alt=""
-      aria-hidden="true"
-      width="1600"
-      height="579"
-      class="pointer-events-none absolute inset-0 h-full w-full object-contain object-bottom opacity-80"
-    />
     {/* Brand wash — coral through orchid to azure, the style guide's gradient */}
     <div
       class="pointer-events-none absolute inset-0 bg-gradient-to-br from-coral-500/40 via-orchid-600/35 to-azure-600/45"
@@ -40,12 +38,20 @@ const accentRing = {
       aria-hidden="true"
     >
     </div>
-    {/* Scrim: the copy is left-aligned, so weight the darkening to the left.
-        The skyline is a transparent silhouette anchored to the bottom, so this
-        is lighter than a full-bleed image would need — but don't remove it,
-        it is what keeps the headline over the buildings legible. */}
+    <img
+      src="/perth-skyline.webp"
+      alt=""
+      aria-hidden="true"
+      width="1600"
+      height="579"
+      class="pointer-events-none absolute inset-0 h-full w-full object-contain object-bottom"
+    />
+    {/* Text scrim. Don't remove it — it is what keeps the headline legible over
+        the buildings. On mobile the skyline is a thin strip at the very bottom
+        and the copy sits well clear of it, so the scrim only kicks in at sm:
+        where the artwork grows tall enough to reach the text. */}
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/70 to-ink-950/25"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/60 to-transparent sm:bg-gradient-to-r sm:from-ink-950 sm:from-10% sm:via-ink-950/80 sm:via-45% sm:to-transparent sm:to-85%"
       aria-hidden="true"
     >
     </div>

@@ -49,9 +49,17 @@ const accentRing = {
     {/* Text scrim. Don't remove it — it is what keeps the headline legible over
         the buildings. On mobile the skyline is a thin strip at the very bottom
         and the copy sits well clear of it, so the scrim only kicks in at sm:
-        where the artwork grows tall enough to reach the text. */}
+        where the artwork grows tall enough to reach the text.
+
+        The shape is deliberate and is not a simple falloff: it eases in at 65%
+        on the left, peaks at 80% around the 45% mark, then clears by 85%. The
+        peak is over the CBD towers, which are the brightest thing behind the
+        headline and set the worst-case contrast (4.67:1). The left is lighter
+        because nothing tall sits behind it, so the buildings there can show.
+        A plain left-to-right falloff was measured and fails AA over the
+        towers at every strength — don't "simplify" this to one. */}
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/60 to-transparent sm:bg-gradient-to-r sm:from-ink-950 sm:from-10% sm:via-ink-950/80 sm:via-45% sm:to-transparent sm:to-85%"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/60 to-transparent sm:bg-gradient-to-r sm:from-ink-950/65 sm:from-10% sm:via-ink-950/80 sm:via-45% sm:to-transparent sm:to-85%"
       aria-hidden="true"
     >
     </div>

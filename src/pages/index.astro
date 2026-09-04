@@ -27,7 +27,7 @@ const accentRing = {
       aria-hidden="true"
       width="1600"
       height="579"
-      class="pointer-events-none absolute inset-0 h-full w-full object-cover object-bottom opacity-60"
+      class="pointer-events-none absolute inset-0 h-full w-full object-contain object-bottom opacity-80"
     />
     {/* Brand wash — coral through orchid to azure, the style guide's gradient */}
     <div
@@ -40,15 +40,17 @@ const accentRing = {
       aria-hidden="true"
     >
     </div>
-    {/* Scrim: the copy is left-aligned, so weight the darkening to the left
-        and to the bottom. Don't remove it — it is what makes the text pass. */}
+    {/* Scrim: the copy is left-aligned, so weight the darkening to the left.
+        The skyline is a transparent silhouette anchored to the bottom, so this
+        is lighter than a full-bleed image would need — but don't remove it,
+        it is what keeps the headline over the buildings legible. */}
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/40"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/70 to-ink-950/25"
       aria-hidden="true"
     >
     </div>
     <div
-      class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-950 to-transparent"
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ink-950 to-transparent sm:h-40"
       aria-hidden="true"
     >
     </div>

@@ -1,8 +1,12 @@
-# Staging and preview builds also send a "noindex" robots meta tag on every
-# page (see src/layouts/Base.astro), which is what actually keeps the
-# pre-launch site out of search results.
+# This file allows crawling, but every page also sends a "noindex, nofollow"
+# robots meta tag unless the build sets ALLOW_INDEXING=true (see
+# src/layouts/Base.astro). That meta tag is what actually keeps the pre-launch
+# site out of search results, and it stays on by default — including on the
+# live domain — until someone deliberately turns indexing on.
 #
-# Once the real domain is live, add a sitemap here — that needs the
+# So: changing this file does not make the site indexable. ALLOW_INDEXING does.
+#
+# When the site does go live, add a sitemap here — that needs the
 # @astrojs/sitemap integration, which isn't installed yet.
 
 User-agent: *

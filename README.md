@@ -88,17 +88,27 @@ security headers and cache rules.
 
 ### Staging vs production
 
-The site works out which environment it's in and behaves accordingly — you don't configure this
-per-deploy:
+Two separate switches, both set as **build** variables in the Cloudflare dashboard under
+Settings → Build. They must be build variables, not runtime ones: `astro.config.mjs` and the page
+layouts run at build time, so a `vars` entry in `wrangler.jsonc` would be ignored.
 
-- **Previews and `*.pages.dev`** send `noindex, nofollow` on every page, so the unfinished site
-  can't turn up in Google while you're sharing links around.
-- **Production** is any real custom domain. To switch it on, set a `SITE_URL` environment variable
-  in the Cloudflare Pages project settings to the live domain (e.g. `https://perthai.org`). That
-  removes the `noindex` and fixes canonical URLs in one step.
+| Variable | Sets | Default when unset |
+| --- | --- | --- |
+| `SITE_URL` | The domain the build is served from — canonical URLs, social previews, and the thank-you redirect on the forms. Set it to `https://perthai.org`. | `http://localhost:4321`, which is wrong on a real deploy |
+| `ALLOW_INDEXING` | Whether search engines may index the site. Set to `true` only when the site is genuinely finished. | `noindex, nofollow` on every page |
 
-Canonical and social-share URLs follow the deploy automatically, so a preview link pasted into
-Slack unfurls with the right title and description rather than pointing at production.
+They are deliberately independent. Setting `SITE_URL` used to remove the `noindex` as a side
+effect, which meant you could not fix canonical URLs without also publishing the site to Google.
+Now you can: set the domain whenever you like, and leave `ALLOW_INDEXING` off until launch.
+
+Both defaults fail safe. A missing `ALLOW_INDEXING` keeps the site out of search results, and a
+missing `SITE_URL` makes the forms omit their redirect rather than send visitors to localhost.
+
+One wrinkle since the site moved to Workers: Cloudflare Pages used to hand every preview its own
+`CF_PAGES_URL`, so preview links unfurled correctly in Slack with no configuration. Workers Builds
+does not set that, so a preview build with no `SITE_URL` falls back to localhost and its canonical
+and social tags will point there. Harmless for previews, but don't rely on a preview link
+unfurling nicely.
 
 ## Automation hooks
 

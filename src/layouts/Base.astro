@@ -13,12 +13,20 @@ const { title, description = site.description } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
-// Only a real custom domain counts as production. Cloudflare preview builds,
-// the .pages.dev staging URL and local builds all tell search engines to stay
-// away, so a half-finished site never turns up in Google. Set SITE_URL to the
-// real domain (see astro.config.mjs) and this flips on by itself.
+// Are we on a real domain? Local builds and *.pages.dev previews are not.
+// This governs nothing on its own — it is only half of the indexing decision.
 const host = Astro.site?.hostname ?? '';
-const isProduction = host !== '' && host !== 'localhost' && !host.endsWith('.pages.dev');
+const hasRealDomain = host !== '' && host !== 'localhost' && !host.endsWith('.pages.dev');
+
+// Being indexable is a deliberate choice, not something to infer from knowing
+// our own domain. SITE_URL has to be set for canonical URLs, social previews
+// and the form redirect to be right, and none of that should imply "we are
+// ready to be found in Google". So indexing takes its own switch: set
+// ALLOW_INDEXING=true as a build variable when the site is genuinely finished.
+//
+// Absent or misspelt, the answer is noindex. That is the safe direction — the
+// worst case is an unlisted site rather than a half-built one in search results.
+const allowIndexing = hasRealDomain && process.env.ALLOW_INDEXING === 'true';
 ---
 
 <!doctype html>
@@ -31,7 +39,7 @@ const isProduction = host !== '' && host !== 'localhost' && !host.endsWith('.pag
     <link rel="canonical" href={canonical} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    {!isProduction && <meta name="robots" content="noindex, nofollow" />}
+    {!allowIndexing && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />

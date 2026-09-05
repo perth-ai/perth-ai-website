@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import site from '../data/site.json';
+---
+
+<Base
+  title="Thanks"
+  description="We've got your message and someone from the Perth AI organising group will read it."
+>
+  <div class="mx-auto flex max-w-2xl flex-col items-center px-5 py-28 text-center sm:px-8">
+    <p class="font-display text-6xl font-semibold text-sunset-700">Thanks</p>
+    <h1 class="mt-5 font-display text-3xl font-semibold sm:text-4xl">That's with us now</h1>
+    <p class="mt-4 leading-relaxed text-ink-600">
+      One of the organisers will read it. We get through every message, though with a community
+      this size we can't always reply — if yours needs an answer, say so and we'll find you.
+    </p>
+    <p class="mt-4 text-sm leading-relaxed text-ink-600">
+      Sent something by mistake, or forgot half of it? Email <a
+        class="font-medium text-orchid-700 underline decoration-orchid-700/40 underline-offset-2 hover:decoration-orchid-700"
+        href={`mailto:${site.email}`}>{site.email}</a
+      > and we'll stitch it together.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <Button href="/events">See what's on</Button>
+      <Button href="/" variant="ghost">Back to the homepage</Button>
+    </div>
+  </div>
+</Base>

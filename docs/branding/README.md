@@ -43,6 +43,7 @@ The pack is live on the site as of the `feature/new-branding` work:
 | Secondary Logo (quokka circle) | cropped to `public/perth-ai-mark.webp` — the header and footer mark, plus favicons |
 | Main Logo | `public/og-perth-ai.jpg` — the 1200×630 Open Graph card |
 | Pixel Art Perth Background | `public/perth-skyline.webp` — homepage hero only |
+| Main Logo - Perth AI (white outline rotate) | `public/perth-ai-badge.webp` — the header badge, trimmed and resized to 384px |
 
 The designers supplied transparent versions of the horizontal lockup, so
 `Logo.astro` has a `lockup` variant that uses the real artwork. The header and

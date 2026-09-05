@@ -28,8 +28,9 @@ const frost = [
     item picks up whichever part of the run it sits over. Same idea as the haze
     over the river in the hero art rather than the hard pixels of the skyline.
 
-    The banner gradient and the navy PERTH AI wordmark pill are settled — don't
-    change them. Everything below is about the nav.
+    The banner gradient and the frosted nav capsules are settled — don't
+    change them. The brand itself is the overhanging medallion badge; see the
+    block above the <header> for how that works.
 
     CONTRAST — composited, not eyeballed. A translucent fill mixes with the
     gradient beneath it, so every number here is the label against the ACTUAL
@@ -66,14 +67,66 @@ const frost = [
     banner doesn't use. Items on the gradient take an ink-950 ring (3.46:1 at
     worst, clears the 3:1 a non-text indicator needs); items inside the navy
     wordmark pill or on the orchid fill take a white ring. */}
+{/* THE BADGE — the main Perth AI logo at genuine size (72 / 112 / 160px),
+    anchored at the banner's left edge and hung past its bottom so the lower
+    half of the circle lands on the hero below.
+
+    The artwork is "Main Logo - Perth AI (white outline rotate)", exported to
+    /perth-ai-badge.webp. It already carries its own white outline and its own
+    PERTH AI lettering, so there is no ring drawn in CSS and no wordmark beside
+    it — the badge is the whole brand mark. Don't add a text plaque back.
+
+    How the overhang works, and why it doesn't break:
+
+    1. NOT CLIPPED. Nothing in the chain clips: <body> and <main> have no
+       overflow, and the header has none either. The homepage hero does carry
+       overflow-hidden, but that is a sibling subtree — it can't clip a child
+       of the header. Don't add overflow-hidden to the header or the wrapper.
+    2. ABOVE the page. The header is sticky with z-40, which makes it a
+       stacking context that paints over <main> (z-auto) whole. So the
+       overhanging half sits on top of the hero art and of body copy that
+       scrolls beneath it, and it keeps doing so while the header is stuck —
+       no z-index of its own required, and nothing in the pages competes.
+    3. COSTS NO HEIGHT. The badge is position:absolute inside the logo link,
+       which is self-stretch — so left-0/top-0 resolve to the top-left of the
+       banner's content box, and the circle's size never feeds back into the
+       header. The bar stays 64 / 72 / 80px tall (min-h below) and the hero
+       headline stays above the fold on a laptop. The link carries an in-flow
+       spacer of the badge's width instead, so the nav can't slide underneath
+       it — the badge itself is out of flow and reserves nothing.
+    4. HANGS DOWN, NOT UP. Anchored to the top of the content box rather than
+       centred, so the circle can never be cut off against the viewport's top
+       edge once the header sticks.
+
+    The hero's own top padding is what stops the badge from swallowing the
+    eyebrow and h1: the homepage clears it outright (py-32), and PageHero and
+    the blog post header got a small lg:pt bump for the 128px step.
+
+    CONTRAST: the badge carries no live text, so there is no text ratio to
+    meet here — the lettering is inside the artwork. The focus ring is ink-950,
+    9.57:1 over azure-500 where the badge sits, and 3.46:1 at the worst point
+    of the run mid-banner, which still clears the 3:1 a non-text indicator
+    needs. The artwork's own white outline is decorative, and is what lets the
+    badge read on all three grounds it crosses: the gradient, the navy hero and
+    the light sand of the inner page heroes. */}
 <header class="sticky top-0 z-40 border-b border-ink-950/25 bg-gradient-to-r from-azure-500 via-orchid-500 to-coral-500">
-  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3 sm:px-8">
+  <div class="mx-auto flex min-h-16 max-w-6xl items-center gap-4 px-5 py-3 sm:min-h-[4.5rem] sm:px-8 lg:min-h-20">
     <a
       href="/"
-      class="rounded-full bg-ink-950 px-4 py-2 font-display text-lg font-bold tracking-tight text-white shadow-sm shadow-ink-950/30 focus-visible:outline-white"
+      class="relative flex shrink-0 items-center self-stretch focus-visible:outline-ink-950 focus-visible:outline-offset-4"
     >
-      PERTH <span class="text-azure-400">AI</span>
-      <span class="sr-only">— home</span>
+      <img
+        src="/perth-ai-badge.webp"
+        alt=""
+        aria-hidden="true"
+        width="384"
+        height="384"
+        class="absolute left-0 top-0 block h-[4.5rem] w-[4.5rem] drop-shadow-[0_10px_18px_rgba(5,10,23,0.5)] sm:h-28 sm:w-28 lg:h-40 lg:w-40"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="block h-full w-[4.5rem] sm:w-28 lg:w-40" aria-hidden="true"></span>
+      <span class="sr-only">Perth AI — home</span>
     </a>
 
     <nav aria-label="Main" class="ml-auto hidden items-center gap-2 md:flex">
@@ -102,7 +155,7 @@ const frost = [
       Next event
     </a>
 
-    <!-- Mobile menu: <details> so it works with zero JavaScript -->
+    <!-- Mobile menu: <details> so it works with zero JavaScript. -->
     <details class="group relative ml-auto md:hidden">
       <summary
         class:list={[

@@ -8,7 +8,11 @@ const { eyebrow, title, lead } = Astro.props;
 ---
 
 <div class="border-b border-ink-100 bg-sand-100">
-  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+  {/* lg:pt-28 buys clearance for the header badge. At lg the medallion hangs
+      76px past the banner and lands right where the eyebrow sits, so the
+      eyebrow needs to start below it. Nothing to do at smaller widths — the
+      overhang is only 20-48px there and py-16/20 already clears it. */}
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:pt-28">
     {
       eyebrow && (
         <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sunset-700">{eyebrow}</p>

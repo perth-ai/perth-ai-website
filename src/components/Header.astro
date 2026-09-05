@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import site from '../data/site.json';
 
 const nav = [
@@ -11,45 +10,159 @@ const nav = [
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+
+/* Frosted capsule — a translucent white wash, a hairline highlight edge and a
+   navy label. Where backdrop-filter is supported the wash thins out and the
+   blur does the rest of the work; where it isn't, the wash stays a step
+   heavier so the label still clears AA on its own. See the comment block below
+   for the composited numbers. */
+const frost = [
+  'bg-white/30 ring-1 ring-inset ring-white/60',
+  'supports-[backdrop-filter]:bg-white/25 supports-[backdrop-filter]:backdrop-blur-md',
+  'hover:bg-white/50 supports-[backdrop-filter]:hover:bg-white/45',
+].join(' ');
 ---
 
-<header
-  class="sticky top-0 z-40 border-b border-ink-800 bg-ink-900/90 backdrop-blur supports-[backdrop-filter]:bg-ink-900/75"
->
-  <div class="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3 sm:px-8">
-    <a href="/" class="rounded-lg" aria-label={`${site.name} — home`}>
-      <Logo />
+{/* Header — Variant B banner (style guide cyan → purple → pink), nav styled as
+    frosted glass: the gradient reads straight through the nav chrome, so each
+    item picks up whichever part of the run it sits over. Same idea as the haze
+    over the river in the hero art rather than the hard pixels of the skyline.
+
+    The banner gradient and the frosted nav capsules are settled — don't
+    change them. The brand itself is the overhanging medallion badge; see the
+    block above the <header> for how that works.
+
+    CONTRAST — composited, not eyeballed. A translucent fill mixes with the
+    gradient beneath it, so every number here is the label against the ACTUAL
+    composited background at the worst point of the run. Raw on the gradient,
+    nothing survives: ink-950 is 9.57:1 on azure-500 and 7.27:1 on coral-500
+    but only 3.46:1 on orchid-500 in the middle, and white is 5.71:1 on orchid
+    but 2.07:1 / 2.72:1 at the ends. orchid-500 (#7B3FE4) is therefore the
+    worst case for every frosted element, and it is the only one worth quoting.
+
+      white/30 over orchid-500  → #A2789A-ish composite, L 0.2738
+                                  ink-950 label 6.11:1   (no-blur base state)
+      white/25 over orchid-500  → L 0.2437
+                                  ink-950 label 5.54:1   (blur-supported state)
+      white/45 hover            → ~8.4:1
+      white/85 mobile panel     → ≥14.2:1 even over solid ink-950, so the panel
+                                  is safe over the hero art and over page copy
+
+    So the base, unblurred state clears 4.5:1 by itself (6.11:1) and the thinner
+    blurred state still clears it (5.54:1). Both have to pass independently:
+    Tailwind compiles supports-[backdrop-filter] to a `backdrop-filter:var(--tw)`
+    probe, and @supports treats any var() as valid syntax, so that query is
+    effectively always true and the thin wash can land on a browser with no
+    blur at all. Don't thin it further either — white/15 measures 4.54:1 over
+    orchid, which is inside the rounding.
+
+    Active and CTA are OPAQUE on purpose — that is what makes them win against
+    translucent neighbours. Desktop active is a solid white capsule (ink-950
+    label, 19.8:1); the CTA is solid sunbeam cream (ink-950 label, 17.0:1). On
+    the mobile panel the panel itself is near-white, so an opaque white capsule
+    would disappear — the active item there is an orchid-500 fill with a white
+    label (5.71:1, measured) instead.
+
+    Focus: the global :focus-visible ring is sunset-500 orange, which this
+    banner doesn't use. Items on the gradient take an ink-950 ring (3.46:1 at
+    worst, clears the 3:1 a non-text indicator needs); items inside the navy
+    wordmark pill or on the orchid fill take a white ring. */}
+{/* THE BADGE — the main Perth AI logo at genuine size (72 / 112 / 160px),
+    anchored at the banner's left edge and hung past its bottom so the lower
+    half of the circle lands on the hero below.
+
+    The artwork is "Main Logo - Perth AI (white outline rotate)", exported to
+    /perth-ai-badge.webp. It already carries its own white outline and its own
+    PERTH AI lettering, so there is no ring drawn in CSS and no wordmark beside
+    it — the badge is the whole brand mark. Don't add a text plaque back.
+
+    How the overhang works, and why it doesn't break:
+
+    1. NOT CLIPPED. Nothing in the chain clips: <body> and <main> have no
+       overflow, and the header has none either. The homepage hero does carry
+       overflow-hidden, but that is a sibling subtree — it can't clip a child
+       of the header. Don't add overflow-hidden to the header or the wrapper.
+    2. ABOVE the page. The header is sticky with z-40, which makes it a
+       stacking context that paints over <main> (z-auto) whole. So the
+       overhanging half sits on top of the hero art and of body copy that
+       scrolls beneath it, and it keeps doing so while the header is stuck —
+       no z-index of its own required, and nothing in the pages competes.
+    3. COSTS NO HEIGHT. The badge is position:absolute inside the logo link,
+       which is self-stretch — so left-0/top-0 resolve to the top-left of the
+       banner's content box, and the circle's size never feeds back into the
+       header. The bar stays 64 / 72 / 80px tall (min-h below) and the hero
+       headline stays above the fold on a laptop. The link carries an in-flow
+       spacer of the badge's width instead, so the nav can't slide underneath
+       it — the badge itself is out of flow and reserves nothing.
+    4. HANGS DOWN, NOT UP. Anchored to the top of the content box rather than
+       centred, so the circle can never be cut off against the viewport's top
+       edge once the header sticks.
+
+    The hero's own top padding is what stops the badge from swallowing the
+    eyebrow and h1: the homepage clears it outright (py-32), and PageHero and
+    the blog post header got a small lg:pt bump for the 128px step.
+
+    CONTRAST: the badge carries no live text, so there is no text ratio to
+    meet here — the lettering is inside the artwork. The focus ring is ink-950,
+    9.57:1 over azure-500 where the badge sits, and 3.46:1 at the worst point
+    of the run mid-banner, which still clears the 3:1 a non-text indicator
+    needs. The artwork's own white outline is decorative, and is what lets the
+    badge read on all three grounds it crosses: the gradient, the navy hero and
+    the light sand of the inner page heroes. */}
+<header class="sticky top-0 z-40 border-b border-ink-950/25 bg-gradient-to-r from-azure-500 via-orchid-500 to-coral-500">
+  <div class="mx-auto flex min-h-16 max-w-6xl items-center gap-4 px-5 py-3 sm:min-h-[4.5rem] sm:px-8 lg:min-h-20">
+    <a
+      href="/"
+      class="relative flex shrink-0 items-center self-stretch focus-visible:outline-ink-950 focus-visible:outline-offset-4"
+    >
+      <img
+        src="/perth-ai-badge.webp"
+        alt=""
+        aria-hidden="true"
+        width="384"
+        height="384"
+        class="absolute left-0 top-0 block h-[4.5rem] w-[4.5rem] drop-shadow-[0_10px_18px_rgba(5,10,23,0.5)] sm:h-28 sm:w-28 lg:h-40 lg:w-40"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="block h-full w-[4.5rem] sm:w-28 lg:w-40" aria-hidden="true"></span>
+      <span class="sr-only">Perth AI — home</span>
     </a>
 
-    <nav aria-label="Main" class="ml-auto hidden items-center gap-1 md:flex">
+    <nav aria-label="Main" class="ml-auto hidden items-center gap-2 md:flex">
       {
         nav.map((item) => (
           <a
             href={item.href}
             aria-current={isCurrent(item.href) ? 'page' : undefined}
             class:list={[
-              'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+              'rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
               isCurrent(item.href)
-                ? 'bg-ink-800 text-white'
-                : 'text-ink-200 hover:bg-ink-800 hover:text-white',
+                ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
+                : frost,
             ]}
           >
             {item.label}
           </a>
         ))
       }
-      <a
-        href={site.links.luma}
-        class="ml-2 rounded-lg bg-sunset-500 px-4 py-2 text-sm font-semibold text-ink-950 transition-colors hover:bg-sunset-600"
-      >
-        Next event
-      </a>
     </nav>
 
-    <!-- Mobile menu: <details> so it works with zero JavaScript -->
+    <a
+      href={site.links.luma}
+      class="hidden rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white/70 transition-colors hover:bg-white focus-visible:outline-ink-950 md:block"
+    >
+      Next event
+    </a>
+
+    <!-- Mobile menu: <details> so it works with zero JavaScript. -->
     <details class="group relative ml-auto md:hidden">
       <summary
-        class="flex cursor-pointer items-center gap-2 rounded-lg border border-ink-400 px-3 py-2 text-sm font-medium text-ink-100 marker:content-none [&::-webkit-details-marker]:hidden"
+        class:list={[
+          'flex cursor-pointer items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition marker:content-none focus-visible:outline-ink-950 [&::-webkit-details-marker]:hidden',
+          frost,
+          'group-open:bg-white group-open:ring-white',
+        ]}
       >
         <span>Menu</span>
         <svg
@@ -66,7 +179,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-2 w-56 rounded-xl border border-ink-700 bg-ink-800 p-2 shadow-lg shadow-ink-950/40"
+        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg"
       >
         {
           nav.map((item) => (
@@ -74,8 +187,10 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
               href={item.href}
               aria-current={isCurrent(item.href) ? 'page' : undefined}
               class:list={[
-                'block rounded-lg px-3 py-2 text-sm font-medium',
-                isCurrent(item.href) ? 'bg-ink-700 text-white' : 'text-ink-200 hover:bg-ink-700',
+                'block rounded-xl px-3 py-2 text-sm font-semibold transition',
+                isCurrent(item.href)
+                  ? 'bg-orchid-500 text-white focus-visible:outline-white'
+                  : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
               ]}
             >
               {item.label}
@@ -84,7 +199,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
         }
         <a
           href={site.links.luma}
-          class="mt-1 block rounded-lg bg-sunset-500 px-3 py-2 text-center text-sm font-semibold text-ink-950"
+          class="mt-1 block rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
         >
           Next event
         </a>

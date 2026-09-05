@@ -19,7 +19,8 @@ const formatDate = (date: Date) =>
 
 <Base title={post.data.title} description={post.data.description}>
   <div class="border-b border-ink-100 bg-sand-100">
-    <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
+    {/* lg:pt-28 — clearance for the overhanging header badge, same as PageHero */}
+    <div class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20 lg:pt-28">
       <a href="/blog" class="text-sm font-medium text-sunset-700 hover:underline">← All posts</a>
       <h1 class="mt-5 font-display text-4xl font-semibold text-balance sm:text-5xl">
         {post.data.title}

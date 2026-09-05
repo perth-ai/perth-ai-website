@@ -6,6 +6,86 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 4321
+    },
+    {
+      "name": "nav-style-1",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-1",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-1",
+        "--port",
+        "4341"
+      ],
+      "port": 4341
+    },
+    {
+      "name": "nav-style-2",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-2",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-2",
+        "--port",
+        "4342"
+      ],
+      "port": 4342
+    },
+    {
+      "name": "nav-style-3",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-3",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-3",
+        "--port",
+        "4343"
+      ],
+      "port": 4343
+    },
+    {
+      "name": "nav-style-4",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-4",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-4",
+        "--port",
+        "4344"
+      ],
+      "port": 4344
+    },
+    {
+      "name": "nav-style-5",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-5",
+        "run",
+        "dev",
+        "--",
+        "--root",
+        "C:/Users/TimDeBoer/Claude/perth-ai-nav-5",
+        "--port",
+        "4345"
+      ],
+      "port": 4345
     }
   ]
 }

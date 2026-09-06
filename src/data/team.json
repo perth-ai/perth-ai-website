@@ -1,20 +1,20 @@
 [
   {
-    "name": "Will Webster",
-    "role": "Founder and Sponsorship Lead",
-    "bio": "Founder of Cohezion, a Perth technical consultancy. Engineer, architect, and technical leader who's spent his career developering and shipping great products.",
-    "link": ""
-  },
-  {
     "name": "Susannah Soon",
     "role": "President and Founder",
-    "bio": "Associate Professor at Curtin University, with a PhD in AI from the University of Melbourne. Also hosts Build Club Perth and the AI Disrupt Summit.",
+    "bio": "Associate Professor at Curtin University, with a PhD in AI from the University of Melbourne. Also host of Build Club Perth and creator of our signature event: AI Disrupt Summit.",
     "link": ""
   },
   {
     "name": "Timothy de Boer",
     "role": "Vice President and Founder",
-    "bio": "Founding director of Interfuze, a Perth consultancy working with government, SME and enterprise clients. Started out as a Java and .NET contractor before moving into consulting.",
+    "bio": "Founding CEO of Interfuze, a Perth consultancy working with government, enterprise and SME clients. 30+ years in the Perth IT industry, with several of those as an organiser of Agile Perth & DevOps Perth. Now taking that community spirit to his new love... AI!",
+    "link": ""
+  },
+  {
+    "name": "Will Webster",
+    "role": "Founder and Sponsorship Lead",
+    "bio": "Founder of Cohezion, a Perth technical consultancy. Engineer, architect, and technical leader who's spent his career developering and shipping great products.",
     "link": ""
   },
   {

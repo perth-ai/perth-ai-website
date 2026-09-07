@@ -56,6 +56,13 @@ import team from '../data/team.json';
       {
         team.map((person) => (
           <li class="rounded-2xl border border-ink-200 p-6">
+            {person.image && (
+              <img
+                src={person.image}
+                alt={person.name}
+                class="mb-4 h-32 w-32 rounded-full object-cover"
+              />
+            )}
             <h3 class="font-display text-lg font-semibold">
               {person.link ? (
                 <a href={person.link} rel="noopener" class="hover:text-sunset-700">

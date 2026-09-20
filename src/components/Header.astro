@@ -1,23 +1,34 @@
 ---
 import site from '../data/site.json';
 
-/* The desktop nav starts at lg:, not md:, and that is load-bearing.
+/* Everything event-shaped lives behind one "Events" capsule, including the
+   Luma CTA that used to sit on its own at the end of the bar.
 
-   "AI Disrupt Summit" is a 150px capsule — nearly twice any other label. At
-   md the bar has 753px, and the badge, five capsules and the CTA need 771px:
-   18px over, which pushed the whole page into horizontal scroll at 768. So
-   the <details> menu now covers 768-1023px, where it has room to spare, and
-   the capsules only appear at lg: (960px available, 819px needed).
+   WIDTH. This is why the grouping earns its keep. Four capsules and no
+   separate CTA need 524px of the 753px the bar has at md, so the desktop
+   nav starts at md: again. It briefly had to start at lg:, because a flat
+   "AI Disrupt Summit" capsule was 150px and tipped the row 18px over at
+   768, putting the whole page into horizontal scroll. Grouping removes that
+   pressure rather than working around it.
 
-   Every capsule also carries whitespace-nowrap. Without it the longest
+   Every capsule still carries whitespace-nowrap. Without it the longest
    labels wrap to two lines and grow the bar instead of overflowing it —
-   which is quieter, and worse, because it doesn't look like a bug.
+   quieter, and worse, because it doesn't look like a bug.
 
-   Before adding or renaming an item, measure it at exactly 1024px. That is
-   the tightest the capsule row ever gets. */
+   Measure at exactly 768px before adding a capsule. That is the tightest
+   the row ever gets. */
 const nav = [
-  { label: 'Events', href: '/events' },
-  { label: 'AI Disrupt Summit', href: '/summit' },
+  {
+    label: 'Events',
+    /* The group reads as current on any page it contains, so the capsule
+       still tells you where you are once a child page is open. */
+    match: ['/events', '/summit'],
+    items: [
+      { label: 'Luma calendar', href: '/events' },
+      { label: 'Signature event (AI Disrupt)', href: '/summit' },
+      { label: 'Next event', href: site.links.luma, cta: true },
+    ],
+  },
   { label: 'About', href: '/about' },
   { label: 'Get involved', href: '/get-involved' },
   { label: 'Sponsor', href: '/sponsor' },
@@ -25,6 +36,7 @@ const nav = [
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+const isGroupCurrent = (paths: string[]) => paths.some(isCurrent);
 
 /* Frosted capsule — a translucent white wash, a hairline highlight edge and a
    navy label. Where backdrop-filter is supported the wash thins out and the
@@ -144,34 +156,89 @@ const frost = [
       <span class="sr-only">Perth AI — home</span>
     </a>
 
-    <nav aria-label="Main" class="ml-auto hidden items-center gap-2 lg:flex">
+    <nav aria-label="Main" class="ml-auto hidden items-center gap-2 md:flex">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            aria-current={isCurrent(item.href) ? 'page' : undefined}
-            class:list={[
-              'whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
-              isCurrent(item.href)
-                ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
-                : frost,
-            ]}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) =>
+          item.items ? (
+            /* Grouped capsule. A <details> for the same reason the mobile
+               menu is one: it opens, closes and takes focus with no
+               JavaScript at all. Like that menu, it stays open until it is
+               clicked again — there is no outside-click or Escape handler,
+               because adding one would mean shipping a script. */
+            <details class="group/dd relative">
+              <summary
+                class:list={[
+                  'flex cursor-pointer list-none items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition marker:content-none focus-visible:outline-ink-950 [&::-webkit-details-marker]:hidden',
+                  isGroupCurrent(item.match)
+                    ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
+                    : frost,
+                  'group-open/dd:bg-white group-open/dd:ring-white',
+                ]}
+              >
+                <span>{item.label}</span>
+                <svg
+                  class="h-4 w-4 transition-transform group-open/dd:rotate-180"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </summary>
+              {/* Panel is the near-white wash of the mobile menu, not the
+                  frost — it has to sit over page copy rather than the
+                  gradient, so it needs to be opaque enough to read. */}
+              <div class="absolute left-0 mt-2 w-64 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg">
+                {item.items.map((child) =>
+                  child.cta ? (
+                    <a
+                      href={child.href}
+                      rel="noopener"
+                      class="mt-1 block rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
+                    >
+                      {child.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={child.href}
+                      aria-current={isCurrent(child.href) ? 'page' : undefined}
+                      class:list={[
+                        'block rounded-xl px-3 py-2 text-sm font-semibold transition',
+                        isCurrent(child.href)
+                          ? 'bg-orchid-500 text-white focus-visible:outline-white'
+                          : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
+                      ]}
+                    >
+                      {child.label}
+                    </a>
+                  )
+                )}
+              </div>
+            </details>
+          ) : (
+            <a
+              href={item.href}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+              class:list={[
+                'whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
+                isCurrent(item.href)
+                  ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
+                  : frost,
+              ]}
+            >
+              {item.label}
+            </a>
+          )
+        )
       }
     </nav>
 
-    <a
-      href={site.links.luma}
-      class="hidden whitespace-nowrap rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white/70 transition-colors hover:bg-white focus-visible:outline-ink-950 lg:block"
-    >
-      Next event
-    </a>
-
     <!-- Mobile menu: <details> so it works with zero JavaScript. -->
-    <details class="group relative ml-auto lg:hidden">
+    <details class="group relative ml-auto md:hidden">
       <summary
         class:list={[
           'flex cursor-pointer items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition marker:content-none focus-visible:outline-ink-950 [&::-webkit-details-marker]:hidden',
@@ -194,30 +261,63 @@ const frost = [
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg"
+        class="absolute right-0 mt-2 w-64 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg"
       >
+        {/* The group is flattened here rather than nested. A <details> inside
+            an already-open <details> would mean two taps to reach a link on a
+            phone, and the panel has room to just show the three. The heading
+            names the group for screen readers via aria-labelledby. */}
         {
-          nav.map((item) => (
-            <a
-              href={item.href}
-              aria-current={isCurrent(item.href) ? 'page' : undefined}
-              class:list={[
-                'block rounded-xl px-3 py-2 text-sm font-semibold transition',
-                isCurrent(item.href)
-                  ? 'bg-orchid-500 text-white focus-visible:outline-white'
-                  : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
-              ]}
-            >
-              {item.label}
-            </a>
-          ))
+          nav.map((item) =>
+            item.items ? (
+              <div role="group" aria-labelledby={`m-${item.label}`}>
+                <p
+                  id={`m-${item.label}`}
+                  class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                >
+                  {item.label}
+                </p>
+                {item.items.map((child) =>
+                  child.cta ? (
+                    <a
+                      href={child.href}
+                      rel="noopener"
+                      class="mt-1 block rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
+                    >
+                      {child.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={child.href}
+                      aria-current={isCurrent(child.href) ? 'page' : undefined}
+                      class:list={[
+                        'block rounded-xl px-3 py-2 text-sm font-semibold transition',
+                        isCurrent(child.href)
+                          ? 'bg-orchid-500 text-white focus-visible:outline-white'
+                          : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
+                      ]}
+                    >
+                      {child.label}
+                    </a>
+                  )
+                )}
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                class:list={[
+                  'block rounded-xl px-3 py-2 text-sm font-semibold transition',
+                  isCurrent(item.href)
+                    ? 'bg-orchid-500 text-white focus-visible:outline-white'
+                    : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
+                ]}
+              >
+                {item.label}
+              </a>
+            )
+          )
         }
-        <a
-          href={site.links.luma}
-          class="mt-1 block rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
-        >
-          Next event
-        </a>
       </nav>
     </details>
   </div>

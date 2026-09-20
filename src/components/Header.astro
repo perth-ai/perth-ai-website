@@ -1,8 +1,34 @@
 ---
 import site from '../data/site.json';
 
+/* Everything event-shaped lives behind one "Events" capsule, including the
+   Luma CTA that used to sit on its own at the end of the bar.
+
+   WIDTH. This is why the grouping earns its keep. Four capsules and no
+   separate CTA need 524px of the 753px the bar has at md, so the desktop
+   nav starts at md: again. It briefly had to start at lg:, because a flat
+   "AI Disrupt Summit" capsule was 150px and tipped the row 18px over at
+   768, putting the whole page into horizontal scroll. Grouping removes that
+   pressure rather than working around it.
+
+   Every capsule still carries whitespace-nowrap. Without it the longest
+   labels wrap to two lines and grow the bar instead of overflowing it —
+   quieter, and worse, because it doesn't look like a bug.
+
+   Measure at exactly 768px before adding a capsule. That is the tightest
+   the row ever gets. */
 const nav = [
-  { label: 'Events', href: '/events' },
+  {
+    label: 'Events',
+    /* The group reads as current on any page it contains, so the capsule
+       still tells you where you are once a child page is open. */
+    match: ['/events', '/summit'],
+    items: [
+      { label: 'Luma calendar', href: '/events' },
+      { label: 'Signature event (AI Disrupt)', href: '/summit' },
+      { label: 'Next event', href: site.links.luma, cta: true },
+    ],
+  },
   { label: 'About', href: '/about' },
   { label: 'Get involved', href: '/get-involved' },
   { label: 'Sponsor', href: '/sponsor' },
@@ -10,6 +36,7 @@ const nav = [
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+const isGroupCurrent = (paths: string[]) => paths.some(isCurrent);
 
 /* Frosted capsule — a translucent white wash, a hairline highlight edge and a
    navy label. Where backdrop-filter is supported the wash thins out and the
@@ -56,17 +83,25 @@ const frost = [
     blur at all. Don't thin it further either — white/15 measures 4.54:1 over
     orchid, which is inside the rounding.
 
-    Active and CTA are OPAQUE on purpose — that is what makes them win against
-    translucent neighbours. Desktop active is a solid white capsule (ink-950
-    label, 19.8:1); the CTA is solid sunbeam cream (ink-950 label, 17.0:1). On
-    the mobile panel the panel itself is near-white, so an opaque white capsule
-    would disappear — the active item there is an orchid-500 fill with a white
-    label (5.71:1, measured) instead.
+    Active capsules IN THE BAR are opaque on purpose — that is what makes them
+    win against translucent neighbours. Desktop active is a solid white capsule
+    (ink-950 label, 19.8:1).
+
+    PANEL ROWS ARE NOT CAPSULES. Inside a dropdown — the desktop Events panel
+    and the mobile menu — rows carry no fill at all. They are plain text with
+    an orchid left edge on the current page, which is quieter and stops a panel
+    of five items reading as five competing buttons. Current-page rows use
+    orchid-700 text (7.40:1 on light, comfortably past 4.5:1) rather than a
+    fill, so nothing here depends on a white label over orchid.
+
+    The one fill left in a panel is the "Next event" CTA, solid ink-950 with a
+    white label. That is deliberate: it is the only action among navigation
+    links, and losing its fill would bury it.
 
     Focus: the global :focus-visible ring is sunset-500 orange, which this
     banner doesn't use. Items on the gradient take an ink-950 ring (3.46:1 at
     worst, clears the 3:1 a non-text indicator needs); items inside the navy
-    wordmark pill or on the orchid fill take a white ring. */}
+    wordmark pill take a white ring. */}
 {/* THE BADGE — the main Perth AI logo at genuine size (72 / 112 / 160px),
     anchored at the banner's left edge and hung past its bottom so the lower
     half of the circle lands on the hero below.
@@ -131,29 +166,102 @@ const frost = [
 
     <nav aria-label="Main" class="ml-auto hidden items-center gap-2 md:flex">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            aria-current={isCurrent(item.href) ? 'page' : undefined}
-            class:list={[
-              'rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
-              isCurrent(item.href)
-                ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
-                : frost,
-            ]}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) =>
+          item.items ? (
+            /* Grouped capsule. A <details> for the same reason the mobile
+               menu is one: it opens, closes and takes focus with no
+               JavaScript at all. Like that menu, it stays open until it is
+               clicked again — there is no outside-click or Escape handler,
+               because adding one would mean shipping a script. */
+            <details class="group/dd relative">
+              <summary
+                class:list={[
+                  'flex cursor-pointer list-none items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition marker:content-none focus-visible:outline-ink-950 [&::-webkit-details-marker]:hidden',
+                  isGroupCurrent(item.match)
+                    ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
+                    : frost,
+                  'group-open/dd:bg-white group-open/dd:ring-white',
+                ]}
+              >
+                <span>{item.label}</span>
+                <svg
+                  class="h-4 w-4 transition-transform group-open/dd:rotate-180"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </summary>
+              {/* Panel is the near-white wash of the mobile menu, not the
+                  frost — it has to sit over page copy rather than the
+                  gradient, so it needs to be opaque enough to read. */}
+              <div class="absolute left-0 mt-2 w-64 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg">
+                {item.items.map((child) =>
+                  child.cta ? (
+                    <a
+                      href={child.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mt-2 flex items-center justify-center gap-1.5 rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
+                    >
+                      {child.label}
+                      {/* Icon is decorative; the sr-only text is what actually
+                          warns a screen reader about the new tab. */}
+                      <svg
+                        class="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M11.5 3.5h5v5" />
+                        <path d="M16.5 3.5 9 11" />
+                        <path d="M15.5 12v3.5a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 15.5V6a1.5 1.5 0 0 1 1.5-1.5H8" />
+                      </svg>
+                      <span class="sr-only">(opens in a new window)</span>
+                    </a>
+                  ) : (
+                    <a
+                      href={child.href}
+                      aria-current={isCurrent(child.href) ? 'page' : undefined}
+                      class:list={[
+                        'block border-l-2 px-3 py-2.5 text-sm font-semibold transition focus-visible:outline-ink-950',
+                        isCurrent(child.href)
+                          ? 'border-orchid-500 text-orchid-700'
+                          : 'border-transparent text-ink-950 hover:border-orchid-300 hover:text-orchid-700',
+                      ]}
+                    >
+                      {child.label}
+                    </a>
+                  )
+                )}
+              </div>
+            </details>
+          ) : (
+            <a
+              href={item.href}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+              class:list={[
+                'whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
+                isCurrent(item.href)
+                  ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
+                  : frost,
+              ]}
+            >
+              {item.label}
+            </a>
+          )
+        )
       }
     </nav>
-
-    <a
-      href={site.links.luma}
-      class="hidden rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white/70 transition-colors hover:bg-white focus-visible:outline-ink-950 md:block"
-    >
-      Next event
-    </a>
 
     <!-- Mobile menu: <details> so it works with zero JavaScript. -->
     <details class="group relative ml-auto md:hidden">
@@ -179,30 +287,81 @@ const frost = [
       </summary>
       <nav
         aria-label="Main"
-        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg"
+        class="absolute right-0 mt-2 w-64 rounded-2xl bg-white/85 p-2 shadow-lg shadow-ink-950/30 ring-1 ring-inset ring-white supports-[backdrop-filter]:backdrop-blur-lg"
       >
+        {/* The group is flattened here rather than nested. A <details> inside
+            an already-open <details> would mean two taps to reach a link on a
+            phone, and the panel has room to just show the three. The heading
+            names the group for screen readers via aria-labelledby. */}
         {
-          nav.map((item) => (
-            <a
-              href={item.href}
-              aria-current={isCurrent(item.href) ? 'page' : undefined}
-              class:list={[
-                'block rounded-xl px-3 py-2 text-sm font-semibold transition',
-                isCurrent(item.href)
-                  ? 'bg-orchid-500 text-white focus-visible:outline-white'
-                  : 'text-ink-950 hover:bg-orchid-100 focus-visible:outline-ink-950',
-              ]}
-            >
-              {item.label}
-            </a>
-          ))
+          nav.map((item) =>
+            item.items ? (
+              <div role="group" aria-labelledby={`m-${item.label}`}>
+                <p
+                  id={`m-${item.label}`}
+                  class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-500"
+                >
+                  {item.label}
+                </p>
+                {item.items.map((child) =>
+                  child.cta ? (
+                    <a
+                      href={child.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mt-2 flex items-center justify-center gap-1.5 rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
+                    >
+                      {child.label}
+                      {/* Icon is decorative; the sr-only text is what actually
+                          warns a screen reader about the new tab. */}
+                      <svg
+                        class="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M11.5 3.5h5v5" />
+                        <path d="M16.5 3.5 9 11" />
+                        <path d="M15.5 12v3.5a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 15.5V6a1.5 1.5 0 0 1 1.5-1.5H8" />
+                      </svg>
+                      <span class="sr-only">(opens in a new window)</span>
+                    </a>
+                  ) : (
+                    <a
+                      href={child.href}
+                      aria-current={isCurrent(child.href) ? 'page' : undefined}
+                      class:list={[
+                        'block border-l-2 px-3 py-2.5 text-sm font-semibold transition focus-visible:outline-ink-950',
+                        isCurrent(child.href)
+                          ? 'border-orchid-500 text-orchid-700'
+                          : 'border-transparent text-ink-950 hover:border-orchid-300 hover:text-orchid-700',
+                      ]}
+                    >
+                      {child.label}
+                    </a>
+                  )
+                )}
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                class:list={[
+                  'block border-l-2 px-3 py-2.5 text-sm font-semibold transition focus-visible:outline-ink-950',
+                  isCurrent(item.href)
+                    ? 'border-orchid-500 text-orchid-700'
+                    : 'border-transparent text-ink-950 hover:border-orchid-300 hover:text-orchid-700',
+                ]}
+              >
+                {item.label}
+              </a>
+            )
+          )
         }
-        <a
-          href={site.links.luma}
-          class="mt-1 block rounded-xl bg-ink-950 px-3 py-2 text-center text-sm font-semibold text-white focus-visible:outline-ink-950"
-        >
-          Next event
-        </a>
       </nav>
     </details>
   </div>

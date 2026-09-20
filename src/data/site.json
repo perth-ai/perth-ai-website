@@ -20,7 +20,8 @@
   "summit": {
     "name": "AI Disrupt Summit",
     "blurb": "Our flagship event and a satellite of West Tech Fest.",
-    "url": "https://genai-community.pages.dev/summit/2025",
-    "when": "December 2025"
+    "url": "/summit",
+    "when": "Early December, once a year",
+    "_url": "Internal page. The 2025 recap and gallery live on the old GenAI Community site and are linked from /summit."
   }
 }

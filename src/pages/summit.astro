@@ -1,0 +1,287 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import MailingList from '../components/MailingList.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+
+/* The 2025 summit ran under our previous name, GenAI Community. The recap and
+   the full photo gallery still live on that site — we link out to both rather
+   than re-hosting them. Everything factual on this page comes from those two
+   pages; don't add numbers or names that aren't on them.
+
+   Deliberately NOT on this page:
+     - a speaker count. The summit site says 17 and then lists 18 names, so we
+       describe the programme instead of printing a figure that argues with
+       itself. If someone confirms the real number, it can go in the stats.
+     - the speaker list. 18 names with no talk titles is a wall, not content;
+       the "full line-up" link does that job.
+     - a photo credit. The gallery files sit under an "SS-cam" path but nobody
+       has confirmed who shot them, and a wrong credit is worse than none. */
+
+const summitSite = 'https://genai-community.pages.dev/summit/2025';
+const gallery = 'https://genai-community.pages.dev/events/past/2025-12-summit-gallery-2';
+
+const stats = [
+  { figure: '180+', label: 'builders, founders, students and investors' },
+  { figure: '15', label: 'AI startups with a booth at the expo' },
+  { figure: '5', label: 'teams shipping in the hackathon' },
+  { figure: '1', label: 'day, two tracks, one very full building' },
+];
+
+const programme = [
+  {
+    icon: 'mic',
+    name: 'Speaker series',
+    body: 'Two tracks running at once, from research to what people have actually shipped. Academics, founders and engineers on the same bill.',
+  },
+  {
+    icon: 'sparkle',
+    name: 'Startup expo',
+    body: 'Fifteen local AI ventures with a table and something to show. The kind of demo you can ask hard questions about.',
+  },
+  {
+    icon: 'hammer',
+    name: 'Hackathon',
+    body: 'Sponsored by Lovable, built around elderly care and loneliness. Five teams got something working and pitched it by the end of the day.',
+  },
+  {
+    icon: 'book',
+    name: 'Home lab workshop',
+    body: 'A hands-on build of your first AI home lab with Ollama, n8n and VeilNet. Laptops open, nothing pre-baked.',
+  },
+  {
+    icon: 'coffee',
+    name: 'Sundowner',
+    body: 'Drinks in the courtyard, sponsored by Blackbird. The half hour after the talks is where most of the useful conversations happened.',
+  },
+];
+
+/* Alt text describes what is in frame without naming anyone. Nobody in these
+   photos has been identified to us, and guessing at a face on a public page is
+   not a risk worth taking for a caption. */
+const photos = [
+  {
+    src: '/summit/2025/main-room.webp',
+    alt: 'A packed hall of attendees seated at round tables between sessions.',
+  },
+  {
+    src: '/summit/2025/speaker.webp',
+    alt: 'A speaker presenting to a seated audience alongside a projected slide.',
+  },
+  {
+    src: '/summit/2025/startup-expo.webp',
+    alt: 'Two attendees talking beside a startup banner at the expo.',
+  },
+  {
+    src: '/summit/2025/hackathon.webp',
+    alt: 'Hackathon teams working on laptops at long shared tables.',
+  },
+  {
+    src: '/summit/2025/hackathon-prizes.webp',
+    alt: 'Two people on stage holding prizes in front of a hackathon results slide.',
+  },
+  {
+    src: '/summit/2025/courtyard.webp',
+    alt: 'Attendees talking outside on the lawn with drinks during a break.',
+  },
+];
+---
+
+<Base
+  title="AI Disrupt Summit"
+  description="AI Disrupt Summit is Perth AI's signature event — a full day of talks, a startup expo, a hackathon and hands-on workshops for people building with AI in Western Australia."
+>
+  <PageHero
+    eyebrow="Our signature event"
+    title="AI Disrupt Summit"
+    lead="One day, once a year, where everyone in Perth building with AI ends up in the same building. Talks, a startup expo, a hackathon and workshops — then drinks in the courtyard."
+  />
+
+  <Section>
+    <figure>
+      <img
+        src="/summit/2025/opening.webp"
+        alt="A speaker opening the summit in front of a large AI Disrupt Summit 2025 title slide."
+        width="1600"
+        height="1066"
+        class="w-full rounded-3xl object-cover"
+      />
+      <figcaption class="mt-4 text-sm text-ink-600">
+        AI Disrupt Summit 2025, St Catherine's College, Curtin University.
+      </figcaption>
+    </figure>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <h2 class="font-display text-2xl font-semibold">What it is</h2>
+        <p class="mt-4 leading-relaxed text-ink-600 text-pretty">
+          Most of what Perth AI runs is small and regular — a meet-up, a co-build, a workshop. The
+          summit is the one day a year we go big. It's built for the same people and the same
+          give-first rules, just with a lot more of them in the room at once.
+        </p>
+        <p class="mt-4 leading-relaxed text-ink-600 text-pretty">
+          No pitches from the stage, no vendor keynotes. People who have built something talk about
+          what actually worked, and then you get to ask them about it over lunch.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-ink-200 p-7">
+        <h3 class="font-display text-lg font-semibold">In short</h3>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div>
+            <dt class="text-ink-500">When</dt>
+            <dd class="font-medium">Early December, once a year</dd>
+          </div>
+          <div>
+            <dt class="text-ink-500">Where</dt>
+            <dd class="font-medium">Perth, Whadjuk Noongar boodja</dd>
+          </div>
+          <div>
+            <dt class="text-ink-500">Who it's for</dt>
+            <dd class="font-medium">Anyone building with AI, at any level</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    tone="muted"
+    eyebrow="2025"
+    title="How the first one went"
+    lead="The 2025 summit ran on 13 December at St Catherine's College, Curtin University — a full day across two tracks, and a good deal bigger than anyone planned for."
+  >
+    {/* A plain list, not a <dl>. The figure and the label are one phrase read
+        together ("180+ builders, founders…"), so splitting them into dt/dd
+        only makes a screen reader say the label twice. */}
+    <ul class="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
+      {
+        stats.map((stat) => (
+          <li class="rounded-2xl bg-white p-7">
+            <span class="block font-display text-4xl font-semibold text-ink-900">
+              {stat.figure}
+            </span>
+            <span class="mt-2 block text-sm leading-relaxed text-ink-600">{stat.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3 class="mt-14 font-display text-2xl font-semibold">What was on</h3>
+    <ul class="mt-8 grid gap-5 sm:grid-cols-2">
+      {
+        programme.map((item) => (
+          <li class="flex gap-5 rounded-2xl bg-white p-7">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunset-100 text-sunset-700">
+              <Icon name={item.icon} class="h-5 w-5" />
+            </span>
+            <div>
+              <h4 class="font-display text-lg font-semibold">{item.name}</h4>
+              <p class="mt-2 leading-relaxed text-ink-600">{item.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-10">
+      <Button href={summitSite} variant="ghost">
+        The full 2025 line-up
+        <Icon name="arrow" class="h-4 w-4" />
+      </Button>
+    </div>
+  </Section>
+
+  {/* Susannah drove the summit into existence. Named plainly, in prose, inside
+      the recap — not as a hero block. The page is about a community event, and
+      a tribute panel would undercut both her and that. */}
+  <Section>
+    <div class="grid gap-8 rounded-3xl bg-ink-900 px-8 py-12 sm:px-12 md:grid-cols-[auto_1fr] md:items-center">
+      <img
+        src="/team/susannah-soon.jpg"
+        alt=""
+        width="96"
+        height="96"
+        class="h-24 w-24 rounded-2xl object-cover"
+      />
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-azure-300">
+          Who got this off the ground
+        </p>
+        <p class="mt-4 leading-relaxed text-ink-200/85 text-pretty">
+          The summit exists because <strong class="font-semibold text-white">Susannah Soon</strong>,
+          Perth AI's President and Founder, decided Perth should have one and then did the
+          unglamorous work of making it happen — the venue, the programme, the sponsors and the
+          hundred small things nobody sees. She led it from the first conversation to the last
+          person leaving the courtyard.
+        </p>
+        <p class="mt-4 leading-relaxed text-ink-200/85 text-pretty">
+          She had a lot of help. It was co-organised with Build Club Perth, Bloom and Curtin
+          Entrepreneurs, and run on the day by a crew of volunteers.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow="The day itself" title="A few photos">
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        photos.map((photo) => (
+          <li>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              width="900"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class="aspect-[3/2] w-full rounded-2xl object-cover"
+            />
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-8 text-ink-600">
+      There are another ninety-odd in the full gallery.
+    </p>
+    <div class="mt-6">
+      <Button href={gallery} variant="ghost">
+        See the full 2025 gallery
+        <Icon name="arrow" class="h-4 w-4" />
+      </Button>
+    </div>
+  </Section>
+
+  <Section tone="muted">
+    <div class="rounded-2xl bg-white p-8 sm:p-10">
+      <h2 class="font-display text-2xl font-semibold">The people who paid for it</h2>
+      <p class="mt-4 max-w-3xl leading-relaxed text-ink-600 text-pretty">
+        A free-to-attend day with catering, a venue and prizes doesn't happen on goodwill alone.
+        The 2025 summit was backed by Blackbird, Build Club, Bloom, Curtin Entrepreneurs, DDD
+        Perth, WADSIH, Lovable, Matilda Health and Horst Maberly. Thank you — genuinely.
+      </p>
+      <div class="mt-6">
+        <Button href="/sponsor" variant="ghost">
+          Sponsor the next one
+          <Icon name="arrow" class="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="rounded-2xl border border-ink-200 p-8 sm:p-10">
+      <h2 class="font-display text-2xl font-semibold">What about 2026?</h2>
+      <p class="mt-3 max-w-xl leading-relaxed text-ink-600 text-pretty">
+        We're planning the next one for early December 2026. No date, venue or tickets locked in
+        yet — when there is one, the calendar gets it first.
+      </p>
+    </div>
+  </Section>
+
+  <Section class="pt-0">
+    <MailingList />
+  </Section>
+</Base>

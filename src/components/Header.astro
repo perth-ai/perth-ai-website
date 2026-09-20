@@ -1,8 +1,15 @@
 ---
 import site from '../data/site.json';
 
+/* Five items is the ceiling. At the md breakpoint — exactly where the desktop
+   nav replaces the menu, and so the tightest it ever gets — the badge, the
+   five capsules and the CTA need 701px of the 753px available. That only
+   holds because every capsule carries whitespace-nowrap; without it the two
+   longest ("Get involved", "Next event") wrap to two lines and the bar grows
+   by 20px. A sixth item does not fit: move the desktop nav to lg: first. */
 const nav = [
   { label: 'Events', href: '/events' },
+  { label: 'Summit', href: '/summit' },
   { label: 'About', href: '/about' },
   { label: 'Get involved', href: '/get-involved' },
   { label: 'Sponsor', href: '/sponsor' },
@@ -136,7 +143,7 @@ const frost = [
             href={item.href}
             aria-current={isCurrent(item.href) ? 'page' : undefined}
             class:list={[
-              'rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
+              'whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold text-ink-950 transition focus-visible:outline-ink-950',
               isCurrent(item.href)
                 ? 'bg-white shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white'
                 : frost,
@@ -150,7 +157,7 @@ const frost = [
 
     <a
       href={site.links.luma}
-      class="hidden rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white/70 transition-colors hover:bg-white focus-visible:outline-ink-950 md:block"
+      class="hidden whitespace-nowrap rounded-full bg-sunbeam-400 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm shadow-ink-950/25 ring-1 ring-inset ring-white/70 transition-colors hover:bg-white focus-visible:outline-ink-950 md:block"
     >
       Next event
     </a>

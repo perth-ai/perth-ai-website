@@ -8,6 +8,9 @@ a change safely, without knowing Astro. Read this before editing.
 A static site built with **Astro 5 + Tailwind 4**, deployed to **Cloudflare Pages**. No database, no
 server, no API keys. `npm run build` produces plain HTML in `dist/`.
 
+**One temporary exception:** the DDD Perth 2026 booth kiosk at `/ddd-2026` has API routes and a D1
+database. Read [docs/ddd-2026.md](docs/ddd-2026.md) before touching anything under `ddd-2026`.
+
 ```bash
 npm run dev
 ```

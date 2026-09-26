@@ -5,5 +5,14 @@
 	"assets": {
 		"directory": "./dist",
 		"not_found_handling": "404-page"
-	}
+	},
+	// Quokka Run scores for the DDD Perth 2026 booth kiosk (/ddd-2026). No
+	// database_id: Wrangler creates the database on the first deploy, the same
+	// way it already does for the SESSION KV namespace. See docs/ddd-2026.md.
+	"d1_databases": [
+		{
+			"binding": "DDD_2026_DB",
+			"database_name": "perth-ai-ddd-2026"
+		}
+	]
 }

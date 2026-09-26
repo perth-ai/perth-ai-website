@@ -1,0 +1,194 @@
+/* AI Disrupt */
+
+.summit .skyline {
+  opacity: 0.25;
+}
+
+.summit-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: calc(var(--gutter) * 1.4);
+  align-items: center;
+  height: 100%;
+  padding: calc(var(--gutter) + var(--tap)) var(--gutter) var(--gutter);
+  overflow-y: auto;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .summit-layout {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+}
+
+/* photo slideshow */
+
+.summit-photos {
+  position: relative;
+  margin: 0;
+}
+
+.summit-photos::before {
+  /* reserve a 3:2 frame; the photos are stacked inside it */
+  content: '';
+  display: block;
+  aspect-ratio: 3 / 2;
+}
+
+.summit-photos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: calc(var(--radius) * 1.3);
+  box-shadow: 0 10px 0 rgb(0 0 0 / 0.35);
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.summit-photos img.on {
+  opacity: 1;
+}
+
+.summit-photos figcaption {
+  margin-top: 0.9em;
+  font-size: var(--text-sm);
+  color: var(--ink-300);
+}
+
+/* info + actions */
+
+.summit-info h1 {
+  font-size: var(--text-3xl);
+  margin-top: 0.15em;
+}
+
+.summit-info .accent {
+  color: var(--sunset-500);
+}
+
+.summit-info .lede {
+  margin-top: 0.5em;
+  font-size: var(--text-base);
+  line-height: 1.4;
+  color: var(--ink-100);
+}
+
+.summit-info .when {
+  margin-top: 0.8em;
+  font-weight: 700;
+  color: var(--sunset-300);
+}
+
+.summit-stats {
+  display: flex;
+  gap: clamp(16px, 2.4vw, 44px);
+  margin: 1.1em 0 0;
+}
+
+.summit-stats dt {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--azure-300);
+}
+
+.summit-stats dd {
+  margin: 0.1em 0 0;
+  max-width: 22ch;
+  font-size: var(--text-sm);
+  line-height: 1.3;
+  color: var(--ink-200);
+}
+
+.stats-note {
+  margin-top: 0.5em;
+  font-size: var(--text-sm);
+  color: var(--ink-400);
+}
+
+/* 2 × 2 so all four ways in fit without scrolling */
+.summit-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1vw, 16px);
+  margin-top: 1.1em;
+}
+
+@media (max-width: 600px) {
+  .summit-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summit-action {
+  position: relative;
+  display: grid;
+  gap: 0.2em;
+  padding: clamp(12px, 1.1vw, 20px) calc(clamp(14px, 1.4vw, 24px) + 2.2em) clamp(12px, 1.1vw, 20px) clamp(16px, 1.6vw, 28px);
+  border-radius: var(--radius);
+  text-align: left;
+  background: rgb(11 19 43 / 0.78);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.12),
+    0 6px 0 rgb(0 0 0 / 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.summit-action:first-child {
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  box-shadow: 0 6px 0 var(--sunset-700);
+}
+
+/* the venue ask stands out too */
+.summit-action:nth-child(2) {
+  background: var(--azure-500);
+  color: var(--ink-950);
+  box-shadow: 0 6px 0 var(--azure-700);
+}
+
+.summit-action.minor {
+  background: rgb(11 19 43 / 0.78);
+}
+
+.summit-action:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgb(0 0 0 / 0.35);
+}
+
+.summit-action strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+}
+
+.summit-action span {
+  font-size: var(--text-sm);
+  line-height: 1.3;
+  opacity: 0.85;
+}
+
+.summit-action .go {
+  position: absolute;
+  right: clamp(16px, 1.6vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--text-xl);
+  opacity: 1;
+}
+
+/* Portrait: a letterbox strip of the photos rather than a tall 3:2 frame, so
+   the words and all four actions fit under it. (Last, to beat the 3:2 above.) */
+@media (max-aspect-ratio: 1/1) {
+  .summit-photos::before,
+  .summit-photos img {
+    aspect-ratio: 5 / 2;
+  }
+
+  .summit-photos img {
+    object-position: center 35%;
+  }
+}

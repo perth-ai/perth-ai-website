@@ -1,0 +1,17 @@
+{
+  "_note": "Settings for the DDD Perth 2026 booth kiosk at /ddd-2026. See docs/ddd-2026.md. The kiosk reads these from /ddd-2026/api/config.json, built from this file. Sign-ups go to the same Web3Forms inbox as the site's own forms (the access key comes from forms.json). Every `links` URL gets a QR code (the kiosk uses luma, slack and linkedin); `email` is shown as text. Open the kiosk with ?booth on the booth screen and tablets (see docs/ddd-2026.md).",
+  "eventName": "DDD Perth 2026",
+  "idleSeconds": 60,
+  "attractSeconds": 45,
+  "onScreenKeyboard": true,
+  "game": {
+    "prize": "Top score at 4pm wins a prize — plus a random draw for everyone who plays"
+  },
+  "formSubjectPrefix": "DDD Perth 2026 booth",
+  "links": {
+    "luma": "https://luma.com/perthai",
+    "slack": "https://join.slack.com/t/perthai/shared_invite/zt-49z8gc178-PWrxRnRe_Q0O6RS4Dxbzxw",
+    "linkedin": "https://www.linkedin.com/company/perth-ai/",
+    "email": "hello@perthai.org"
+  }
+}

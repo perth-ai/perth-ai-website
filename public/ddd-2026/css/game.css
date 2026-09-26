@@ -1,0 +1,211 @@
+/* Shared game UI (Quokka Run): intro, leaderboard, results and save card */
+
+/* intro */
+
+.game-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: calc(var(--gutter) * 1.5);
+  align-items: center;
+  flex: 1;
+  padding-top: var(--tap);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .game-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+.game-title {
+  font-size: calc(var(--text-3xl) * 1.15);
+}
+
+.game-title .fact {
+  color: var(--azure-300);
+}
+
+.game-title .hallu {
+  color: var(--coral-500);
+}
+
+.rules {
+  margin: 1.2em 0 1.6em;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.7em;
+  font-size: var(--text-lg);
+  color: var(--ink-100);
+}
+
+.rules li {
+  display: flex;
+  gap: 0.7em;
+  align-items: baseline;
+}
+
+.rules li::before {
+  content: '▶';
+  color: var(--sunset-500);
+  font-size: 0.75em;
+}
+
+.prize {
+  display: inline-block;
+  margin-bottom: 1.6em;
+  padding: 0.6em 1em;
+  border-radius: var(--radius);
+  background: rgb(255 158 44 / 0.14);
+  box-shadow: inset 0 0 0 2px rgb(255 158 44 / 0.4);
+  color: var(--sunset-300);
+  font-weight: 600;
+  font-size: var(--text-base);
+}
+
+.btn-start {
+  font-size: var(--text-xl);
+  min-height: calc(var(--tap) * 1.25);
+  padding: 0 2em;
+}
+
+/* leaderboard */
+
+.board {
+  padding: clamp(16px, 1.8vw, 32px);
+  border-radius: calc(var(--radius) * 1.3);
+  background: rgb(11 19 43 / 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.1);
+}
+
+.board h2 {
+  font-size: var(--text-xl);
+  margin-bottom: 0.6em;
+}
+
+.board ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3em;
+  counter-reset: rank;
+}
+
+.board li {
+  counter-increment: rank;
+  display: grid;
+  grid-template-columns: 2.2em 1fr auto;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.45em 0.7em;
+  border-radius: 10px;
+  font-size: var(--text-base);
+  background: rgb(255 255 255 / 0.04);
+}
+
+.board li::before {
+  content: counter(rank);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink-300);
+}
+
+.board li:nth-child(1)::before {
+  content: '🥇';
+}
+.board li:nth-child(2)::before {
+  content: '🥈';
+}
+.board li:nth-child(3)::before {
+  content: '🥉';
+}
+
+.board li.me {
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  font-weight: 700;
+}
+
+.board li.me::before {
+  color: var(--ink-950);
+}
+
+.board .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.board .pts {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.board .empty {
+  color: var(--ink-300);
+  font-size: var(--text-base);
+}
+
+/* results */
+
+.results {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: calc(var(--gutter) * 1.5);
+  align-items: start;
+  flex: 1;
+  min-height: 0;
+  padding-top: calc(var(--tap) + 24px);
+  overflow-y: auto;
+  padding-bottom: calc(var(--gutter) + var(--kb-height));
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
+
+.final-score {
+  font-family: var(--font-display);
+  font-size: calc(var(--text-3xl) * 1.4);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--sunset-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.results .summary {
+  margin-top: 0.4em;
+  font-size: var(--text-lg);
+  color: var(--ink-100);
+}
+
+.save-card {
+  margin-top: 1em;
+  padding: clamp(16px, 1.8vw, 32px);
+  border-radius: calc(var(--radius) * 1.3);
+  background: var(--sand-50);
+  color: var(--ink-900);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.save-card .pair {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1em;
+}
+
+.save-card h3 {
+  font-size: var(--text-xl);
+}
+
+.save-card .hint {
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+}

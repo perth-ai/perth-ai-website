@@ -1,0 +1,1066 @@
+/* Perth AI booth kiosk — tokens lifted from perthai.org */
+
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('../assets/fonts/inter.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Space Grotesk Variable';
+  src: url('../assets/fonts/space-grotesk.woff2') format('woff2-variations');
+  font-weight: 300 700;
+  font-display: block;
+}
+
+:root {
+  --ink-50: #f2f4f7;
+  --ink-100: #e0e3eb;
+  --ink-200: #c4c8d4;
+  --ink-300: #99a0b8;
+  --ink-400: #6c789d;
+  --ink-600: #3e4b6f;
+  --ink-700: #232f52;
+  --ink-800: #141f3d;
+  --ink-900: #0b132b;
+  --ink-950: #050a17;
+  --sunset-100: #ffecd6;
+  --sunset-300: #ffc785;
+  --sunset-500: #ff9e2c;
+  --sunset-600: #dc7700;
+  --sunset-700: #a05600;
+  --azure-300: #5cd8ff;
+  --azure-500: #00c2ff;
+  --azure-700: #007195;
+  --coral-500: #ff6b8a;
+  --orchid-300: #b28fef;
+  --orchid-500: #7b3fe4;
+  --orchid-700: #571bc1;
+  --sunbeam-400: #ffecc2;
+  --sand-50: #f9fafb;
+  --white: #fff;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid scale — works from a 1080p panel down to a tablet */
+  --gutter: clamp(16px, 2.6vw, 48px);
+  --radius: clamp(14px, 1.2vw, 22px);
+  --text-sm: clamp(14px, 1.05vw, 18px);
+  --text-base: clamp(16px, 1.3vw, 22px);
+  --text-lg: clamp(18px, 1.6vw, 28px);
+  --text-xl: clamp(22px, 2.2vw, 40px);
+  --text-2xl: clamp(28px, 3.2vw, 60px);
+  --text-3xl: clamp(34px, 4.4vw, 84px);
+  --tap: clamp(56px, 4.6vw, 80px);
+  --kb-height: 0px;
+}
+
+/* Portrait-mounted screens: scale type off the narrower width */
+@media (max-aspect-ratio: 1/1) {
+  :root {
+    --text-sm: clamp(14px, 1.9vw, 24px);
+    --text-base: clamp(16px, 2.3vw, 30px);
+    --text-lg: clamp(18px, 2.8vw, 36px);
+    --text-xl: clamp(22px, 3.8vw, 52px);
+    --text-2xl: clamp(28px, 5vw, 72px);
+    --text-3xl: clamp(34px, 6.4vw, 96px);
+    --tap: clamp(56px, 7vw, 96px);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ink-950);
+  color: var(--ink-900);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  -webkit-font-smoothing: antialiased;
+  /* Kiosk hygiene: no pinch zoom, no double-tap zoom, no accidental selection */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  touch-action: manipulation;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sunset-300);
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+.view {
+  position: absolute;
+  inset: 0;
+  animation: view-in 280ms ease-out;
+}
+
+@keyframes view-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- shared night-sky backdrop ---------- */
+
+.sky {
+  background:
+    radial-gradient(60vw 40vh at 85% -5%, rgb(123 63 228 / 0.45), transparent 70%),
+    radial-gradient(50vw 40vh at 5% 10%, rgb(0 194 255 / 0.18), transparent 70%),
+    linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 60%, #1a1540 100%);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.sky::before {
+  /* pixel stars */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 28% 8%, var(--sunbeam-400) 50%, transparent 51%),
+    radial-gradient(3px 3px at 44% 22%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 63% 12%, var(--azure-300) 50%, transparent 51%),
+    radial-gradient(2px 2px at 77% 26%, #fff 50%, transparent 51%),
+    radial-gradient(3px 3px at 91% 9%, var(--sunbeam-400) 50%, transparent 51%),
+    radial-gradient(2px 2px at 6% 42%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 96% 44%, #fff 50%, transparent 51%);
+  opacity: 0.7;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  to {
+    opacity: 0.35;
+  }
+}
+
+.skyline {
+  position: absolute;
+  left: 50%;
+  bottom: -2vh;
+  width: max(100vw, 1100px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.9;
+  image-rendering: pixelated;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: var(--tap);
+  padding: 0 1.4em;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  box-shadow: 0 6px 0 var(--sunset-700);
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 0 var(--sunset-700);
+  transform: translateY(4px);
+}
+
+.btn-primary[disabled] {
+  opacity: 0.6;
+}
+
+.btn-ghost {
+  background: rgb(255 255 255 / 0.1);
+  color: var(--white);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.25);
+}
+
+.btn-ghost-dark {
+  background: var(--white);
+  color: var(--ink-900);
+  box-shadow: inset 0 0 0 2px var(--ink-100);
+}
+
+.back {
+  position: absolute;
+  top: var(--gutter);
+  left: var(--gutter);
+  z-index: 5;
+  min-height: calc(var(--tap) * 0.85);
+  font-size: var(--text-base);
+}
+
+/* ---------- home ---------- */
+
+.home {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: clamp(16px, 3vh, 40px);
+  padding: var(--gutter) var(--gutter) calc(var(--gutter) + 6vh);
+}
+
+.home-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 36px);
+}
+
+.badge {
+  width: clamp(96px, 11vw, 200px);
+  height: auto;
+  flex: none;
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.5));
+}
+
+.home-header h1 {
+  font-size: var(--text-3xl);
+  margin-top: 0.15em;
+}
+
+.home-header h1 .accent {
+  color: var(--sunset-500);
+}
+
+.home-header .lede {
+  margin-top: 0.4em;
+  font-size: var(--text-lg);
+  color: var(--ink-200);
+}
+
+/* Landscape: Meet Perth AI, AI Disrupt and Quokka Run across the top, the five forms below. */
+.tiles {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(12px, 1.6vw, 28px);
+  min-height: 0;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+
+/* Landscape tablets: five columns leave no room for the small tiles' blurbs,
+   and their titles say enough on their own. */
+@media (min-aspect-ratio: 1/1) and (max-width: 1400px) {
+  .tile:not(.tile-wide) p {
+    display: none;
+  }
+}
+
+/* Phones: too small to fit everything on one screen, so the home screen scrolls. */
+@media (max-width: 600px) {
+  .home {
+    display: block;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .home-header {
+    margin-bottom: var(--gutter);
+  }
+
+  .home .badge {
+    width: 84px;
+  }
+
+  .tiles {
+    grid-template-rows: none;
+    grid-auto-rows: minmax(160px, auto);
+  }
+}
+
+.tile {
+  --accent: var(--azure-500);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8em;
+  padding: clamp(16px, 1.8vw, 36px);
+  border-radius: calc(var(--radius) * 1.3);
+  text-align: left;
+  background: rgb(11 19 43 / 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.1),
+    0 8px 0 rgb(0 0 0 / 0.35);
+  overflow: hidden;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.tile::after {
+  /* accent glow in the corner */
+  content: '';
+  position: absolute;
+  right: -30%;
+  top: -40%;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.18;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.tile:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 0 0 0 2px var(--accent),
+    0 2px 0 rgb(0 0 0 / 0.35);
+}
+
+.tile-icon {
+  display: grid;
+  place-items: center;
+  width: clamp(52px, 4.8vw, 92px);
+  aspect-ratio: 1;
+  border-radius: calc(var(--radius) * 0.8);
+  background: var(--accent);
+  color: var(--ink-950);
+  /* chunky pixel-ish edge */
+  box-shadow: 0 5px 0 rgb(0 0 0 / 0.35);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .tile-icon {
+    width: clamp(64px, 9vw, 120px);
+  }
+}
+
+/* Portrait tablets fit five rows of tiles, so each tile lays out sideways:
+   icon on the left, words on the right. (Phones scroll, so they keep the stack.) */
+@media (max-aspect-ratio: 1/1) and (min-width: 601px) {
+  .tile {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(14px, 2vw, 28px);
+  }
+
+  /* clear the PLAY / START HERE tag in the corner */
+  .tile:has(.play-tag) {
+    padding-top: calc(clamp(16px, 1.8vw, 36px) + 1.4em);
+  }
+
+  .tile > span:not(.go, .play-tag, .tile-icon) {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.tile-icon svg {
+  width: 55%;
+  height: 55%;
+}
+
+.tile > span:not(.go, .play-tag, .tile-icon) {
+  padding-right: 2.4em; /* clear the corner arrow */
+}
+
+.tile h2 {
+  font-size: var(--text-xl);
+  color: var(--white);
+}
+
+.tile p {
+  margin-top: 0.35em;
+  font-size: var(--text-base);
+  color: var(--ink-200);
+  line-height: 1.35;
+}
+
+.tile .go {
+  position: absolute;
+  right: clamp(16px, 1.8vw, 36px);
+  bottom: clamp(16px, 1.8vw, 36px);
+  font-size: var(--text-xl);
+  color: var(--accent);
+}
+
+.tile-game {
+  --accent: var(--ink-950);
+  background: linear-gradient(135deg, var(--sunset-500) 0%, var(--coral-500) 100%);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.3),
+    0 8px 0 var(--sunset-700);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.tile-game h2,
+.tile-game .go {
+  color: var(--ink-950);
+}
+
+.tile-game p {
+  color: var(--ink-800);
+}
+
+.tile-game .tile-icon {
+  background: var(--ink-950);
+  color: var(--sunset-500);
+}
+
+.tile-game .play-tag {
+  position: absolute;
+  top: clamp(16px, 1.8vw, 36px);
+  right: clamp(16px, 1.8vw, 36px);
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  background: var(--ink-950);
+  color: var(--sunset-300);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.tile-runner {
+  background: linear-gradient(135deg, var(--azure-300) 0%, var(--orchid-300) 100%);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.3),
+    0 8px 0 var(--azure-700);
+  animation: none;
+}
+
+.tile-runner .tile-icon {
+  color: var(--azure-300);
+}
+
+.tile-runner .tile-icon img {
+  width: 78%;
+  image-rendering: pixelated;
+}
+
+.tile-runner .play-tag {
+  color: var(--azure-300);
+}
+
+/* Meet Perth AI and AI Disrupt get double-width tiles */
+.tiles > .tile-wide {
+  grid-column: span 2;
+}
+
+.tile-about {
+  --accent: var(--azure-500);
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgb(0 194 255 / 0.35), transparent 60%),
+    linear-gradient(135deg, var(--orchid-500) 0%, var(--ink-800) 100%);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.2),
+    0 8px 0 var(--orchid-700);
+}
+
+.tile-about .tile-icon {
+  background: none;
+  box-shadow: none;
+}
+
+.tile-about .tile-icon img {
+  width: 100%;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.4));
+}
+
+.tile-about p {
+  color: var(--ink-100);
+}
+
+.tile-about .play-tag {
+  position: absolute;
+  top: clamp(16px, 1.8vw, 36px);
+  right: clamp(16px, 1.8vw, 36px);
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  background: var(--azure-500);
+  color: var(--ink-950);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.tile-summit {
+  --accent: var(--sunset-500);
+  background:
+    linear-gradient(180deg, rgb(5 10 23 / 0.25) 0%, rgb(5 10 23 / 0.9) 70%),
+    var(--photo) center / cover;
+}
+
+.tile-summit .play-tag {
+  position: absolute;
+  top: clamp(16px, 1.8vw, 36px);
+  right: clamp(16px, 1.8vw, 36px);
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* Quokka Run's top 3 on the home tile */
+.tile-board {
+  display: grid;
+  gap: 0.05em;
+  margin: 0.4em 0 0;
+  line-height: 1.25;
+  padding: 0;
+  list-style: none;
+  counter-reset: rank;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.tile-board:empty {
+  display: none;
+}
+
+.tile-board li {
+  counter-increment: rank;
+  display: grid;
+  grid-template-columns: 1.6em 1fr auto;
+  gap: 0.5em;
+  max-width: 22em;
+}
+
+.tile-board li::before {
+  content: counter(rank);
+  opacity: 0.6;
+}
+
+.tile-board span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-board b {
+  font-variant-numeric: tabular-nums;
+}
+
+/* short landscape screens only have room for the leader */
+@media (max-height: 820px) and (min-aspect-ratio: 1/1) {
+  .tile-board li:nth-child(n + 2) {
+    display: none;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow:
+      inset 0 0 0 2px rgb(255 255 255 / 0.3),
+      0 8px 0 var(--sunset-700),
+      0 0 60px rgb(255 158 44 / 0.45);
+  }
+}
+
+/* ---------- form view ---------- */
+
+.form-view {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .form-view {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.form-aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  padding: calc(var(--gutter) + var(--tap)) var(--gutter) var(--gutter);
+}
+
+.form-aside h1 {
+  position: relative;
+  font-size: var(--text-3xl);
+}
+
+.form-aside .intro {
+  position: relative;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  color: var(--ink-100);
+  max-width: 32ch;
+}
+
+.form-aside .mascot {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  width: clamp(80px, 9vw, 160px);
+  opacity: 0.95;
+}
+
+/* Portrait tablets: the form sits under this header, so keep the header short.
+   QR codes move beside the words instead of under them. */
+@media (max-aspect-ratio: 1/1) and (min-width: 601px) {
+  .form-aside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: end;
+    column-gap: var(--gutter);
+    row-gap: 0.5em;
+    padding-top: calc(var(--gutter) * 1.4 + var(--tap) * 0.85);
+  }
+
+  .form-aside > * {
+    grid-column: 1;
+  }
+
+  .form-aside h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .form-aside .intro {
+    max-width: none;
+    font-size: var(--text-base);
+  }
+
+  .form-aside .qr-cards {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: end;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .form-aside .qr-card {
+    padding: 0.6em;
+  }
+
+  .form-aside .qr-card img {
+    width: clamp(90px, 13vw, 150px);
+  }
+
+  .form-aside .mascot {
+    display: none;
+  }
+}
+
+/* On phones the mascot would sit on top of the intro text */
+@media (max-width: 600px) {
+  .form-aside .mascot {
+    display: none;
+  }
+
+  .qr-card img {
+    width: 96px;
+  }
+}
+
+.qr-cards {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 0.5em;
+}
+
+/* Booth devices keep people on the kiosk: the QR is for scanning, not tapping. */
+.booth .qr-card {
+  pointer-events: none;
+}
+
+.qr-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  text-decoration: none;
+  padding: 1em;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink-900);
+  width: fit-content;
+  box-shadow: 0 8px 0 rgb(0 0 0 / 0.3);
+}
+
+.qr-card img {
+  width: clamp(120px, 12vw, 220px);
+  height: auto;
+}
+
+.qr-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+}
+
+.qr-card span {
+  color: var(--ink-600);
+  font-size: var(--text-sm);
+}
+
+.form-panel {
+  position: relative;
+  background: var(--sand-50);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--gutter) var(--gutter) calc(var(--gutter) + var(--kb-height));
+  scroll-behavior: smooth;
+}
+
+/* Two columns so one-line fields pair up; everything else spans both.
+   Dense packing lets a lone one-line field fill a gap further up. */
+.form-panel form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+  align-content: center;
+  gap: clamp(10px, 1.7vh, 22px) clamp(12px, 1.4vw, 24px);
+  max-width: 820px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.form-panel form > :not(.field-short) {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .form-panel form > .field-short {
+    grid-column: 1 / -1;
+  }
+}
+
+.field label,
+.field .label {
+  display: block;
+  margin-bottom: 0.35em;
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--ink-900);
+}
+
+.field .req {
+  color: var(--sunset-600);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: calc(var(--tap) * 0.85);
+  padding: 0.6em 0.8em;
+  border: 2px solid var(--ink-100);
+  border-radius: var(--radius);
+  background: var(--white);
+  font: inherit;
+  font-size: var(--text-lg);
+  color: var(--ink-950);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.field textarea {
+  min-height: calc(var(--tap) * 1.35);
+  height: calc(var(--tap) * 1.35);
+  resize: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--azure-500);
+  box-shadow: 0 0 0 4px rgb(0 194 255 / 0.2);
+}
+
+.field.has-error input,
+.field.has-error textarea {
+  border-color: var(--coral-500);
+}
+
+.field .error {
+  margin-top: 0.35em;
+  color: #d6294f;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  min-height: 0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.chip {
+  min-height: calc(var(--tap) * 0.75);
+  padding: 0 1em;
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 2px var(--ink-100);
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--ink-700);
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--ink-900);
+  color: var(--white);
+  box-shadow: inset 0 0 0 2px var(--ink-900);
+}
+
+.chip[aria-pressed='true']::before {
+  content: '✓ ';
+  color: var(--sunset-500);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8em;
+  padding: 0.9em 1em;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: inset 0 0 0 2px var(--ink-100);
+  text-align: left;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: var(--ink-700);
+}
+
+.consent .box {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px var(--ink-300);
+  background: var(--white);
+  font-weight: 900;
+  color: var(--white);
+}
+
+.consent[aria-pressed='true'] .box {
+  background: var(--sunset-500);
+  box-shadow: none;
+  color: var(--ink-950);
+}
+
+.consent.has-error {
+  box-shadow: inset 0 0 0 2px var(--coral-500);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1em;
+}
+
+.form-note {
+  margin-top: -0.2em;
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+  text-align: center;
+}
+
+.form-actions .btn-primary {
+  flex: 1;
+}
+
+/* ---------- thanks ---------- */
+
+.thanks {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: var(--gutter);
+}
+
+.thanks-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em;
+  max-width: 900px;
+  padding: clamp(24px, 3vw, 56px);
+  border-radius: calc(var(--radius) * 1.5);
+  background: rgb(5 10 23 / 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.1);
+}
+
+.thanks .badge {
+  width: clamp(140px, 16vw, 280px);
+  animation: bounce 900ms cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(0.4) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+.thanks h1 {
+  font-size: var(--text-3xl);
+}
+
+.thanks p {
+  font-size: var(--text-lg);
+  color: var(--ink-100);
+  line-height: 1.4;
+}
+
+.countdown {
+  width: min(420px, 60vw);
+  height: 6px;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 0.15);
+  overflow: hidden;
+}
+
+.countdown span {
+  display: block;
+  height: 100%;
+  background: var(--sunset-500);
+  animation: drain linear forwards;
+}
+
+@keyframes drain {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* ---------- idle warning ---------- */
+
+.idle-warning {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: rgb(5 10 23 / 0.8);
+  backdrop-filter: blur(6px);
+  color: var(--white);
+  text-align: center;
+  animation: view-in 200ms ease-out;
+}
+
+.idle-warning h2 {
+  font-size: var(--text-2xl);
+}
+
+.idle-warning p {
+  margin-top: 0.6em;
+  font-size: var(--text-lg);
+  color: var(--ink-200);
+}
+
+.idle-warning .btn {
+  margin-top: 1.2em;
+}
+
+.idle-warning .big {
+  font-family: var(--font-display);
+  font-size: calc(var(--text-3xl) * 1.6);
+  color: var(--sunset-500);
+}
+
+/* ---------- toast ---------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  top: var(--gutter);
+  z-index: 120;
+  transform: translateX(-50%);
+  padding: 0.8em 1.4em;
+  border-radius: 999px;
+  background: var(--coral-500);
+  color: var(--ink-950);
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+  animation: view-in 200ms ease-out;
+}

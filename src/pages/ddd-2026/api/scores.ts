@@ -7,11 +7,20 @@ import { gameOrDefault, validateScore } from '../../../../public/ddd-2026/js/sco
 
 export const prerender = false;
 
+// Anyone can POST a score (the kiosk has no login), so these stop a script
+// flooding the board, the CSV and the prize draw with thousands of rows. Both
+// are far above what a real booth produces: a keen student replaying all day
+// gets to 30 or 40 runs, and a run lasts well over ten seconds, so even every
+// booth device finishing at once stays under the per-minute cap.
+const MAX_RUNS_PER_NAME = 100;
+const MAX_RUNS_PER_MINUTE = 60;
+
 // One row per player (their best), so a single visitor can't fill the board.
 export const GET: APIRoute = async ({ url }) => {
   await ensureSchema();
   const game = gameOrDefault(url.searchParams.get('game'));
-  const limit = Math.min(Number(url.searchParams.get('limit')) || 10, 50);
+  // Clamped both ways: SQLite reads a negative LIMIT as "no limit".
+  const limit = Math.min(50, Math.max(1, Math.round(Number(url.searchParams.get('limit'))) || 10));
   const { results } = await db()
     .prepare(
       `SELECT id, name, score FROM (
@@ -31,6 +40,22 @@ export const POST: APIRoute = async ({ request }) => {
   const { game, name, email, consent, updates, score, correct, rounds } = clean;
 
   await ensureSchema();
+  // `created_at` is stored in Perth time (see ensureSchema), so the window is too.
+  const load = await db()
+    .prepare(
+      `SELECT
+         (SELECT COUNT(*) FROM scores WHERE game = ? AND lower(name) = lower(?)) AS byName,
+         (SELECT COUNT(*) FROM scores WHERE created_at > datetime('now', '+8 hours', '-1 minute')) AS lastMinute`
+    )
+    .bind(game, name)
+    .first<{ byName: number; lastMinute: number }>();
+  if ((load?.lastMinute ?? 0) >= MAX_RUNS_PER_MINUTE) {
+    return json({ errors: { _form: 'The board is busy right now. Try saving again in a minute.' } }, 429);
+  }
+  if ((load?.byName ?? 0) >= MAX_RUNS_PER_NAME) {
+    return json({ errors: { _form: `That name has saved ${MAX_RUNS_PER_NAME} runs already. Pick another one.` } }, 429);
+  }
+
   const inserted = await db()
     .prepare('INSERT INTO scores (game, name, email, consent, updates, score, correct, rounds) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
     .bind(game, name, email, consent, updates, score, correct, rounds)

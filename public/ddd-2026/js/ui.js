@@ -42,6 +42,7 @@ export function toast(message, ms = 3000) {
   document.querySelector('.toast')?.remove();
   const el = document.createElement('div');
   el.className = 'toast';
+  el.setAttribute('role', 'alert');
   el.textContent = message;
   document.body.append(el);
   setTimeout(() => el.remove(), ms);
@@ -126,17 +127,37 @@ export function readChoices(root) {
   return out;
 }
 
+// Where a form shows errors that don't belong to one field (the API's `_form`,
+// for instance). Empty, it takes no space.
+export const formError = () => `<div class="form-error" role="alert" data-form-error></div>`;
+
+// Shows { fieldName: message } against the matching fields. A key with no
+// field goes in the form's formError() slot, or a toast if the form has none,
+// so a rejection is never silently dropped.
 export function showErrors(root, errors) {
   root.querySelectorAll('.has-error').forEach((f) => f.classList.remove('has-error'));
-  root.querySelectorAll('.field .error').forEach((e) => (e.textContent = ''));
+  root.querySelectorAll('.field .error, [data-form-error]').forEach((e) => (e.textContent = ''));
   let first = null;
+  const general = [];
   for (const [name, msg] of Object.entries(errors)) {
     const field = root.querySelector(`[data-field="${name}"]`);
-    if (!field) continue;
+    if (!field) {
+      general.push(msg);
+      continue;
+    }
     field.classList.add('has-error');
     const slot = field.querySelector('.error');
     if (slot) slot.textContent = msg;
     first ??= field;
+  }
+  if (general.length) {
+    const slot = root.querySelector('[data-form-error]');
+    if (slot) {
+      slot.textContent = general.join(' ');
+      first ??= slot;
+    } else {
+      toast(general.join(' '));
+    }
   }
   first?.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }

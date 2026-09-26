@@ -40,14 +40,8 @@ const HAND_UP = [
   { form: 'sponsor', title: 'Sponsor', points: ['Venue, food, prizes, credits', 'Keeps events free', 'Meet builders, not a list'] },
 ];
 
-const TEAM = [
-  ['Susannah Soon', 'President & Founder'],
-  ['Timothy de Boer', 'Vice President & Founder'],
-  ['Will Webster', 'Founder, Sponsorship'],
-  ['Kristina Gagalova', 'Founder, Volunteers'],
-  ['Rajat Saddi', 'Founder, Workshops & Automation'],
-  ['Rafael Avigad', 'Founder, Website & Automation'],
-];
+// The team comes from src/data/team.json via api/config.json, so the card can't
+// drift from the website's own team list.
 
 const initials = (name) => name.split(' ').filter((w) => /^[A-Z]/.test(w)).map((w) => w[0]).join('').slice(0, 2);
 const bullets = (points) => `<ul>${points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
@@ -58,7 +52,7 @@ const cards = (config) => [
        <img class="badge" src="/perth-ai-badge.webp" alt="Perth AI">
        <span class="logo-chip"><img src="assets/partners/ddd-perth.png" alt="DDD Perth"></span>
      </div>
-     <div class="eyebrow">Perth AI @ DDD Perth 2026 · 3 October</div>
+     <div class="eyebrow">Perth AI @ ${esc(config.eventName)}${config.eventDate ? ` · ${esc(config.eventDate)}` : ''}</div>
      <h1>The people building with AI in Perth, <span class="hl-azure">in one room.</span></h1>
      <p class="sub">Perth is a long way from everywhere. <span class="hl-orchid">That’s an advantage.</span></p>
    </div>`,
@@ -126,7 +120,7 @@ const cards = (config) => [
 
   `<h2>Run by <span class="hl-azure">volunteers</span></h2>
    <div class="boxes three people">
-     ${TEAM.map(([name, role], i) => `<div class="card-box person"><span class="avatar a${i % 3}">${initials(name)}</span><div><h3>${esc(name)}</h3><p>${esc(role)}</p></div></div>`).join('')}
+     ${(config.team ?? []).map(({ name, role }, i) => `<div class="card-box person"><span class="avatar a${i % 3}">${esc(initials(name))}</span><div><h3>${esc(name)}</h3><p>${esc(role)}</p></div></div>`).join('')}
    </div>
    <div class="supported">
      <span>Supported by</span>
@@ -139,7 +133,7 @@ const cards = (config) => [
      ${qrCard(config.links, { key: 'slack', label: 'Slack', caption: 'Join the chat' })}
      ${qrCard(config.links, { key: 'linkedin', label: 'LinkedIn', caption: 'Follow Perth AI' })}
    </div>
-   <p class="contacts">${esc(config.links.email ?? '')} · perthai.org</p>
+   <p class="contacts">${esc(config.links?.email ?? '')} · perthai.org</p>
    <p class="acknowledgement">Perth AI meets on the lands of the Whadjuk people of the Noongar nation.</p>`,
 ];
 

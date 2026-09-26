@@ -1,6 +1,7 @@
 {
-  "_note": "Settings for the DDD Perth 2026 booth kiosk at /ddd-2026. See docs/ddd-2026.md. The kiosk reads these from /ddd-2026/api/config.json, built from this file. Sign-ups go to the same Web3Forms inbox as the site's own forms (the access key comes from forms.json). Every `links` URL gets a QR code (the kiosk uses luma, slack and linkedin); `email` is shown as text. Open the kiosk with ?booth on the booth screen and tablets (see docs/ddd-2026.md).",
+  "_note": "Settings for the DDD Perth 2026 booth kiosk at /ddd-2026. See docs/ddd-2026.md. The kiosk reads these from /ddd-2026/api/config.json, built from this file. `eventDate` is ISO (YYYY-MM-DD) and is shown as a day and month. Sign-ups go to the same Web3Forms inbox as the site's own forms (the access key comes from forms.json). Every `links` URL gets a QR code (the kiosk uses luma, slack and linkedin); `email` is shown as text. Open the kiosk with ?booth on the booth screen and tablets (see docs/ddd-2026.md).",
   "eventName": "DDD Perth 2026",
+  "eventDate": "2026-10-03",
   "idleSeconds": 60,
   "attractSeconds": 45,
   "onScreenKeyboard": true,

@@ -1,6 +1,6 @@
 // Quokka Run's leaderboard and "save my score" card.
 
-import { esc, api, toast, textField, consentField, wireChoices, readChoices, showErrors } from './ui.js';
+import { esc, api, toast, textField, consentField, formError, wireChoices, readChoices, showErrors } from './ui.js';
 import { close as closeKeyboard } from './keyboard.js';
 
 // Leaving an email enters the prize draw, and it's only used to contact the
@@ -44,6 +44,7 @@ export const saveCard = () => `
     </div>
     ${consentField(UPDATES_TEXT)}
     <p class="hint">Only your leaderboard name is shown on screen. Your email is only used to contact the winner.</p>
+    ${formError()}
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Save my score</button>
       <button type="button" class="btn btn-ghost-dark" data-action="home">Skip</button>
@@ -71,6 +72,8 @@ export function wireSaveCard(root, { game, result, onAgain }) {
       loadBoard(boardEl, game, data.name);
     } catch (err) {
       btn.disabled = false;
+      // The API rejects with { errors }: per-field ones, or `_form` when the
+      // score itself is implausible or the board is being flooded (429).
       if (err.data?.errors) showErrors(form, err.data.errors);
       else toast('Couldn’t save your score — please grab someone at the booth.');
     }

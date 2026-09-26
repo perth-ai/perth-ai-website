@@ -5,7 +5,7 @@
 // text describes what's in frame without naming anyone (nobody in the photos
 // has been identified), and there's no photo credit (unconfirmed).
 
-import { mount, SKY, BACK } from './ui.js';
+import { esc, mount, SKY, BACK } from './ui.js';
 
 const PHOTOS = [
   { src: 'opening', alt: 'A speaker opening the summit in front of a large AI Disrupt Summit 2025 title slide.' },
@@ -50,7 +50,7 @@ export function renderSummit() {
       <div class="summit-layout">
         <figure class="summit-photos">
           ${PHOTOS.map(
-            (p, i) => `<img src="${summitPhoto(p.src)}" alt="${p.alt}" class="${i === 0 ? 'on' : ''}">`
+            (p, i) => `<img src="${summitPhoto(p.src)}" alt="${esc(p.alt)}" class="${i === 0 ? 'on' : ''}">`
           ).join('')}
           <figcaption>AI Disrupt Summit 2025, St Catherine’s College, Curtin University.</figcaption>
         </figure>
@@ -60,15 +60,15 @@ export function renderSummit() {
           <p class="lede">One day, once a year, where everyone in Perth building with AI ends up in the same building. Talks, a startup expo, a hackathon and workshops — then drinks in the courtyard.</p>
           <p class="when">📅 December 2026</p>
           <dl class="summit-stats">
-            ${STATS.map((s) => `<div><dt>${s.figure}</dt><dd>${s.label}</dd></div>`).join('')}
+            ${STATS.map((s) => `<div><dt>${esc(s.figure)}</dt><dd>${esc(s.label)}</dd></div>`).join('')}
           </dl>
           <p class="stats-note">at the 2025 summit</p>
           <div class="summit-actions">
             ${ACTIONS.map(
               (a) => `
-              <button class="summit-action${a.minor ? ' minor' : ''}" data-action="form" data-arg="${a.form}">
-                <strong>${a.title}</strong>
-                <span>${a.blurb}</span>
+              <button class="summit-action${a.minor ? ' minor' : ''}" data-action="form" data-arg="${esc(a.form)}">
+                <strong>${esc(a.title)}</strong>
+                <span>${esc(a.blurb)}</span>
                 <span class="go" aria-hidden="true">→</span>
               </button>`
             ).join('')}

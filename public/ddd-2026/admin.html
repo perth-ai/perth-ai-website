@@ -165,24 +165,28 @@
         unlock();
       });
 
-      document.getElementById('draw').addEventListener('click', async () => {
-        const { winner } = await call('/draw', 'POST');
-        document.getElementById('winner').innerHTML = winner
-          ? `<div class="winner">🎉 <b>${esc(winner.name)}</b> — ${esc(winner.email)} (best score ${winner.score})</div>`
-          : `<div class="winner">No eligible entrants yet.</div>`;
+      // A D1 error or a wifi blip would otherwise make a button silently do nothing.
+      const failed = (err) => alert(err.message || 'That didn’t work. Try again.');
+
+      document.getElementById('draw').addEventListener('click', () => {
+        call('/draw', 'POST')
+          .then(({ winner }) => {
+            document.getElementById('winner').innerHTML = winner
+              ? `<div class="winner">🎉 <b>${esc(winner.name)}</b> — ${esc(winner.email)} (best score ${winner.score})</div>`
+              : `<div class="winner">No eligible entrants yet.</div>`;
+          })
+          .catch(failed);
       });
 
-      document.getElementById('reset').addEventListener('click', async () => {
+      document.getElementById('reset').addEventListener('click', () => {
         if (!confirm('Hide every score from the public leaderboard?')) return;
-        await call('/scores/reset', 'POST');
-        load();
+        call('/scores/reset', 'POST').then(load).catch(failed);
       });
 
-      document.getElementById('scores').addEventListener('click', async (e) => {
+      document.getElementById('scores').addEventListener('click', (e) => {
         const id = e.target.dataset.hide;
         if (!id) return;
-        await call(`/scores/${id}/hide`, 'POST');
-        load();
+        call(`/scores/${id}/hide`, 'POST').then(load).catch(failed);
       });
 
     </script>

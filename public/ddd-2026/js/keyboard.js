@@ -6,8 +6,14 @@ const LETTERS = [
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', "'"],
   ['{shift}', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '-', '{bksp}'],
-  ['@', '.', '{space}', '.com', '_', '{done}'],
+  ['@', '.', ',', '{space}', '?', '.com', '_', '{done}'],
 ];
+
+// Shift gives capitals, and on the number row the same symbols as a physical
+// keyboard. Together with the bottom row that's enough to type an admin PIN
+// with punctuation in it (see docs/ddd-2026.md).
+const SHIFTED = { 1: '!', 2: '@', 3: '#', 4: '$', 5: '%', 6: '^', 7: '&', 8: '*', 9: '(', 0: ')' };
+const shifted = (k) => SHIFTED[k] ?? (k.length === 1 ? k.toUpperCase() : k);
 
 const LABELS = { '{shift}': '⇧ Shift', '{bksp}': '⌫', '{space}': 'space', '{done}': 'Done ✓' };
 
@@ -30,7 +36,7 @@ function render() {
           if (k === '{space}') cls.push('space');
           if (k === '{done}') cls.push('done');
           if (k === '.com') cls.push('mod');
-          const label = LABELS[k] ?? (shift && k.length === 1 ? k.toUpperCase() : k);
+          const label = LABELS[k] ?? (shift ? shifted(k) : k);
           return `<button type="button" class="${cls.join(' ')}" data-key="${k}">${label}</button>`;
         })
         .join('')}</div>`
@@ -65,7 +71,7 @@ function press(key) {
   if (key === '{bksp}') return backspace();
   if (key === '{done}') return close(true);
   if (key === '{space}') return insert(' ');
-  insert(shift && key.length === 1 ? key.toUpperCase() : key);
+  insert(shift ? shifted(key) : key);
   if (shift) {
     shift = false;
     render();
@@ -115,7 +121,7 @@ export function initKeyboard(enabled) {
     }
   });
 
-  document.addEventListener('focusout', (e) => {
+  document.addEventListener('focusout', () => {
     // Hide only if focus isn't moving to another text field.
     setTimeout(() => {
       if (!isTextField(document.activeElement)) close();

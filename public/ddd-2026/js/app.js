@@ -1,14 +1,14 @@
 import { FORMS, UPDATES_TEXT, PRIVACY_NOTE, validateForm } from './forms.js';
 import { initKeyboard, close as closeKeyboard } from './keyboard.js';
 import {
-  esc, mount, api, toast, SKY, BACK, hasOwnKeyboard, qrCard,
-  textField, chipsField, consentField, wireChoices, readChoices, showErrors,
+  esc, mount, api, SKY, BACK, hasOwnKeyboard, qrCard,
+  textField, chipsField, consentField, formError, wireChoices, readChoices, showErrors,
 } from './ui.js';
 import { startRunner, startAttract, stopRunner, topRunners } from './runner.js';
 import { quokkaIcon } from './sprites.js';
 import { renderSummit, stopSummit, summitPhoto } from './summit.js';
 import { renderAbout, stopAbout } from './about.js';
-import { submitForm, initOutbox } from './outbox.js';
+import { submitForm, initOutbox, setOutboxTarget } from './outbox.js';
 
 const ICONS = {
   slack: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/>',
@@ -188,6 +188,7 @@ function renderForm(id) {
         <form novalidate>
           ${form.fields.map((f) => (f.type.includes('chips') ? chipsField(f) : textField({ ...f, short: pairs.has(f) }))).join('')}
           ${form.subscribe ? '' : consentField(UPDATES_TEXT)}
+          ${formError()}
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">${esc(form.submitLabel)}</button>
           </div>
@@ -206,16 +207,12 @@ function renderForm(id) {
     const check = validateForm(id, data);
     if (!check.ok) return showErrors(formEl, check.errors);
 
-    const btn = formEl.querySelector('[type=submit]');
-    btn.disabled = true;
-    try {
-      await submitForm(id, check.clean);
-      go('thanks', { title: `Thanks, ${data.name.split(' ')[0]}!`, message: form.thanks });
-    } catch (err) {
-      btn.disabled = false;
-      if (err.data?.errors) showErrors(formEl, err.data.errors);
-      else toast('Couldn’t save that — please grab someone at the booth.');
-    }
+    // submitForm never rejects: if the send fails it's queued on the device and
+    // retried (outbox.js), so the visitor always gets the thanks screen. That's
+    // deliberate. Sign-ups have no server-side validation to show, either.
+    formEl.querySelector('[type=submit]').disabled = true;
+    await submitForm(id, check.clean);
+    go('thanks', { title: `Thanks, ${data.name.split(' ')[0]}!`, message: form.thanks });
   });
 }
 
@@ -293,9 +290,43 @@ function initIdle(seconds, attractSeconds) {
 }
 
 // ---------- boot ----------
+// api/config.json is a static file built at deploy time, but venue wifi can
+// still fail the first fetch. Rather than show a blank screen, boot with these
+// and keep trying in the background: the home screen, the game, the cards and
+// the forms all work without it. What's missing until it arrives: the QR
+// codes, the prize line, the team card, and the Web3Forms key (sign-ups are
+// queued on the device until then, see outbox.js).
+
+const FALLBACK_CONFIG = {
+  eventName: 'DDD Perth 2026',
+  idleSeconds: 60,
+  attractSeconds: 45,
+  onScreenKeyboard: true,
+  game: {},
+  links: {},
+  team: [],
+  forms: {},
+};
+
+const CONFIG_RETRY_MS = 15_000;
+
+async function loadConfig() {
+  try {
+    return await api('api/config.json');
+  } catch {
+    const timer = setInterval(async () => {
+      try {
+        config = await api('api/config.json');
+        clearInterval(timer);
+        setOutboxTarget(config.forms);
+      } catch {}
+    }, CONFIG_RETRY_MS);
+    return FALLBACK_CONFIG;
+  }
+}
 
 async function boot() {
-  config = await api('api/config.json');
+  config = await loadConfig();
   booth = isBooth();
   document.documentElement.classList.toggle('booth', booth);
   initOutbox(config);

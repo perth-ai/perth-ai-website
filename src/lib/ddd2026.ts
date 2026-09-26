@@ -30,7 +30,10 @@ const kioskEnv = env as unknown as KioskEnv;
 export const db = () => kioskEnv.DDD_2026_DB;
 
 // Creates the table the first time each worker instance touches the database,
-// so there's no migration step to remember on deploy.
+// so there's no migration step to remember on deploy. That only covers a new
+// database: CREATE TABLE IF NOT EXISTS won't add a column to an existing one,
+// so a schema change after the database exists needs an ALTER TABLE here (or
+// deleting the database, which is fine before the event).
 let ready: Promise<unknown> | undefined;
 export function ensureSchema() {
   ready ??= db()
@@ -50,11 +53,8 @@ export function ensureSchema() {
       )`
     )
     .run()
-    // `updates` (the event-updates opt-in) came later; add it to a table made before it.
-    .then(() => db().prepare('ALTER TABLE scores ADD COLUMN updates INTEGER NOT NULL DEFAULT 0').run())
-    .catch((err: unknown) => {
-      if (!String(err).includes('duplicate column')) throw err;
-    })
+    // Forget a failed attempt so the next request tries again rather than
+    // failing forever on a stale rejection.
     .catch((err: unknown) => {
       ready = undefined;
       throw err;
@@ -62,8 +62,18 @@ export function ensureSchema() {
   return ready;
 }
 
+// These API routes are served by the Worker, not as static assets, so the
+// headers in public/_headers don't apply to them. Set the same ones here.
 export const json = (body: unknown, status = 200) =>
-  Response.json(body, { status, headers: { 'cache-control': 'no-store' } });
+  Response.json(body, {
+    status,
+    headers: {
+      'cache-control': 'no-store',
+      'x-content-type-options': 'nosniff',
+      'referrer-policy': 'strict-origin-when-cross-origin',
+      'x-frame-options': 'SAMEORIGIN',
+    },
+  });
 
 // The admin page is on the public internet, so the PIN has to be long enough
 // that guessing it isn't practical. A short one is treated as not set.

@@ -853,12 +853,23 @@ p {
   border-color: var(--coral-500);
 }
 
-.field .error {
+.field .error,
+.form-error {
   margin-top: 0.35em;
   color: #d6294f;
   font-weight: 600;
   font-size: var(--text-sm);
   min-height: 0;
+}
+
+/* Form-level errors (the API's `_form`); hidden until there's something to say. */
+.form-error {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form-error:empty {
+  display: none;
 }
 
 .chips {

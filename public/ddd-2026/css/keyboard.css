@@ -1,0 +1,73 @@
+/* On-screen keyboard — docks to the bottom when a text field is focused */
+
+.osk {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  padding: 10px clamp(8px, 2vw, 40px) 14px;
+  background: var(--ink-900);
+  box-shadow: 0 -10px 30px rgb(0 0 0 / 0.35);
+  transform: translateY(105%);
+  transition: transform 200ms ease;
+}
+
+.osk.open {
+  transform: translateY(0);
+}
+
+.osk-row {
+  display: flex;
+  justify-content: center;
+  gap: clamp(4px, 0.5vw, 10px);
+  margin-top: clamp(4px, 0.5vw, 10px);
+}
+
+.osk-key {
+  flex: 1 1 0;
+  max-width: 110px;
+  height: clamp(48px, 6.2vh, 78px);
+  border-radius: 10px;
+  background: var(--ink-700);
+  color: var(--white);
+  font-size: clamp(18px, 1.6vw, 30px);
+  font-weight: 600;
+  box-shadow: 0 4px 0 var(--ink-950);
+}
+
+.osk-key:active,
+.osk-key.pressed {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--ink-950);
+  background: var(--ink-600);
+}
+
+.osk-key.wide {
+  flex-grow: 1.6;
+  max-width: 180px;
+}
+
+.osk-key.space {
+  flex-grow: 5;
+  max-width: 560px;
+}
+
+.osk-key.mod {
+  background: var(--ink-800);
+  font-size: clamp(14px, 1.2vw, 22px);
+}
+
+.osk-key.mod.on {
+  background: var(--azure-500);
+  color: var(--ink-950);
+}
+
+.osk-key.done {
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  box-shadow: 0 4px 0 var(--sunset-700);
+  flex-grow: 1.6;
+  max-width: 200px;
+  font-size: clamp(14px, 1.2vw, 22px);
+}

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Booth Admin</title>
+    <link rel="icon" href="/favicon-32.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <style>
+      html, body { overflow: auto; background: var(--sand-50); user-select: text; }
+      .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+      header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+      header img { width: 64px; }
+      header h1 { font-size: 32px; }
+      header .spacer { flex: 1; }
+      .btn { font-size: 16px; min-height: 48px; }
+      .pin { display: flex; gap: 12px; max-width: 420px; }
+      .osk { font-family: var(--font-sans); }
+      .pin input { flex: 1; font: inherit; font-size: 24px; padding: 8px 14px; border: 2px solid var(--ink-100); border-radius: 12px; letter-spacing: 0.3em; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
+      .stat { background: #fff; border-radius: 14px; padding: 16px; box-shadow: inset 0 0 0 2px var(--ink-100); }
+      .stat b { display: block; font-family: var(--font-display); font-size: 36px; }
+      .stat a { font-size: 14px; color: var(--azure-700); font-weight: 600; }
+      h2 { font-size: 22px; margin: 28px 0 12px; }
+      table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; font-size: 15px; }
+      th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--ink-50); vertical-align: top; }
+      th { background: var(--ink-900); color: #fff; font-weight: 600; }
+      tr.hidden td { opacity: 0.4; text-decoration: line-through; }
+      .row-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .winner { margin-top: 12px; padding: 16px; border-radius: 14px; background: var(--sunset-100); font-size: 20px; }
+      .muted { color: var(--ink-400); }
+      select { font: inherit; padding: 8px; border-radius: 10px; border: 2px solid var(--ink-100); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <img src="/perth-ai-mark.webp" alt="">
+        <h1>Booth admin</h1>
+        <span class="spacer"></span>
+        <a class="btn btn-primary" href="./">← Back to kiosk</a>
+      </header>
+
+      <form class="pin" id="login">
+        <input id="pin" type="text" style="-webkit-text-security:disc" placeholder="PIN" aria-label="Admin PIN" autocomplete="off">
+        <button class="btn btn-primary">Unlock</button>
+      </form>
+
+      <div id="panel" hidden>
+        <div class="grid" id="stats"></div>
+
+        <h2>Prize draw</h2>
+        <div class="row-actions">
+          <button class="btn btn-primary" id="draw">🎲 Draw a random winner</button>
+        </div>
+        <div id="winner"></div>
+
+        <h2>Leaderboard</h2>
+        <div class="row-actions" style="margin-bottom:12px">
+          <button class="btn btn-ghost-dark" id="reset">Clear public leaderboard</button>
+          <span class="muted">“Hide” removes every score under that name. Hidden scores are kept for export and the prize draw.</span>
+        </div>
+        <table id="scores"></table>
+      </div>
+    </div>
+
+    <script type="module">
+      import { pendingCount } from './js/outbox.js';
+      import { initKeyboard } from './js/keyboard.js';
+      import { hasOwnKeyboard } from './js/ui.js';
+      initKeyboard(!hasOwnKeyboard());
+      const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+      // The PIN lives in memory only, so leaving this page (or the auto-lock below)
+      // locks admin again. Never persist it: the next visitor can hold the badge too.
+      let pin = '';
+
+      const call = async (path, method = 'GET') => {
+        const res = await fetch('api/admin' + path, { method, headers: { 'x-admin-pin': pin } });
+        const body = await res.json().catch(() => ({}));
+        if (res.status === 401) throw new Error('Wrong PIN');
+        if (!res.ok) throw new Error(body.error || 'Admin isn’t responding. Try again.');
+        return body;
+      };
+
+      const table = (el, rows, cols, extra) => {
+        if (!rows.length) return (el.innerHTML = '<tr><td class="muted">Nothing yet.</td></tr>');
+        el.innerHTML =
+          `<tr>${cols.map((c) => `<th>${esc(c)}</th>`).join('')}${extra ? '<th></th>' : ''}</tr>` +
+          rows.map((r) => `<tr class="${r.hidden ? 'hidden' : ''}">${cols.map((c) => `<td>${esc(Array.isArray(r[c]) ? r[c].join(', ') : r[c])}</td>`).join('')}${extra ? `<td>${extra(r)}</td>` : ''}</tr>`).join('');
+      };
+
+      function toCsv(rows) {
+        if (!rows.length) return '';
+        const cols = [...new Set(rows.flatMap((r) => Object.keys(r)))];
+        const cell = (v) => {
+          let s = Array.isArray(v) ? v.join('; ') : v == null ? '' : String(v);
+          if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`; // stop Excel treating visitor input as a formula
+          return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        };
+        return [cols.join(','), ...rows.map((r) => cols.map((c) => cell(r[c])).join(','))].join('\r\n');
+      }
+
+      // Built here rather than linked, so the PIN travels in a header and never lands in a URL.
+      async function download(name) {
+        const rows = await call('/scores');
+        const blob = new Blob(['﻿' + toCsv(rows)], { type: 'text/csv' });
+        const a = Object.assign(document.createElement('a'), {
+          href: URL.createObjectURL(blob),
+          download: `perthai-${name}-${new Date().toISOString().slice(0, 10)}.csv`,
+        });
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      }
+
+      async function load() {
+        const s = await call('/summary');
+        const link = (name) => `<a href="#" data-csv="${name}">Download CSV</a>`;
+        // Sign-ups aren't stored here: they're emailed to the Perth AI inbox through Web3Forms.
+        const pending = pendingCount();
+        document.getElementById('stats').innerHTML =
+          `<div class="stat">Sign-ups<b>Inbox</b>They’re emailed to the Perth AI inbox</div>` +
+          (pending ? `<div class="stat">Sign-ups waiting to send from this device<b>${pending}</b>Retried every minute</div>` : '') +
+          `<div class="stat">Quokka Run plays<b>${s.plays.runner}</b>${link('scores')}</div>` +
+          `<div class="stat">Prize draw entrants<b>${s.drawEntrants}</b></div>`;
+
+        // `consent` = gave an email, so in the prize draw; `updates` = also opted in to event emails.
+        const scores = (await call('/scores')).map((r) => ({ ...r, 'in draw': r.consent ? 'yes' : '', 'event updates': r.updates ? 'yes' : '' }));
+        table(document.getElementById('scores'), scores, ['name', 'score', 'correct', 'email', 'in draw', 'event updates', 'created_at'],
+          (r) => (r.hidden ? '' : `<button class="btn btn-ghost-dark" data-hide="${r.id}">Hide</button>`));
+
+      }
+
+      document.getElementById('stats').addEventListener('click', (e) => {
+        const name = e.target.dataset.csv;
+        if (!name) return;
+        e.preventDefault();
+        download(name).catch(() => alert('Couldn’t build that CSV. Try again.'));
+      });
+
+      async function unlock() {
+        try {
+          await load();
+          document.getElementById('login').hidden = true;
+          document.getElementById('panel').hidden = false;
+        } catch (err) {
+          pin = '';
+          alert(err.message);
+        }
+      }
+
+      // Walked away with admin open on the kiosk? Head back after 2 idle minutes.
+      let lockTimer;
+      const armLock = () => {
+        clearTimeout(lockTimer);
+        lockTimer = setTimeout(() => location.replace('./'), 120_000);
+      };
+      ['pointerdown', 'keydown'].forEach((ev) => document.addEventListener(ev, armLock, { capture: true }));
+      armLock();
+
+      document.getElementById('login').addEventListener('submit', (e) => {
+        e.preventDefault();
+        pin = document.getElementById('pin').value;
+        unlock();
+      });
+
+      // A D1 error or a wifi blip would otherwise make a button silently do nothing.
+      const failed = (err) => alert(err.message || 'That didn’t work. Try again.');
+
+      document.getElementById('draw').addEventListener('click', () => {
+        call('/draw', 'POST')
+          .then(({ winner }) => {
+            document.getElementById('winner').innerHTML = winner
+              ? `<div class="winner">🎉 <b>${esc(winner.name)}</b> — ${esc(winner.email)} (best score ${winner.score})</div>`
+              : `<div class="winner">No eligible entrants yet.</div>`;
+          })
+          .catch(failed);
+      });
+
+      document.getElementById('reset').addEventListener('click', () => {
+        if (!confirm('Hide every score from the public leaderboard?')) return;
+        call('/scores/reset', 'POST').then(load).catch(failed);
+      });
+
+      document.getElementById('scores').addEventListener('click', (e) => {
+        const id = e.target.dataset.hide;
+        if (!id) return;
+        call(`/scores/${id}/hide`, 'POST').then(load).catch(failed);
+      });
+
+    </script>
+  </body>
+</html>

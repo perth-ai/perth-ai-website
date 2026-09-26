@@ -9,3 +9,8 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# The DDD Perth 2026 booth kiosk is for the booth, not for search results,
+# whatever ALLOW_INDEXING says for the rest of the site. See docs/ddd-2026.md.
+/ddd-2026/*
+  X-Robots-Tag: noindex, nofollow

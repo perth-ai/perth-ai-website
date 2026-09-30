@@ -1,0 +1,15 @@
+{
+  "name": "Perth AI booth",
+  "short_name": "Perth AI",
+  "description": "The Perth AI booth at DDD Perth 2026: Quokka Run, AI Disrupt and ways to get involved.",
+  "scope": "/ddd-2026/",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#050a17",
+  "theme_color": "#050a17",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

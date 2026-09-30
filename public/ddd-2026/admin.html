@@ -51,6 +51,12 @@
       <div id="panel" hidden>
         <div class="grid" id="stats"></div>
 
+        <h2>This device</h2>
+        <div class="row-actions" style="align-items:center">
+          <button class="btn btn-ghost-dark" id="booth"></button>
+          <span class="muted" id="booth-note"></span>
+        </div>
+
         <h2>Prize draw</h2>
         <div class="row-actions">
           <button class="btn btn-primary" id="draw">🎲 Draw a random winner</button>
@@ -60,7 +66,7 @@
         <h2>Leaderboard</h2>
         <div class="row-actions" style="margin-bottom:12px">
           <button class="btn btn-ghost-dark" id="reset">Clear public leaderboard</button>
-          <span class="muted">“Hide” removes every score under that name. Hidden scores are kept for export and the prize draw.</span>
+          <span class="muted">“Hide” removes every score by that player: the same email, or the same name if they gave no email. Hidden scores are kept for export and the prize draw. “played” is when the run ended on the device; it can be earlier than “saved” if the device waited out a wifi drop.</span>
         </div>
         <table id="scores"></table>
       </div>
@@ -68,6 +74,7 @@
 
     <script type="module">
       import { pendingCount } from './js/outbox.js';
+      import { pendingScores } from './js/scoreboard.js';
       import { initKeyboard } from './js/keyboard.js';
       import { hasOwnKeyboard } from './js/ui.js';
       initKeyboard(!hasOwnKeyboard());
@@ -119,15 +126,20 @@
         const link = (name) => `<a href="#" data-csv="${name}">Download CSV</a>`;
         // Sign-ups aren't stored here: they're emailed to the Perth AI inbox through Web3Forms.
         const pending = pendingCount();
+        const scoresWaiting = pendingScores();
         document.getElementById('stats').innerHTML =
           `<div class="stat">Sign-ups<b>Inbox</b>They’re emailed to the Perth AI inbox</div>` +
           (pending ? `<div class="stat">Sign-ups waiting to send from this device<b>${pending}</b>Retried every minute</div>` : '') +
+          (scoresWaiting ? `<div class="stat">Scores waiting to send from this device<b>${scoresWaiting}</b>Retried every minute</div>` : '') +
           `<div class="stat">Quokka Run plays<b>${s.plays.runner}</b>${link('scores')}</div>` +
           `<div class="stat">Prize draw entrants<b>${s.drawEntrants}</b></div>`;
 
         // `consent` = gave an email, so in the prize draw; `updates` = also opted in to event emails.
-        const scores = (await call('/scores')).map((r) => ({ ...r, 'in draw': r.consent ? 'yes' : '', 'event updates': r.updates ? 'yes' : '' }));
-        table(document.getElementById('scores'), scores, ['name', 'score', 'correct', 'email', 'in draw', 'event updates', 'created_at'],
+        const scores = (await call('/scores')).map((r) => ({
+          ...r, 'in draw': r.consent ? 'yes' : '', 'event updates': r.updates ? 'yes' : '',
+          played: r.played_at ?? '', saved: r.created_at,
+        }));
+        table(document.getElementById('scores'), scores, ['name', 'score', 'correct', 'email', 'in draw', 'event updates', 'played', 'saved'],
           (r) => (r.hidden ? '' : `<button class="btn btn-ghost-dark" data-hide="${r.id}">Hide</button>`));
 
       }
@@ -138,6 +150,27 @@
         e.preventDefault();
         download(name).catch(() => alert('Couldn’t build that CSV. Try again.'));
       });
+
+      // Booth mode lives in this device's storage (app.js reads the same key).
+      // An iPad in Guided Access can't easily retype its URL, so it can be set here.
+      const BOOTH_KEY = 'perthai-kiosk-booth';
+      const isBooth = () => { try { return localStorage.getItem(BOOTH_KEY) === '1'; } catch { return false; } };
+      function showBooth() {
+        document.getElementById('booth').textContent = isBooth() ? 'Turn booth mode off' : 'Turn booth mode on';
+        document.getElementById('booth-note').textContent = isBooth()
+          ? 'Booth mode is on: this device resets when idle and plays the game by itself.'
+          : 'Booth mode is off: this device behaves like a visitor’s phone.';
+      }
+      document.getElementById('booth').addEventListener('click', () => {
+        try {
+          if (isBooth()) localStorage.removeItem(BOOTH_KEY);
+          else localStorage.setItem(BOOTH_KEY, '1');
+        } catch {
+          alert('This device won’t let the kiosk save settings. Open it with ?booth instead.');
+        }
+        showBooth();
+      });
+      showBooth();
 
       async function unlock() {
         try {

@@ -4,7 +4,7 @@
 // Sign-ups aren't stored, so there's nothing about them here: they go straight
 // to the Perth AI inbox through Web3Forms.
 import type { APIRoute } from 'astro';
-import { checkAdmin, db, ensureSchema, json } from '../../../../lib/ddd2026';
+import { checkAdmin, db, ensureSchema, json, player } from '../../../../lib/ddd2026';
 
 export const prerender = false;
 
@@ -24,7 +24,14 @@ export const GET: APIRoute = async ({ params, request }) => {
   }
 
   if (params.path === 'scores') {
-    const { results } = await db().prepare('SELECT * FROM scores ORDER BY score DESC, created_at ASC').all();
+    // Everything but client_id, which only matters to the kiosk. played_at is when
+    // the run ended on the device; created_at is when it reached us.
+    const { results } = await db()
+      .prepare(
+        `SELECT id, game, name, email, consent, updates, score, correct, rounds, hidden, played_at, created_at
+         FROM scores ORDER BY score DESC, created_at ASC`
+      )
+      .all();
     return json(results);
   }
 
@@ -39,19 +46,28 @@ export const POST: APIRoute = async ({ params, request }) => {
   await ensureSchema();
   const path = params.path ?? '';
 
-  // Hides every score under that name (the board shows each name's best, so
-  // hiding one row would just surface their next one).
+  // Hides every score by that player (the board shows each player's best, so
+  // hiding one row would just surface their next one). A player is their email,
+  // or their name if they gave no email: see player().
   const hide = path.match(/^scores\/(\d+)\/hide$/);
   if (hide) {
     await db()
-      .prepare('UPDATE scores SET hidden = 1 WHERE lower(name) = (SELECT lower(name) FROM scores WHERE id = ?)')
+      .prepare(`UPDATE scores SET hidden = 1 WHERE ${player()} = (SELECT ${player()} FROM scores WHERE id = ?)`)
       .bind(Number(hide[1]))
       .run();
     return json({ ok: true });
   }
 
-  // Soft reset: hides everything from the public board but keeps the rows for the prize draw.
+  // Soft reset: hides everything from the public board but keeps the rows for
+  // the prize draw. Remembers when, so a run played before now that's still
+  // waiting on a device arrives hidden too (see api/scores.ts).
   if (path === 'scores/reset') {
+    await db()
+      .prepare(
+        `INSERT INTO meta (key, value) VALUES ('board_cleared_at', datetime('now', '+8 hours'))
+         ON CONFLICT (key) DO UPDATE SET value = excluded.value`
+      )
+      .run();
     await db().prepare('UPDATE scores SET hidden = 1').run();
     return json({ ok: true });
   }

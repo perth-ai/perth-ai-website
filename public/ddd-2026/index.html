@@ -6,7 +6,10 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Perth AI Booth</title>
     <link rel="icon" href="/favicon-32.png">
-    <!-- Added to an iPad or Android home screen, it opens full screen without browser bars -->
+    <!-- Added to an iPad or Android home screen, it opens full screen without browser bars.
+         The manifest has no start_url on purpose: the app opens the URL it was installed
+         from, so a booth device installed from ?booth stays a booth device. -->
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">

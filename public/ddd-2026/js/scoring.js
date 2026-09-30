@@ -17,7 +17,23 @@ export const GAMES = {
 
 export const gameOrDefault = (game) => (Object.hasOwn(GAMES, game) ? game : 'runner');
 
-// Returns { ok, errors, clean }. clean is ready to insert, with email null when blank.
+// A score can wait on the device for a while if the wifi drops (see
+// scoreboard.js), so it carries when the run ended. Anything older than the
+// device keeps a queued score, or from the future (a device with its clock
+// wrong), isn't trusted: that run just counts as played when it arrives.
+const MAX_QUEUED_MS = 7 * 24 * 60 * 60_000;
+function playedAt(value) {
+  const ms = Date.parse(value);
+  const now = Date.now();
+  if (!Number.isFinite(ms) || ms < now - MAX_QUEUED_MS) return null;
+  return Math.min(ms, now);
+}
+
+// The kiosk's id for a run (a UUID), so the API can ignore a resend.
+const clientId = (value) => (typeof value === 'string' && /^[\w-]{8,64}$/.test(value) ? value : null);
+
+// Returns { ok, errors, clean }. clean is ready to insert, with email null when
+// blank, and clientId and playedAt (ms) null when missing or not trusted.
 // `consent` means "in the prize draw": leaving an email enters it (the email is
 // only used to contact the winner). `updates` is the separate, optional opt-in
 // to event emails. Both are 0/1. (The column keeps its old name so existing
@@ -44,6 +60,9 @@ export function validateScore(body) {
   return {
     ok: Object.keys(errors).length === 0,
     errors,
-    clean: { game, name, email: email || null, consent, updates, score, correct, rounds },
+    clean: {
+      game, name, email: email || null, consent, updates, score, correct, rounds,
+      clientId: clientId(b.clientId), playedAt: playedAt(b.playedAt),
+    },
   };
 }

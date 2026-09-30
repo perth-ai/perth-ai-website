@@ -442,8 +442,27 @@ let engine = null;
 let hudRaf = 0;
 let gateTimer = 0;
 let cleanup = [];
+// Bumped whenever the game screens stop, so a start that was still waiting on
+// the statements when the visitor left doesn't draw over the next screen.
+let generation = 0;
+
+// Boards on screen for a while (the booth's self-playing game can run for
+// hours) pick up other devices' scores every BOARD_REFRESH_MS.
+const BOARD_REFRESH_MS = 30_000;
+
+function keepBoardFresh(root) {
+  const el = root.querySelector('[data-board]');
+  loadBoard(el, 'runner');
+  const timer = setInterval(() => loadBoard(el, 'runner'), BOARD_REFRESH_MS);
+  cleanup.push(() => clearInterval(timer));
+}
+
+// No statements (the file didn't load and isn't stored on the device) means
+// a run without gates, rather than no game at all.
+const statements = () => loadQuestions().catch(() => []);
 
 export function stopRunner() {
+  generation += 1;
   engine?.stop();
   engine = null;
   cancelAnimationFrame(hudRaf);
@@ -462,8 +481,9 @@ const shell = (extra = '') => `
 export async function startRunner(context) {
   app = context;
   stopRunner();
-  pool = await loadQuestions();
-  renderIntro();
+  const mine = generation;
+  pool = await statements();
+  if (mine === generation) renderIntro();
 }
 
 function renderIntro() {
@@ -490,7 +510,7 @@ function renderIntro() {
     </div>`
   );
   engine = createEngine(root.querySelector('canvas'), { autopilot: true, gates: false });
-  loadBoard(root.querySelector('[data-board]'), 'runner');
+  keepBoardFresh(root);
   root.querySelector('[data-start]').addEventListener('click', play);
 }
 
@@ -608,7 +628,7 @@ function renderResults(result) {
   cleanup.forEach((fn) => fn());
   cleanup = [];
   const { score, correct, rounds } = result;
-  wireSaveCard(root, { game: 'runner', result: { score, correct, rounds }, onAgain: play });
+  wireSaveCard(root, { game: 'runner', result: { score, correct, rounds, playedAt: new Date().toISOString() }, onAgain: play });
 }
 
 // ---------- attract mode ----------
@@ -617,7 +637,9 @@ function renderResults(result) {
 export async function startAttract(context) {
   app = context;
   stopRunner();
-  const questions = pickRamp(await loadQuestions());
+  const mine = generation;
+  const questions = pickRamp(await statements());
+  if (mine !== generation) return;
   const root = mount(shell('attract'));
   root.insertAdjacentHTML(
     'beforeend',
@@ -634,7 +656,7 @@ export async function startAttract(context) {
       ${app.config.game?.prize ? `<p class="attract-prize">🏆 ${esc(app.config.game.prize)}</p>` : ''}
     </div>`
   );
-  loadBoard(root.querySelector('[data-board]'), 'runner');
+  keepBoardFresh(root);
   const gateCard = root.querySelector('.gate-card');
   engine = createEngine(root.querySelector('canvas'), {
     autopilot: true,

@@ -29,14 +29,38 @@ const kioskEnv = env as unknown as KioskEnv;
 
 export const db = () => kioskEnv.DDD_2026_DB;
 
-// Creates the table the first time each worker instance touches the database,
-// so there's no migration step to remember on deploy. That only covers a new
-// database: CREATE TABLE IF NOT EXISTS won't add a column to an existing one,
-// so a schema change after the database exists needs an ALTER TABLE here (or
-// deleting the database, which is fine before the event).
+// One leaderboard entry per player. A player is their email when they gave
+// one, so two different Sams stay two entries; without an email, the name is
+// all there is. The name key has a space in it, which no email can, so the
+// two kinds never collide. player() is a row's columns; player('?', '?') takes
+// an email and a name as parameters, in that order.
+export const player = (email = 'email', name = 'name') => `COALESCE(lower(${email}), 'name ' || lower(${name}))`;
+
+// Columns added after the table first shipped. CREATE TABLE IF NOT EXISTS
+// won't add them to a database that already exists, so each gets an ALTER
+// TABLE, which fails harmlessly once the column is there.
+//   client_id  the kiosk's id for a run, so a resent save is never counted twice
+//   played_at  when the run ended on the device (Perth time), which can be well
+//              before created_at if it waited out a wifi drop
+const ADDED_COLUMNS = ['client_id TEXT', 'played_at TEXT'];
+
+// Creates or updates the tables the first time each worker instance touches
+// the database, so there's no migration step to remember on deploy. A new
+// column goes in ADDED_COLUMNS above, never only in the CREATE TABLE.
 let ready: Promise<unknown> | undefined;
 export function ensureSchema() {
-  ready ??= db()
+  ready ??= migrate()
+    // Forget a failed attempt so the next request tries again rather than
+    // failing forever on a stale rejection.
+    .catch((err: unknown) => {
+      ready = undefined;
+      throw err;
+    });
+  return ready;
+}
+
+async function migrate() {
+  await db()
     .prepare(
       `CREATE TABLE IF NOT EXISTS scores (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,15 +76,24 @@ export function ensureSchema() {
         updates INTEGER NOT NULL DEFAULT 0
       )`
     )
-    .run()
-    // Forget a failed attempt so the next request tries again rather than
-    // failing forever on a stale rejection.
-    .catch((err: unknown) => {
-      ready = undefined;
-      throw err;
-    });
-  return ready;
+    .run();
+  for (const column of ADDED_COLUMNS) {
+    try {
+      await db().prepare(`ALTER TABLE scores ADD COLUMN ${column}`).run();
+    } catch (err) {
+      // Already there (or another worker instance added it a moment ago).
+      if (!/duplicate column/i.test(String((err as Error)?.message ?? err))) throw err;
+    }
+  }
+  // Unique so a resent save can't insert twice. Older rows have no client_id,
+  // and SQLite lets any number of NULLs share a unique index.
+  await db().prepare('CREATE UNIQUE INDEX IF NOT EXISTS scores_client_id ON scores (client_id)').run();
+  // Small settings the API keeps, like when the public board was last cleared.
+  await db().prepare('CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT)').run();
 }
+
+// "YYYY-MM-DD HH:MM:SS" in Perth time, the format created_at uses.
+export const perthTime = (ms: number) => new Date(ms + 8 * 60 * 60_000).toISOString().slice(0, 19).replace('T', ' ');
 
 // These API routes are served by the Worker, not as static assets, so the
 // headers in public/_headers don't apply to them. Set the same ones here.

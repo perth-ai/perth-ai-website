@@ -33,3 +33,6 @@ __MACOSX/
 !.env.example
 # tooling
 .memsearch/
+
+# Playwright output (tests/rotation)
+test-results/

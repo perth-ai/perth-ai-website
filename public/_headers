@@ -14,3 +14,8 @@
 # whatever ALLOW_INDEXING says for the rest of the site. See docs/ddd-2026.md.
 /ddd-2026/*
   X-Robots-Tag: noindex, nofollow
+
+# The kiosk's service worker: always check for a new one, so a fix (or the
+# off switch) reaches booth devices on their next load.
+/ddd-2026/sw.js
+  Cache-Control: no-cache

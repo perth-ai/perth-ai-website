@@ -5,6 +5,7 @@ import {
   textField, chipsField, consentField, formError, wireChoices, readChoices, showErrors,
 } from './ui.js';
 import { startRunner, startAttract, stopRunner, topRunners } from './runner.js';
+import { startScoreQueue } from './scoreboard.js';
 import { quokkaIcon } from './sprites.js';
 import { renderSummit, stopSummit, summitPhoto } from './summit.js';
 import { renderAbout, stopAbout } from './about.js';
@@ -64,15 +65,26 @@ function go(view, arg) {
   if (current === 'summit') stopSummit();
   if (current === 'about') stopAbout();
   current = view;
-  if (view === 'home') renderHome();
-  else if (view === 'form') renderForm(arg);
-  else if (view === 'thanks') renderThanks(arg);
-  else if (view === 'runner') startRunner({ config, go });
-  else if (view === 'attract') startAttract({ config, go });
-  else if (view === 'summit') renderSummit();
-  else if (view === 'about') renderAbout({ config, card: arg });
-  else return go('home');
+  try {
+    if (view === 'home') renderHome();
+    else if (view === 'form') renderForm(arg);
+    else if (view === 'thanks') renderThanks(arg);
+    else if (view === 'runner') startRunner({ config, go }).catch(() => recover(view));
+    else if (view === 'attract') startAttract({ config, go }).catch(() => recover(view));
+    else if (view === 'summit') renderSummit();
+    else if (view === 'about') renderAbout({ config, card: arg });
+    else return go('home');
+  } catch (err) {
+    console.error(err);
+    return recover(view);
+  }
   armIdle();
+}
+
+// A screen that fails to open sends the kiosk home rather than leaving it
+// frozen on a half-drawn screen that someone at the booth has to sort out.
+function recover(view) {
+  if (view !== 'home' && current === view) go('home');
 }
 
 document.addEventListener('click', (e) => {
@@ -207,11 +219,11 @@ function renderForm(id) {
     const check = validateForm(id, data);
     if (!check.ok) return showErrors(formEl, check.errors);
 
-    // submitForm never rejects: if the send fails it's queued on the device and
-    // retried (outbox.js), so the visitor always gets the thanks screen. That's
-    // deliberate. Sign-ups have no server-side validation to show, either.
+    // submitForm saves the sign-up on the device and sends it from there
+    // (outbox.js), so the visitor gets the thanks screen straight away, wifi or
+    // not. Sign-ups have no server-side validation to show, either.
     formEl.querySelector('[type=submit]').disabled = true;
-    await submitForm(id, check.clean);
+    submitForm(id, check.clean);
     go('thanks', { title: `Thanks, ${data.name.split(' ')[0]}!`, message: form.thanks });
   });
 }
@@ -325,13 +337,58 @@ async function loadConfig() {
   }
 }
 
+// ---------- offline and install ----------
+// sw.js keeps a copy of the kiosk on the device, so a reload while the wifi is
+// down still opens it, and lets Android install it as an app. It always tries
+// the network first, so an online device runs the latest version.
+// ?sw=0 switches it off on this device and clears its copy (see docs/ddd-2026.md).
+
+async function initOffline() {
+  const sw = navigator.serviceWorker;
+  if (!sw) return;
+  try {
+    if (new URLSearchParams(location.search).get('sw') === '0') {
+      await Promise.all((await sw.getRegistrations()).map((r) => r.unregister()));
+      await Promise.all((await caches.keys()).filter((k) => k.startsWith('ddd2026-')).map((k) => caches.delete(k)));
+      return;
+    }
+    await sw.register('/ddd-2026/sw.js', { scope: '/ddd-2026/' });
+  } catch {}
+}
+
+// Booth devices only: keep the screen on (tablets otherwise dim and lock
+// between visitors), and ask the browser not to clear what's saved on the
+// device (queued sign-ups and scores) when it's short of space.
+function initBoothDevice() {
+  navigator.storage?.persist?.().catch(() => {});
+  // The lock goes whenever the page is hidden (and the system can take it
+  // back), and Safari may want a tap first, so ask again on each touch until
+  // it's held.
+  let lock = null;
+  const wake = async () => {
+    if (lock || document.visibilityState !== 'visible' || !navigator.wakeLock) return;
+    try {
+      lock = await navigator.wakeLock.request('screen');
+      lock.addEventListener('release', () => (lock = null));
+    } catch {}
+  };
+  wake();
+  document.addEventListener('visibilitychange', wake);
+  document.addEventListener('pointerdown', wake, { capture: true });
+}
+
 async function boot() {
   config = await loadConfig();
   booth = isBooth();
   document.documentElement.classList.toggle('booth', booth);
+  initOffline();
   initOutbox(config);
+  startScoreQueue();
   initKeyboard(booth && config.onScreenKeyboard && !hasOwnKeyboard());
-  if (booth) armIdle = initIdle(config.idleSeconds, config.attractSeconds);
+  if (booth) {
+    armIdle = initIdle(config.idleSeconds, config.attractSeconds);
+    initBoothDevice();
+  }
 
   document.addEventListener('contextmenu', (e) => e.preventDefault());
   document.addEventListener('dragstart', (e) => e.preventDefault());

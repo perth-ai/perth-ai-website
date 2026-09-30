@@ -27,16 +27,42 @@ export const qrCard = (links, { key, label, caption }) =>
        </a>`
     : '';
 
+// Venue wifi can hold a request open for a minute or more before failing, so
+// every request gives up after TIMEOUT_MS. A failure that never got an answer
+// (offline, timed out) has status 0; one the server refused has its status.
+const TIMEOUT_MS = 8000;
+
+export async function fetchWithTimeout(url, options = {}, ms = TIMEOUT_MS) {
+  const abort = new AbortController();
+  const timer = setTimeout(() => abort.abort(), ms);
+  try {
+    return await fetch(url, { ...options, signal: abort.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function api(path, { method = 'GET', body } = {}) {
-  const res = await fetch(path, {
-    method,
-    headers: body ? { 'content-type': 'application/json' } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  let res;
+  try {
+    res = await fetchWithTimeout(path, {
+      method,
+      headers: body ? { 'content-type': 'application/json' } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+  } catch {
+    throw Object.assign(new Error('No connection'), { status: 0, data: {} });
+  }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw Object.assign(new Error('Request failed'), { status: res.status, data });
   return data;
 }
+
+// An id for something saved on the device, so a resend can be recognised.
+// randomUUID needs https (or localhost); a phone testing over the local
+// network is plain http, so fall back to something random enough for that.
+export const newId = () =>
+  globalThis.crypto?.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 
 export function toast(message, ms = 3000) {
   document.querySelector('.toast')?.remove();

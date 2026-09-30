@@ -67,7 +67,9 @@ const scores = createQueue('perthai-kiosk-scores', async (body) => {
     return { result: 'sent', value: await api('api/scores', { method: 'POST', body }) };
   } catch (err) {
     const final = (err.status === 400 || err.status === 429) && !err.data?.retry;
-    return { result: final ? 'drop' : 'retry', value: err.data };
+    // status 0 means the send never reached the server (offline or timed out),
+    // so the queue stops the batch instead of timing out on the next score.
+    return { result: final ? 'drop' : 'retry', value: err.data, offline: err.status === 0 };
   }
 });
 

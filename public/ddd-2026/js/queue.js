@@ -10,8 +10,10 @@
 //
 // The queue is bounded, because it holds names and emails in plain text:
 // anything still unsent after MAX_AGE_MS is dropped, it never holds more than
-// MAX_ITEMS, and each retry sends at most BATCH, stopping at the first failure
-// so a device that's still offline doesn't sit through ten timeouts a minute.
+// MAX_ITEMS, and each retry sends at most BATCH, stopping as soon as a send
+// shows the device is offline so it doesn't sit through ten timeouts a minute
+// (an item the server has merely not accepted yet is skipped over, not a
+// stopping point, so one wedged sign-up can't block the ones behind it).
 // A booth's day of sign-ups waiting out a wifi drop sits well inside all three.
 //
 // If storage is unavailable (private mode, blocked site data), an item that
@@ -25,7 +27,12 @@ const MAX_ITEMS = 200;
 const BATCH = 10;
 
 // `send(data)` resolves to { result, value }: 'sent' (done), 'retry' (keep it
-// and try later) or 'drop' (it can never succeed). A throw counts as 'retry'.
+// and try later) or 'drop' (it can never succeed). It may also set
+// `offline: true` to say the send never reached the server (timed out or no
+// connection): flush() stops the whole batch on that, so an offline device
+// doesn't sit through ten timeouts, but a server that answered "not yet" only
+// skips that one item so it can't block the queue behind it. A throw counts as
+// an offline 'retry'.
 // `migrate(stored)` can upgrade items saved by an older version of the kiosk.
 export function createQueue(key, send, { migrate = (item) => item } = {}) {
   const inFlight = new Set();
@@ -56,7 +63,7 @@ export function createQueue(key, send, { migrate = (item) => item } = {}) {
       try {
         outcome = await send(item.data);
       } catch {
-        outcome = { result: 'retry' };
+        outcome = { result: 'retry', offline: true };
       }
       // Reloaded, not filtered from `item`, so anything added meanwhile survives.
       if (outcome.result !== 'retry') save(load().filter((i) => i.id !== item.id));
@@ -86,7 +93,10 @@ export function createQueue(key, send, { migrate = (item) => item } = {}) {
         if (tries >= BATCH) break;
         if (inFlight.has(item.id)) continue;
         tries += 1;
-        if ((await attempt(item)).result === 'retry') break;
+        // Stop the batch only when the device is actually offline. An item the
+        // server answered but did not accept is kept and skipped, so it can't
+        // wedge the sign-ups behind it.
+        if ((await attempt(item)).offline) break;
       }
     };
     try {

@@ -5,8 +5,8 @@ import { createQueue } from './queue.js';
 import { validateScore } from './scoring.js';
 import { close as closeKeyboard } from './keyboard.js';
 
-// Leaving an email enters the prize draw, and it's only used to contact the
-// winner. Event updates are a separate, unticked opt-in (see forms.js).
+// Leaving a mobile or an email enters the prize draw, and they're only used to
+// contact a winner. Event updates are a separate, unticked opt-in (see forms.js).
 const UPDATES_TEXT = 'Send me Perth AI event updates too. Unsubscribe any time.';
 
 // `meId` is the row to highlight: the player's best run, as the API reports
@@ -46,10 +46,11 @@ export const saveCard = () => `
     <h3>Get on the leaderboard</h3>
     <div class="pair">
       ${textField({ name: 'name', label: 'Leaderboard name', type: 'text', required: true, max: 16 })}
-      ${textField({ name: 'email', label: 'Email to enter the prize draw', type: 'email', max: 120 })}
+      ${textField({ name: 'phone', label: 'Mobile, to call if you win', type: 'tel', max: 20 })}
     </div>
+    ${textField({ name: 'email', label: 'Email', type: 'email', max: 120 })}
+    <p class="hint">Leave a mobile or email to enter the prize draw. Only your leaderboard name is shown on screen; your number and email are only used if you win.</p>
     ${consentField(UPDATES_TEXT)}
-    <p class="hint">Only your leaderboard name is shown on screen. Your email is only used to contact the winner.</p>
     ${formError()}
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Save my score</button>

@@ -15,7 +15,7 @@ interface D1Statement {
   bind(...values: unknown[]): D1Statement;
   all<T = Record<string, unknown>>(): Promise<{ results: T[] }>;
   first<T = Record<string, unknown>>(column?: string): Promise<T | null>;
-  run(): Promise<{ meta: { last_row_id: number } }>;
+  run(): Promise<{ meta: { last_row_id: number; changes: number } }>;
 }
 
 interface KioskEnv {
@@ -29,12 +29,18 @@ const kioskEnv = env as unknown as KioskEnv;
 
 export const db = () => kioskEnv.DDD_2026_DB;
 
-// One leaderboard entry per player. A player is their email when they gave
-// one, so two different Sams stay two entries; without an email, the name is
-// all there is. The name key has a space in it, which no email can, so the
-// two kinds never collide. player() is a row's columns; player('?', '?') takes
-// an email and a name as parameters, in that order.
-export const player = (email = 'email', name = 'name') => `COALESCE(lower(${email}), 'name ' || lower(${name}))`;
+// One leaderboard entry, and one prize-draw entry, per player. A player is
+// their email when they gave one, else their mobile, so two different Sams
+// stay two players; with neither, the name is all there is. The mobile and
+// name keys have a space in them, which no email can, so the kinds never
+// collide. player() is a row's columns; player('?', '?', '?') takes an email,
+// a mobile and a name as parameters, in that order.
+export const player = (email = 'email', phone = 'phone', name = 'name') =>
+  `COALESCE(lower(${email}), 'tel ' || ${phone}, 'name ' || lower(${name}))`;
+
+// When the public board was last cleared (Perth time), or '' if never. A
+// clear starts a fresh competition: a fresh board and a fresh prize draw.
+export const CLEARED_AT = `COALESCE((SELECT value FROM meta WHERE key = 'board_cleared_at'), '')`;
 
 // Columns added after the table first shipped. CREATE TABLE IF NOT EXISTS
 // won't add them to a database that already exists, so each gets an ALTER
@@ -42,7 +48,9 @@ export const player = (email = 'email', name = 'name') => `COALESCE(lower(${emai
 //   client_id  the kiosk's id for a run, so a resent save is never counted twice
 //   played_at  when the run ended on the device (Perth time), which can be well
 //              before created_at if it waited out a wifi drop
-const ADDED_COLUMNS = ['client_id TEXT', 'played_at TEXT'];
+//   phone      a mobile for the prize draw (digits only), so a winner can be called
+//   removed    1 once admin has hidden the player: off the board and out of the draw
+const ADDED_COLUMNS = ['client_id TEXT', 'played_at TEXT', 'phone TEXT', 'removed INTEGER NOT NULL DEFAULT 0'];
 
 // Creates or updates the tables the first time each worker instance touches
 // the database, so there's no migration step to remember on deploy. A new
@@ -90,6 +98,36 @@ async function migrate() {
   await db().prepare('CREATE UNIQUE INDEX IF NOT EXISTS scores_client_id ON scores (client_id)').run();
   // Small settings the API keeps, like when the public board was last cleared.
   await db().prepare('CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT)').run();
+  // Each prize draw (or top-score award), for the booth screen to show: `names`
+  // is the JSON list of leaderboard names on its wheel.
+  await db()
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS draws (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        kind TEXT NOT NULL,
+        names TEXT NOT NULL,
+        created_at TEXT NOT NULL DEFAULT (datetime('now', '+8 hours'))
+      )`
+    )
+    .run();
+  // Everyone who's won something, with how to reach them. `player` is player()
+  // at the time, so nobody wins twice; status is drawn, collected or forfeit.
+  await db()
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS winners (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        draw_id INTEGER NOT NULL,
+        prize TEXT NOT NULL,
+        player TEXT NOT NULL,
+        name TEXT NOT NULL,
+        email TEXT,
+        phone TEXT,
+        score INTEGER,
+        status TEXT NOT NULL DEFAULT 'drawn',
+        created_at TEXT NOT NULL DEFAULT (datetime('now', '+8 hours'))
+      )`
+    )
+    .run();
 }
 
 // "YYYY-MM-DD HH:MM:SS" in Perth time, the format created_at uses.

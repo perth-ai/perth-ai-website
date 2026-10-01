@@ -16,7 +16,7 @@
 // Switch it off on a device with ?sw=0 on the kiosk URL. To switch it off
 // everywhere, replace this file with one that calls self.registration.unregister().
 
-const VERSION = 'ddd2026-v1';
+const VERSION = 'ddd2026-v2';
 const NETWORK_WAIT_MS = 4000;
 
 // Everything the kiosk needs to open and play offline, stored on install. A
@@ -24,9 +24,9 @@ const NETWORK_WAIT_MS = 4000;
 const PRECACHE = [
   './',
   'manifest.webmanifest',
-  'css/styles.css', 'css/game.css', 'css/runner.css', 'css/summit.css', 'css/about.css', 'css/keyboard.css',
+  'css/styles.css', 'css/game.css', 'css/runner.css', 'css/summit.css', 'css/about.css', 'css/keyboard.css', 'css/draw.css',
   'js/app.js', 'js/ui.js', 'js/queue.js', 'js/outbox.js', 'js/forms.js', 'js/keyboard.js', 'js/scoreboard.js',
-  'js/scoring.js', 'js/runner.js', 'js/questions.js', 'js/sprites.js', 'js/summit.js', 'js/about.js',
+  'js/scoring.js', 'js/runner.js', 'js/questions.js', 'js/sprites.js', 'js/summit.js', 'js/about.js', 'js/draw.js',
   'game/questions.json',
   'api/config.json',
   'api/qr/luma.svg', 'api/qr/slack.svg', 'api/qr/linkedin.svg',

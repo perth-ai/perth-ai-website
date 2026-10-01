@@ -29,13 +29,24 @@ function playedAt(value) {
   return Math.min(ms, now);
 }
 
+// A mobile for the prize draw, so a winner can be called to collect. Spaces,
+// dashes and brackets go; +61 becomes a leading 0 so the same number always
+// looks the same. Returns '' when blank, null when it isn't a phone number.
+export function normalisePhone(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  let phone = raw.replace(/[\s().-]/g, '');
+  if (phone.startsWith('+61')) phone = `0${phone.slice(3)}`;
+  return /^\+?\d{8,15}$/.test(phone) ? phone : null;
+}
+
 // The kiosk's id for a run (a UUID), so the API can ignore a resend.
 const clientId = (value) => (typeof value === 'string' && /^[\w-]{8,64}$/.test(value) ? value : null);
 
 // Returns { ok, errors, clean }. clean is ready to insert, with email null when
 // blank, and clientId and playedAt (ms) null when missing or not trusted.
-// `consent` means "in the prize draw": leaving an email enters it (the email is
-// only used to contact the winner). `updates` is the separate, optional opt-in
+// `consent` means "in the prize draw": leaving an email or a mobile enters it
+// (either is only used to contact the winner). `updates` is the separate, optional opt-in
 // to event emails. Both are 0/1. (The column keeps its old name so existing
 // databases and CSVs don't change shape.)
 export function validateScore(body) {
@@ -44,24 +55,26 @@ export function validateScore(body) {
   const rounds = GAMES[game].rounds(b);
   const name = String(b.name || '').trim().slice(0, 16);
   const email = String(b.email || '').trim().slice(0, 120);
+  const phone = normalisePhone(String(b.phone || '').slice(0, 30));
   const score = Math.round(Number(b.score));
   const correct = Math.round(Number(b.correct));
   const errors = {};
   if (!name) errors.name = 'Pick a name for the leaderboard';
   else if (BLOCKED_WORDS.test(name.replace(/[^a-z]/gi, ''))) errors.name = 'Let’s keep it family friendly';
   if (email && !isEmail(email)) errors.email = 'That email doesn’t look right';
+  if (phone === null) errors.phone = 'That number doesn’t look right';
   if (!email && b.updates === true) errors.email = 'Add your email to get event updates';
   const numbers = [score, correct, rounds];
   if (!numbers.every((n) => Number.isFinite(n) && n >= 0) || !GAMES[game].check(score, correct, rounds)) {
     errors._form = 'Invalid score';
   }
-  const consent = email ? 1 : 0;
+  const consent = email || phone ? 1 : 0;
   const updates = email && b.updates === true ? 1 : 0;
   return {
     ok: Object.keys(errors).length === 0,
     errors,
     clean: {
-      game, name, email: email || null, consent, updates, score, correct, rounds,
+      game, name, email: email || null, phone: phone || null, consent, updates, score, correct, rounds,
       clientId: clientId(b.clientId), playedAt: playedAt(b.playedAt),
     },
   };

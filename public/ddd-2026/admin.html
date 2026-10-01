@@ -29,7 +29,11 @@
       th { background: var(--ink-900); color: #fff; font-weight: 600; }
       tr.hidden td { opacity: 0.4; text-decoration: line-through; }
       .row-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-      .winner { margin-top: 12px; padding: 16px; border-radius: 14px; background: var(--sunset-100); font-size: 20px; }
+      .draw-status { font-size: 18px; margin-bottom: 12px; }
+      .row-actions + p.muted { margin-top: 10px; }
+      .draw-status b { font-family: var(--font-display); font-size: 24px; }
+      td a { color: var(--orchid-700); font-weight: 600; }
+      tr.forfeit td { opacity: 0.4; text-decoration: line-through; }
       .muted { color: var(--ink-400); }
       select { font: inherit; padding: 8px; border-radius: 10px; border: 2px solid var(--ink-100); }
     </style>
@@ -58,15 +62,30 @@
         </div>
 
         <h2>Prize draw</h2>
-        <div class="row-actions">
-          <button class="btn btn-primary" id="draw">🎲 Draw a random winner</button>
+        <p class="draw-status" id="draw-status"></p>
+        <div class="row-actions" style="align-items:center">
+          <label for="draw-count">Winners</label>
+          <select id="draw-count">
+            <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+          </select>
+          <button class="btn btn-primary" id="draw">🎡 Spin the wheel</button>
+          <a class="btn btn-ghost-dark" href="./#draw">Show the last draw on this screen</a>
         </div>
-        <div id="winner"></div>
+        <p class="muted">The booth screen spins the wheel within a few seconds, as long as nobody’s using it (home screen or the game playing itself). In the draw: everyone who saved a run since the board was cleared and left a mobile or email. One entry each, however many runs, and nobody wins twice.</p>
+
+        <h2>Top score</h2>
+        <div class="row-actions" style="align-items:center">
+          <button class="btn btn-primary" id="top">🏆 Award the top-score prize</button>
+          <span class="muted">Goes to whoever is #1 on the board right now, and shows on the booth screen. They’re out of the random draw from then on.</span>
+        </div>
+
+        <h2>Winners</h2>
+        <table id="winners"></table>
 
         <h2>Leaderboard</h2>
         <div class="row-actions" style="margin-bottom:12px">
           <button class="btn btn-ghost-dark" id="reset">Clear public leaderboard</button>
-          <span class="muted">“Hide” removes every score by that player: the same email, or the same name if they gave no email. Hidden scores are kept for export and the prize draw. “played” is when the run ended on the device; it can be earlier than “saved” if the device waited out a wifi drop.</span>
+          <span class="muted">“Hide” removes every score by that player (the same email or mobile, or the same name if they gave neither) and takes them out of the prize draw. Hidden scores are kept for the CSV. “played” is when the run ended on the device; it can be earlier than “saved” if the device waited out a wifi drop.</span>
         </div>
         <table id="scores"></table>
       </div>
@@ -75,7 +94,7 @@
     <script type="module">
       import { pendingCount } from './js/outbox.js';
       import { pendingScores } from './js/scoreboard.js';
-      import { initKeyboard } from './js/keyboard.js';
+      import { initKeyboard, close as closeKeyboard } from './js/keyboard.js';
       import { hasOwnKeyboard } from './js/ui.js';
       initKeyboard(!hasOwnKeyboard());
       const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -90,6 +109,9 @@
         if (!res.ok) throw new Error(body.error || 'Admin isn’t responding. Try again.');
         return body;
       };
+
+      // 0412345678 reads as 0412 345 678. Anything else is shown as given.
+      const formatPhone = (p) => (/^04\d{8}$/.test(p) ? `${p.slice(0, 4)} ${p.slice(4, 7)} ${p.slice(7)}` : p);
 
       const table = (el, rows, cols, extra) => {
         if (!rows.length) return (el.innerHTML = '<tr><td class="muted">Nothing yet.</td></tr>');
@@ -131,15 +153,40 @@
           `<div class="stat">Sign-ups<b>Inbox</b>They’re emailed to the Perth AI inbox</div>` +
           (pending ? `<div class="stat">Sign-ups waiting to send from this device<b>${pending}</b>Retried every minute</div>` : '') +
           (scoresWaiting ? `<div class="stat">Scores waiting to send from this device<b>${scoresWaiting}</b>Retried every minute</div>` : '') +
-          `<div class="stat">Quokka Run plays<b>${s.plays.runner}</b>${link('scores')}</div>` +
-          `<div class="stat">Prize draw entrants<b>${s.drawEntrants}</b></div>`;
+          `<div class="stat">Quokka Run plays<b>${s.plays.runner}</b>${link('scores')}</div>`;
 
-        // `consent` = gave an email, so in the prize draw; `updates` = also opted in to event emails.
+        const { given, total, label } = s.prizes;
+        document.getElementById('draw-status').innerHTML =
+          `<b>${s.drawEntrants}</b> ${s.drawEntrants === 1 ? 'person' : 'people'} in the draw · ` +
+          (total ? `<b>${given}</b> of ${total} given out (${esc(label)} each)` : `<b>${given}</b> given out`);
+
+        // Winners since the board was cleared, with a tap-to-call number for whoever's running the draw.
+        const winners = (await call('/winners')).map((w) => ({
+          ...w,
+          prize: w.prize === 'top' ? '🏆 top score' : '🎡 draw',
+          when: w.created_at.slice(11, 16),
+        }));
+        const contact = (w) =>
+          [w.phone ? `<a href="tel:${esc(w.phone)}">${esc(formatPhone(w.phone))}</a>` : '', w.email ? esc(w.email) : '']
+            .filter(Boolean).join('<br>') || '<span class="muted">none given</span>';
+        const winnersEl = document.getElementById('winners');
+        if (!winners.length) winnersEl.innerHTML = '<tr><td class="muted">No winners yet.</td></tr>';
+        else winnersEl.innerHTML =
+          '<tr><th>prize</th><th>name</th><th>contact</th><th>best score</th><th>drawn</th><th>status</th><th></th></tr>' +
+          winners.map((w) => `<tr class="${w.status === 'forfeit' ? 'forfeit' : ''}">
+            <td>${w.prize}</td><td>${esc(w.name)}</td><td>${contact(w)}</td><td>${esc(w.score)}</td><td>${esc(w.when)}</td><td>${esc(w.status)}</td>
+            <td><div class="row-actions">${w.status === 'drawn'
+              ? `<button class="btn btn-ghost-dark" data-collected="${w.id}">Collected</button>` +
+                (w.prize.includes('draw') ? `<button class="btn btn-ghost-dark" data-redraw="${w.id}">Redraw</button>` : '')
+              : ''}</div></td>
+          </tr>`).join('');
+
+        // `consent` = gave a mobile or email, so in the prize draw; `updates` = also opted in to event emails.
         const scores = (await call('/scores')).map((r) => ({
-          ...r, 'in draw': r.consent ? 'yes' : '', 'event updates': r.updates ? 'yes' : '',
+          ...r, mobile: r.phone ? formatPhone(r.phone) : '', 'in draw': r.consent ? 'yes' : '', 'event updates': r.updates ? 'yes' : '',
           played: r.played_at ?? '', saved: r.created_at,
         }));
-        table(document.getElementById('scores'), scores, ['name', 'score', 'correct', 'email', 'in draw', 'event updates', 'played', 'saved'],
+        table(document.getElementById('scores'), scores, ['name', 'score', 'correct', 'mobile', 'email', 'in draw', 'event updates', 'played', 'saved'],
           (r) => (r.hidden ? '' : `<button class="btn btn-ghost-dark" data-hide="${r.id}">Hide</button>`));
 
       }
@@ -175,6 +222,7 @@
       async function unlock() {
         try {
           await load();
+          closeKeyboard(); // it would cover the winners list
           document.getElementById('login').hidden = true;
           document.getElementById('panel').hidden = false;
         } catch (err) {
@@ -201,18 +249,41 @@
       // A D1 error or a wifi blip would otherwise make a button silently do nothing.
       const failed = (err) => alert(err.message || 'That didn’t work. Try again.');
 
-      document.getElementById('draw').addEventListener('click', () => {
-        call('/draw', 'POST')
-          .then(({ winner }) => {
-            document.getElementById('winner').innerHTML = winner
-              ? `<div class="winner">🎉 <b>${esc(winner.name)}</b> — ${esc(winner.email)} (best score ${winner.score})</div>`
-              : `<div class="winner">No eligible entrants yet.</div>`;
-          })
-          .catch(failed);
+      // Buttons that change things stay disabled until the answer's back, so a
+      // double tap can't draw twice.
+      async function act(button, path) {
+        button.disabled = true;
+        try {
+          await call(path, 'POST');
+          await load();
+        } catch (err) {
+          failed(err);
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      document.getElementById('draw').addEventListener('click', (e) => {
+        const n = Number(document.getElementById('draw-count').value);
+        if (!confirm(`Draw ${n} winner${n === 1 ? '' : 's'} now? The booth screen will spin the wheel.`)) return;
+        act(e.currentTarget, `/draw/${n}`);
+      });
+
+      document.getElementById('top').addEventListener('click', (e) => {
+        if (!confirm('Give the top-score prize to whoever is #1 on the board right now?')) return;
+        act(e.currentTarget, '/top');
+      });
+
+      document.getElementById('winners').addEventListener('click', (e) => {
+        const { collected, redraw } = e.target.dataset;
+        if (collected) act(e.target, `/winners/${collected}/collected`);
+        if (redraw && confirm('Not collected? Their prize goes back in and the wheel spins for one more winner.')) {
+          act(e.target, `/winners/${redraw}/redraw`);
+        }
       });
 
       document.getElementById('reset').addEventListener('click', () => {
-        if (!confirm('Hide every score from the public leaderboard?')) return;
+        if (!confirm('Hide every score from the public leaderboard? This also starts a fresh prize draw, so anyone who has already won could win again. Do it before the booth opens, not during the day.')) return;
         call('/scores/reset', 'POST').then(load).catch(failed);
       });
 

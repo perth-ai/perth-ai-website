@@ -6,6 +6,7 @@ import {
 } from './ui.js';
 import { startRunner, startAttract, stopRunner, topRunners } from './runner.js';
 import { startScoreQueue } from './scoreboard.js';
+import { renderDraw, stopDraw, watchDraws } from './draw.js';
 import { quokkaIcon } from './sprites.js';
 import { renderSummit, stopSummit, summitPhoto } from './summit.js';
 import { renderAbout, stopAbout } from './about.js';
@@ -64,6 +65,7 @@ function go(view, arg) {
   if (current === 'runner' || current === 'attract') stopRunner();
   if (current === 'summit') stopSummit();
   if (current === 'about') stopAbout();
+  if (current === 'draw') stopDraw();
   current = view;
   try {
     if (view === 'home') renderHome();
@@ -73,6 +75,7 @@ function go(view, arg) {
     else if (view === 'attract') startAttract({ config, go }).catch(() => recover(view));
     else if (view === 'summit') renderSummit();
     else if (view === 'about') renderAbout({ config, card: arg });
+    else if (view === 'draw') renderDraw({ draw: arg, config, done: () => current === 'draw' && go('home') }).catch(() => recover(view));
     else return go('home');
   } catch (err) {
     console.error(err);
@@ -265,7 +268,8 @@ function initIdle(seconds, attractSeconds) {
   const reset = () => {
     clearTimeout(idleTimer);
     if (overlay) dismiss();
-    if (current === 'attract') return;
+    // The prize draw takes as long as it takes, then goes home by itself.
+    if (current === 'attract' || current === 'draw') return;
     if (current === 'home') {
       if (attractSeconds > 0) idleTimer = setTimeout(() => current === 'home' && go('attract'), attractSeconds * 1000);
       return;
@@ -388,12 +392,15 @@ async function boot() {
   if (booth) {
     armIdle = initIdle(config.idleSeconds, config.attractSeconds);
     initBoothDevice();
+    // A prize draw from admin takes over a booth device nobody's using.
+    watchDraws({ canShow: () => current === 'home' || current === 'attract', show: (draw) => go('draw', draw) });
   }
 
   document.addEventListener('contextmenu', (e) => e.preventDefault());
   document.addEventListener('dragstart', (e) => e.preventDefault());
 
-  // #form/slack, #runner, #summit or #attract deep links are handy for testing.
+  // #form/slack, #runner, #summit, #attract or #draw deep links are handy for testing
+  // (#draw shows the latest prize draw, which is also admin's "Show it here").
   const [, view, arg] = location.hash.match(/^#(\w+)(?:\/(\w+))?/) || [];
   go(view || 'home', arg);
 }

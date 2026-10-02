@@ -97,10 +97,12 @@ test.describe('with the service worker', () => {
     await page.goto('/ddd-2026/');
     await page.waitForSelector('.home h1');
     // Wait until the service worker controls the page and has stored the kiosk.
+    // (Fully activated, not just in control: a navigation that arrives while
+    // it's still activating can go straight to the network.)
     await page.waitForFunction(async () => {
-      if (!navigator.serviceWorker.controller) return false;
-      const cache = await caches.open('ddd2026-v1');
-      return Boolean(await cache.match('/ddd-2026/js/app.js'));
+      const reg = await navigator.serviceWorker.getRegistration('/ddd-2026/');
+      if (!navigator.serviceWorker.controller || reg?.active?.state !== 'activated') return false;
+      return Boolean(await caches.match('/ddd-2026/js/app.js'));
     });
 
     // Every request the service worker makes now fails, as with the wifi down.

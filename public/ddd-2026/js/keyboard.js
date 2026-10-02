@@ -80,8 +80,9 @@ function press(key) {
 
 function open(field) {
   target = field;
-  // Auto-capitalise the first letter of names and free text, not emails.
-  shift = field.dataset.kind !== 'email' && field.value.length === 0;
+  // Auto-capitalise the first letter of names and free text, not emails or
+  // phone numbers (shift turns the digits into symbols).
+  shift = !['email', 'tel'].includes(field.dataset.kind) && field.value.length === 0;
   render();
   el.classList.add('open');
   document.documentElement.style.setProperty('--kb-height', `${el.offsetHeight}px`);

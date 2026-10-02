@@ -86,7 +86,9 @@ export function textField({ name, label, type, required, max, short }, value = '
     `autocorrect="off"`,
     `spellcheck="false"`,
     `data-kind="${type}"`,
-    type === 'email' ? 'autocapitalize="off"' : '',
+    type === 'email' || type === 'tel' ? 'autocapitalize="off"' : '',
+    // Phones and tablets show their number pad.
+    type === 'tel' ? 'inputmode="tel"' : '',
   ].join(' ');
   const control =
     tag === 'textarea'

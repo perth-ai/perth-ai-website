@@ -1,0 +1,143 @@
+/* Prize draw on the booth screen (js/draw.js). Wheel beside the winners on a
+   landscape screen, above them on a portrait one. */
+
+.draw-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-areas: 'eyebrow' 'title' 'wheel' 'winners' 'collect';
+  justify-items: center;
+  align-content: center;
+  gap: clamp(10px, 2vh, 24px);
+  height: 100%;
+  padding: var(--gutter);
+  text-align: center;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .draw-inner {
+    /* The empty rows above and below take the slack, so the words sit
+       together beside the wheel rather than spread down its height. */
+    grid-template-areas: 'wheel .' 'wheel eyebrow' 'wheel title' 'wheel winners' 'wheel collect' 'wheel .';
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto auto auto 1fr;
+    align-content: center;
+    column-gap: calc(var(--gutter) * 2);
+    text-align: left;
+    justify-items: start;
+  }
+}
+
+.draw .eyebrow {
+  grid-area: eyebrow;
+}
+
+.draw-title {
+  grid-area: title;
+  font-size: var(--text-3xl);
+  color: var(--white);
+}
+
+.wheel-wrap {
+  grid-area: wheel;
+  position: relative;
+  width: min(62vh, 86vw);
+  aspect-ratio: 1;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .wheel-wrap {
+    width: min(78vh, 46vw);
+  }
+}
+
+.wheel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  transition: transform 6s cubic-bezier(0.12, 0.6, 0.1, 1);
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.5));
+}
+
+/* Dark labels on every slice: white fails on orange and cyan (see CLAUDE.md). */
+.wheel text {
+  fill: var(--ink-950);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.wheel-rim {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+.wheel-hub {
+  fill: var(--ink-950);
+  stroke: var(--white);
+  stroke-width: 3;
+}
+
+/* Points down at the slice under 12 o'clock. */
+.wheel-pointer {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: clamp(14px, 1.6vw, 26px) solid transparent;
+  border-right: clamp(14px, 1.6vw, 26px) solid transparent;
+  border-top: clamp(26px, 3vw, 46px) solid var(--white);
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.5));
+}
+
+.draw-winners {
+  grid-area: winners;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: flex-start;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.draw-winners li {
+  display: flex;
+  gap: 0.6em;
+  padding: 0.35em 0.8em;
+  border-radius: var(--radius);
+  background: var(--sunset-500);
+  color: var(--ink-950);
+  animation: view-in 280ms ease-out;
+}
+
+.draw-collect {
+  grid-area: collect;
+  max-width: 32ch;
+  padding: 0.6em 0.9em;
+  border-radius: var(--radius);
+  /* Backed, because it sits over the skyline's lights. */
+  background: rgb(5 10 23 / 0.82);
+  font-size: var(--text-lg);
+  color: var(--sunbeam-400);
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .draw-winners {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel {
+    transition-duration: 1ms !important;
+  }
+}

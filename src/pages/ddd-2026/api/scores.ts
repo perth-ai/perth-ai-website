@@ -40,7 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
   const body = await request.json().catch(() => null);
   const { ok, errors, clean } = validateScore(body);
   if (!ok) return json({ errors }, 400);
-  const { game, name, email, consent, updates, score, correct, rounds, clientId, playedAt } = clean;
+  const { game, name, email, phone, consent, updates, score, correct, rounds, clientId, playedAt } = clean;
 
   await ensureSchema();
 
@@ -48,16 +48,16 @@ export const POST: APIRoute = async ({ request }) => {
   const existing = clientId
     ? await db().prepare('SELECT id FROM scores WHERE client_id = ?').bind(clientId).first<number>('id')
     : null;
-  if (existing) return json({ ok: true, id: existing, ...(await standing(game, email, name)) });
+  if (existing) return json({ ok: true, id: existing, ...(await standing(game, email, phone, name)) });
 
   // `created_at` is stored in Perth time (see ensureSchema), so the window is too.
   const load = await db()
     .prepare(
       `SELECT
-         (SELECT COUNT(*) FROM scores WHERE game = ? AND ${player()} = ${player('?', '?')}) AS byPlayer,
+         (SELECT COUNT(*) FROM scores WHERE game = ? AND ${player()} = ${player('?', '?', '?')}) AS byPlayer,
          (SELECT COUNT(*) FROM scores WHERE created_at > datetime('now', '+8 hours', '-1 minute')) AS lastMinute`
     )
-    .bind(game, email, name)
+    .bind(game, email, phone, name)
     .first<{ byPlayer: number; lastMinute: number }>();
   if ((load?.lastMinute ?? 0) >= MAX_RUNS_PER_MINUTE) {
     return json({ errors: { _form: 'The board is busy right now. Try saving again in a minute.' }, retry: true }, 503);
@@ -68,33 +68,38 @@ export const POST: APIRoute = async ({ request }) => {
 
   // A run played before the public board was last cleared (it waited out a
   // wifi drop on a device) belongs to the old board, so it arrives hidden.
+  // So does a new run by a player admin has hidden, who stays out of the draw.
   const played = playedAt === null ? null : perthTime(playedAt);
+  const removed = await db()
+    .prepare(`SELECT EXISTS (SELECT 1 FROM scores WHERE removed = 1 AND ${player()} = ${player('?', '?', '?')}) AS r`)
+    .bind(email, phone, name)
+    .first<number>('r');
   const inserted = await db()
     .prepare(
-      `INSERT INTO scores (game, name, email, consent, updates, score, correct, rounds, client_id, played_at, hidden)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-         COALESCE((SELECT ? < value FROM meta WHERE key = 'board_cleared_at'), 0))
+      `INSERT INTO scores (game, name, email, phone, consent, updates, score, correct, rounds, client_id, played_at, removed, hidden)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+         MAX(?, COALESCE((SELECT ? < value FROM meta WHERE key = 'board_cleared_at'), 0)))
        ON CONFLICT (client_id) DO NOTHING`
     )
-    .bind(game, name, email, consent, updates, score, correct, rounds, clientId, played, played)
+    .bind(game, name, email, phone, consent, updates, score, correct, rounds, clientId, played, removed ? 1 : 0, removed ? 1 : 0, played)
     .run();
   // Lost a race with a resend of the same run: report the row that won.
   const id = clientId
     ? await db().prepare('SELECT id FROM scores WHERE client_id = ?').bind(clientId).first<number>('id')
     : inserted.meta.last_row_id;
 
-  return json({ ok: true, id, ...(await standing(game, email, name)) });
+  return json({ ok: true, id, ...(await standing(game, email, phone, name)) });
 };
 
 // Where the player stands: their best visible run (which may be an earlier
 // one), its id so the kiosk can highlight their row, and its rank against
 // everyone else's best. All null if none of their runs are on the board (a
 // late run from before it was cleared, or a player admin has hidden).
-async function standing(game: string, email: string | null, name: string) {
-  const me = player('?', '?');
+async function standing(game: string, email: string | null, phone: string | null, name: string) {
+  const me = player('?', '?', '?');
   const best = await db()
     .prepare(`SELECT id, score FROM scores WHERE hidden = 0 AND game = ? AND ${player()} = ${me} ORDER BY score DESC, id ASC LIMIT 1`)
-    .bind(game, email, name)
+    .bind(game, email, phone, name)
     .first<{ id: number; score: number }>();
   if (!best) return { rank: null, best: null, bestId: null };
   const top = best.score;
@@ -104,7 +109,7 @@ async function standing(game: string, email: string | null, name: string) {
          SELECT ${player()} AS who, MAX(score) AS top FROM scores WHERE hidden = 0 AND game = ? GROUP BY who
        ) WHERE top > ? AND who != ${me}`
     )
-    .bind(game, top, email, name)
+    .bind(game, top, email, phone, name)
     .first<number>('rank');
   return { rank, best: top, bestId: best.id };
 }

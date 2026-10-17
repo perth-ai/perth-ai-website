@@ -2,6 +2,9 @@
 import site from '../data/site.json';
 import Button from './Button.astro';
 
+// A Brevo form's address (Brevo -> Contacts -> Forms -> Share). It is public by
+// design: it ships in every embed and only names the list, it isn't a secret.
+// Empty means no list yet, so the buttons point at Luma instead.
 const action = site.mailingList.formAction;
 ---
 
@@ -16,25 +19,51 @@ const action = site.mailingList.formAction;
 
   {
     action ? (
-      <form action={action} method="post" class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+      <form
+        action={action}
+        method="post"
+        data-mailing-list
+        class="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row"
+      >
+        {/* Brevo's field names: FIRSTNAME and EMAIL must be upper case, and
+            Brevo drops any submission where the honeypot email_address_check
+            is filled in. Brevo answers "success" even when a field it needs
+            is missing, so keep the required fields here in step with the
+            Brevo form (currently first name and email). */}
+        <label for="mailing-list-name" class="sr-only">
+          First name
+        </label>
+        <input
+          id="mailing-list-name"
+          type="text"
+          name="FIRSTNAME"
+          required
+          autocomplete="given-name"
+          placeholder="First name"
+          class="rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500 sm:w-36"
+        />
         <label for="mailing-list-email" class="sr-only">
           Email address
         </label>
         <input
           id="mailing-list-email"
           type="email"
-          name="email"
+          name="EMAIL"
           required
+          autocomplete="email"
           placeholder="you@example.com"
-          class="flex-1 rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500"
+          class="min-w-0 flex-1 rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500"
         />
+        <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="locale" value="en" />
         <button
           type="submit"
-          class="rounded-xl bg-sunset-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-sunset-600"
+          class="rounded-xl bg-sunset-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-sunset-600 disabled:opacity-60"
         >
           Subscribe
         </button>
       </form>
+      <p data-mailing-list-status data-email={site.email} role="status" class="mx-auto mt-4 max-w-xl text-sm text-ink-200/85"></p>
     ) : (
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Button href={site.links.luma} variant="primary">
@@ -47,3 +76,34 @@ const action = site.mailingList.formAction;
     )
   }
 </div>
+
+<script>
+  // Without this the form still works, but only just: it posts straight to
+  // Brevo, which signs them up and shows a bare {"success":true}. This keeps
+  // people on our page and tells them to check their inbox, because the list
+  // is double opt-in and nobody is added until they click the link Brevo
+  // emails them. It asks Brevo for JSON
+  // the same way Brevo's own embed script does (?isAjax=1), and Brevo allows
+  // our origin to read the reply.
+  for (const form of document.querySelectorAll<HTMLFormElement>('form[data-mailing-list]')) {
+    const status = form.parentElement?.querySelector<HTMLElement>('[data-mailing-list-status]');
+    const button = form.querySelector('button');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (button) button.disabled = true;
+      if (status) status.textContent = '';
+
+      try {
+        const response = await fetch(`${form.action}?isAjax=1`, { method: 'POST', body: new FormData(form) });
+        const result = await response.json();
+        if (!result.success) throw new Error('Brevo refused the sign-up');
+        form.hidden = true;
+        if (status) status.textContent = "Nearly there. We've emailed you a link to confirm your subscription.";
+      } catch {
+        if (status) status.textContent = `That didn't go through. Try again, or email us at ${status.dataset.email}.`;
+        if (button) button.disabled = false;
+      }
+    });
+  }
+</script>

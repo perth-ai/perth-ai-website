@@ -53,8 +53,8 @@ This is a working skeleton — these need real values:
 - [ ] **Form endpoints** — `src/data/forms.json` has empty `action` fields, so the EoI forms
       currently fall back to opening the visitor's email client. Wire up Formspree, Tally, Getform
       or a Cloudflare Pages Function before launch.
-- [ ] **Mailing list** — either leave it pointing at Luma, or put a form action into
-      `mailingList.formAction` in `src/data/site.json`.
+- [x] **Mailing list** — sign-ups go to Brevo (double opt-in). The form address is
+      `mailingList.formAction` in `src/data/site.json`; empty it to fall back to Luma.
 - [ ] **Domain** — attach the custom domain in Cloudflare Pages, then set the `SITE_URL`
       environment variable in the Pages project to that domain. This is also what lifts the
       `noindex` guard, so don't set it until you actually want to be findable.

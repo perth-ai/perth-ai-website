@@ -1,0 +1,130 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Section from '../../../components/Section.astro';
+import pastEvents from '../../../data/pastEvents.json';
+
+export function getStaticPaths() {
+  return pastEvents.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+---
+
+<Base title={event.title} description={event.summary} image={event.image} imageAlt={event.imageAlt}>
+  <PageHero
+    eyebrow={`2026 Events | ${event.date}`}
+    title={event.title}
+    lead={event.summary}
+  />
+
+  <Section>
+    <a href="/events/past" class="text-sm font-semibold text-sunset-700 hover:underline">
+      &larr; All community events
+    </a>
+
+    <img
+      src={event.image}
+      alt={event.imageAlt}
+      class="mt-8 w-full rounded-lg"
+      fetchpriority="high"
+      decoding="async"
+    />
+
+    <div class="mt-8 max-w-3xl">
+        <p class="text-sm font-medium text-sunset-700">
+          <time datetime={event.dateTime}>{event.date}</time>
+        </p>
+        <p class="mt-2 leading-relaxed text-ink-600">
+          At {event.venueUrl ? (
+            <a
+              href={event.venueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
+              >{event.venue}</a
+            >
+          ) : (
+            event.venue
+          )}{event.location ? ` in ${event.location}` : ''}.
+        </p>
+        <p class="mt-4 leading-relaxed text-ink-600">{event.description}</p>
+
+        {event.sections?.map((section) => (
+          <section class="mt-8">
+            <h2 class="font-display text-xl font-semibold text-ink-900">{section.title}</h2>
+            {section.paragraphs?.map((paragraph) => (
+              <p class="mt-3 leading-relaxed text-ink-600">
+                {paragraph.map((segment) =>
+                  typeof segment === 'string' ? (
+                    segment
+                  ) : (
+                    <a
+                      href={segment.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
+                    >
+                      {segment.text}
+                    </a>
+                  ),
+                )}
+              </p>
+            ))}
+            {'items' in section && section.items && (
+              <ul class="mt-3 list-disc space-y-2 pl-5 leading-relaxed text-ink-600">
+                {section.items.map((item) => (
+                  <li class={typeof item[0] === 'string' && item[0].startsWith('🔹') ? 'list-none' : ''}>
+                    {item.map((segment) =>
+                      typeof segment === 'string' ? (
+                        segment
+                      ) : (
+                        <a
+                          href={segment.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
+                        >
+                          {segment.text}
+                        </a>
+                      ),
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
+
+        <img
+          src={event.artwork}
+          alt={event.artworkAlt}
+          class="mt-8 w-full max-w-sm rounded-lg"
+          loading="lazy"
+          decoding="async"
+        />
+    </div>
+
+    {event.gallery && event.gallery.length > 0 && (
+      <div class="mt-12">
+        <h2 class="font-display text-2xl font-semibold text-ink-900">Photos</h2>
+        <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {event.gallery.map((photo) => (
+            <li>
+              <img
+                src={photo}
+                alt={`Photo from ${event.title}.`}
+                class="aspect-[4/3] w-full rounded-lg object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </Section>
+</Base>

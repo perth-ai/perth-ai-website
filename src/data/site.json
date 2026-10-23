@@ -13,9 +13,9 @@
     "x": ""
   },
   "mailingList": {
-    "provider": "luma",
-    "formAction": "",
-    "note": "Leave formAction empty to send people straight to Luma. Paste a Mailchimp/Buttondown/Kit form action URL here to collect emails directly instead."
+    "provider": "brevo",
+    "formAction": "https://5c9185cc.sibforms.com/serve/MUIFADv_QIn-NZU0kQKBq6u9iAvHs7RpudzMvRDoV2EZ2NWj0vwFxevjr0_f990wADDufwIWMxeCkHAkxkYZVx0TfN6kIaLZgEC7_Cgs_ELR9KQDoCJAyyAfDc_5Yp_D-U4d8nqHvMlhaENij52zKHuYMd7WubUOAG5TN-2nEIb7si1thcQFnepA89BqlrPd-yg52Q_09c75t4c4oA==",
+    "note": "formAction is the Brevo form address (Brevo -> Contacts -> Forms -> your form -> Share). It is public by design. Our form sends first name and email, so in Brevo those must be the only required fields (Brevo says success either way, so a mismatch fails silently). The Brevo form is double opt-in. Leave formAction empty to send people to Luma instead."
   },
   "summit": {
     "name": "AI Disrupt Summit",

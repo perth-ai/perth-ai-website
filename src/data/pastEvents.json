@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "2026-10-jax-koh-adal",
+    "title": "From Build, Demo to GTM: Jax Koh x AdaL",
+    "date": "5 October 2026",
+    "dateTime": "2026-10-05",
+    "venue": "Curtin Entrepreneurs Hub",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "We’ve been on a roll with events lately, and Monday night was no exception! We hosted Jax, a GTM engineer, for an exclusive AdaL workshop at the Curtin Entrepreneurs Hub.",
+    "description": "Perth AI operates across three core streams—Builders & Startups, Product & Eng, and AI-First Enterprise—and this event was tailor-made for our Builders & Startups stream. It certainly didnt disappoint, drawing a fantastic crowd of 65+ people eager to learn and build together.",
+    "image": "/images/2026/1005-jax-koh-and-adal/DSC_5190_hero.JPG",
+    "imageAlt": "Attendees at the Jax Koh and AdaL workshop beside a Perth AI banner.",
+    "artwork": "/images/2026/1005-jax-koh-and-adal/20261005-jax-koh-socials-tile.jpg",
+    "artworkAlt": "From Build, Demo to GTM event artwork featuring Jax Koh and AdaL.",
+    "gallery": [
+      "/images/2026/1005-jax-koh-and-adal/DSC_4977 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_4980 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5030 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5046 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5075 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5150 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5160 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5161 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5176 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5193 (Large).JPG",
+      "/images/2026/1005-jax-koh-and-adal/DSC_5202 (Large).JPG"
+    ],
+    "sections": [
+      {
+        "title": "1. The Fireside Chat",
+        "paragraphs": [
+          ["Kicking things off, ", { "text": "J-Ern Sia", "url": "https://www.linkedin.com/in/j-ern-sia/" }, " did an incredible job MCing a conversation exploring ", { "text": "Jax's", "url": "https://www.linkedin.com/in/jaxkoh/" }, " inspiring journey:"]
+        ],
+        "items": [
+          ["🔹 Growing up in Malaysia and studying computer science at UQ."],
+          ["🔹 Landing a dream role at an AI agent startup in San Francisco."],
+          ["🔹 Leading UQ students on visits to exclusive big tech companies in Silicon Valley."],
+          ["🔹 Discussing what makes the SF tech scene so uniquely vibrant."]
+        ]
+      },
+      {
+        "title": "2. Hands-On Building with AdaL",
+        "paragraphs": [
+          ["The second session was what everyone was waiting for: building! Huge thanks to Jax for providing all the credits. Attendees jumped right in, getting the CLI up and running in no time."],
+          ["AdaL is an automation-first agent harness that shines at browser use, system integrations, and tool execution—making it a powerhouse for tasks like running GTM campaigns."]
+        ]
+      },
+      {
+        "title": "3. World-First AI Video Generation",
+        "paragraphs": [
+          ["The Perth AI community got an exclusive first look at AdaL’s brand-new video generation feature, launched just a day prior. Attendees immediately put it to the test, generating:"]
+        ],
+        "items": [
+          ["🔹 A dinosaur video mash-up by ", { "text": "Mash", "url": "https://www.linkedin.com/in/mashjprime/" }],
+          ["🔹 A Perth AI promo video featuring a hip-hop-dancing, bug-smashing quokka ", { "text": "Jason Chia", "url": "https://www.linkedin.com/in/jason-chiajs/" }],
+          ["🔹 A Welcome to Perth message from ", { "text": "Eunbee Lee", "url": "https://www.linkedin.com/in/eunbee-lee-905238220/" }],
+          ["🔹 A winning GTM video for a shopping site by ", { "text": "Tommy L", "url": "https://www.linkedin.com/in/itstomlie/" }, ", who walked away with a Chokka Quokka for his efforts!"]
+        ]
+      },
+      {
+        "title": "Special Thanks 👏",
+        "paragraphs": [
+          ["Jax & AdaL: Thank you for the pizzas, and for traveling thousands of kilometers to give Perth a world-first look at the video generation tool as the very first stop on your global GTM tour!"],
+          ["Media and Logistics: ", { "text": "Jason", "url": "https://www.linkedin.com/in/jason-chiajs/" }, " on camera, plus the entire Perth AI team working behind the scenes: ", { "text": "Sanya", "url": "https://www.linkedin.com/in/sanya-saddi-422a47313/" }, ", ", { "text": "Matthew", "url": "https://www.linkedin.com/in/matthew-yuan-7191051b8/" }, ", ", { "text": "Pravin", "url": "https://www.linkedin.com/in/its-pravin-kumar/" }, ", ", { "text": "Chao Cherng", "url": "https://www.linkedin.com/in/chaochernglee/" }, ", ", { "text": "Kristina", "url": "https://www.linkedin.com/in/kristina-gagalova/" }, ", ", { "text": "Arlen", "url": "https://www.linkedin.com/in/arlen-brower-28625266/" }, ", ", { "text": "Ashish", "url": "https://www.linkedin.com/in/ashish-doshi-7ab0874/" }, ", ", { "text": "Rajat", "url": "https://www.linkedin.com/in/rajat-raj-saddi-7b48024/" }, ", ", { "text": "Rafael", "url": "https://www.linkedin.com/in/rafael-avigad/" }, ", ", { "text": "Tim de Boer", "url": "https://www.linkedin.com/in/timothydeboer/" }, ", ", { "text": "Will", "url": "https://www.linkedin.com/in/willwebster/" }, ", ", { "text": "Susannah", "url": "https://www.linkedin.com/in/susannah-soon/" }, "."],
+          ["Partners: ", { "text": "Curtin Commercialisation and Entrepreneurship", "url": "https://www.linkedin.com/showcase/curtin-commercialisation-and-entrepreneurship/" }, " and ", { "text": "WA Data Science Innovation Hub (WADSIH)", "url": "https://www.linkedin.com/company/wadsih/" }, " for your ongoing support."]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-10-ddd-perth",
+    "title": "Perth AI at DDD Perth 2026",
+    "date": "3 October 2026",
+    "dateTime": "2026-10-03",
+    "venue": "DDD Perth Conference",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "What an incredible day at DDD Perth 2026! 🚀",
+    "description": "The Perth AI booth was buzzing from start to finish, and we loved connecting with everyone who stopped by to learn more about our community. Thank you for the wonderful conversations, fantastic feedback, and incredible energy!",
+    "image": "/images/2026/1003-ddd-perth/DSC_4928_hero.JPG",
+    "imageAlt": "The Perth AI team and attendees gathered at the DDD Perth booth.",
+    "artwork": "/images/2026/1003-ddd-perth/20261003-ddd-perth-socials-tile.jpeg",
+    "artworkAlt": "Perth AI at DDD Perth booth artwork with a quokka and event activities.",
+    "gallery": [
+      "/images/2026/1003-ddd-perth/DSC_4869 (Large).JPG",
+      "/images/2026/1003-ddd-perth/DSC_4903 (Large).JPG",
+      "/images/2026/1003-ddd-perth/DSC_4905 (Large).JPG",
+      "/images/2026/1003-ddd-perth/DSC_4913 (Large).JPG",
+      "/images/2026/1003-ddd-perth/DSC_4916 (Large).JPG",
+      "/images/2026/1003-ddd-perth/DSC_4946 (Large) - brighter.jpg",
+      "/images/2026/1003-ddd-perth/DSC_4949 (Large).JPG",
+      "/images/2026/1003-ddd-perth/20261003_095404 (Large).jpg"
+    ],
+    "sections": [
+      {
+        "title": "Highlights from the Day:",
+        "paragraphs": [
+          ["The Quokka Run Game: Absolute crowd-pleaser! It definitely brought out some fierce (and fun) competitive streaks. 🏃💨"],
+          ["Swag and Prizes: Congrats to our main stage JB Hi-Fi gift voucher winner, our \"trip for 2 to Rotto\" quokka runner prize winners, and everyone who scored a Quokka Chokka! We hope you love them (and thank you for the great feedback on our quokka mascot and logo)."],
+          ["Inspirational Talks: A huge highlight was ", { "text": "Kesha Williams", "url": "https://www.linkedin.com/in/keshaewilliams/" }, "' amazing keynote on agents doing what they’ve been tasked to do."]
+        ]
+      },
+      {
+        "title": "Special Shoutouts:",
+        "paragraphs": [
+          ["Our Amazing Team: Massive thanks for the strong teamwork and good vibes all day. Shoutout to ", { "text": "Mash", "url": "https://www.linkedin.com/in/mashjprime/" }, " for the dashboard prep, ", { "text": "Ashish", "url": "https://www.linkedin.com/in/ashish-doshi-7ab0874/" }, " for the Reachy Mini interaction, and ", { "text": "Tim", "url": "https://www.linkedin.com/in/timothydeboer/" }, " and ", { "text": "Will", "url": "https://www.linkedin.com/in/willwebster/" }, " for championing everything behind the scenes!"],
+          ["Special Guest: A huge welcome to ", { "text": "Jax Koh", "url": "https://www.linkedin.com/in/jaxkoh/" }, " (GTM Engineer at ", { "text": "AdaL", "url": "https://www.linkedin.com/company/adalagent/" }, "), who flew in from Brisbane just to attend. (Reminder: Catch Jax's workshop this coming Monday night, Oct 5th—link in the comments!)"],
+          ["DDD Perth Team: Thank you for everything you do to support and empower our local tech community. ❤️️"],
+          [
+            { "text": "#DDDPerth", "url": "https://www.linkedin.com/search/results/all/?keywords=%23dddperth&origin=HASH_TAG_FROM_FEED" },
+            " ",
+            { "text": "hashtag#PerthAI", "url": "https://www.linkedin.com/search/results/all/?keywords=%23perthai&origin=HASH_TAG_FROM_FEED" },
+            " ",
+            { "text": "hashtag#ArtificialIntelligence", "url": "https://www.linkedin.com/search/results/all/?keywords=%23artificialintelligence&origin=HASH_TAG_FROM_FEED" },
+            " ",
+            { "text": "hashtag#Community", "url": "https://www.linkedin.com/search/results/all/?keywords=%23community&origin=HASH_TAG_FROM_FEED" },
+            " ",
+            { "text": "hashtag#TechCommunity", "url": "https://www.linkedin.com/search/results/all/?keywords=%23techcommunity&origin=HASH_TAG_FROM_FEED" },
+            " ",
+            { "text": "hashtag#PerthTech", "url": "https://www.linkedin.com/search/results/all/?keywords=%23perthtech&origin=HASH_TAG_FROM_FEED" }
+          ],
+          [
+            { "text": "Eunbee", "url": "https://www.linkedin.com/in/eunbee-lee-905238220/" }, " ",
+            { "text": "Sanya", "url": "https://www.linkedin.com/in/sanya-saddi-422a47313/" }, " ",
+            { "text": "Lee", "url": "https://www.linkedin.com/in/chaochernglee/" }, " ",
+            { "text": "Pravin", "url": "https://www.linkedin.com/in/its-pravin-kumar/" }, " ",
+            { "text": "Matthew", "url": "https://www.linkedin.com/in/matthew-yuan-7191051b8/" }, " ",
+            { "text": "J-Ern", "url": "https://www.linkedin.com/in/j-ern-sia/" }, " ",
+            { "text": "Jason", "url": "https://www.linkedin.com/in/jason-chiajs/" }, " ",
+            { "text": "Krish", "url": "https://www.linkedin.com/in/krishdubey/" }, " ",
+            { "text": "Hill", "url": "https://www.linkedin.com/in/hill-le-3a4194179/" }, " ",
+            { "text": "Arlen", "url": "https://www.linkedin.com/in/arlen-brower-28625266/" }, " ",
+            { "text": "Rajat", "url": "https://www.linkedin.com/in/rajat-raj-saddi-7b48024/" }, " ",
+            { "text": "Rafael", "url": "https://www.linkedin.com/in/rafael-avigad/" }, " ",
+            { "text": "Kristina", "url": "https://www.linkedin.com/in/kristina-gagalova/" }, " ",
+            { "text": "Luca", "url": "https://www.linkedin.com/in/lucaintini/" }, " ",
+            { "text": "Susannah", "url": "https://www.linkedin.com/in/susannah-soon/" }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-08-matt-pocock-workshop",
+    "title": "Matt Pocock Skills Workshop",
+    "date": "26 August 2026",
+    "dateTime": "2026-08-26",
+    "venue": "Bloom",
+    "location": "Bentley",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A workshop on modern development skills and agentic tooling for Curtin University students and postgraduates.",
+    "description": "A small-group session on software engineering with agentic tools, including skills, plug-ins and practical tips.",
+    "image": "/images/2026/0826-matt-pocock-workshop-1/1787879634520-hero.jpeg",
+    "imageAlt": "A speaker presenting to attendees at the Matt Pocock skills workshop.",
+    "artwork": "/images/2026/0826-matt-pocock-workshop-1/20260826-matt-pocock-workshop-1.jpeg",
+    "artworkAlt": "Matt Pocock Skills Workshop poster for the 26 August event at Bloom Bentley.",
+    "gallery": [
+      "/images/2026/0826-matt-pocock-workshop-1/1787879629543.jpeg",
+      "/images/2026/0826-matt-pocock-workshop-1/1787879629831.jpeg",
+      "/images/2026/0826-matt-pocock-workshop-1/1787879631561.jpeg",
+      "/images/2026/0826-matt-pocock-workshop-1/1787879634304.jpeg",
+      "/images/2026/0826-matt-pocock-workshop-1/1787879634610.jpeg"
+    ],
+    "sections": [
+      {
+        "title": "Agentic software engineering",
+        "paragraphs": [
+          ["A select group of Curtin University students and postgraduates explored how skills, plug-ins and practical techniques can support the craft of software engineering with agentic tools."]
+        ]
+      },
+      {
+        "title": "Thanks",
+        "paragraphs": [
+          ["Thanks to ", { "text": "Rafael Avigad", "url": "https://www.linkedin.com/in/rafael-avigad/" }, " and ", { "text": "Rajat (Raj) Saddi", "url": "https://www.linkedin.com/in/rajat-raj-saddi-7b48024/" }, " from ", { "text": "Interfuze Consulting", "url": "https://www.linkedin.com/company/interfuze-consulting/" }, " for the talk, and to ", { "text": "Susannah Soon", "url": "https://www.linkedin.com/in/susannah-soon/" }, " and ", { "text": "Kristina Gagalova", "url": "https://www.linkedin.com/in/kristina-gagalova/" }, " for hosting and helping organise."]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-09-beers-and-tacos",
+    "title": "Perth AI Beers and Tacos",
+    "date": "30 September 2026",
+    "dateTime": "2026-09-30",
+    "venue": "Rocky Ridge Brewing Co.",
+    "venueUrl": "https://www.linkedin.com/company/rocky-ridge-brewing-co/",
+    "location": "Duncraig",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A relaxed community session on product and engineering, with refreshments, tacos and plenty of conversation.",
+    "description": "We had a great turnout. It was lovely to catch up with old friends, meet new people and geek out about product and engineering while enjoying refreshments and tacos.",
+    "image": "/images/2026/0930-beers-and-tacos/1790918545082-hero.jpeg",
+    "imageAlt": "Perth AI attendees gathered around a Beers and Tacos welcome sign at Rocky Ridge Brewing Co.",
+    "artwork": "/images/2026/0930-beers-and-tacos/20260930-beers-and-tacos-socials-tile.jpeg",
+    "artworkAlt": "Perth AI Beers and Tacos event artwork featuring a quokka, beer and taco"
+  }
+]

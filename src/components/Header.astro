@@ -22,11 +22,12 @@ const nav = [
     label: 'Events',
     /* The group reads as current on any page it contains, so the capsule
        still tells you where you are once a child page is open. */
-    match: ['/events', '/summit'],
+    match: ['/events', '/summit', '/summit-2026'],
     items: [
       { label: 'Luma calendar', href: '/events' },
       { label: 'Past events', href: '/events/past' },
-      { label: 'Signature event (AI Disrupt)', href: '/summit' },
+      { label: 'AI Disrupt 2026', href: '/summit-2026' },
+      { label: 'Last year - AI Disrupt 2025', href: '/summit' },
       { label: 'Next event', href: site.links.luma, cta: true },
     ],
   },

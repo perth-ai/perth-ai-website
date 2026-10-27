@@ -3,11 +3,8 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import MailingList from '../components/MailingList.astro';
-import EoiForm from '../components/EoiForm.astro';
 import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
-import site from '../data/site.json';
-import forms from '../data/forms.json';
 
 /* The 2025 summit ran under our previous name, GenAI Community. The recap and
    the full photo gallery still live on that site — we link out to both rather
@@ -93,13 +90,13 @@ const photos = [
 ---
 
 <Base
-  title="AI Disrupt Summit"
-  description="AI Disrupt Summit is Perth AI's signature event — a full day of talks, a startup expo, a hackathon and hands-on workshops for people building with AI in Western Australia."
+  title="AI Disrupt Summit 2025"
+  description="A look back at AI Disrupt Summit 2025, Perth AI's first annual summit for people building with AI in Western Australia."
 >
   <PageHero
-    eyebrow="Our signature event"
-    title="AI Disrupt Summit"
-    lead="One day, once a year, where everyone in Perth building with AI ends up in the same building. Talks, a startup expo, a hackathon and workshops — then drinks in the courtyard."
+    eyebrow="Our signature event · 2025 recap"
+    title="AI Disrupt Summit 2025"
+    lead="One day where everyone in Perth building with AI ended up in the same building. Talks, a startup expo, a hackathon and workshops — then drinks in the courtyard."
   />
 
   <Section>
@@ -275,68 +272,16 @@ const photos = [
 
   <Section>
     <div class="rounded-2xl border border-ink-200 p-8 sm:p-10">
-      <h2 class="font-display text-2xl font-semibold">What about 2026?</h2>
+      <h2 class="font-display text-2xl font-semibold">AI Disrupt Summit 2026</h2>
       <p class="mt-3 max-w-xl leading-relaxed text-ink-600 text-pretty">
-        We're planning the next one for early December 2026. No date, venue or tickets locked in
-        yet — when there is one, the calendar gets it first.
+        The summit returns on Saturday 12 December at the Tim Winton Lecture Theatre, Curtin
+        University, Bentley.
       </p>
-      <p class="mt-3 max-w-xl leading-relaxed text-ink-600 text-pretty">
-        Want to be on the programme? <a
-          href="#speak"
-          class="font-medium text-orchid-700 underline decoration-orchid-700/40 underline-offset-2 hover:decoration-orchid-700"
-          >Put your hand up to speak</a
-        >.
-      </p>
-    </div>
-  </Section>
-
-  {/* Call for speakers. The same questions the DDD Perth 2026 booth asked, so
-      submissions from both land in the inbox looking alike. */}
-  <Section id="speak" tone="muted" eyebrow="Call for speakers" title={forms.speaker.title} lead={forms.speaker.intro}>
-    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-      <div class="space-y-5 leading-relaxed text-ink-700">
-        <p>
-          A talk, a five-minute lightning talk, a live demo, a hands-on workshop or a spot on a
-          panel. If you've shipped it, broken it or studied it, there's probably a slot that fits.
-        </p>
-        <p>
-          You don't need a polished abstract. Tell us the idea and who it's for, and we'll help shape
-          it with you. First-time speakers are welcome, and so are people who'd rather start at a
-          meet-up before taking the big stage.
-        </p>
-        <p>
-          We read every submission and get in touch while we're putting the programme together.
-        </p>
-      </div>
-
-      <div class="rounded-2xl border border-ink-200 bg-white p-7">
-        <EoiForm
-          id="speaker-form"
-          action={forms.speaker.action}
-          accessKey={forms.speaker.accessKey}
-          subject="AI Disrupt 2026 — speaker submission"
-          submitLabel="Submit my idea"
-          fields={[
-            { name: 'name', label: 'Your name', required: true },
-            { name: 'email', label: 'Email', type: 'email', required: true },
-            { name: 'talk', label: 'Talk or demo title', required: true },
-            {
-              name: 'abstract',
-              label: "What's it about?",
-              type: 'textarea',
-              required: true,
-              placeholder: 'What will people learn or see, and who is it for?',
-            },
-            { name: 'format', label: 'Format', type: 'select', options: ['Talk', 'Lightning talk', 'Demo', 'Workshop', 'Panel'] },
-            {
-              name: 'event',
-              label: 'Where would you like to speak?',
-              type: 'select',
-              options: ['AI Disrupt 2026', 'A Perth AI meet-up', 'Either'],
-            },
-            { name: 'link', label: 'LinkedIn or website (optional)' },
-          ]}
-        />
+      <div class="mt-6">
+        <Button href="/summit-2026" variant="ghost">
+          Visit the 2026 summit page
+          <Icon name="arrow" class="h-4 w-4" />
+        </Button>
       </div>
     </div>
   </Section>

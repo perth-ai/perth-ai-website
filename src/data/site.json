@@ -18,10 +18,11 @@
     "note": "formAction is the Brevo form address (Brevo -> Contacts -> Forms -> your form -> Share). It is public by design. Our form sends first name and email, so in Brevo those must be the only required fields (Brevo says success either way, so a mismatch fails silently). The Brevo form is double opt-in. Leave formAction empty to send people to Luma instead."
   },
   "summit": {
-    "name": "AI Disrupt Summit",
-    "blurb": "Our flagship event and a satellite of West Tech Fest.",
-    "url": "/summit",
-    "when": "Early December, once a year",
-    "_url": "Internal page. The 2025 recap and gallery live on the old GenAI Community site and are linked from /summit."
+    "name": "AI Disrupt Summit 2026",
+    "blurb": "Perth AI's annual signature event, bringing together people building with AI across Western Australia.",
+    "url": "/summit-2026",
+    "when": "Saturday 12 December 2026, from 10am",
+    "registrationUrl": "https://luma.com/50dna1ry",
+    "_url": "The 2025 recap and gallery are linked from /summit."
   }
 }

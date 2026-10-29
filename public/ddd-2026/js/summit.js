@@ -11,7 +11,7 @@ const PHOTOS = [
   { src: 'opening', alt: 'A speaker opening the summit in front of a large AI Disrupt Summit 2025 title slide.' },
   { src: 'main-room', alt: 'A packed hall of attendees seated at round tables between sessions.' },
   { src: 'speaker', alt: 'A speaker presenting to a seated audience alongside a projected slide.' },
-  { src: 'startup-expo', alt: 'Two attendees talking beside a startup banner at the expo.' },
+  { src: 'startup-expo', alt: 'Two attendees talking beside a start-up banner at the expo.' },
   { src: 'hackathon', alt: 'Hackathon teams working on laptops at long shared tables.' },
   { src: 'hackathon-prizes', alt: 'Two people on stage holding prizes in front of a hackathon results slide.' },
   { src: 'courtyard', alt: 'Attendees talking outside on the lawn with drinks during a break.' },
@@ -19,7 +19,7 @@ const PHOTOS = [
 
 const STATS = [
   { figure: '180+', label: 'builders, founders, students and investors' },
-  { figure: '15', label: 'AI startups at the expo' },
+  { figure: '15', label: 'AI start-ups at the expo' },
   { figure: '5', label: 'hackathon teams' },
 ];
 
@@ -57,7 +57,7 @@ export function renderSummit() {
         <div class="summit-info">
           <div class="eyebrow">Perth AI’s signature event</div>
           <h1>AI Disrupt <span class="accent">2026</span></h1>
-          <p class="lede">One day, once a year, where everyone in Perth building with AI ends up in the same building. Talks, a startup expo, a hackathon and workshops — then drinks in the courtyard.</p>
+          <p class="lede">One day, once a year, where everyone in Perth building with AI ends up in the same building. Talks, a start-up expo, a hackathon and workshops — then drinks in the courtyard.</p>
           <p class="when">📅 December 2026</p>
           <dl class="summit-stats">
             ${STATS.map((s) => `<div><dt>${esc(s.figure)}</dt><dd>${esc(s.label)}</dd></div>`).join('')}

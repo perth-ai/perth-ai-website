@@ -20,7 +20,7 @@ export const FORMS = {
       { name: 'email', label: 'Email', type: 'email', required: true, max: 120 },
       {
         name: 'role', label: 'Which best describes you?', type: 'chips',
-        options: ['Builder / startup', 'Student', 'Product & engineering', 'AI-first enterprise', 'Just curious'],
+        options: ['Builder / start-up', 'Student', 'Product & engineering', 'AI-first enterprise', 'Just curious'],
       },
       { name: 'building', label: 'What are you building or exploring? (optional)', type: 'textarea', max: 500 },
     ],
@@ -125,7 +125,7 @@ export const FORMS = {
     parent: 'summit',
     title: 'Host AI Disrupt',
     eyebrow: 'Venue sponsor',
-    intro: 'AI Disrupt needs a main room, space for a startup expo and hackathon tables, and somewhere to catch up afterwards. If your organisation has the space, we’d love to talk.',
+    intro: 'AI Disrupt needs a main room, space for a start-up expo and hackathon tables, and somewhere to catch up afterwards. If your organisation has the space, we’d love to talk.',
     submitLabel: 'Offer our venue',
     thanks: 'Thank you! Someone from the AI Disrupt team will be in touch about the venue.',
     fields: [

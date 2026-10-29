@@ -5,7 +5,7 @@
 import { esc, mount, SKY, BACK, qrCard } from './ui.js';
 
 const GROUPS = [
-  { title: 'Builders, startups & students', points: ['Co-building sessions', 'Hands-on workshops', 'Honest feedback on your idea'] },
+  { title: 'Builders, start-ups & students', points: ['Co-building sessions', 'Hands-on workshops', 'Honest feedback on your idea'] },
   { title: 'Product & engineering', points: ['Evals, agents, context engineering', 'Non-deterministic product patterns', 'Show-and-tell from shipping teams'] },
   { title: 'AI-first enterprise', points: ['Real rollouts, including the sideways ones', 'Governance, risk, change management', 'Peers from other WA organisations'] },
 ];

@@ -1,5 +1,85 @@
 [
   {
+    "slug": "2026-10-matt-pocock-workshop-2",
+    "title": "Matt Pocock Skills Workshop #2",
+    "date": "28 October 2026",
+    "dateTime": "2026-10-28",
+    "venue": "Bloom",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Thank you to the 60+ developers and students who joined us to explore Matt Pocock’s skills and how they fit into an agentic coding toolkit.",
+    "description": "Raf and Mash from the Perth AI team shared practical ways to work with agent skills, build with agents and keep the fundamentals of software engineering in focus.",
+    "image": "/images/2026/1029-matt-pocock-workshop-2/DSC_5211 (Large).JPG",
+    "imageAlt": "A presenter speaking to a room of developers and students at the Matt Pocock skills workshop.",
+    "artwork": "/images/2026/1029-matt-pocock-workshop-2/hero_raf_mash_pocock_2.png",
+    "artworkAlt": "Perth AI Matt Pocock Skills Part 2 workshop artwork featuring a quokka and the presenters Raf and Mash.",
+    "gallery": [
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5214 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5227 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5231 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5232 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5233 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5240 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5247 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5248 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5257 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5258 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5261 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5268 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5271 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5275 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5276 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5281 (Large).JPG",
+      "/images/2026/1029-matt-pocock-workshop-2/DSC_5286 (Large).JPG"
+    ],
+    "sections": [
+      {
+        "title": "Raf: getting the foundations right",
+        "paragraphs": [
+          ["Raf aligned our understanding of tokens, context, orchestrators, harnesses, agents and skills."]
+        ],
+        "items": [
+          ["AI hasn’t replaced the fundamentals: hand-coding, thinking and collaboration still matter for productivity."],
+          ["Skills are built for agents. They compose and load progressively."],
+          ["A Glossary.md can help manage context."]
+        ]
+      },
+      {
+        "title": "Mash: putting skills into practice",
+        "paragraphs": [
+          ["Mash gave a live demo using Matt Pocock’s skills on a real online shop project, adding a Favourites feature to show how skills can help identify, investigate, implement and resolve tickets and issues."]
+        ],
+        "items": [
+          ["Third-party skills: be wary of prompt injection when using them."],
+          ["Choosing models: models aren’t bad anymore, so there’s less need to agonise over which one to use."],
+          ["Hooks, guardrails and sandboxing: Mash explained pre- and post-hooks, and why you should sandbox AI so it can’t go rogue and delete things on your machine."],
+          ["Build skills for your own context: custom skills are a must for tailoring agents to how you work."]
+        ]
+      },
+      {
+        "title": "Thank you",
+        "paragraphs": [
+          ["Thank you to everyone who shared their time, knowledge and support."]
+        ],
+        "items": [
+          ["Rafael Avigad (Raf) and Mash Prime for sharing their knowledge and insights."],
+          ["Tim and Interfuze for the pizza, drinks and insights."],
+          ["WADSIH for your continued support."],
+          ["Bloom for the excellent basement venue."],
+          ["Matthew for the photos."],
+          ["Kirstina Hill, Chao Cherng Lee, J Ern, Ash, Arlen, Raj, Will and the whole team."]
+        ]
+      },
+      {
+        "title": "Coming up: AI Disrupt Summit 2026",
+        "paragraphs": [
+          ["Our signature event is on Saturday 12 December, a full day at the Tim Winton Lecture Theatre."],
+          ["We’re calling for expressions of interest for talks, workshops, panels, demos, booths and more: ", { "text": "perthai.org/summit-2026", "url": "https://perthai.org/summit-2026/" }, "."],
+          ["Help us pull this one off in six weeks!"]
+        ]
+      }
+    ]
+  },
+  {
     "slug": "2026-10-jax-koh-adal",
     "title": "From Build, Demo to GTM: Jax Koh x AdaL",
     "date": "5 October 2026",
@@ -33,7 +113,7 @@
         ],
         "items": [
           ["🔹 Growing up in Malaysia and studying computer science at UQ."],
-          ["🔹 Landing a dream role at an AI agent startup in San Francisco."],
+          ["🔹 Landing a dream role at an AI agent start-up in San Francisco."],
           ["🔹 Leading UQ students on visits to exclusive big tech companies in Silicon Valley."],
           ["🔹 Discussing what makes the SF tech scene so uniquely vibrant."]
         ]
@@ -140,6 +220,22 @@
     ]
   },
   {
+    "slug": "2026-09-beers-and-tacos",
+    "title": "Perth AI Beers and Tacos",
+    "date": "30 September 2026",
+    "dateTime": "2026-09-30",
+    "venue": "Rocky Ridge Brewing Co.",
+    "venueUrl": "https://www.linkedin.com/company/rocky-ridge-brewing-co/",
+    "location": "Duncraig",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A relaxed community session on product and engineering, with refreshments, tacos and plenty of conversation.",
+    "description": "We had a great turnout. It was lovely to catch up with old friends, meet new people and geek out about product and engineering while enjoying refreshments and tacos.",
+    "image": "/images/2026/0930-beers-and-tacos/1790918545082-hero.jpeg",
+    "imageAlt": "Perth AI attendees gathered around a Beers and Tacos welcome sign at Rocky Ridge Brewing Co.",
+    "artwork": "/images/2026/0930-beers-and-tacos/20260930-beers-and-tacos-socials-tile.jpeg",
+    "artworkAlt": "Perth AI Beers and Tacos event artwork featuring a quokka, beer and taco"
+  },
+  {
     "slug": "2026-08-matt-pocock-workshop",
     "title": "Matt Pocock Skills Workshop",
     "date": "26 August 2026",
@@ -174,21 +270,5 @@
         ]
       }
     ]
-  },
-  {
-    "slug": "2026-09-beers-and-tacos",
-    "title": "Perth AI Beers and Tacos",
-    "date": "30 September 2026",
-    "dateTime": "2026-09-30",
-    "venue": "Rocky Ridge Brewing Co.",
-    "venueUrl": "https://www.linkedin.com/company/rocky-ridge-brewing-co/",
-    "location": "Duncraig",
-    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
-    "summary": "A relaxed community session on product and engineering, with refreshments, tacos and plenty of conversation.",
-    "description": "We had a great turnout. It was lovely to catch up with old friends, meet new people and geek out about product and engineering while enjoying refreshments and tacos.",
-    "image": "/images/2026/0930-beers-and-tacos/1790918545082-hero.jpeg",
-    "imageAlt": "Perth AI attendees gathered around a Beers and Tacos welcome sign at Rocky Ridge Brewing Co.",
-    "artwork": "/images/2026/0930-beers-and-tacos/20260930-beers-and-tacos-socials-tile.jpeg",
-    "artworkAlt": "Perth AI Beers and Tacos event artwork featuring a quokka, beer and taco"
   }
 ]

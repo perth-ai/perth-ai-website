@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import Section from './Section.astro';
+import summitGalleries from '../data/summitGalleries.json';
+
+interface Props {
+  gallery: 'JO-photos' | 'SS-cam';
+  title: string;
+  description: string;
+}
+
+const { gallery, title, description } = Astro.props;
+const photos = summitGalleries[gallery]
+  .map((filename) => `/images/2025/2025-12-summit/${gallery}/${filename}`);
+---
+
+<Base title={title} description={description}>
+  <PageHero eyebrow="AI Disrupt Summit 2025" title={title} lead={description} />
+
+  <Section>
+    <a
+      href="/events/past/2025-12-summit"
+      class="text-sm font-semibold text-sunset-700 hover:underline"
+    >
+      &larr; Back to AI Disrupt Summit 2025
+    </a>
+    <p class="mt-4 text-sm text-ink-600">{photos.length} photos</p>
+    <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {photos.map((photo, index) => (
+        <li>
+          <img
+            src={photo}
+            alt={`AI Disrupt Summit 2025, ${gallery === 'JO-photos' ? 'gallery 1' : 'gallery 2'}, photo ${index + 1}.`}
+            class="aspect-[4/3] w-full rounded-lg object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
+      ))}
+    </ul>
+  </Section>
+</Base>

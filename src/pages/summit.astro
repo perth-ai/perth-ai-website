@@ -21,7 +21,8 @@ import Icon from '../components/Icon.astro';
        has confirmed who shot them, and a wrong credit is worse than none. */
 
 const summitSite = 'https://genai-community.pages.dev/summit/2025';
-const gallery = 'https://genai-community.pages.dev/events/past/2025-12-summit-gallery-2';
+const gallery1 = '/events/past/2025-12-summit-gallery-1';
+const gallery2 = '/events/past/2025-12-summit-gallery-2';
 
 const stats = [
   { figure: '180+', label: 'builders, founders, students and investors' },
@@ -243,11 +244,15 @@ const photos = [
       }
     </ul>
     <p class="mt-8 text-ink-600">
-      There are another ninety-odd in the full gallery.
+      Browse all 191 summit photos across two galleries.
     </p>
-    <div class="mt-6">
-      <Button href={gallery} variant="ghost">
-        See the full 2025 gallery
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+      <Button href={gallery1} variant="ghost">
+        Gallery 1 · 89 photos
+        <Icon name="arrow" class="h-4 w-4" />
+      </Button>
+      <Button href={gallery2} variant="ghost">
+        Gallery 2 · 102 photos
         <Icon name="arrow" class="h-4 w-4" />
       </Button>
     </div>

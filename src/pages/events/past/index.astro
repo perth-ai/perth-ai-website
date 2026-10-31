@@ -3,6 +3,8 @@ import Base from '../../../layouts/Base.astro';
 import PageHero from '../../../components/PageHero.astro';
 import Section from '../../../components/Section.astro';
 import pastEvents from '../../../data/pastEvents.json';
+
+const years = [...new Set(pastEvents.map((event) => event.dateTime.slice(0, 4)))].sort().reverse();
 ---
 
 <Base
@@ -15,33 +17,39 @@ import pastEvents from '../../../data/pastEvents.json';
     lead="A look back at the people, ideas and moments that bring our community together."
   />
 
-  <Section title="2026 Events">
-    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        pastEvents.map((event) => (
-          <li>
-            <a
-              href={`/events/past/${event.slug}`}
-              class="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-900"
-            >
-              <img
-                src={event.image}
-                alt={event.imageAlt}
-                class="aspect-[4/3] w-full rounded-lg object-cover transition duration-300 group-hover:brightness-95"
-                loading="lazy"
-                decoding="async"
-              />
-              <time datetime={event.dateTime} class="mt-4 block text-sm font-medium text-sunset-700">
-                {event.date}
-              </time>
-              <h3 class="mt-1 font-display text-xl font-semibold group-hover:underline">
-                {event.title}
-              </h3>
-              <p class="mt-2 leading-relaxed text-ink-600">{event.summary}</p>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
+  {
+    years.map((year) => (
+      <Section title={`${year} Events`}>
+        <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            pastEvents
+              .filter((event) => event.dateTime.startsWith(year))
+              .map((event) => (
+                <li>
+                  <a
+                    href={`/events/past/${event.slug}`}
+                    class="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-900"
+                  >
+                    <img
+                      src={event.image}
+                      alt={event.imageAlt}
+                      class="aspect-[4/3] w-full rounded-lg object-cover transition duration-300 group-hover:brightness-95"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <time datetime={event.dateTime} class="mt-4 block text-sm font-medium text-sunset-700">
+                      {event.date}
+                    </time>
+                    <h3 class="mt-1 font-display text-xl font-semibold group-hover:underline">
+                      {event.title}
+                    </h3>
+                    <p class="mt-2 leading-relaxed text-ink-600">{event.summary}</p>
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </Section>
+    ))
+  }
 </Base>

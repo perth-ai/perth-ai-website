@@ -270,5 +270,3416 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "2026-08-usa-panel",
+    "title": "Tales from the USA: AI and Tech Insights",
+    "date": "3 August 2026",
+    "dateTime": "2026-08-03",
+    "venue": "Curtin Entrepreneurs Hub",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A panel compared AI product development and technology work in the United States and Perth.",
+    "description": "",
+    "image": "/images/2026/2026-08-USA-panel/1785839948465-hero.jpeg",
+    "imageAlt": "Panellists Alex Bertram, Tim de Boer and Raj Saddi speaking at the Tales from the USA event.",
+    "artwork": "/images/2026/2026-08-USA-panel/20260727-July-socials-tile.png",
+    "artworkAlt": "Tales from the USA panel event artwork featuring Alex Bertram, Tim de Boer and Raj Saddi.",
+    "gallery": [
+      "/images/2026/2026-08-USA-panel/DSC_4631 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4638 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4643 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4645 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4647 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4688 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4716 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4735 (Medium).JPG",
+      "/images/2026/2026-08-USA-panel/DSC_4740 (Medium).JPG"
+    ],
+    "sections": [
+      {
+        "paragraphs": [
+          [
+            "We were extremely grateful to have ",
+            {
+              "text": "Alex Bertram 🌏",
+              "url": "https://www.linkedin.com/in/alexbertram/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Tim de Boer",
+              "url": "https://www.linkedin.com/in/timothydeboer/",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Rajat (Raj) Saddi",
+              "url": "https://www.linkedin.com/in/rajat-raj-saddi-7b48024/",
+              "bold": true
+            },
+            " join our interactive panel session to discuss what they learned about opportunities, market dynamics, and cultural differences between working in the US and Perth."
+          ],
+          [
+            "Alex is General Manager – Americas at Greenroom Robotics, a maritime autonomy company. A former Perth local, he’s back in Perth for a short visit."
+          ],
+          [
+            "Tim de Boer is Founder and CEO of Interfuze and Raj Saddi is a principal consultant, both with a long history in Perth’s IT industry. Tim and Raj recently travelled to San Francisco for AI Engineer World Fair. Tim also spent time in SF back in 2000 on the roll out of the city’s Australian built transit system."
+          ]
+        ]
+      },
+      {
+        "title": "Panel highlight",
+        "paragraphs": [
+          [
+            "This panel landed the real story: the US is moving fast on AI product execution, while Perth is strong on quality and governance. The call to action was clear — build locally, test monetization early, and learn from the cultural difference in customer expectations."
+          ]
+        ]
+      },
+      {
+        "title": "Takeaways from our panel",
+        "items": [
+          [
+            "🔹 AI engineering is now its own discipline — jargon, norms, and a \"100mph\" sharing culture across founders, enterprises, and universities."
+          ],
+          [
+            "🔹 Teams are shrinking to pods: PM + lead + AI agents, with senior engineers shipping solo and facing customers directly. Failure cases now matter more than wins."
+          ],
+          [
+            "🔹 The bottleneck has flipped — building is easy, code volume is exploding. Efficiency, not output, is becoming the real differentiator."
+          ],
+          [
+            "🔹 US vs AU gap isn't really about tech — it's mindset. The US dives in; Australia hesitates on governance and risk. Meanwhile our liability and data rules (especially in health/education) are genuinely stricter and slower to move."
+          ],
+          [
+            "🔹 This isn't a bubble, it's a gearshift. Expertise is accessible in months, not years — we're standing on the shoulders of giants and accelerating fast."
+          ],
+          [
+            "🔹 Best advice from the room: go see it firsthand (SF, or a regional hub like Singapore if budget's tight), and start testing monetization now — the \"how do we build it\" question is basically solved."
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          [
+            "AIE is heading to Sydney next — worth watching for anyone who missed SF."
+          ],
+          [
+            "Thanks to everyone who spent their evening with us and all the questions! Thanks for watching the photo slide-show and taking the ‘who’s who’ quiz!!"
+          ]
+        ]
+      },
+      {
+        "title": "Why it mattered",
+        "paragraphs": [
+          [
+            "This session wasn’t just about US stories — it was about showing Perth how quickly the global AI landscape is moving, and why local founders should keep one eye on execution speed while staying grounded on risk and customer trust."
+          ]
+        ]
+      },
+      {
+        "title": "Special thanks",
+        "paragraphs": [
+          [
+            "Thanks to ",
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "url": "https://www.linkedin.com/company/wadsih/",
+              "bold": true
+            },
+            " Director ",
+            {
+              "text": "Alex Jenkins",
+              "url": "https://www.linkedin.com/in/alex-jenkins-4107074/",
+              "bold": true
+            },
+            " for attending and sponsoring the pizzas."
+          ],
+          [
+            "Thanks ",
+            {
+              "text": "Curtin Commercialisation and Entrepreneurship",
+              "url": "https://www.linkedin.com/company/curtin-commercialisation-and-entrepreneurship/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Anna Lee",
+              "url": "https://www.linkedin.com/in/annalee2715/",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Danelle Cross",
+              "url": "https://www.linkedin.com/in/danelle-cross-6641a323/",
+              "bold": true
+            },
+            " for use of the beautiful Curtin Innovation Hub."
+          ],
+          [
+            "Special thanks to ",
+            {
+              "text": "Kristina Gagalova, Ph.D.",
+              "url": "https://www.linkedin.com/in/kristina-gagalova/",
+              "bold": true
+            },
+            " for the above takeaways, photos by ",
+            {
+              "text": "Matthew Yuan",
+              "url": "https://www.linkedin.com/in/matthew-yuan-7191051b8/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Chao Cherng Lee",
+              "url": "https://www.linkedin.com/in/chaochernglee/",
+              "bold": true
+            },
+            " for running Slido, and ",
+            {
+              "text": "Eunbee Lee",
+              "url": "https://www.linkedin.com/in/eunbee-lee-905238220/",
+              "bold": true
+            },
+            " for set-up."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-06-claude-mlai",
+    "title": "Perth Claude Event: MLAI and Perth AI",
+    "date": "June 2026",
+    "dateTime": "2026-06",
+    "venue": "78 Murray St",
+    "location": "Perth",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "🚀 A rainy Monday evening couldn’t stop the Perth AI community from showing up.",
+    "description": "",
+    "image": "/images/2026/2026-06-claude-MLAI/1782831047411_hero.jpeg",
+    "imageAlt": "Attendees and speakers at the Perth Claude community event.",
+    "artwork": "/images/2026/2026-06-claude-MLAI/1782738451337_socials tile.jpeg",
+    "artworkAlt": "Perth Claude event artwork showing the six speakers.",
+    "gallery": [
+      "/images/2026/2026-06-claude-MLAI/1782831047237.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1782831047332.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1783320026984.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1783320027084.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1783320027133.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1783320027302.jpeg",
+      "/images/2026/2026-06-claude-MLAI/1783320027741.jpeg"
+    ],
+    "sections": [
+      {
+        "title": "The Night",
+        "paragraphs": [
+          [
+            "More than 140 people registered for the Anthropic Claude Community event, with another 100+ on the waitlist. It was a strong reminder that the appetite for AI discussions, collaboration, and learning in Perth is only growing."
+          ],
+          [
+            "Researchers, founders, developers, students, business leaders, and people brand new to AI all came together in the same room — and the event delivered for a genuinely broad audience."
+          ]
+        ]
+      },
+      {
+        "title": "A Fantastic Line-Up of Speakers",
+        "paragraphs": [
+          [
+            "Each presentation offered something different, from practical AI development to responsible adoption and real-world implementation."
+          ],
+          [
+            {
+              "text": "Mo Jaimangal",
+              "bold": true
+            },
+            " (JupiterAI) spoke about building AI products that solve genuine business problems using Claude to support Australian universities responding to gender-based violence."
+          ],
+          [
+            {
+              "text": "Mash Prime",
+              "bold": true
+            },
+            " (Directive Systems) demonstrated live AI-assisted development and how quickly ideas can become working software."
+          ],
+          [
+            {
+              "text": "Sonia Kaurah",
+              "bold": true
+            },
+            " (Tala Thrive) highlighted the importance of culturally informed AI solutions in healthcare and community services, including agents across customer service, therapist data queries, and daily cross-platform briefings."
+          ],
+          [
+            {
+              "text": "Jake Ginnivan",
+              "bold": true
+            },
+            " (Atlassian) showed how Claude Code can simplify the deployment of web applications and make it easier to manage large software projects."
+          ],
+          [
+            {
+              "text": "Beth Cusack",
+              "bold": true
+            },
+            " from WADSIH demonstrated how Claude Code can be used to build robotics and education tools that help students develop practical AI skills."
+          ],
+          [
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " from WADSIH shared how Claude can support research automation, including work on lip-reading models and reducing word error rates."
+          ]
+        ]
+      },
+      {
+        "title": "Why It Mattered",
+        "paragraphs": [
+          [
+            "This kind of event is a great way to showcase the different difficulty tiers and the range of things possible with tools that practically everyone can use. The strongest communities aren’t built by having only experts in the room — they’re built by creating spaces where first-time AI attendees and AI power users can learn from each other."
+          ]
+        ]
+      },
+      {
+        "title": "Thank You",
+        "paragraphs": [
+          [
+            "Special thanks to ",
+            {
+              "text": "Kristina Gagalova",
+              "bold": true
+            },
+            " for MC’ing the night."
+          ],
+          [
+            "A big thank you to ",
+            {
+              "text": "Anthropic",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "MLAI",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Curtin University",
+              "bold": true
+            },
+            " for making the evening possible."
+          ],
+          [
+            "Thank you also to ",
+            {
+              "text": "Dr Sam Donegan",
+              "bold": true
+            },
+            " from MLAI and all our volunteers, including ",
+            {
+              "text": "Tanya Kimber",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Eunbee Lee",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Yoesel Dema",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Hill Le",
+              "bold": true
+            },
+            "."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-06-birthday",
+    "title": "Build Club Perth's 1st Birthday",
+    "date": "15 June 2026",
+    "dateTime": "2026-06-15",
+    "venue": "Lil's Rooftop & Bar",
+    "location": "Perth CBD",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Thanks to the 100 builders who celebrated with us at Lil's Rooftop & Bar in Perth CBD. We were proud to champion our milestones over the last year: 15+ events including monthly and social meetups, DDD, and AI Disrupt Summit 2025 — often with 70 attendees each month.",
+    "description": "",
+    "articleTitle": "🎉 A huge night of community, milestones, and celebration.",
+    "image": "/images/2026/2026-06-birthday/_DSC0180-2-web-hero.jpg",
+    "imageAlt": "Build Club Perth members celebrating the community's first birthday.",
+    "artwork": "/images/2026/2026-06-birthday/Birthday celebration June social tile.png",
+    "artworkAlt": "Build Club Perth first birthday celebration artwork.",
+    "gallery": [
+      "/images/2026/2026-06-birthday/_DSC0109-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC0134-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC0144-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC0408-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC0419-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9667-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9688-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9741-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9746-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9750-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9792-2-web.jpg",
+      "/images/2026/2026-06-birthday/_DSC9819-2-web.jpg"
+    ],
+    "sections": [
+      {
+        "title": "The Night Itself",
+        "paragraphs": [
+          [
+            "Thanks to the 100 builders who celebrated with us at ",
+            {
+              "text": "Lil's Rooftop & Bar in Perth CBD",
+              "bold": true
+            },
+            ". We were proud to champion our milestones over the last year: 15+ events including monthly and social meetups, DDD, and AI Disrupt Summit 2025 — often with 70 attendees each month."
+          ],
+          ["It was a night full of good vibes, great food and drinks, quality networking, and proof that Perth’s AI community is only getting stronger."]
+        ]
+      },
+      {
+        "title": "Year 2 for Build Club Perth?",
+        "paragraphs": [
+          ["Volunteer-led and powered by an already high-density network of experts across technical, business, strategy, and marketing, we’re looking ahead to year two with more monthly co-building events, a hackathon, and AI Disrupt Summit 2026."],
+          ["We’re always looking for ways to contribute — whether you can share your skills as a speaker or mentor, offer opportunities for the community, collaborate on projects, or support with venue and catering."]
+        ]
+      },
+      {
+        "title": "Perth to SF",
+        "paragraphs": [
+          ["We’ll be travelling to San Francisco next week for AI Engineers World Fair with a group of Perth AI leadership folks. There’s still time to get involved and experience the startup and hackathon scene first-hand."]
+        ]
+      },
+      {
+        "title": "Final Shapes & Vibe11",
+        "paragraphs": [
+          [
+            "We were also excited to celebrate founders and builders making real moves in the ecosystem. Thuushal Kumar and Yifei Ren launched ",
+            {
+              "text": "Final Shapes",
+              "bold": true
+            },
+            " to run innovation activations that connect real-world challenges from corporates, SMEs, and startups with Perth’s AI builder networks."
+          ],
+          [
+            "Alex Jenkins launched ",
+            {
+              "text": "Vibe11",
+              "bold": true
+            },
+            " for personalised app needs."
+          ]
+        ]
+      },
+      {
+        "title": "Best Part",
+        "paragraphs": [
+          ["The best part was simple: seeing everyone come back for another great night of food, drinks, quality networking, and community. Thank you to all our sponsors and to everyone who showed up to make it unforgettable."]
+        ]
+      },
+      {
+        "title": "Special Thanks",
+        "paragraphs": [
+          [
+            "Massive thanks to our volunteers: ",
+            {
+              "text": "Kristina Gagalova, Ph.D.",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Ashish Doshi",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Mo Jaimangal",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Nicholas Jerrat",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jay Nicholson",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Evangeline Tanoto",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Eunbee Lee",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Luke Saunders",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Hill Le",
+              "bold": true
+            },
+            "."
+          ],
+          [
+            "Photo credit: ",
+            {
+              "text": "Yoesel Dema",
+              "bold": true
+            },
+            " from ",
+            {
+              "text": "Capri Media",
+              "bold": true
+            },
+            "."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-06-silly-pitches",
+    "date": "15 June 2026",
+    "dateTime": "2026-06-15",
+    "venue": "Lil's Rooftop & Bar",
+    "location": "Perth CBD",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "title": "Silly Pitches – June 2026",
+    "summary": "Six live silly AI pitches, judges, and a winner crowned during the Build Club Perth 1st birthday celebration.",
+    "description": "",
+    "articleTitle": "Silly Pitches at the 1st year celebration: the results are in 🏆📸",
+    "image": "/images/2026/2026-06-silly-pitches/1-DSC_0600-Hero.jpg",
+    "imageAlt": "A team presenting one of the silly AI product pitches.",
+    "artwork": "/images/2026/2026-06-birthday/Birthday celebration June social tile.png",
+    "artworkAlt": "Build Club Perth first birthday celebration artwork, where the silly pitches took place.",
+    "gallery": [
+      "/images/2026/2026-06-silly-pitches/2-DSC_0607.jpg",
+      "/images/2026/2026-06-silly-pitches/3-DSC_0617.jpg",
+      "/images/2026/2026-06-silly-pitches/4-DSC_0618.jpg",
+      "/images/2026/2026-06-silly-pitches/5-DSC_0628.jpg",
+      "/images/2026/2026-06-silly-pitches/6-DSC_0633.jpg",
+      "/images/2026/2026-06-silly-pitches/7-DSC_0642.jpg",
+      "/images/2026/2026-06-silly-pitches/8-DSC_0643.jpg",
+      "/images/2026/2026-06-silly-pitches/9-DSC_0659.jpg",
+      "/images/2026/2026-06-silly-pitches/10-DSC_0670.jpg",
+      "/images/2026/2026-06-silly-pitches/11-DSC_0683.jpg"
+    ],
+    "sections": [
+      {
+        "paragraphs": [
+          [
+            "Thanks for the teamwork on this post: Massive credit to ",
+            {
+              "text": "Arlen Brower",
+              "url": "https://www.linkedin.com/in/arlen-brower-28625266/",
+              "bold": true
+            },
+            " for the photography on the night — shooting six live pitches in a room with basically zero light! And huge thanks to ",
+            {
+              "text": "Belinda Harris",
+              "url": "https://www.linkedin.com/in/belinda-harris-899a182b5/",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Jay Nicholson",
+              "url": "https://www.linkedin.com/in/jay-nicholson/",
+              "bold": true
+            },
+            " for capturing the intel on all six pitches as they happened! Special thanks ",
+            {
+              "text": "Nicholas Jerrat",
+              "bold": true
+            },
+            " for hosting the pitches."
+          ],
+          [
+            "Six teams. Six silly AI ideas. One shot at LinkedIn immortality. Who takes home Silliest of them all?"
+          ]
+        ]
+      },
+      {
+        "title": "Silly Pitch descriptions",
+        "items": [
+          [
+            {
+              "text": "Grant-Hunting Agent",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Luca",
+              "url": "https://www.linkedin.com/in/lucaintini/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Vladimir",
+              "url": "https://www.linkedin.com/in/vladimir-vorotilov/",
+              "bold": true
+            },
+            ") — An AI agent that hunts down governments handing out \"silly grants.\" The pitch was pure performance — Luca stripped off his top and belt just to grab the room. The idea itself? That was the punchline: there wasn't one. All hustle, no product."
+          ],
+          [
+            {
+              "text": "Guilt to Go — \"Grow Your Guilt\"",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Sonu",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Sam",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Aman",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jay",
+              "bold": true
+            },
+            ") — Emotional blackmail as a fitness app. Snaps a guilty photo of you skipping the gym and threatens to send your \"dirty laundry\" to family and friends if you don't go. Biggest risk: getting hacked and having your own laundry leaked back at you. Competitor: Snapchat. Already planning an enterprise tier and \"going IPO\" on one person's yes."
+          ],
+          [
+            {
+              "text": "Excuse Me",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Bright",
+              "url": "https://www.linkedin.com/in/bright-qi/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Joshua",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jimmy",
+              "url": "https://www.linkedin.com/in/jimmy-li-2b0a082b9/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "William",
+              "url": "https://www.linkedin.com/in/william-tai-software-engineer/",
+              "bold": true
+            },
+            ") — A brain-implanted AI that says \"no\" for you — silently. Plant a chip, let the AI live in your head, and it beams a wave straight to the other person's brain so they get their answer without you saying a word. Monetization: pay per message."
+          ],
+          [
+            {
+              "text": "Silly Paws",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Jehan",
+              "url": "https://www.linkedin.com/in/jehan-hapugalle/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Nithula",
+              "bold": true
+            },
+            ") — An AI trained to predict the exact moment your pet's about to do something silly, so you can catch it, go viral, and monetize the fame. Biggest blocker: owning a pet that's actually well-behaved. Silly fish, though? That's money."
+          ],
+          [
+            {
+              "text": "Disgusting Food Combos",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Krish",
+              "url": "https://www.linkedin.com/in/krishdubey/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Sophie",
+              "url": "https://www.linkedin.com/in/sophiemelville/",
+              "bold": true
+            },
+            ") — A rating-and-challenge app for the worst food combinations imaginable. Rate the horrors, challenge friends to top them, monetize via brands brave enough to sponsor the chaos. Ethos: embrace disgust."
+          ],
+          [
+            {
+              "text": "The Sushi's",
+              "bold": true
+            },
+            " (",
+            {
+              "text": "Issy",
+              "url": "https://www.linkedin.com/in/issy-ng-433967275/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Harry",
+              "url": "https://www.linkedin.com/in/harry-walters-414183182/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Sophia",
+              "url": "https://www.linkedin.com/in/sophiaroseau/",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Rohan",
+              "bold": true
+            },
+            ") — A marketplace for celebrity look-alikes — because real celebrities are too expensive, but a Matthew McConaughey look-alike is a bargain. Monetized via tokens and API credits."
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          [
+            "🥇 Silliest Silly Pitch: The Sushi's 😂 Funniest Silly Pitch: Excuse Me (Brain-Chip \"No\" Agent)"
+          ],
+          [
+            "Huge thanks to our judges, ",
+            {
+              "text": "Alex Jenkins",
+              "url": "https://www.linkedin.com/in/alex-jenkins-4107074/",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Kristina Gagalova, Ph.D.",
+              "url": "https://www.linkedin.com/in/kristina-gagalova/",
+              "bold": true
+            },
+            ", for sitting through six rounds of chaos and somehow picking winners."
+          ],
+          [
+            "And a special guest shoutout to ",
+            {
+              "text": "Taylor Fox-Smith",
+              "url": "https://www.linkedin.com/in/taylorfoxsmith/",
+              "bold": true
+            },
+            " from Airwallex, who joined us for the night."
+          ],
+          [
+            "Prizes proudly backed by ",
+            {
+              "text": "Perth Angels",
+              "url": "https://www.linkedin.com/company/perthangels/",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Nicholas Jerrat",
+              "url": "https://www.linkedin.com/in/ideabank/",
+              "bold": true
+            },
+            "."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-05-meetup",
+    "title": "Meetup - May 2026",
+    "date": "11 May 2026",
+    "dateTime": "2026-05-11",
+    "venue": "Bloom Basement, Curtin University",
+    "location": "Bentley",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A packed night featuring Samreid Manez, AI product lessons, pitch night energy, and our first birthday celebration announcement.",
+    "description": "Around 70 people packed into the Bloom Bentley basement last night — what an incredible turnout! Students, founders, senior developers, and investors came together for an inspiring night of AI product stories, pitch energy, and community support.",
+    "articleTitle": "🎉 Build Club Perth — May Recap featuring Samreid Manez.",
+    "image": "/images/2026/2026-05/Samreid 2026-05-11 Hero.jpeg",
+    "imageAlt": "Valearnis founder Samreid Manez speaking at the May Build Club Perth meetup.",
+    "artwork": "/images/2026/2026-05/20260511 May social tile.png",
+    "artworkAlt": "May Build Club Perth artwork for Samreid Manez's Prototype to Product session.",
+    "gallery": [
+      "/images/2026/2026-05/DSC_3344.jpg",
+      "/images/2026/2026-05/DSC_3348.jpg",
+      "/images/2026/2026-05/DSC_3363.jpg",
+      "/images/2026/2026-05/DSC_3401.jpg",
+      "/images/2026/2026-05/DSC_3427.jpg",
+      "/images/2026/2026-05/DSC_3429.jpg",
+      "/images/2026/2026-05/DSC_3459.jpg",
+      "/images/2026/2026-05/DSC_3467.jpg",
+      "/images/2026/2026-05/DSC_3473.jpg",
+      "/images/2026/2026-05/DSC_3474.jpg",
+      "/images/2026/2026-05/DSC_3475.jpg",
+      "/images/2026/2026-05/DSC_3476.jpg",
+      "/images/2026/2026-05/DSC_3552.jpg",
+      "/images/2026/2026-05/DSC_3608.jpg"
+    ],
+    "sections": [
+      {
+        "title": "Prototype to Product",
+        "paragraphs": [
+          [
+            "We were joined by ",
+            {
+              "text": "Samreid Manez",
+              "bold": true
+            },
+            ", Founder & CEO of ",
+            {
+              "text": "Valearnis",
+              "bold": true
+            },
+            " — an AI-powered education platform helping children develop critical thinking through Socratic tutoring and curriculum-aligned lessons."
+          ],
+          ["Sam shared how Valearnis has grown into a truly global company, with students and customers across the world and a dev team spanning multiple timezones. 🌏"]
+        ]
+      },
+      {
+        "title": "What Samreid Walked Us Through",
+        "items": [
+          ["✅ Getting the most out of AI tools in product development"],
+          ["✅ Hiring high-performing teams who care deeply about the mission"],
+          ["✅ His wild founder journey — from studying Geology, running a tutoring business, and living in Japan, to serving as a politician, before finding his true calling building something he genuinely believes in."]
+        ]
+      },
+      {
+        "title": "💡 Bonus Insight",
+        "paragraphs": [
+          [
+            "Angel investor ",
+            {
+              "text": "Nicholas Jerrat",
+              "bold": true
+            },
+            ", fresh back from Sunrise in Sydney, reminded everyone building with AI that your AI software stack is not your moat. 👀"
+          ]
+        ]
+      },
+      {
+        "title": "🚀 Pitch Night",
+        "paragraphs": [
+          ["Congrats to the five founders who took the mic:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Shopmate",
+              "bold": true
+            },
+            " — Track grocery prices across stores. (Tommy L)"
+          ],
+          [
+            {
+              "text": "Nordycreats",
+              "bold": true
+            },
+            " — Jonas Skoogh is newly arrived from Sweden, looking for collaborators and new opportunities."
+          ],
+          [
+            {
+              "text": "BFF Health",
+              "bold": true
+            },
+            " — Hayley Cullen-Xiang pitched personalised health for adults and ",
+            {
+              "text": "Hungry Bubbasaur",
+              "bold": true
+            },
+            ", personalised diet plans for kids."
+          ],
+          [
+            {
+              "text": "Asset Tracker",
+              "bold": true
+            },
+            " — Connor Rullo, a mechatronics student, building RFID tracking for company assets."
+          ],
+          [
+            {
+              "text": "Agentic OS",
+              "bold": true
+            },
+            " — Vladimir Vorotilov pitching a self-evaluating agent orchestration platform with a Star Wars theme."
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["🎂 Next up: our FIRST BIRTHDAY CELEBRATION! See you there — it’s going to be a big one."]
+        ]
+      },
+      {
+        "title": "🙏 Thank You",
+        "paragraphs": [
+          ["Thank you to our 15+ start-up founders, senior industry developers, and students from every discipline who showed up and brought the energy."],
+          [
+            "A very special thanks to ",
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " for spending the whole evening with us and connecting with so many community members. 💙"
+          ],
+          [
+            "And to our incredible supporters who make Build Club Perth possible: ",
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " · ",
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " · ",
+            {
+              "text": "Curtin Commercialisation and Entrepreneurship",
+              "bold": true
+            },
+            " · ",
+            {
+              "text": "DDD Perth",
+              "bold": true
+            },
+            " · ",
+            {
+              "text": "AI.SEA",
+              "bold": true
+            },
+            "."
+          ],
+          [
+            "Behind-the-scenes heroes: ",
+            {
+              "text": "Kristina Gagalova, Ph.D.",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Nicholas Jerrat",
+              "bold": true
+            },
+            " for keeping pitches running smoothly, and ",
+            {
+              "text": "Matthew Yuan",
+              "bold": true
+            },
+            " for photos."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-04-meetup",
+    "title": "Meetup - April 2026",
+    "date": "20 April 2026",
+    "dateTime": "2026-04-20",
+    "venue": "Curtin Entrepreneurs Hub",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Cloud, cash, and chaos: AWS, FinOps, and an impromptu pitch night with founders and builders.",
+    "description": "",
+    "articleTitle": "💰 Cloud, Cash & Chaos: Build Club Perth's Best Night Yet. 🚀",
+    "image": "/images/2026/2026-04/DSC_3167.jpg",
+    "imageAlt": "Attendees beside the Cloud, Cash & Chaos event slide.",
+    "artwork": "/images/2026/2026-04/20260420 April social tile.png",
+    "artworkAlt": "Cloud, Cash & Chaos event artwork featuring John Marshall and Martyna Kaca.",
+    "gallery": [
+      "/images/2026/2026-04/DSC_3143.jpg",
+      "/images/2026/2026-04/DSC_3147.jpg",
+      "/images/2026/2026-04/DSC_3151.jpg",
+      "/images/2026/2026-04/DSC_3153.jpg",
+      "/images/2026/2026-04/DSC_3154.jpg",
+      "/images/2026/2026-04/DSC_3158.jpg",
+      "/images/2026/2026-04/DSC_3159.jpg",
+      "/images/2026/2026-04/DSC_3167.jpg",
+      "/images/2026/2026-04/DSC_3174.jpg",
+      "/images/2026/2026-04/DSC_3180.jpg",
+      "/images/2026/2026-04/DSC_3196.jpg"
+    ],
+    "sections": [
+      {
+        "title": "The Attendees",
+        "paragraphs": [
+          ["65+ people packed into the Curtin Entrepreneurs Hub last night and the energy was electric ⚡. Students, AWS engineers, ops and cybersecurity pros, VCs — all under one roof."]
+        ]
+      },
+      {
+        "title": "🏆 𝗝𝗼𝗵𝗻'𝘀 𝗔𝗪𝗦 𝗗𝗲𝗲𝗽 𝗗𝗶𝘃𝗲",
+        "paragraphs": [
+          [
+            {
+              "text": "John",
+              "bold": true
+            },
+            ", holder of all 12 AWS certifications and the Gold Jacket, walked us through AWS basics, security best practices, and a live demo hosting a static website with S3 and CloudFront."
+          ]
+        ]
+      },
+      {
+        "title": "💸 𝗠𝗮𝗿𝘁𝘆𝗻𝗮 𝗼𝗻 𝗖𝗹𝗼𝘂𝗱 𝗙𝗶𝗻𝗢𝗽𝘀",
+        "paragraphs": [
+          [
+            {
+              "text": "Martyna",
+              "bold": true
+            },
+            " gave a fascinating talk on Cloud FinOps — a growing discipline focused on optimising cloud spend at enterprise scale — including her unique career journey into this little-known role."
+          ]
+        ]
+      },
+      {
+        "title": "🎤 Impromtu Pitch Night",
+        "paragraphs": [
+          ["To close out the evening, the mic was open — and people showed UP:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Samreid",
+              "bold": true
+            },
+            " demonstrated \"how not to pitch\" using a 2018 slide deck, then flipped the script with a sharp playbook on pitching better: be specific about your product and your market 🎯"
+          ],
+          [
+            {
+              "text": "Ronnie",
+              "bold": true
+            },
+            " pitched himself — highly technical, drone enthusiast, building a legal project, and looking for a business co-founder. Honestly, what's not to love? 🚁"
+          ],
+          [
+            {
+              "text": "Mash",
+              "bold": true
+            },
+            " took what he'd learned from ",
+            {
+              "text": "John",
+              "bold": true
+            },
+            "'s tutorial and rebuilt it live using CLI instead of the console — ending up with a pizza-recognising app hosted on AWS. On the night. Incredible. 🍕🤖"
+          ],
+          [
+            {
+              "text": "Alfie",
+              "bold": true
+            },
+            " showed off a VR project focused on electrical safety ⚡🥽"
+          ],
+          [
+            {
+              "text": "Yoesel",
+              "bold": true
+            },
+            ", a CS student with serious marketing chops, wowed everyone with her portfolio, LinkedIn traction, and paying clients already in the bag 🌟"
+          ]
+        ]
+      },
+      {
+        "title": "🙏 Massive Support",
+        "paragraphs": [
+          [
+            "Massive thanks to ",
+            {
+              "text": "John",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Martyna",
+              "bold": true
+            },
+            " for sharing deep expertise that levelled up everyone in the room — seniors and newcomers alike. Thanks also to their colleagues who came along to show their support, and to ",
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " who stayed right until the end giving 1-on-1 time to get to know our community. That means a lot. 💙"
+          ],
+          [
+            "And of course — ",
+            {
+              "text": "Curtin Commercialisation & Entrepreneurship",
+              "bold": true
+            },
+            " for hosting, ",
+            {
+              "text": "WADSIH",
+              "bold": true
+            },
+            " for the pizzas 🍕, ",
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " for their ongoing support, and every volunteer who helped set up and pack down on the night."
+          ],
+          ["📅 Next up: In May, Samreid is back — this time leading us through a builder session. Stay tuned, you won't want to miss it. 🛠️"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-03-meetup",
+    "title": "Workflow Automations",
+    "date": "23 March 2026",
+    "dateTime": "2026-03-23",
+    "venue": "Bloom",
+    "location": "Bentley",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "More than 50 people explored workflow automation and built tools for the club and its community.",
+    "description": "",
+    "articleTitle": "Perth builders — last night's Build Club Perth was one to remember. 🚀",
+    "image": "/images/2026/2026-03/DSC_2984.-hero.jpg",
+    "imageAlt": "A speaker presenting at the March Workflow Automations meetup.",
+    "artwork": "/images/2026/2026-03/20260323 March social tile.png",
+    "artworkAlt": "March Build Club Perth artwork for a workflow automation session.",
+    "gallery": [
+      "/images/2026/2026-03/DSC_2891.jpg",
+      "/images/2026/2026-03/DSC_2913.jpg",
+      "/images/2026/2026-03/DSC_2917.jpg",
+      "/images/2026/2026-03/DSC_2918.jpg",
+      "/images/2026/2026-03/DSC_2921.jpg",
+      "/images/2026/2026-03/DSC_2923.jpg",
+      "/images/2026/2026-03/DSC_2933.jpg",
+      "/images/2026/2026-03/DSC_2942.jpg",
+      "/images/2026/2026-03/DSC_2956.jpg",
+      "/images/2026/2026-03/DSC_2967.jpg",
+      "/images/2026/2026-03/DSC_2979.jpg",
+      "/images/2026/2026-03/DSC_2997.jpg",
+      "/images/2026/2026-03/DSC_3023.jpg"
+    ],
+    "sections": [
+      {
+        "title": "Deep Dive: Workflow Automations",
+        "paragraphs": [
+          [
+            "For our March edition, we went deep on ",
+            {
+              "text": "Workflow Automations",
+              "bold": true
+            },
+            " — moving beyond simple prompts and into real multi-agent systems using tools like:"
+          ]
+        ],
+        "items": [
+          [
+            {
+              "text": "CrewAI Studio",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "n8n",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Lindy AI",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Base44",
+              "bold": true
+            }
+          ]
+        ]
+      },
+      {
+        "title": "The Attendees",
+        "paragraphs": [
+          ["Over 50 attendees — students, experienced devs, VCs, and designers — came ready to build, not just listen. And build they did - in less than 2 hours!"]
+        ]
+      },
+      {
+        "title": "🎙️ Special Thanks",
+        "items": [
+          [
+            {
+              "text": "Nicholas Jerrat",
+              "bold": true
+            },
+            " for your excellent round-up of SouthStart in Adelaide, with 7 takeaways in 7 mins for what VCs look for in AI start-ups"
+          ],
+          [
+            {
+              "text": "Kristina Gagalova, Ph.D.",
+              "bold": true
+            },
+            " for shouting out SMEC AI Accelerator for AI Founders"
+          ]
+        ]
+      },
+      {
+        "title": "Community Building Community ✨",
+        "paragraphs": [
+          ["We crowdsourced automations to help run the club itself — the community building the tools that run the community."]
+        ],
+        "items": [
+          ["AI news roundup"],
+          ["LinkedIn post generator"],
+          ["Jobs board"],
+          ["Volunteers roster"]
+        ]
+      },
+      {
+        "title": "🏆 Quality Demos on the Night",
+        "items": [
+          [
+            {
+              "text": "🗂️ Activity Generator",
+              "bold": true
+            },
+            " — Pascal"
+          ],
+          [
+            {
+              "text": "📬 Mailing List Automation System",
+              "bold": true
+            },
+            " — Luca"
+          ],
+          [
+            {
+              "text": "📅 Event Content Suggestions",
+              "bold": true
+            },
+            " — Mingma"
+          ],
+          [
+            {
+              "text": "🍕 PizzaPlan",
+              "bold": true
+            },
+            " — Tommy L"
+          ],
+          [
+            {
+              "text": "🗓️ Hackathon Planner",
+              "bold": true
+            },
+            " — Joshua, Waqas, Evangeline & Yasna"
+          ],
+          [
+            {
+              "text": "🎮 Pizza Feud",
+              "bold": true
+            },
+            " (pizza-choosing game!) — Ross & Ryan"
+          ],
+          [
+            {
+              "text": "📝 Marketing Manager",
+              "bold": true
+            },
+            " — Jassim"
+          ],
+          [
+            {
+              "text": "📰 AI Roundup",
+              "bold": true
+            },
+            " — Mash"
+          ],
+          [
+            {
+              "text": "📧 Inbox Automation Agent",
+              "bold": true
+            },
+            " — Lee"
+          ]
+        ]
+      },
+      {
+        "title": "🙏 Massive Support",
+        "paragraphs": [
+          [
+            "Huge thanks to ",
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " who spent time with us mentoring on the night, and to all the industry experts who showed massive support."
+          ],
+          [
+            "And none of this happens without our incredible supporters — ",
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " for the pizzas, ",
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " for the venue, and ",
+            {
+              "text": "Curtin Entrepreneurs",
+              "bold": true
+            },
+            " for the ongoing support."
+          ],
+          ["If you missed it, don't — next one is coming. 👀"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2026-02-meetup",
+    "title": "Meetup - February 2026",
+    "date": "23 February 2026",
+    "dateTime": "2026-02-23",
+    "venue": "Curtin Entrepreneurs Hub",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "The $1 Sprint Challenge, Manus AI demos, and rapid launch energy for the Perth AI builder community.",
+    "description": "",
+    "articleTitle": "🚀 Is the 48-hour \"Hackathon\" officially dead?",
+    "image": "/images/2026/2026-02/DSC_2837_hero.jpg",
+    "imageAlt": "Attendees taking part in the February $1 Sprint Challenge.",
+    "artwork": "/images/2026/2026-02/20260123 February social tile.png",
+    "artworkAlt": "The $1 Sprint Challenge artwork for the February Build Club Perth event.",
+    "gallery": [
+      "/images/2026/2026-02/20260223_191823.jpg",
+      "/images/2026/2026-02/DSC_2811.jpg",
+      "/images/2026/2026-02/DSC_2814.jpg",
+      "/images/2026/2026-02/DSC_2816.jpg",
+      "/images/2026/2026-02/DSC_2820.jpg",
+      "/images/2026/2026-02/DSC_2821.jpg",
+      "/images/2026/2026-02/DSC_2823.jpg",
+      "/images/2026/2026-02/DSC_2827.jpg",
+      "/images/2026/2026-02/DSC_2870.jpg"
+    ],
+    "sections": [
+      {
+        "paragraphs": [
+          [
+            "Last night at Build Club Perth, we witnessed a pivot in how software is born."
+          ]
+        ]
+      },
+      {
+        "title": "The $1 Sprint Challenge",
+        "paragraphs": [
+          [
+            "We brought together a room full of dev pros and welcomed a wave of newcomers at the Curtin Entrepreneurs Hub for the ",
+            {
+              "text": "$1 Sprint Challenge",
+              "bold": true
+            },
+            ". The goal wasn't just to \"code\"—it was to ",
+            {
+              "text": "launch and earn",
+              "bold": true
+            },
+            "."
+          ]
+        ]
+      },
+      {
+        "title": "The Secret Sauce: What is Manus AI?",
+        "paragraphs": [
+          [
+            "The room was buzzing because of ",
+            {
+              "text": "Manus AI",
+              "bold": true
+            },
+            "—an ",
+            {
+              "text": "Autonomous AI Agent",
+              "bold": true
+            },
+            ". Unlike a standard chatbot that just talks, Manus is an \"action engine.\" It has its own cloud-based browser and sandbox, meaning it can research, write code, and actually ",
+            {
+              "text": "execute tasks",
+              "bold": true
+            },
+            " just like a human developer or analyst."
+          ],
+          ["It's the ultimate tool for \"Vibe Coding\"—where you provide the vision and the intent, and the AI handles the technical heavy lifting."]
+        ]
+      },
+      {
+        "title": "The Results (In just 1.5 hours!)",
+        "paragraphs": [
+          ["The speed of Manus, Bolt, v0 and other tools floored even the seasoned devs and PMs. We saw:"]
+        ],
+        "items": [
+          ["☕ A Coffee Shop site & Roster Scheduler"],
+          ["🏥 A Patient Reporting tool & Budgeting Planners"],
+          ["📑 Visual Sprint Templates launched as products via Gumroad (the plug-and-play store for creators)"]
+        ]
+      },
+      {
+        "title": "🏆 The Wall of Fame",
+        "items": [
+          [
+            {
+              "text": "Will Webster",
+              "bold": true
+            },
+            " – Our first to hit \"Publish\" and launch to the world"
+          ],
+          [
+            {
+              "text": "Mingma Tenzing Sherpa",
+              "bold": true
+            },
+            " – Our first to capture value and earn that legendary first $1!"
+          ]
+        ]
+      },
+      {
+        "title": "The Big Question",
+        "paragraphs": [
+          ["Do we need 48 hours anymore? When you can \"vibe code\" a functional MVP and process a payment before the pizza gets cold, the game has changed."]
+        ]
+      },
+      {
+        "title": "🙏 Big Thanks",
+        "paragraphs": [
+          [
+            "Huge thanks to ",
+            {
+              "text": "Tim Sondalini",
+              "bold": true
+            },
+            " for showing us why he's THE hackathon leader pro, and to ",
+            {
+              "text": "Manus",
+              "bold": true
+            },
+            " for the Pro credits that fuelled the night."
+          ],
+          [
+            "Thanks to the village: ",
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " • ",
+            {
+              "text": "Curtin Commercialisation and Entrepreneurship",
+              "bold": true
+            },
+            " • ",
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " • ",
+            {
+              "text": "DDD Perth",
+              "bold": true
+            },
+            " • ",
+            {
+              "text": "Matilda",
+              "bold": true
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-12-summit",
+    "title": "AI Disrupt Summit 2025",
+    "date": "13 December 2025",
+    "dateTime": "2025-12-13",
+    "venue": "St Catherine's College, Curtin University",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Build Club Perth x Bloom x Curtin Entrepreneurs brought together 180+ passionate AI builders, founders, startups, and investors for an unforgettable day at St Catherine's College, Curtin University.",
+    "description": "",
+    "image": "/images/2025/2025-12-summit/dec-2025-summit.jpg",
+    "imageAlt": "Attendees gathered at AI Disrupt Summit 2025.",
+    "artworks": [
+      {
+        "src": "/images/2025/2025-12-summit/AI Disrupt social tile (5).png",
+        "alt": "AI Disrupt Summit 2025 event artwork."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/AI Disrupt social tile (9).png",
+        "alt": "AI Disrupt Summit 2025 event artwork with event details and supporters."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/AI Disrupt - Brand Identity (10).png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Caitlin McKeown."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Nina Karisik Social Tile (2).png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Nina Karisik."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Aidan _ Jeroen - clean background.png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Aidan Morgan and Jeroen van Dalen."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Akshat Agrawal.png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Akshat Agarwal."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Alex Jenkins.png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Alex Jenkins."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/John Marshall.png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for John Marshall."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Josephine Tay.png",
+        "alt": "AI Disrupt Summit 2025 tile for sundowner sponsor Josephine Tay."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Munsif Hayat (3).png",
+        "alt": "AI Disrupt Summit 2025 speaker tile for Munsif Hayat."
+      },
+      {
+        "src": "/images/2025/2025-12-summit/Yifei.png",
+        "alt": "AI Disrupt Summit 2025 workshop tile for Yifei Ren."
+      }
+    ],
+    "galleryGroups": ["JO-photos", "SS-cam"],
+    "sections": [
+      {
+        "title": "A Day of Innovation and Connection",
+        "paragraphs": [
+          ["As part of West Tech Fest, AI Disrupt Summit 2025 showcased the exceptional talent and innovation within Perth's AI community. The event featured two simultaneous tracks across the stunning St Cat's dining hall and Bloom basement, creating an immersive experience for all attendees."]
+        ]
+      },
+      {
+        "title": "What Made It Special",
+        "items": [
+          [
+            {
+              "text": "17 Expert Speakers",
+              "bold": true
+            },
+            " – Covering technical AI, vibe-coding, ethics, future trends, founder stories, and investment"
+          ],
+          [
+            {
+              "text": "Investment Panel",
+              "bold": true
+            },
+            " – Insights from leading investors in the AI space"
+          ],
+          [
+            {
+              "text": "Build Your Own AI Home Lab Workshop",
+              "bold": true
+            },
+            " – Led by ",
+            {
+              "text": "Yifei Ren",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Hackathon",
+              "bold": true
+            },
+            " – Focused on elderly care and loneliness, with 5 awesome winning teams"
+          ],
+          [
+            {
+              "text": "15 AI Startup Booths",
+              "bold": true
+            },
+            " – Showcasing Perth's thriving AI ecosystem"
+          ],
+          [
+            {
+              "text": "Networking Events",
+              "bold": true
+            },
+            " – Morning breakfast and evening sundowner on a perfect balmy Perth evening"
+          ]
+        ]
+      },
+      {
+        "title": "National Recognition",
+        "paragraphs": [
+          [
+            "The summit received tremendous support from the national ecosystem, including AI Disrupt Summit Sydney representatives ",
+            {
+              "text": "Daniel Malkinson",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Dr Sam Donegan",
+              "bold": true
+            },
+            ", proving that Perth is up there with the world's best in AI innovation."
+          ]
+        ]
+      },
+      {
+        "title": "Expert Speakers",
+        "paragraphs": [
+          [
+            "Every talk was exceptional, delivered by some of WA's finest AI experts and builders including ",
+            {
+              "text": "Melanie Johnston-Hollitt",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Matthew Curnow",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Akshat Agarwal",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Nina Karisik",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Ryan Liebregts",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Sean Oldenburger",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jacqueline Boaks",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "David Smith",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Caitlin McKeown",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Aidan Morgan",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jeroen van Dalen",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Munsif Hayat",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "John Marshall",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jasper Wong",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Avi Santoso",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Brian Foody",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Mo Jaimangal",
+              "bold": true
+            },
+            "."
+          ]
+        ]
+      },
+      {
+        "title": "Community-Powered Success",
+        "paragraphs": [
+          [
+            "This event was made possible by an incredible team of volunteers: ",
+            {
+              "text": "Yasna",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Luke",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Ashish Doshi",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Agata",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Evangeline",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Maika",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jim Hie Ling",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jinwoo",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Emerald",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jay",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Oscar",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Weixin",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jasmine",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Yifei",
+              "bold": true
+            },
+            ". Special thanks to ",
+            {
+              "text": "Jim Owens",
+              "bold": true
+            },
+            " for his support."
+          ],
+          ["The AI Disrupt Summit 2025 proved that Perth has an exceptional AI community—filled with talent, innovation, and the collaborative spirit needed to build world-class AI companies. 🚀"]
+        ]
+      },
+      {
+        "title": "Thank You!",
+        "paragraphs": [
+          ["A huge thank you all attendees, speakers, volunteers, and sponsors who made AI Disrupt Summit 2025 a succeess!"],
+          [
+            {
+              "text": "See you at AI Disrupt Summit 2026!",
+              "bold": true
+            }
+          ],
+          [
+            "See ",
+            {
+              "text": "Gallery 1",
+              "url": "/events/past/2025-12-summit-gallery-1"
+            },
+            " and ",
+            {
+              "text": "Gallery 2",
+              "url": "/events/past/2025-12-summit-gallery-2"
+            },
+            " for more photos from the day."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-12-summit-volunteers",
+    "title": "The Engine Room: Summit Volunteers",
+    "date": "13 December 2025",
+    "dateTime": "2025-12-13",
+    "venue": "St Catherine's College, Curtin University",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Behind every successful event is a team of dedicated volunteers working tirelessly behind the scenes. At AI Disrupt Summit 2025, our volunteer team was nothing short of extraordinary.",
+    "description": "",
+    "image": "/images/2025/2025-12-summit/summit-volunteers-hero.JPG",
+    "imageAlt": "The volunteer team who helped run AI Disrupt Summit 2025.",
+    "sections": [
+      {
+        "title": "The Unsung Heroes",
+        "paragraphs": [
+          ["While 180+ attendees experienced a seamlessly run summit, few knew about the incredible coordination happening behind the scenes. Our volunteer team handled everything from troubleshooting mini-dramas, getting speakers to locations on time, and improvising when sessions ran over, to making slide decks on-the-fly, taking photos and videos, recording interviews, managing the registration desk, helping startup booths, writing last-minute speaker bios, assisting with the hackathon, moving furniture, putting up signs, and even playing piano!"]
+        ]
+      },
+      {
+        "title": "Teamwork in Action",
+        "paragraphs": [
+          ["What made this team remarkable wasn't just their skills—it was how they came together. Many had only met a month before the event, and some were meeting each other for the first time. Yet mid-morning on the day of the summit, something clicked. The team seamlessly coordinated, staying two steps (or five hundred!) ahead of every challenge that arose."],
+          ["This is how real teamwork happens—people from different backgrounds coming together with a shared purpose and executing flawlessly under pressure."]
+        ]
+      },
+      {
+        "title": "The Team",
+        "paragraphs": [
+          ["Our volunteer team included talented individuals who helped with everything from on-the-day coordination to behind-the-scenes work like website development, marketing, slide deck creation, brand design, and more:"],
+          [
+            {
+              "text": "Yasna",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Luke",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jay",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Oscar",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Maika",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Qui",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Evangeline",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jasmine",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Mo",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Aidan",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Minh",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Josh",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Yifei",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Weixin",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Agata",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jinwoo",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Emerald",
+              "bold": true
+            },
+            "."
+          ],
+          [
+            "We also had senior volunteers handling critical areas: ",
+            {
+              "text": "Ash",
+              "bold": true
+            },
+            " on AV, and others managing hackathon planning, finances, venue coordination, catering, and logistics."
+          ]
+        ]
+      },
+      {
+        "title": "Building Future Leaders",
+        "paragraphs": [
+          ["For many of these volunteers, this was an invaluable early-career experience in event management, coordination, and teamwork at scale. The skills they developed and connections they made during this summit will serve them well in their future endeavors."],
+          ["Watch out for these people in the future—they will do big things!"]
+        ]
+      },
+      {
+        "title": "Special Thanks",
+        "paragraphs": [
+          [
+            "Ever grateful to ",
+            {
+              "text": "Jim Owens",
+              "bold": true
+            },
+            " for his masterful photography that captured the energy and essence of the summit."
+          ],
+          ["To all our volunteers: Thank you for being the engine room that made AI Disrupt Summit 2025 a phenomenal success! 🚀"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-12-WTF",
+    "title": "Build Club Perth at West Tech Fest",
+    "date": "9 December 2025",
+    "dateTime": "2025-12-09",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "West Tech Fest and the tech community never fail to impress!",
+    "description": "",
+    "image": "/images/2025/2025-12-WTF/Build Club booth 2025-12-10 at 3.17.21 PM (2).jpeg",
+    "imageAlt": "Build Club Perth's community booth at West Tech Fest.",
+    "gallery": [
+      "/images/2025/2025-12-WTF/999747d5-0fb4-4b4a-b9c2-bcdb046c9440.jpeg",
+      "/images/2025/2025-12-WTF/1765341003375.jpeg",
+      "/images/2025/2025-12-WTF/WhatsApp Image 2025-12-10 at 3.17.20 PM.jpeg",
+      "/images/2025/2025-12-WTF/MTP_TL_WTF_b_9_12_25_43.jpg",
+      "/images/2025/2025-12-WTF/MTP_TL_WTF_b_9_12_25_44.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🎪 Build Club Community Booth",
+        "paragraphs": [
+          [
+            "This year, Build Club Perth had a booth at West Tech Fest, and it was a marvelous experience meeting so many entrepreneurs, start-up founders, investors and members of the tech community!"
+          ],
+          [
+            "At the booth, we shared our activities from the past few months and invited everyone to join us for our major event happening this weekend - the AI Disrupt Summit."
+          ]
+        ]
+      },
+      {
+        "title": "🥰 The Best Part",
+        "paragraphs": [
+          [
+            "The highlight of the day was soaking up the atmosphere and reconnecting with so many great people in the Perth start-up ecosystem, plus national visitors ",
+            {
+              "text": "Sean Grealy",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Liz Van Zyl",
+              "bold": true
+            },
+            " (Tractor), ",
+            {
+              "text": "Akshat Agrawal",
+              "bold": true
+            },
+            " (aarrayah), ",
+            {
+              "text": "Jo Tay",
+              "bold": true
+            },
+            " from Blackbird! Thank you to ",
+            {
+              "text": "Danelle Cross",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Sarah Kahle",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Kali Norman",
+              "bold": true
+            },
+            " and the team at Curtin Commercialisation and Entrepreneurship for the wonderful festival. Thank you to everyone who stopped by the booth and said hi - it was so wonderful to see you all!"
+          ],
+          ["The Perth tech and start-up community continues to grow and inspire."]
+        ]
+      },
+      {
+        "title": "🎤 On Main Stage",
+        "paragraphs": [
+          [
+            "It was a pleasure for ",
+            {
+              "text": "Susannah",
+              "bold": true
+            },
+            " to host a panel on Main Stage \"The AI Equation - Innovation, investment and integrity\" with special high-profile national and international guests ",
+            {
+              "text": "Amanda Terry",
+              "bold": true
+            },
+            " (ACTAI Ventures), ",
+            {
+              "text": "Rayn Ong",
+              "bold": true
+            },
+            " (Archangel ventures), ",
+            {
+              "text": "Kevin Brown",
+              "bold": true
+            },
+            " (Icetana) and ",
+            {
+              "text": "Akshat Agarwal",
+              "bold": true
+            },
+            " (arrayah)."
+          ],
+          ["The Perth tech and start-up community continues to grow and inspire."]
+        ]
+      },
+      {
+        "title": "👏 Thank You!",
+        "paragraphs": [
+          ["Massive thanks to our booth volunteers who helped on the day:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Mo Jaimangal",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Yasna Singh",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Agata Cabanek",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Ash Doshi",
+              "bold": true
+            }
+          ]
+        ]
+      },
+      {
+        "title": "🏆 Huge Appreciation",
+        "paragraphs": [
+          [
+            "Enormous thanks to the ",
+            {
+              "text": "West Tech Fest organizers",
+              "bold": true
+            },
+            " for this opportunity and their massive effort behind the scenes!"
+          ],
+          ["Thanks to all speakers, sponsors, booth exhibitors, and volunteers who made West Tech Fest 2025 an incredible success!"],
+          ["West Tech Fest showcased the strength and passion of the Perth start-up community. Looking forward to many more collaborations!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-11-meetup",
+    "title": "Build Club Perth November Meetup",
+    "date": "17 November 2025",
+    "dateTime": "2025-11-17",
+    "venue": "Bloom",
+    "location": "Bentley",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "A celebration of six months of impact and planning for an exciting 2026!",
+    "description": "",
+    "image": "/images/2025/2025-11/2025-nov-hero.jpg",
+    "imageAlt": "Attendees at the November 2025 Build Club Perth meetup.",
+    "artwork": "/images/2025/2025-11/20251117 November social tile.png",
+    "artworkAlt": "Build Club Perth November meetup artwork.",
+    "gallery": [
+      "/images/2025/2025-11/DSC_1743.jpg",
+      "/images/2025/2025-11/DSC_1791.jpg",
+      "/images/2025/2025-11/DSC_1793.jpg",
+      "/images/2025/2025-11/DSC_1795.jpg",
+      "/images/2025/2025-11/DSC_1801.jpg",
+      "/images/2025/2025-11/DSC_1803.jpg",
+      "/images/2025/2025-11/DSC_1804.jpg",
+      "/images/2025/2025-11/DSC_1806.jpg",
+      "/images/2025/2025-11/DSC_1807.jpg",
+      "/images/2025/2025-11/DSC_1808.jpg",
+      "/images/2025/2025-11/DSC_1811.jpg",
+      "/images/2025/2025-11/DSC_1812.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🎉 Six Months of Success",
+        "paragraphs": [
+          ["This meetup was all about reflecting on our incredible journey over the past six months:"]
+        ],
+        "items": [
+          ["Hosted numerous community events and workshops"],
+          ["Connected members with start-up job opportunities"],
+          ["Helped community members find co-founders"],
+          ["Secured a dedicated room at Bloom"],
+          ["Organized our first full-day AI Disrupt Summit in December"]
+        ]
+      },
+      {
+        "title": "🏆 2026 Goals",
+        "paragraphs": [
+          ["We're setting ambitious goals for the year ahead:"]
+        ],
+        "items": [
+          ["More structured talks and hands-on building sessions"],
+          ["Comprehensive Gen AI tutorials"],
+          ["Focus on building products that generate revenue"],
+          ["Collaborations with industry partners and the national and global AI ecosystem"]
+        ]
+      },
+      {
+        "title": "✅ Community Announcements",
+        "paragraphs": [
+          [
+            {
+              "text": "West Tech Fest",
+              "bold": true
+            }
+          ],
+          [
+            "Build Club Perth will be hosting a booth! Student tickets available for $75, with special discounts for AI Disrupt Summit attendees."
+          ],
+          [
+            {
+              "text": "Curtin's Arrayah Residency",
+              "bold": true
+            }
+          ],
+          [
+            "A real pop-up hacker house residency running alongside West Tech Fest."
+          ],
+          [
+            {
+              "text": "TradieScribe",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Kyan Jones",
+              "bold": true
+            },
+            " is looking for technical co-founders to join the team."
+          ],
+          [
+            {
+              "text": "Veilnet Workshop",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Yifei Ren",
+              "bold": true
+            },
+            " will be presenting \"Your First AI Home Lab: Build It, Automate It, Securely Reach It\" at the AI Disrupt Summit."
+          ],
+          [
+            {
+              "text": "WeMoney Summer Internship",
+              "bold": true
+            }
+          ],
+          [
+            "Advertised at the meetup with an already huge response from our community!"
+          ]
+        ]
+      },
+      {
+        "title": "🙌 Thank You!",
+        "paragraphs": [
+          ["A huge shout-out to everyone who made this meetup and our community possible:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Summit Volunteers:",
+              "bold": true
+            },
+            " ",
+            {
+              "text": "Yasna",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Grace",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Maika",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Oscar",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Jay",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Luke",
+              "bold": true
+            },
+            " for organizing volunteer roles"
+          ],
+          [
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " for providing pizzas"
+          ],
+          [
+            {
+              "text": "Matilda Digital Endometriosis Care",
+              "bold": true
+            },
+            " for donuts"
+          ],
+          [
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " for the wonderful Basement Space"
+          ],
+          ["All attendees - both new folks and regulars - for your continued support!"]
+        ]
+      },
+      {
+        "title": "📅 What's Next?",
+        "paragraphs": [
+          [
+            {
+              "text": "AI Disrupt Summit:",
+              "bold": true
+            },
+            " Saturday, December 13th, 2025 (10am to Sundowner)"
+          ],
+          [
+            "The summit program is locked in with talks, mini hackathon, start-up expo booths, and networking sundowner."
+          ],
+          [
+            {
+              "text": "Monthly Build Club sessions",
+              "bold": true
+            },
+            " will resume in February 2026!"
+          ],
+          [
+            "Here's to many more opportunities and friendships in our quest to learn, build, and share everything about building Gen AI products! 👏"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-10-meetup",
+    "date": "October 2025",
+    "dateTime": "2025-10",
+    "venue": "Curtin Entrepreneurs Hub",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "title": "October 2025 Meetup",
+    "summary": "Another stellar turnout at the fantastic Curtin Entrepreneurs Hub!",
+    "description": "",
+    "image": "/images/2025/2025-10/2025-oct-hero.jpg",
+    "imageAlt": "David Smith presenting at the October Build Club Perth meetup.",
+    "artwork": "/images/2025/2025-10/202510 Oct Social tile.png",
+    "artworkAlt": "Build Club Perth October meetup social tile.",
+    "gallery": [
+      "/images/2025/2025-10/DSC_1534.jpg",
+      "/images/2025/2025-10/DSC_1538.jpg",
+      "/images/2025/2025-10/DSC_1542.jpg",
+      "/images/2025/2025-10/DSC_1546.jpg",
+      "/images/2025/2025-10/DSC_1554.jpg",
+      "/images/2025/2025-10/DSC_1559.jpg",
+      "/images/2025/2025-10/DSC_1564.jpg",
+      "/images/2025/2025-10/DSC_1565.jpg",
+      "/images/2025/2025-10/DSC_1566.jpg",
+      "/images/2025/2025-10/DSC_1572.jpg",
+      "/images/2025/2025-10/DSC_1575.jpg",
+      "/images/2025/2025-10/DSC_1578.jpg",
+      "/images/2025/2025-10/DSC_1601.jpg"
+    ],
+    "sections": [
+      {
+        "title": "📍 New Venue!",
+        "paragraphs": [
+          [
+            "This month, Build Club Perth was held at the awesome ",
+            {
+              "text": "Curtin Entrepreneurs Hub",
+              "bold": true
+            },
+            " - a fantastic facility for founders to meet and collaborate."
+          ],
+          [
+            "Special thanks to ",
+            {
+              "text": "Danelle Cross",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Anna Lee",
+              "bold": true
+            },
+            " for hosting us!"
+          ]
+        ]
+      },
+      {
+        "title": "🐰 Featured Talk: Easter Bunny Bunny.ai",
+        "paragraphs": [
+          [
+            {
+              "text": "David Smith",
+              "bold": true
+            },
+            " delivered an incredible talk about his Easter Bunny project. David is an excellent speaker who brought the perfect mix of technical depth, humor, and casual insight."
+          ],
+          ["Topics Covered:"]
+        ],
+        "items": [
+          ["Agent workflows and orchestration"],
+          ["LLM evaluation"],
+          ["LLM as a judge"],
+          ["AI risk assessment"]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["David continues to be a hugely inspiring role model for the community!"]
+        ]
+      },
+      {
+        "title": "🎉 Community Updates",
+        "paragraphs": [
+          [
+            {
+              "text": "DDD Perth Recaps",
+              "bold": true
+            }
+          ],
+          ["Community members shared their experiences from the DDD Perth conference."],
+          [
+            {
+              "text": "Zurich Deeptech Innovation Academy",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Harry",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Milan",
+              "bold": true
+            },
+            " recapped their inspiring trip to Zurich's Deeptech Innovation Academy."
+          ],
+          [
+            {
+              "text": "Bloom LaunchLAB AI Completion",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "John",
+              "bold": true
+            },
+            " shared his experiences completing the Bloom LaunchLAB AI accelerator program."
+          ],
+          [
+            {
+              "text": "West Tech Fest Satellite Event",
+              "bold": true
+            }
+          ],
+          ["Exciting plans announced for a WTF satellite event - more details to come!"]
+        ]
+      },
+      {
+        "title": "📣 Community Shoutout",
+        "paragraphs": [
+          [
+            {
+              "text": "Bloom LaunchLAB 2025 Finale",
+              "bold": true
+            },
+            " - Friday, October 10th!"
+          ],
+          [
+            "Everyone was encouraged to attend and hear founder pitches. A great opportunity for those thinking of applying for the February cohort to see what's in store!"
+          ]
+        ]
+      },
+      {
+        "title": "🙌 Special Thanks",
+        "items": [
+          [
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " for providing pizzas"
+          ],
+          [
+            {
+              "text": "Matilda",
+              "bold": true
+            },
+            " for delicious cinnamon buns"
+          ],
+          [
+            {
+              "text": "Curtin Entrepreneurs Hub",
+              "bold": true
+            },
+            " for the fantastic venue"
+          ],
+          ["All attendees - regulars and new faces alike!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-09-ddd",
+    "title": "Build Club Perth at DDD Perth 2025",
+    "date": "20 September 2025",
+    "dateTime": "2025-09-20",
+    "venue": "Optus Stadium",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "DDD and the tech community never fail to impress!",
+    "description": "",
+    "image": "/images/2025/2025-09-DDD/2025-DDD-booth-hero.jpeg",
+    "imageAlt": "Build Club Perth community booth at DDD Perth 2025.",
+    "artwork": "/images/2025/2025-09-DDD/202509 DDD social tile.png",
+    "artworkAlt": "Build Club Perth booth artwork for DDD Perth 2025.",
+    "gallery": [
+      "/images/2025/2025-09-DDD/20250920_080518.jpg",
+      "/images/2025/2025-09-DDD/DSC_1453.jpg",
+      "/images/2025/2025-09-DDD/DSC_1458.jpg",
+      "/images/2025/2025-09-DDD/DSC_1464.jpg",
+      "/images/2025/2025-09-DDD/DSC_1479.jpg",
+      "/images/2025/2025-09-DDD/DSC_1483.jpg",
+      "/images/2025/2025-09-DDD/DSC_1492.jpg",
+      "/images/2025/2025-09-DDD/DSC_1498.jpg",
+      "/images/2025/2025-09-DDD/DSC_1503.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🎪 Build Club Community Booth",
+        "paragraphs": [
+          [
+            "This year, Build Club Perth had a community booth at DDD Perth, and it was a marvelous experience meeting so many members of the tech community - all ",
+            {
+              "text": "1,100+ attendees",
+              "bold": true
+            },
+            "!"
+          ],
+          ["At the booth, we shared our activities from the past few months and invited everyone to join us for our October meetup."],
+          ["Booth Activities:"]
+        ],
+        "items": [
+          ["Interactive prompting game"],
+          ["Prize giveaway from Curtin Entrepreneurs"],
+          ["Community engagement and networking"]
+        ]
+      },
+      {
+        "title": "🎤 Conference Highlights",
+        "paragraphs": [
+          ["We were so busy at the booth that we barely had time to check out the talks! However, we did manage to catch:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Rendle.dev's awesome locknote on AI",
+              "bold": true
+            },
+            " - An inspiring closing presentation on AI developments"
+          ],
+          [
+            {
+              "text": "Booth tours",
+              "bold": true
+            },
+            " - Learning about the latest in AI, big tech, and emerging technologies"
+          ]
+        ]
+      },
+      {
+        "title": "🥰 The Best Part",
+        "paragraphs": [
+          ["The highlight of the day was soaking up the atmosphere and reconnecting with so many old friends and ex-students thriving in the software industry!"],
+          ["The Perth tech community continues to grow and inspire."]
+        ]
+      },
+      {
+        "title": "👏 Thank You!",
+        "paragraphs": [
+          ["Massive thanks to our booth volunteers who put in hardcore effort with prep and staffing:"]
+        ],
+        "items": [
+          ["Luke Saunders"],
+          ["Chao Cherng Lee"],
+          ["Jay Nicholson"],
+          ["Nicholas Jerrat"],
+          ["Jenish Pandya"],
+          ["And many other Build Club community members!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-09-meetup",
+    "date": "September 2025",
+    "dateTime": "2025-09",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "title": "September 2025 Meetup",
+    "summary": "For a rainy evening - it was an amazing turnout of AI builders vibe coding and more!",
+    "description": "",
+    "image": "/images/2025/2025-09/2025-sept-hero.png",
+    "imageAlt": "Attendees building and sharing projects at the September meetup.",
+    "artwork": "/images/2025/2025-09/202509 Sept social tile.png",
+    "artworkAlt": "Build Club Perth September co-building meetup artwork.",
+    "galleryTitle": "Event Gallery",
+    "gallery": [
+      "/images/2025/2025-09/DSC_1344.jpg",
+      "/images/2025/2025-09/DSC_1348.jpg",
+      "/images/2025/2025-09/DSC_1351.jpg",
+      "/images/2025/2025-09/DSC_1353.jpg",
+      "/images/2025/2025-09/DSC_1354.jpg",
+      "/images/2025/2025-09/DSC_1355.jpg",
+      "/images/2025/2025-09/DSC_1356.jpg",
+      "/images/2025/2025-09/DSC_1371.jpg",
+      "/images/2025/2025-09/DSC_1376.jpg",
+      "/images/2025/2025-09/DSC_1377.jpg",
+      "/images/2025/2025-09/DSC_1378.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🛠️ Building & Demos",
+        "paragraphs": [
+          ["Thank you to all who came and built products and shared their demos! The energy was fantastic despite the rainy weather."],
+          ["Special welcome to all the newcomers joining the Build Club community!"]
+        ]
+      },
+      {
+        "title": "🎤 Featured Speaker",
+        "paragraphs": [
+          [
+            {
+              "text": "Haylee from Matilda",
+              "bold": true
+            },
+            " shared her exciting and meaningful AI work, inspiring the community with insights into practical AI applications in healthtech."
+          ],
+          ["A great example of AI making a real impact!"]
+        ]
+      },
+      {
+        "title": "🎉 Community Achievements",
+        "paragraphs": [
+          ["We celebrated some awesome outcomes from the community:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "🏆 Hackathon wins",
+              "bold": true
+            },
+            " - Several members had successful hackathon competitions!"
+          ],
+          [
+            {
+              "text": "🚀 Start-up hires",
+              "bold": true
+            },
+            " - Multiple community members landed positions in the start-up and scale-up space"
+          ],
+          [
+            {
+              "text": "👏 Curtin Ignition",
+              "bold": true
+            },
+            " - A few attended this exciting entrepreneurship event"
+          ],
+          [
+            {
+              "text": "🇨🇭 Zurich deeptech workshop",
+              "bold": true
+            },
+            " - Two members traveled to Switzerland for an intensive deeptech workshop"
+          ],
+          [
+            {
+              "text": "📅 WTF satellite event",
+              "bold": true
+            },
+            " - Planning underway for West Tech Fest satellite event"
+          ]
+        ]
+      },
+      {
+        "title": "📣 Upcoming: DDD Perth",
+        "paragraphs": [
+          [
+            {
+              "text": "Join Build Club Perth at our booth at DDD Perth!",
+              "bold": true
+            }
+          ],
+          ["📅 Saturday, September 20th"],
+          ["📍 Optus Stadium"],
+          ["With over 1,500 developers attending, DDD Perth is Perth's largest community-run conference for the tech community."],
+          ["Don't miss out – get your tickets and join us there!"]
+        ]
+      },
+      {
+        "title": "🙌 Special Thanks",
+        "paragraphs": [
+          [
+            "Huge thanks for support and mentoring from ",
+            {
+              "text": "Aidan",
+              "bold": true
+            },
+            ", ",
+            {
+              "text": "Nicholas",
+              "bold": true
+            },
+            ", and ",
+            {
+              "text": "Thuushal",
+              "bold": true
+            },
+            "!"
+          ],
+          ["Supporting Organizations:"]
+        ],
+        "items": [
+          ["Curtin Commercialisation and Entrepreneurship"],
+          ["WA Data Science Innovation Hub (WADSIH)"],
+          ["Bloom"],
+          ["Lance East Office"],
+          ["Matilda Digital Endometriosis Care"],
+          ["WeMoney"]
+        ]
+      },
+      {
+        "title": "📍 Coming in October",
+        "paragraphs": [
+          [
+            "The next Build Club Perth event will be held at the ",
+            {
+              "text": "Curtin Innovation Hub",
+              "bold": true
+            },
+            " - more details to follow!"
+          ],
+          ["A great evening of networking and community sharing - thank you everyone for your contribution!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-08-meetup",
+    "date": "August 2025",
+    "dateTime": "2025-08",
+    "venue": "Bloom Crawley",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "title": "August 2025 Meetup",
+    "summary": "A vibrant gathering at Bloom Crawley - a wonderful space purpose-built for innovation!",
+    "description": "",
+    "image": "/images/2025/2025-08/2025-aug-hero.jpg",
+    "imageAlt": "A speaker presenting to attendees at the August Build Club Perth meetup.",
+    "artwork": "/images/2025/2025-08/202508 Aug social tile.jpg",
+    "artworkAlt": "Build Club Perth August co-building meetup artwork.",
+    "gallery": [
+      "/images/2025/2025-08/DSC_1067.jpg",
+      "/images/2025/2025-08/DSC_1081.jpg",
+      "/images/2025/2025-08/DSC_1087.jpg",
+      "/images/2025/2025-08/DSC_1092.jpg",
+      "/images/2025/2025-08/DSC_1130.jpg",
+      "/images/2025/2025-08/DSC_1142.jpg",
+      "/images/2025/2025-08/DSC_1176.jpg",
+      "/images/2025/2025-08/DSC_1178.jpg",
+      "/images/2025/2025-08/DSC_1180.jpg",
+      "/images/2025/2025-08/DSC_1181.jpg",
+      "/images/2025/2025-08/DSC_1185.jpg",
+      "/images/2025/2025-08/DSC_1188.jpg",
+      "/images/2025/2025-08/DSC_1191.jpg",
+      "/images/2025/2025-08/DSC_1199.jpg",
+      "/images/2025/2025-08/DSC_1201.jpg",
+      "/images/2025/2025-08/DSC_1210.jpg"
+    ],
+    "sections": [
+      {
+        "title": "📍 Venue Spotlight: Bloom Crawley",
+        "paragraphs": [
+          [
+            "August Build Club Perth was hosted at ",
+            {
+              "text": "Bloom Crawley",
+              "bold": true
+            },
+            " - a fantastic venue purpose-built for innovation!"
+          ],
+          ["We had a very vibrant group of students, innovation specialists, and industry folks attend. The discussions were so engaging that people were still chatting for several hours!"],
+          ["So good to be in a room where everyone has such a huge love for tech and innovation ❤️💻"]
+        ]
+      },
+      {
+        "title": "🎤 Featured Speaker: Jeroen van Dalen",
+        "paragraphs": [
+          [
+            "The legend himself - ",
+            {
+              "text": "Jeroen van Dalen",
+              "bold": true
+            },
+            " presented compelling data on the unbelievable scale and pace of capex infrastructure spending that AI is driving!"
+          ],
+          ["Key Insights:"]
+        ],
+        "items": [
+          ["AI infrastructure investment happening at unprecedented scale"],
+          ["Current spending still not enough to keep up with demand"],
+          ["Vision for a total shift in how Accelerator programs are designed"],
+          ["Bloom LaunchLAB AI approach: building more mature MVPs faster and pivoting more often"]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["Jeroen was so inspiring in his passion for supporting innovators in AI!"]
+        ]
+      },
+      {
+        "title": "🌟 Special Guest: Mark McDonald",
+        "paragraphs": [
+          [
+            "We were hugely grateful to have another legend - ",
+            {
+              "text": "Mark McDonald",
+              "bold": true
+            },
+            " - fresh off the back of ",
+            {
+              "text": "Google I/O India 🇮🇳",
+              "bold": true
+            },
+            "!"
+          ],
+          [
+            "Mark shared hot takes on the latest ",
+            {
+              "text": "Google AI Studio",
+              "bold": true
+            },
+            " functionality targeted to the dev community."
+          ],
+          ["Live Demos Included:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Multimodal generation",
+              "bold": true
+            },
+            " - text, image, audio, and video capabilities"
+          ],
+          [
+            {
+              "text": "Imagen 4",
+              "bold": true
+            },
+            " - high-quality image creation"
+          ],
+          [
+            {
+              "text": "Gemini image editing",
+              "bold": true
+            },
+            " - interactive voice and text image manipulation"
+          ],
+          [
+            {
+              "text": "Veo 3",
+              "bold": true
+            },
+            " - advanced video generation with audio and improved physics"
+          ],
+          [
+            {
+              "text": "Lyria music generation",
+              "bold": true
+            },
+            " - game soundtracks and more 🎵"
+          ],
+          [
+            {
+              "text": "Gemini for app generation",
+              "bold": true
+            },
+            " - developer tools"
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["Super impressive and largely free! 🙌"]
+        ]
+      },
+      {
+        "title": "🎉 Community Updates",
+        "paragraphs": [
+          ["🚀 Bird Drone at Zurich DeepTech Accelerator"],
+          [
+            "Congrats to ",
+            {
+              "text": "Harry Walters",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Milan",
+              "bold": true
+            },
+            " going to the DeepTech Accelerator with their 'Bird Drone' innovation in September!"
+          ],
+          ["🏆 Matilda WAIOTY Awards Finalist"],
+          [
+            "Congratulations to ",
+            {
+              "text": "Matilda Digital Endometriosis Care",
+              "bold": true
+            },
+            " for being a Finalist in the WAIOTY awards!"
+          ],
+          ["💻 WeMoney Hackathon & New Office"],
+          [
+            {
+              "text": "WeMoney",
+              "bold": true
+            },
+            " shared awesome updates for their Hackathon and announced an exciting new office opening!"
+          ],
+          ["Plus much more! Big things to come from this group…watch this space."]
+        ]
+      },
+      {
+        "title": "🙏 Thank You!",
+        "paragraphs": [
+          [
+            "Massive thanks to ",
+            {
+              "text": "Jeroen van Dalen",
+              "bold": true
+            },
+            " and ",
+            {
+              "text": "Mark McDonald",
+              "bold": true
+            },
+            " for spending so much time with our community. The value you add is gold 🪙 and we are so grateful to you."
+          ],
+          ["Supporting Organizations:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Bloom",
+              "bold": true
+            },
+            " - for the fantastic venue at Bloom Crawley"
+          ],
+          [
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " - for pizzas"
+          ],
+          [
+            {
+              "text": "Matilda Digital Endometriosis Care",
+              "bold": true
+            },
+            " - Sapphire Carter brought supersized donuts!"
+          ],
+          [
+            {
+              "text": "WeMoney",
+              "bold": true
+            },
+            " - for the team showing support time and again!"
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["So grateful to everyone who attended and contributed to such an engaging and inspiring evening!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-07-aura-ventures-mixer",
+    "title": "Aura Ventures Mixer",
+    "date": "July 2025",
+    "dateTime": "2025-07",
+    "venue": "Print Hall",
+    "location": "Perth",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "Perth's startup scene came alive at the historic Print Hall last month, as Aura Ventures — a Sydney-based VC firm backing the next generation of global technology companies — touched down in WA to connect with the local innovation community. The evening was a collaboration with Build Club Perth, bringing together the best of both networks under one roof.",
+    "description": "",
+    "image": "/images/2025/2025-07-aura/2025-jul-aura-hero.jpg",
+    "imageAlt": "Perth founders and visitors meeting at the Aura Ventures mixer.",
+    "gallery": [
+      "/images/2025/2025-07-aura/DSC_0935.JPG",
+      "/images/2025/2025-07-aura/DSC_0938_edit.JPG",
+      "/images/2025/2025-07-aura/DSC_0970_edit.JPG",
+      "/images/2025/2025-07-aura/DSC_0988_edit.JPG",
+      "/images/2025/2025-07-aura/DSC_0989_edit.JPG"
+    ],
+    "sections": [
+      {
+        "title": "🤝 VCs Meet Perth's Ecosystem",
+        "paragraphs": [
+          ["Aura Group Managing Director Eric Chan and Partner Mark Esterhuizen hosted an evening of drinks and conversation for Perth's founders, investors, and operators. Over 40 people from across the ecosystem showed up to meet the Sydney visitors, swap ideas, and see what's moving in both the Perth and broader Australian tech landscape."]
+        ]
+      },
+      {
+        "title": "✨ The Venue",
+        "paragraphs": [
+          ["The venue set the tone — Print Hall is Perth doing what it does best, blending character with a bit of quiet confidence."]
+        ]
+      },
+      {
+        "title": "🌟 Who Was There?",
+        "paragraphs": [
+          ["The room brought together some of the most active names in Perth's AI and entrepreneurial scene, including:"]
+        ],
+        "items": [
+          ["Mo Jaimangal"],
+          ["Jeroen van Dalen"],
+          ["Marcus Tan"],
+          ["David Smith"],
+          ["Matt James"]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["It was great to see founders like Ryan Liebregts (Indrus) in the mix alongside students Issy Ng and Jay Nicholson, and Perth Angels — a reminder that the ecosystem here spans every stage."]
+        ]
+      },
+      {
+        "title": "🙏 Big Thanks",
+        "paragraphs": [
+          ["A big thanks to Annie Liao, Saanvi Yearawar, and Sabrina for pulling the night together, and to Aura Ventures for the generous hospitality. Nights like this are exactly how ecosystems grow — one conversation at a time."]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-07-meetup",
+    "date": "July 2025",
+    "dateTime": "2025-07",
+    "venue": "Curtin University Library",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "title": "July 2025 Meetup",
+    "summary": "Around 70 people spent their Tuesday evening with us - proving that GenAI is really taking hold!",
+    "description": "",
+    "image": "/images/2025/2025-07/2025-jul-hero.jpeg",
+    "imageAlt": "Attendees at the July Build Club Perth meetup.",
+    "artwork": "/images/2025/2025-07/202507 July social tile.jpg",
+    "artworkAlt": "Build Club Perth July meetup artwork.",
+    "gallery": [
+      "/images/2025/2025-07/DSC_0670.jpg",
+      "/images/2025/2025-07/DSC_0673.jpg",
+      "/images/2025/2025-07/DSC_0674.jpg",
+      "/images/2025/2025-07/DSC_0677.jpg",
+      "/images/2025/2025-07/DSC_0685.jpg",
+      "/images/2025/2025-07/DSC_0686.jpg",
+      "/images/2025/2025-07/DSC_0692.jpg",
+      "/images/2025/2025-07/DSC_0696.jpg",
+      "/images/2025/2025-07/DSC_0719.jpg",
+      "/images/2025/2025-07/DSC_0743.jpg",
+      "/images/2025/2025-07/DSC_0752.jpg",
+      "/images/2025/2025-07/DSC_0778.jpg",
+      "/images/2025/2025-07/DSC_0842.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🎊 Diverse Community",
+        "paragraphs": [
+          ["The buzz and excitement was incredible! We had a truly diverse group:"]
+        ],
+        "items": [
+          ["Hard-core tech folks"],
+          ["Professionals from commerce, finance, mining, agriculture, and government"],
+          ["Students and industry professionals"],
+          ["Lots of entrepreneurs"],
+          ["Even an angel investor - all in one room!"]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["Time is precious - which is why we are super grateful for everyone who attended!"]
+        ]
+      },
+      {
+        "title": "🌟 Stellar Speaker Line-up",
+        "paragraphs": [
+          [
+            {
+              "text": "Mark McDonald",
+              "bold": true
+            },
+            " - Google Deepmind"
+          ],
+          [
+            "Developer Relations for Gemini API. ",
+            {
+              "text": "Mark",
+              "bold": true
+            },
+            " encouraged everyone to reach out for more info on Gemini support and education. Returning in Aug/Sept!"
+          ],
+          [
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " - Emergency Management Hackathon"
+          ],
+          ["Wowed us with models for generating sheet music based on ControlNet, plus demoed tools like unmute.sh for semantic voice activity detection!"],
+          [
+            {
+              "text": "Michael Stephens",
+              "bold": true
+            },
+            " - WeMoney"
+          ],
+          ["Shared how AI is important to WeMoney's product, scalability, and customers. WeMoney is a social financial wellness platform founded right here in Perth!"],
+          [
+            {
+              "text": "Mo Jaimangal",
+              "bold": true
+            },
+            " - JupiterAI"
+          ],
+          ["Told his fascinating serial entrepreneur journey from dream role working on concept cars, to founding WeGuide, to his latest passion JupiterAI helping CEOs and business owners use GenAI."],
+          [
+            "Key lesson: ",
+            {
+              "text": "Mo",
+              "bold": true
+            },
+            " cares about making impact at scale for good."
+          ],
+          [
+            {
+              "text": "Kevin Wernli (PhD)",
+              "bold": true
+            },
+            " & ",
+            {
+              "text": "Joanna Morris",
+              "bold": true
+            },
+            " - Matilda"
+          ],
+          ["Presented Matilda app which enhances surgical outcomes through better pre/post-op care for endometriosis, powered by tech. They shared lots of start-up lessons leading to their success!"],
+          [
+            {
+              "text": "Yifei Ren",
+              "bold": true
+            },
+            " - Veilnet"
+          ],
+          [
+            "Talked about his start-up Veilnet - an ephemeral network more secure than VPN. Early access available now! ",
+            {
+              "text": "Yifei",
+              "bold": true
+            },
+            " also shared many AI founder lessons."
+          ],
+          [
+            {
+              "text": "Minh",
+              "bold": true
+            },
+            " - Bloom LaunchLAB AI"
+          ],
+          ["Community Manager spreading the word on their AI start-up incubator in Perth. Applications were closing that week!"]
+        ]
+      },
+      {
+        "title": "✨ Amazing Networking",
+        "paragraphs": [
+          ["The networking with speakers was truly buzzing! The room was electric with conversations and opportunities being sparked."],
+          [
+            {
+              "text": "Jinwoo",
+              "bold": true
+            },
+            " did an excellent job capturing the evening in photos 📸"
+          ]
+        ]
+      },
+      {
+        "title": "🙏 Thank You!",
+        "items": [
+          [
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " - for the pizzas 🍕"
+          ],
+          [
+            {
+              "text": "Matilda Digital Endometriosis Care",
+              "bold": true
+            },
+            " - for cinnamon rolls like you've never seen! 🥐"
+          ],
+          [
+            {
+              "text": "WeMoney",
+              "bold": true
+            },
+            " - huge thanks for their massive support behind the scenes. So happy to partner with you! 🥳"
+          ],
+          [
+            {
+              "text": "Curtin University Library",
+              "bold": true
+            },
+            " - for hosting us"
+          ]
+        ],
+        "paragraphs": [
+          ["What an incredible evening of learning, sharing, and building community together!"]
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "2025-06-meetup",
+    "title": "June 2025 Perth Launch Event 🚀",
+    "date": "June 2025",
+    "dateTime": "2025-06",
+    "communityUrl": "https://www.linkedin.com/company/perth-ai/",
+    "summary": "The turnout was amazing and the energy in the room was more than we could have hoped for!",
+    "description": "",
+    "image": "/images/2025/2025-06/2025-jun-hero.jpg",
+    "imageAlt": "Members gathered at the launch of Build Club Perth.",
+    "gallery": [
+      "/images/2025/2025-06/DSC_0173.jpg",
+      "/images/2025/2025-06/DSC_0191.jpg",
+      "/images/2025/2025-06/DSC_0201.jpg",
+      "/images/2025/2025-06/DSC_0217.jpg",
+      "/images/2025/2025-06/DSC_0220.jpg",
+      "/images/2025/2025-06/DSC_0224.jpg",
+      "/images/2025/2025-06/DSC_0227.jpg",
+      "/images/2025/2025-06/DSC_0250.jpg",
+      "/images/2025/2025-06/DSC_0278.jpg",
+      "/images/2025/2025-06/DSC_0279.jpg",
+      "/images/2025/2025-06/DSC_0295.jpg",
+      "/images/2025/2025-06/DSC_0310.jpg",
+      "/images/2025/2025-06/DSC_0312.jpg",
+      "/images/2025/2025-06/DSC_0332.jpg",
+      "/images/2025/2025-06/DSC_0344.jpg",
+      "/images/2025/2025-06/DSC_0366.jpg",
+      "/images/2025/2025-06/DSC_0391.jpg",
+      "/images/2025/2025-06/DSC_0423.jpg",
+      "/images/2025/2025-06/DSC_0425.jpg"
+    ],
+    "sections": [
+      {
+        "title": "🎉 Historic Moment",
+        "paragraphs": [
+          ["This was the official launch of Build Club Perth - a community dedicated to building AI passion projects and products!"]
+        ]
+      },
+      {
+        "title": "🎤 Opening Presentations",
+        "paragraphs": [
+          [
+            {
+              "text": "The Need for Build Club Perth",
+              "bold": true
+            }
+          ],
+          [
+            "Shared the vision for a Build Club community here in Perth and discussed the rise of the ",
+            {
+              "text": "AI Engineer",
+              "bold": true
+            },
+            " - a new role at the intersection of software development and AI."
+          ],
+          [
+            {
+              "text": "Trish Radotic & Harry Walters - Mission & Vision",
+              "bold": true
+            }
+          ],
+          ["Outlined Build Club Perth's mission, vision, and exciting plans to scale the community!"],
+          [
+            {
+              "text": "Stanley Chong - Old Meets New Tech",
+              "bold": true
+            }
+          ],
+          [
+            "Brought in some vintage tech for contrast, then demonstrated cutting-edge technology with ",
+            {
+              "text": "live coding using Anthropic's Claude Code",
+              "bold": true
+            },
+            "!"
+          ]
+        ]
+      },
+      {
+        "title": "🎼 Sponsor Presentations",
+        "paragraphs": [
+          [
+            {
+              "text": "Alex Jenkins",
+              "bold": true
+            },
+            " - WA Data Science Innovation Hub (WADSIH)"
+          ],
+          [
+            {
+              "text": "Alex",
+              "bold": true
+            },
+            " showcased impressive demos including:"
+          ]
+        ],
+        "items": [
+          ["Music generation demo 🎼"],
+          ["Live emergency services application"]
+        ]
+      },
+      {
+        "paragraphs": [
+          [
+            {
+              "text": "WeMoney Team",
+              "bold": true
+            },
+            " - Perth FinTech Start-up"
+          ],
+          ["Representatives from WeMoney joined us:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Michael Stephens",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Joaquim Mackin",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Chloe",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "April K.",
+              "bold": true
+            }
+          ]
+        ]
+      },
+      {
+        "title": "❤️ Community Love",
+        "paragraphs": [
+          ["Thank you everyone for your huge engagement on AI! We are excited to be part of this global community building AI passion projects and products."],
+          ["We 😍 the AI community!!"]
+        ]
+      },
+      {
+        "title": "🙏 Thank You!",
+        "paragraphs": [
+          ["Incredible Sponsors:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "WA Data Science Innovation Hub (WADSIH)",
+              "bold": true
+            },
+            " - for catering and support"
+          ],
+          [
+            {
+              "text": "WeMoney",
+              "bold": true
+            },
+            " - Perth FinTech start-up for donuts 🍩 and catering 🥐"
+          ]
+        ]
+      },
+      {
+        "paragraphs": [
+          ["Ever Reliable Crew:"]
+        ],
+        "items": [
+          [
+            {
+              "text": "Weixin Shao",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Jim Hie Ling",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Emerald Whiteman",
+              "bold": true
+            }
+          ],
+          [
+            {
+              "text": "Jinwoo Kim",
+              "bold": true
+            },
+            " - for incredible photography 📷"
+          ]
+        ]
+      },
+      {
+        "title": "🔜 What's Next",
+        "paragraphs": [
+          ["This was just the beginning! Watch this space for exciting collaborations and events planned for July and beyond."],
+          ["Building is hungry work - thanks to our sponsors for keeping everyone fueled!"]
+        ]
+      }
+    ]
   }
 ]

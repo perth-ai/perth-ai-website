@@ -3,6 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import PageHero from '../../../components/PageHero.astro';
 import Section from '../../../components/Section.astro';
 import pastEvents from '../../../data/pastEvents.json';
+import summitGalleries from '../../../data/summitGalleries.json';
 
 export function getStaticPaths() {
   return pastEvents.map((event) => ({
@@ -12,6 +13,14 @@ export function getStaticPaths() {
 }
 
 const { event } = Astro.props;
+const artworks =
+  event.artworks ?? (event.artwork ? [{ src: event.artwork, alt: event.artworkAlt }] : []);
+const photos =
+  event.gallery ??
+  event.galleryGroups?.flatMap((gallery) =>
+    summitGalleries[gallery].map((filename) => `/images/2025/2025-12-summit/${gallery}/${filename}`),
+  ) ??
+  [];
 ---
 
 <Base title={event.title} description={event.summary} image={event.image} imageAlt={event.imageAlt}>
@@ -38,38 +47,51 @@ const { event } = Astro.props;
         <p class="text-sm font-medium text-sunset-700">
           <time datetime={event.dateTime}>{event.date}</time>
         </p>
-        <p class="mt-2 leading-relaxed text-ink-600">
-          At {event.venueUrl ? (
-            <a
-              href={event.venueUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
-              >{event.venue}</a
-            >
-          ) : (
-            event.venue
-          )}{event.location ? ` in ${event.location}` : ''}.
-        </p>
-        <p class="mt-4 leading-relaxed text-ink-600">{event.description}</p>
+        {event.venue && (
+          <p class="mt-2 leading-relaxed text-ink-600">
+            At {event.venueUrl ? (
+              <a
+                href={event.venueUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
+                >{event.venue}</a
+              >
+            ) : (
+              event.venue
+            )}{event.location ? ` in ${event.location}` : ''}.
+          </p>
+        )}
+        {event.articleTitle && (
+          <h2 class="mt-8 font-display text-xl font-semibold text-ink-900">{event.articleTitle}</h2>
+        )}
+        {event.description && (
+          <p class="mt-4 leading-relaxed text-ink-600">{event.description}</p>
+        )}
 
         {event.sections?.map((section) => (
           <section class="mt-8">
-            <h2 class="font-display text-xl font-semibold text-ink-900">{section.title}</h2>
+            {section.title && (
+              <h2 class="font-display text-xl font-semibold text-ink-900">{section.title}</h2>
+            )}
             {section.paragraphs?.map((paragraph) => (
               <p class="mt-3 leading-relaxed text-ink-600">
                 {paragraph.map((segment) =>
                   typeof segment === 'string' ? (
                     segment
-                  ) : (
+                  ) : segment.url ? (
                     <a
                       href={segment.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={segment.url.startsWith('/') ? undefined : '_blank'}
+                      rel={segment.url.startsWith('/') ? undefined : 'noopener noreferrer'}
                       class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
                     >
-                      {segment.text}
+                      {segment.bold ? <strong>{segment.text}</strong> : segment.text}
                     </a>
+                  ) : segment.bold ? (
+                    <strong>{segment.text}</strong>
+                  ) : (
+                    segment.text
                   ),
                 )}
               </p>
@@ -81,15 +103,19 @@ const { event } = Astro.props;
                     {item.map((segment) =>
                       typeof segment === 'string' ? (
                         segment
-                      ) : (
+                      ) : segment.url ? (
                         <a
                           href={segment.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          target={segment.url.startsWith('/') ? undefined : '_blank'}
+                          rel={segment.url.startsWith('/') ? undefined : 'noopener noreferrer'}
                           class="font-medium text-ink-900 underline decoration-sunset-500 underline-offset-4"
                         >
-                          {segment.text}
+                          {segment.bold ? <strong>{segment.text}</strong> : segment.text}
                         </a>
+                      ) : segment.bold ? (
+                        <strong>{segment.text}</strong>
+                      ) : (
+                        segment.text
                       ),
                     )}
                   </li>
@@ -99,20 +125,29 @@ const { event } = Astro.props;
           </section>
         ))}
 
-        <img
-          src={event.artwork}
-          alt={event.artworkAlt}
-          class="mt-8 w-full max-w-sm rounded-lg"
-          loading="lazy"
-          decoding="async"
-        />
+        {artworks.length > 0 && (
+          <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {artworks.map((artwork) => (
+              <li>
+                <img
+                  src={artwork.src}
+                  alt={artwork.alt}
+                  class="w-full rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            ))}
+          </ul>
+        )}
     </div>
 
-    {event.gallery && event.gallery.length > 0 && (
+    {photos.length > 0 && (
       <div class="mt-12">
-        <h2 class="font-display text-2xl font-semibold text-ink-900">Photos</h2>
+        <h2 class="font-display text-2xl font-semibold text-ink-900">{event.galleryTitle ?? 'Photos'}</h2>
+        <p class="mt-2 text-sm text-ink-600">{photos.length} photos</p>
         <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {event.gallery.map((photo) => (
+          {photos.map((photo) => (
             <li>
               <img
                 src={photo}

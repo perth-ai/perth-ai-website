@@ -23,13 +23,14 @@ const action = site.mailingList.formAction;
         action={action}
         method="post"
         data-mailing-list
-        class="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row"
+        class="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row sm:flex-wrap"
       >
-        {/* Brevo's field names: FIRSTNAME and EMAIL must be upper case, and
-            Brevo drops any submission where the honeypot email_address_check
-            is filled in. Brevo answers "success" even when a field it needs
-            is missing, so keep the required fields here in step with the
-            Brevo form (currently first name and email). */}
+        {/* Brevo's field names: FIRSTNAME, LASTNAME and EMAIL must be upper
+            case, and Brevo drops any submission where the honeypot
+            email_address_check is filled in. Brevo answers "success" even when
+            a field it needs is missing, so never let the Brevo form require a
+            field this form can send empty. We require first name, last name
+            and email here. */}
         <label for="mailing-list-name" class="sr-only">
           First name
         </label>
@@ -40,7 +41,19 @@ const action = site.mailingList.formAction;
           required
           autocomplete="given-name"
           placeholder="First name"
-          class="rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500 sm:w-36"
+          class="rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500 sm:w-[calc(50%-0.375rem)]"
+        />
+        <label for="mailing-list-last-name" class="sr-only">
+          Last name
+        </label>
+        <input
+          id="mailing-list-last-name"
+          type="text"
+          name="LASTNAME"
+          required
+          autocomplete="family-name"
+          placeholder="Last name"
+          class="rounded-xl border border-ink-700 bg-ink-800 px-4 py-3 text-sm text-white placeholder:text-ink-400 focus:border-sunset-500 focus:outline-none focus:ring-1 focus:ring-sunset-500 sm:w-[calc(50%-0.375rem)]"
         />
         <label for="mailing-list-email" class="sr-only">
           Email address

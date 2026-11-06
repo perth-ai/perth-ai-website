@@ -116,7 +116,7 @@ public/         Static files served as-is (brand assets, favicons, robots.txt, _
   feature seems to need JS, that's an "ask" (see below) — check whether it really does first.
 - **Accessibility isn't optional.** Every image needs alt text, every form field needs a `<label>`,
   focus states stay visible, and heading levels don't skip.
-- **Australian English.** "Organise", "programme", "centre". Dates as `en-AU`.
+- **Australian English.** "Organise", "program", "centre". Dates as `en-AU`.
 
 ## Voice
 

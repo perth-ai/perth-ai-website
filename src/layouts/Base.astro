@@ -12,9 +12,12 @@ interface Props {
   imageAlt?: string;
   imageWidth?: string;
   imageHeight?: string;
+  /** Keep this page out of search results even when ALLOW_INDEXING is on. For unlisted pages. */
+  noindex?: boolean;
 }
 
 const {
+  noindex = false,
   title,
   description = site.description,
   image = '/og-perth-ai.jpg',
@@ -38,7 +41,7 @@ const hasRealDomain = host !== '' && host !== 'localhost' && !host.endsWith('.pa
 //
 // Absent or misspelt, the answer is noindex. That is the safe direction — the
 // worst case is an unlisted site rather than a half-built one in search results.
-const allowIndexing = hasRealDomain && process.env.ALLOW_INDEXING === 'true';
+const allowIndexing = !noindex && hasRealDomain && process.env.ALLOW_INDEXING === 'true';
 ---
 
 <!doctype html>

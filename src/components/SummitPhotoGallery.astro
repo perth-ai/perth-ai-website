@@ -8,9 +8,10 @@ interface Props {
   gallery: 'JO-photos' | 'SS-cam';
   title: string;
   description: string;
+  photoCredit?: string;
 }
 
-const { gallery, title, description } = Astro.props;
+const { gallery, title, description, photoCredit } = Astro.props;
 const photos = summitGalleries[gallery]
   .map((filename) => `/images/2025/2025-12-summit/${gallery}/${filename}`);
 ---
@@ -25,7 +26,9 @@ const photos = summitGalleries[gallery]
     >
       &larr; Back to AI Disrupt Summit 2025
     </a>
-    <p class="mt-4 text-sm text-ink-600">{photos.length} photos</p>
+    <p class="mt-4 text-sm text-ink-600">
+      {photos.length} photos{photoCredit && ` · by ${photoCredit}.`}
+    </p>
     <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {photos.map((photo, index) => (
         <li>

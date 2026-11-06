@@ -13,12 +13,12 @@ import Icon from '../components/Icon.astro';
 
    Deliberately NOT on this page:
      - a speaker count. The summit site says 17 and then lists 18 names, so we
-       describe the programme instead of printing a figure that argues with
+       describe the program instead of printing a figure that argues with
        itself. If someone confirms the real number, it can go in the stats.
      - the speaker list. 18 names with no talk titles is a wall, not content;
        the "full line-up" link does that job.
-     - a photo credit. The gallery files sit under an "SS-cam" path but nobody
-       has confirmed who shot them, and a wrong credit is worse than none. */
+
+   The photo credit under the photos was confirmed by the organisers. */
 
 const summitSite = 'https://genai-community.pages.dev/summit/2025';
 const gallery1 = '/events/past/2025-12-summit-gallery-1';
@@ -31,7 +31,7 @@ const stats = [
   { figure: '1', label: 'day, two tracks, one very full building' },
 ];
 
-const programme = [
+const program = [
   {
     icon: 'mic',
     name: 'Speaker series',
@@ -172,7 +172,7 @@ const photos = [
     <h3 class="mt-14 font-display text-2xl font-semibold">What was on</h3>
     <ul class="mt-8 grid gap-5 sm:grid-cols-2">
       {
-        programme.map((item) => (
+        program.map((item) => (
           <li class="flex gap-5 rounded-2xl bg-white p-7">
             <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunset-100 text-sunset-700">
               <Icon name={item.icon} class="h-5 w-5" />
@@ -213,7 +213,7 @@ const photos = [
         <p class="mt-4 leading-relaxed text-ink-200/85 text-pretty">
           The summit exists because <strong class="font-semibold text-white">Susannah Soon</strong>,
           Perth AI's President and Founder, decided Perth should have one and then did the
-          unglamorous work of making it happen — the venue, the programme, the sponsors and the
+          unglamorous work of making it happen — the venue, the program, the sponsors and the
           hundred small things nobody sees. She led it from the first conversation to the last
           person leaving the courtyard.
         </p>
@@ -243,6 +243,9 @@ const photos = [
         ))
       }
     </ul>
+    <p class="mt-4 text-sm text-ink-600">
+      Photos by Jim Owens Photography, Jinwoo Kim and Jay Nicholson.
+    </p>
     <p class="mt-8 text-ink-600">
       Browse all 191 summit photos across two galleries.
     </p>

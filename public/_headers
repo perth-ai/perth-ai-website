@@ -15,6 +15,22 @@
 /ddd-2026/*
   X-Robots-Tag: noindex, nofollow
 
+# The AI Disrupt 2026 info pack is unlisted: shared by direct link only, never in
+# search results. It's a hand-made HTML file in public/summit-2026/info/.
+# Scoped to /info so the public /summit-2026 page stays indexable.
+# Don't add it to robots.txt — a Disallow line would advertise the URL.
+/summit-2026/info
+  X-Robots-Tag: noindex, nofollow
+/summit-2026/info/*
+  X-Robots-Tag: noindex, nofollow
+
+# The program is unlisted too, but it's a normal Astro page: src/pages/summit-2026/program.astro.
+# When it's ready to be public, delete these two rules and the page's `noindex` prop.
+/summit-2026/program
+  X-Robots-Tag: noindex, nofollow
+/summit-2026/program/*
+  X-Robots-Tag: noindex, nofollow
+
 # The kiosk's service worker: always check for a new one, so a fix (or the
 # off switch) reaches booth devices on their next load.
 /ddd-2026/sw.js

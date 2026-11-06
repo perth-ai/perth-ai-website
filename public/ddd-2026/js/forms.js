@@ -148,7 +148,7 @@ export const FORMS = {
     eyebrow: 'Call for speakers',
     intro: 'Built something, learned something the hard way, or have a demo people should see? We want speakers from first-timers to veterans.',
     submitLabel: 'Submit my idea',
-    thanks: 'Thanks for putting your hand up! We’ll be in touch when we’re putting the programme together.',
+    thanks: 'Thanks for putting your hand up! We’ll be in touch when we’re putting the program together.',
     fields: [
       { name: 'name', label: 'Your name', type: 'text', required: true, max: 80 },
       { name: 'email', label: 'Email', type: 'email', required: true, max: 120 },

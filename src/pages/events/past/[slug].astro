@@ -145,7 +145,9 @@ const photos =
     {photos.length > 0 && (
       <div class="mt-12">
         <h2 class="font-display text-2xl font-semibold text-ink-900">{event.galleryTitle ?? 'Photos'}</h2>
-        <p class="mt-2 text-sm text-ink-600">{photos.length} photos</p>
+        <p class="mt-2 text-sm text-ink-600">
+          {photos.length} photos{'photoCredit' in event && event.photoCredit && ` · by ${event.photoCredit}.`}
+        </p>
         <ul class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {photos.map((photo) => (
             <li>

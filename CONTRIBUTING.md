@@ -86,7 +86,7 @@ issues in this repo are layouts breaking between 500px and 900px.
 
 ## House style
 
-- Australian English — organise, programme, centre
+- Australian English — organise, program, centre
 - Direct and warm. No hype, no marketing voice.
 - Don't invent details. If you need a real name, price, date or URL you can't verify, leave a
   placeholder and flag it in the PR.

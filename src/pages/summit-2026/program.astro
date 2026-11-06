@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Icon from '../../components/Icon.astro';
+import site from '../../data/site.json';
+
+/* Unlisted for now: nothing links here and it's kept out of search by the
+   noindex prop below and the X-Robots-Tag rule in public/_headers. When the
+   program is ready to be public, remove both and link to it from /summit-2026. */
+---
+
+<Base
+  title="AI Disrupt Summit 2026 program"
+  description="The program for Perth AI's AI Disrupt Summit 2026. Saturday 12 December at Curtin University, Bentley."
+  image="/images/2026/1212-disrupt-summit/disrupt-2026-image.webp"
+  imageAlt="Pixel-art AI Disrupt Summit 2026 artwork showing the Perth skyline and a quokka mascot."
+  imageWidth="1672"
+  imageHeight="941"
+  noindex
+>
+  <PageHero
+    eyebrow="AI Disrupt Summit 2026"
+    title="Program"
+    lead="Saturday 12 December 2026, all day at Curtin University, Bentley."
+  />
+
+  <Section>
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div class="rounded-2xl bg-sand-100 p-8 sm:p-10">
+        <h2 class="font-display text-2xl font-semibold">The program is coming soon</h2>
+        <p class="mt-4 leading-relaxed text-ink-600 text-pretty">
+          We're still putting the program together. Times, talks and rooms will go up here once
+          they're locked in.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-ink-200 p-7">
+        <h2 class="font-display text-lg font-semibold">Where things are</h2>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div>
+            <dt class="text-ink-500">Main talks</dt>
+            <dd class="font-medium">
+              Two tracks in rooms 213.101 and 213.104, Tim Winton Lecture Theatre
+            </dd>
+          </div>
+          <div>
+            <dt class="text-ink-500">Hackathon and workshops</dt>
+            <dd class="font-medium">The Lantern, TL Robertson Library</dd>
+          </div>
+        </dl>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href={site.summit.registrationUrl}>
+            Register on Luma
+            <Icon name="arrow" class="h-4 w-4" />
+          </Button>
+          <Button href="/summit-2026" variant="ghost">
+            Back to the summit
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Base>

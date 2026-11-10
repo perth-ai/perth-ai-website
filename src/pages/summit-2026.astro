@@ -117,7 +117,7 @@ import site from '../data/site.json';
             <Icon name="arrow" class="h-4 w-4" />
           </Button>
           <Button href="#speak" variant="ghost">
-            Speak or demo
+            Speak at a future event
           </Button>
         </div>
         <p class="mt-4 text-sm font-medium text-ink-600">Program coming soon.</p>
@@ -182,7 +182,7 @@ import site from '../data/site.json';
     </ul>
   </Section>
 
-  <Section id="speak" tone="muted" eyebrow="Call for speakers" title={forms.speaker.title} lead={forms.speaker.intro}>
+  <Section id="speak" tone="muted" eyebrow="Speakers and demos" title={forms.speaker.title} lead={forms.speaker.intro}>
     <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
       <div class="space-y-5 leading-relaxed text-ink-700">
         <p>
@@ -191,11 +191,11 @@ import site from '../data/site.json';
         </p>
         <p>
           You don't need a polished abstract. Tell us the idea and who it's for, and we'll help shape
-          it with you. First-time speakers are welcome, and so are people who'd rather start at a
-          meet-up before taking the big stage.
+          it with you. First-time speakers are welcome, and so are people who'd rather start small
+          before taking a big stage.
         </p>
         <p>
-          We read every submission and get in touch while we're putting the program together.
+          We read every submission and get in touch when a future event has a slot that fits.
         </p>
         <p>
           Want a look back at last year's event? <a
@@ -211,7 +211,7 @@ import site from '../data/site.json';
           id="speaker-form"
           action={forms.speaker.action}
           accessKey={forms.speaker.accessKey}
-          subject="AI Disrupt 2026 — speaker submission"
+          subject="Perth AI — speaker submission (future event)"
           submitLabel="Submit my idea"
           fields={[
             { name: 'name', label: 'Your name', required: true },
@@ -225,12 +225,6 @@ import site from '../data/site.json';
               placeholder: 'What will people learn or see, and who is it for?',
             },
             { name: 'format', label: 'Format', type: 'select', options: ['Talk', 'Lightning talk', 'Demo', 'Workshop', 'Panel'] },
-            {
-              name: 'event',
-              label: 'Where would you like to speak?',
-              type: 'select',
-              options: ['AI Disrupt 2026', 'A Perth AI meet-up', 'Either'],
-            },
             { name: 'link', label: 'LinkedIn or website (optional)' },
           ]}
         />

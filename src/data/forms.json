@@ -12,6 +12,12 @@
     "title": "Sponsor or host",
     "intro": "Venue, food, prizes, hardware or paid sponsorship — all of it helps, and all of it keeps events free for the people who come."
   },
+  "booth": {
+    "action": "https://api.web3forms.com/submit",
+    "accessKey": "ac17bbac-6677-481a-89ea-42f08f88bb7f",
+    "title": "Want a booth at AI Disrupt 2026?",
+    "intro": "Building something people can see, try or poke at? Put it in front of the room. Tell us a bit about your start-up and we'll be in touch."
+  },
   "speaker": {
     "action": "https://api.web3forms.com/submit",
     "accessKey": "ac17bbac-6677-481a-89ea-42f08f88bb7f",

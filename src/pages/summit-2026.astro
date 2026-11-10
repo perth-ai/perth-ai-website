@@ -116,6 +116,9 @@ import site from '../data/site.json';
             Register on Luma
             <Icon name="arrow" class="h-4 w-4" />
           </Button>
+          <Button href="#booth" variant="ghost">
+            Ask for a booth
+          </Button>
           <Button href="#speak" variant="ghost">
             Speak at a future event
           </Button>
@@ -180,6 +183,62 @@ import site from '../data/site.json';
         </p>
       </li>
     </ul>
+  </Section>
+
+  <Section id="booth" eyebrow="Expression of interest" title={forms.booth.title} lead={forms.booth.intro}>
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div class="space-y-5 leading-relaxed text-ink-700">
+        <p>
+          A booth is the easiest way to get honest feedback in a day. People stop, try the thing
+          and ask the awkward questions. Bring a demo over a banner if you can.
+        </p>
+        <p>
+          This is an expression of interest, not a booking. Let us know whether you're growth stage
+          or early stage so we can get a good mix on the floor, and we'll come back to you once we
+          know how it fits together.
+        </p>
+        <p>
+          Perth AI is run by volunteers, and donations and prizes help make the day happen. If you
+          can chip in, great. If you can't, still put your hand up.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-ink-200 bg-white p-7">
+        <EoiForm
+          id="booth-form"
+          action={forms.booth.action}
+          accessKey={forms.booth.accessKey}
+          subject="AI Disrupt 2026 — booth expression of interest"
+          submitLabel="Put us down for a booth"
+          fields={[
+            { name: 'name', label: 'Your name', required: true },
+            { name: 'email', label: 'Email', type: 'email', required: true },
+            { name: 'startup', label: 'Start-up name', required: true },
+            {
+              name: 'stage',
+              label: 'What stage are you at?',
+              type: 'select',
+              required: true,
+              options: ['Growth stage', 'Early stage'],
+            },
+            {
+              name: 'showing',
+              label: 'What would you show?',
+              type: 'textarea',
+              required: true,
+              placeholder: 'What you do, and what people could see or try at your booth.',
+            },
+            {
+              name: 'contribution',
+              label: 'Able to contribute a donation or prize?',
+              type: 'select',
+              options: ['Yes, a donation', 'Yes, a prize', 'Yes, both', 'Not this time'],
+            },
+            { name: 'link', label: 'Website or LinkedIn (optional)' },
+          ]}
+        />
+      </div>
+    </div>
   </Section>
 
   <Section id="speak" tone="muted" eyebrow="Speakers and demos" title={forms.speaker.title} lead={forms.speaker.intro}>

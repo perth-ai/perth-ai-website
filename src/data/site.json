@@ -23,6 +23,43 @@
     "url": "/summit-2026",
     "when": "Saturday 12 December 2026, all day",
     "registrationUrl": "https://luma.com/50dna1ry",
+    "_tabs": "Quick links at the top of /summit-2026. A tab with no href shows greyed out as coming soon. Add an href to switch it on.",
+    "tabs": [
+      {
+        "label": "Location & Getting Around",
+        "href": "/summit-2026/info#getting-there"
+      },
+      {
+        "label": "Program"
+      },
+      {
+        "label": "Expo"
+      },
+      {
+        "label": "Start-up Battle"
+      },
+      {
+        "label": "Demos"
+      },
+      {
+        "label": "Hackathon"
+      },
+      {
+        "label": "Workshops"
+      },
+      {
+        "label": "What to Bring",
+        "href": "/summit-2026/info#bring"
+      },
+      {
+        "label": "Other Information",
+        "href": "/summit-2026/info#other"
+      },
+      {
+        "label": "Speaker Information",
+        "href": "/summit-2026/info#speakers"
+      }
+    ],
     "_url": "The 2025 recap and gallery are linked from /summit."
   }
 }

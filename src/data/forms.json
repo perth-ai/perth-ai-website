@@ -15,13 +15,13 @@
   "booth": {
     "action": "https://api.web3forms.com/submit",
     "accessKey": "ac17bbac-6677-481a-89ea-42f08f88bb7f",
-    "title": "Want a booth at AI Disrupt 2026?",
+    "title": "Want a start-up booth at AI Disrupt 2026?",
     "intro": "Building something people can see, try or poke at? Put it in front of the room. Tell us a bit about your start-up and we'll be in touch."
   },
   "speaker": {
     "action": "https://api.web3forms.com/submit",
     "accessKey": "ac17bbac-6677-481a-89ea-42f08f88bb7f",
-    "title": "Submissions for Disrupt 2026 are closed. The stage isn't.",
+    "title": "Submissions for Disrupt 2026 are closed. Speak with us in 2027.",
     "intro": "Built something, learned something the hard way, or have a demo people should see? Good ideas don't keep to deadlines, so send yours in for a future event. First-timers and veterans both welcome."
   }
 }

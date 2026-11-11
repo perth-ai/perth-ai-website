@@ -30,10 +30,6 @@
         "href": "/summit-2026/info#getting-there"
       },
       {
-        "label": "Speaker Information",
-        "href": "/summit-2026/info#speakers"
-      },
-      {
         "label": "Program"
       },
       {
@@ -50,6 +46,10 @@
       },
       {
         "label": "Workshops"
+      },
+      {
+        "label": "Speaker Information",
+        "href": "/summit-2026/info#speakers"
       }
     ],
     "_url": "The 2025 recap and gallery are linked from /summit."

@@ -54,6 +54,23 @@
     text-align:center;
     overflow:hidden;
   }
+  .back-link{
+    position:absolute;
+    top:18px;
+    left:20px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--azure);outline-offset:2px;}
   .hero .eyebrow{
     text-transform:uppercase;
     letter-spacing:.14em;
@@ -289,6 +306,7 @@
 <div class="topbar"></div>
 
 <div class="hero">
+  <a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a>
   <div class="eyebrow">Perth AI presents</div>
   <h1>AI Disrupt Summit 2026</h1>
   <p class="tagline">Information for speakers, start-up expo, sponsors, hackathon judges &amp; mentors, and start-up battle demos.</p>

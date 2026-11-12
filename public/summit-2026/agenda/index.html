@@ -33,7 +33,25 @@
     color:#fff;
     padding:56px 24px 40px;
     text-align:center;
+    position:relative;
   }
+  .back-link{
+    position:absolute;
+    top:14px;
+    left:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
   .hero .eyebrow{
     letter-spacing:.14em;
     text-transform:uppercase;
@@ -338,7 +356,7 @@
   .download-btn:hover{background:#19a393;}
 
   @media print{
-    .download-btn{display:none;}
+    .download-btn, .back-link{display:none;}
     body{background:#fff;}
     .card, .speaker-card, .row{break-inside:avoid;}
   }
@@ -347,6 +365,7 @@
 <body>
 
 <div class="hero">
+  <a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a>
   <div class="eyebrow">Perth AI presents</div>
   <h1>AI Disrupt Summit 2026</h1>
   <p class="sub">A day of talks, demos and a live hackathon exploring how AI is changing the way we build, work and think.</p>
@@ -382,7 +401,7 @@
 
     <div class="row solo">
       <div class="time">10:00 AM<span class="end">10 min</span></div>
-      <div class="break">👋 Welcome, Housekeeping &amp; Sponsor Message <span class="loc">— Perth AI, ACS, WADSIH</span></div>
+      <div class="break">👋 Welcome, Housekeeping &amp; Sponsor Message <span class="loc">— Perth AI and sponsors (Interfuze Consulting, Cohezion, ACS, WADSIH)</span></div>
     </div>
 
     <div class="row solo">
@@ -656,7 +675,7 @@
   <div class="schedule">
     <div class="row solo">
       <div class="time">4:45 PM<span class="end">20 min</span></div>
-      <div class="break">🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span>, MLAI <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
+      <div class="break">🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> MLAI <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
     </div>
 
     <div class="row solo">

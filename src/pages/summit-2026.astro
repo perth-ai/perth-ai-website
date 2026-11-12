@@ -272,12 +272,23 @@ import site from '../data/site.json';
               placeholder: 'What you do, and what people could see or try at your booth.',
             },
             {
+              name: 'ai_part',
+              label: 'What is the AI part of your product or demo?',
+              type: 'textarea',
+            },
+            {
               name: 'contribution',
               label: 'Able to contribute a donation or prize?',
               type: 'select',
               options: ['Yes, a donation', 'Yes, a prize', 'Yes, both', 'Not this time'],
             },
-            { name: 'link', label: 'Website or LinkedIn (optional)' },
+            {
+              name: 'contribution_details',
+              label: 'What could you contribute? (optional)',
+              placeholder: 'Vouchers, Lego, a merch pack, a dollar amount…',
+            },
+            { name: 'website', label: 'Website (optional)' },
+            { name: 'linkedin', label: 'LinkedIn (optional)' },
           ]}
         />
       </div>

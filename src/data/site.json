@@ -26,12 +26,16 @@
     "_tabs": "Quick links at the top of /summit-2026. A tab with no href shows greyed out as coming soon. Add an href to switch it on.",
     "tabs": [
       {
-        "label": "Location & Getting Around",
-        "href": "/summit-2026/info#getting-there"
-      },
-      {
         "label": "Agenda",
         "href": "/summit-2026/agenda"
+      },
+      {
+        "label": "Speaker Line-up",
+        "href": "/summit-2026/speakers"
+      },
+      {
+        "label": "Location & Getting Around",
+        "href": "/summit-2026/info#getting-there"
       },
       {
         "label": "Expo"

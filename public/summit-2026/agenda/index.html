@@ -187,6 +187,12 @@
   .tag.duration{background:#f1f2f4;color:var(--navy-light);margin-left:4px;}
 
   .speaker{font-weight:700;font-size:15.5px;color:var(--ink);}
+  .sp-link-name{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;}
+  .sp-link-name:hover{text-decoration-color:var(--purple);color:var(--purple);}
+  .sp-link-name{scroll-margin-top:80px;}
+  .card:has(.sp-link-name:target), .break:has(.sp-link-name:target){border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,111,224,.25);}
+  .sp-link-name:focus-visible{outline:2px solid var(--purple);outline-offset:2px;border-radius:2px;}
+  @media print{.sp-link-name{text-decoration:none;}}
   .dur{font-weight:400;font-size:12px;color:var(--grey);}
   .break .dur, .break .tag{white-space:nowrap;flex-shrink:0;}
   .sub-slot + .sub-slot{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;}
@@ -408,7 +414,7 @@
 
     <div class="row solo">
       <div class="time">10:10 AM<span class="end">20 min</span></div>
-      <div class="break">🎤 Opening Keynote — <b style="color:var(--ink)">Rafael Avigad</b> <span class="dur">10:10–10:30 AM</span><span class="tag keynote">20 MIN</span></div>
+      <div class="break">🎤 Opening Keynote — <b style="color:var(--ink)"><a class="sp-link-name" id="agenda-rafael-avigad" href="/summit-2026/speakers#rafael-avigad">Rafael Avigad</a></b> <span class="dur">10:10–10:30 AM</span><span class="tag keynote">20 MIN</span></div>
     </div>
 
   </div>
@@ -428,13 +434,13 @@
       <div class="time">10:35 AM<span class="end">11:00</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Jakub Suplicki <span class="dur">10:35–11:00 AM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-jakub-suplicki" href="/summit-2026/speakers#jakub-suplicki">Jakub Suplicki</a> <span class="dur">10:35–11:00 AM</span></div>
         <div class="title">How a Chatbot Cost a Man His Italian Car Collection</div>
         <p class="teaser">A live demo of what happens when an AI agent isn't checked on what it's allowed to do.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag tbc">Details TBC</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Alex Jenkins <span class="dur">10:35–11:00 AM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-alex-jenkins" href="/summit-2026/speakers#alex-jenkins">Alex Jenkins</a> <span class="dur">10:35–11:00 AM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
@@ -445,19 +451,19 @@
       <div class="time">11:05 AM<span class="end">11:30</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Dr Camilo Pestana <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-camilo-pestana" href="/summit-2026/speakers#camilo-pestana">Dr Camilo Pestana</a> <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
         <p class="teaser">Live demo of an AI-built, explorable 3D world — and the engineering behind it.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Jimmy Li <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-jimmy-li" href="/summit-2026/speakers#jimmy-li">Jimmy Li</a> <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">AI in Practice: A Tech Visit to China</div>
         <p class="teaser">Agents, open-source and robotics — notes from GOSIM Shenzhen 2026.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag workshop">Workshop</span>
-        <div class="speaker">Andy Spamer · Tim de Boer &amp; Mash Prime</div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-andy-spamer" href="/summit-2026/speakers#andy-spamer">Andy Spamer</a> · <a class="sp-link-name" id="agenda-mash-prime-and-tim-de-boer" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a></div>
         <div class="title">11:15 AM – 1:15 PM (2 hrs) · Rooms 1 &amp; 2</div>
         <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim de Boer &amp; Mash Prime's workshop is TBA.</p>
       </div>
@@ -467,13 +473,13 @@
       <div class="time">11:35 AM<span class="end">12:00</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">John Marshall <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-john-marshall" href="/summit-2026/speakers#john-marshall">John Marshall</a> <span class="dur">11:35 AM–12:00 PM</span></div>
         <div class="title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
         <p class="teaser">How an agentic system reasons from a network alarm to a probable root cause.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag demo">Demo</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Jia Keatnuxsuo <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-jia-keatnuxsuo" href="/summit-2026/speakers#jia-keatnuxsuo">Jia Keatnuxsuo</a> <span class="dur">11:35 AM–12:00 PM</span></div>
         <div class="title">Full Stack Sorcery</div>
         <p class="teaser">Voice AI, sensors and glowing lights: building a physical "crystal ball" on stage.</p>
       </div>
@@ -484,13 +490,13 @@
       <div class="time">12:05 PM<span class="end">12:30</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Michelle Sandford <span class="dur">12:05–12:30 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-michelle-sandford" href="/summit-2026/speakers#michelle-sandford">Michelle Sandford</a> <span class="dur">12:05–12:30 PM</span></div>
         <div class="title">Building the AI Native Cloud</div>
         <p class="teaser">What it takes to build cloud infrastructure that's AI-native from the ground up.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Richard Giles <span class="dur">12:05–12:30 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-richard-giles" href="/summit-2026/speakers#richard-giles">Richard Giles</a> <span class="dur">12:05–12:30 PM</span></div>
         <div class="title">How Far Can You Let the Agents Run?</div>
         <p class="teaser">Exploring the feedback loops and limits of autonomous software development.</p>
       </div>
@@ -506,19 +512,19 @@
       <div class="time">1:30 PM<span class="end">1:55</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Vladimir Vorotilov <span class="dur">1:30–1:55 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-vladimir-vorotilov" href="/summit-2026/speakers#vladimir-vorotilov">Vladimir Vorotilov</a> <span class="dur">1:30–1:55 PM</span></div>
         <div class="title">Digital Twins That Act</div>
         <p class="teaser">What building a digital twin of a mine haulage operation taught him about agentic AI.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Charlotte Mawle <span class="dur">1:30–1:55 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-charlotte-mawle" href="/summit-2026/speakers#charlotte-mawle">Charlotte Mawle</a> <span class="dur">1:30–1:55 PM</span></div>
         <div class="title">AI Adoption &amp; Change Management</div>
         <p class="teaser">Helping organisations actually adopt AI — the change management side of the rollout.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon</span>
-        <div class="speaker">Hackathon Build Time <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
+        <div class="speaker">Hackathon Build Time <span class="dur">(run by <a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
         <div class="title">1:15 PM – 3:25 PM</div>
         <p class="teaser">Teams keep building — drop by the Hackathon Lab any time.</p>
       </div>
@@ -528,13 +534,13 @@
       <div class="time">2:00 PM<span class="end">2:25</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Aidan Morgan <span class="dur">2:00–2:25 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-aidan-morgan" href="/summit-2026/speakers#aidan-morgan">Aidan Morgan</a> <span class="dur">2:00–2:25 PM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Dr Stephanie Stoll <span class="dur">2:00–2:25 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-stephanie-stoll" href="/summit-2026/speakers#stephanie-stoll">Dr Stephanie Stoll</a> <span class="dur">2:00–2:25 PM</span></div>
         <div class="title">Brain Enshitification</div>
         <p class="teaser">What happens to our thinking when we outsource it to AI?</p>
       </div>
@@ -545,13 +551,13 @@
       <div class="time">2:30 PM<span class="end">2:55</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Dr Kristina Gagalova <span class="dur">2:30–2:55 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-kristina-gagalova" href="/summit-2026/speakers#kristina-gagalova">Dr Kristina Gagalova</a> <span class="dur">2:30–2:55 PM</span></div>
         <div class="title">AI in Scientific Research: Copilots to Protein Design</div>
         <p class="teaser">How AI is accelerating bioinformatics, from coding copilots to protein design.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Jack Taylor <span class="dur">2:30–2:55 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-jack-taylor" href="/summit-2026/speakers#jack-taylor">Jack Taylor</a> <span class="dur">2:30–2:55 PM</span></div>
         <div class="title">Politics Will Never Be the Same</div>
         <p class="teaser">Making WA's political data searchable, measurable and accountable with AI.</p>
       </div>
@@ -562,13 +568,13 @@
       <div class="time">3:00 PM<span class="end">3:25</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Derek Bingham <span class="dur">3:00–3:25 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-derek-bingham" href="/summit-2026/speakers#derek-bingham">Derek Bingham</a> <span class="dur">3:00–3:25 PM</span></div>
         <div class="title">Ship Like an FDE</div>
         <p class="teaser">Lessons from an Anthropic engineering residency on shipping agents that survive production.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Lydia Dawe <span class="dur">3:00–3:25 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-lydia-dawe" href="/summit-2026/speakers#lydia-dawe">Lydia Dawe</a> <span class="dur">3:00–3:25 PM</span></div>
         <div class="title">Navigating Copyright and AI in the Australian Context</div>
         <p class="teaser">The ethical and legal questions to weigh before using third-party IP in AI projects, under Australian copyright law.</p>
       </div>
@@ -584,19 +590,19 @@
       <div class="time">3:45 PM<span class="end">3:52</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Chris McKelt <span class="dur">3:45–3:52 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-chris-mckelt" href="/summit-2026/speakers#chris-mckelt">Chris McKelt</a> <span class="dur">3:45–3:52 PM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Angla Li <span class="dur">3:45–3:52 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-angla-li" href="/summit-2026/speakers#angla-li">Angla Li</a> <span class="dur">3:45–3:52 PM</span></div>
         <div class="title">How Does GenAI Impact Employees' Wellbeing?</div>
         <p class="teaser">Findings from interviews with Australian software developers and knowledge workers on confidence, value and job security.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon Voting</span>
-        <div class="speaker">Judging &amp; Demos <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
+        <div class="speaker">Judging &amp; Demos <span class="dur">(run by <a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
         <div class="title">3:45 PM – 4:40 PM · Group A &amp; Group B</div>
         <p class="teaser">Teams demo to judges. Winners announced at Close.</p>
       </div>
@@ -606,13 +612,13 @@
       <div class="time">3:57 PM<span class="end">4:04</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Luca Intini <span class="dur">3:57–4:04 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-luca-intini" href="/summit-2026/speakers#luca-intini">Luca Intini</a> <span class="dur">3:57–4:04 PM</span></div>
         <div class="title">My 20 AI Employees Never Sleep</div>
         <p class="teaser">Running a one-person company with ~20 AI agents that build products while he sleeps.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Will Webster <span class="dur">3:57–4:04 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-will-webster" href="/summit-2026/speakers#will-webster">Will Webster</a> <span class="dur">3:57–4:04 PM</span></div>
         <div class="title">Big-Firm Polish, Small-Firm Overheads</div>
         <p class="teaser">How I run my consultancy Cohezion lean and professional by leveraging AI tools.</p>
       </div>
@@ -623,13 +629,13 @@
       <div class="time">4:09 PM<span class="end">4:16</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Josh Qwek <span class="dur">4:09–4:16 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-josh-qwek" href="/summit-2026/speakers#josh-qwek">Josh Qwek</a> <span class="dur">4:09–4:16 PM</span></div>
         <div class="title">From 20 Years in Cybersecurity to an AI Advisor</div>
         <p class="teaser">Turning two decades of security expertise into an AI advisor for small business.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Marcus Holmes <span class="dur">4:09–4:16 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-marcus-holmes" href="/summit-2026/speakers#marcus-holmes">Marcus Holmes</a> <span class="dur">4:09–4:16 PM</span></div>
         <div class="title">The Democratisation of Coding</div>
         <p class="teaser">The explosion of software now being built by non-technical creators.</p>
       </div>
@@ -640,13 +646,13 @@
       <div class="time">4:21 PM<span class="end">4:28</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Bright Qi <span class="dur">4:21–4:28 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-bright-qi" href="/summit-2026/speakers#bright-qi">Bright Qi</a> <span class="dur">4:21–4:28 PM</span></div>
         <div class="title">The Knowledge Your AI Will Never Have</div>
         <p class="teaser">A method for turning an expert's unwritten judgement into rules an agent can follow.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Dr Yifei Ren <span class="dur">4:21–4:28 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-yifei-ren" href="/summit-2026/speakers#yifei-ren">Dr Yifei Ren</a> <span class="dur">4:21–4:28 PM</span></div>
         <div class="title">The Chat Is the New App Store</div>
         <p class="teaser">Abstract coming soon.</p>
       </div>
@@ -657,13 +663,13 @@
       <div class="time">4:33 PM<span class="end">4:40</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Yina Liu <span class="dur">4:33–4:40 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-yina-liu" href="/summit-2026/speakers#yina-liu">Yina Liu</a> <span class="dur">4:33–4:40 PM</span></div>
         <div class="title">Beyond the Prototype</div>
         <p class="teaser">Why building an AI prototype is the easy half of the challenge.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Bulat Almukhametov <span class="dur">4:33–4:40 PM</span></div>
+        <div class="speaker"><a class="sp-link-name" id="agenda-bulat-almukhametov" href="/summit-2026/speakers#bulat-almukhametov">Bulat Almukhametov</a> <span class="dur">4:33–4:40 PM</span></div>
         <div class="title">AI in Physical Safety</div>
         <p class="teaser">Where AI is genuinely working in workplace health &amp; safety — and where the hype runs ahead.</p>
       </div>
@@ -677,7 +683,7 @@
   <div class="schedule">
     <div class="row solo">
       <div class="time">4:45 PM<span class="end">20 min</span></div>
-      <div class="break"><span>🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
+      <div class="break"><span>🎤 Locknote — <b style="color:var(--ink)"><a class="sp-link-name" id="agenda-sam-donegan" href="/summit-2026/speakers#sam-donegan">Dr Sam Donegan</a></b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
     </div>
 
     <div class="row solo">
@@ -692,297 +698,8 @@
 
   </div>
 
-  <!-- SPEAKERS -->
   <div class="day-label">Speakers</div>
-  <div class="speaker-grid">
-
-    <div class="speaker-card">
-      <div class="sp-name">Rafael Avigad</div>
-      <div class="sp-title">Opening Keynote</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Andy Spamer</div>
-      <div class="sp-title">Workshop Facilitator</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Steve Yegge describes eight stages of agentic coding. They start at tab completion and stop at "building your own orchestrator." Andy leads this workshop (11:15 AM – 1:15 PM), speedrunning all eight: optimising 1 agent, scaling to multiple agents, and finishing with your own custom harness. Hands-on — bring a laptop and an AI subscription.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text">Perth-based agile coach and delivery lead with 20+ years in software engineering and technology delivery. Founder of Agile Dimensions, a consultancy working across mining, oil &amp; gas, finance and government. Now focused on the shift to agentic coding and embedded AI agents.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/andyspamer/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Alex Jenkins</div>
-      <div class="sp-title">Talk details to be confirmed</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Dr Camilo Pestana</div>
-      <div class="sp-title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">What if AI could build an entire interactive 3D world, test it, identify problems and iteratively improve it? Using an explorable 3D portfolio built with his custom AI harness, Camilo demonstrates how agents, reusable skills, automation loops and evaluation work together to build complex interactive experiences — the engineering behind the automation, not another vibe-coding demo. For AI engineers, software developers, technical founders and anyone interested in building reliable agentic systems.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/camilopestana/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Jimmy Li</div>
-      <div class="sp-title">AI in Practice: A Tech Visit to China</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">During a recent trip to China, Jimmy explored the AI and open-source community at GOSIM Shenzhen 2026, met fellow developers, and learned about emerging technologies and practical applications. An informal sharing of observations covering AI agents, AI-native software development, open-source projects and robotics — for developers, AI enthusiasts and anyone curious about what comes next.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Jia Keatnuxsuo</div>
-      <div class="sp-title">Full Stack Sorcery</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">"Build me a crystal ball" is a surprisingly serious engineering brief. Voice AI, touch sensors, glowing lights, and one stubborn physical world: here's what happens when AI-assisted coding leaves the screen.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">John Marshall</div>
-      <div class="sp-title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">A technical session showing how an agentic AI system on Amazon Bedrock AgentCore takes a network alarm to a probable root cause by reasoning across the telemetry a NOC already has.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/john-hr-marshall" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Marcus Holmes</div>
-      <div class="sp-title">The Democratisation of Coding</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">The explosion of software built by non-technical folks.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/gentlemantech/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Dr Stephanie Stoll</div>
-      <div class="sp-title">Brain Enshitification</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Cognitive outsourcing in the age of AI — how can we keep our brain going when we outsource our thinking to AI? And what are the implications for young people, education and the workforce?</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/stephanie-marlis-stoll/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Michelle Sandford</div>
-      <div class="sp-title">Building the AI Native Cloud</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Dr Kristina Gagalova</div>
-      <div class="sp-title">AI in Scientific Research: Copilots to Protein Design</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">AI is rapidly transforming scientific research. This talk explores two applications in bioinformatics: AI coding copilots that support scientific programming, workflow development and data analysis, and AI-driven protein design, where generative models enable the prediction and design of protein structures and interactions — practical examples of how these technologies enhance research productivity and open new opportunities in structural bioinformatics.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/kristina-gagalova/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Derek Bingham</div>
-      <div class="sp-title">Ship Like an FDE</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Forward deployed engineers (FDEs) take AI agents from a promising demo to a system that runs in production. Derek joined a selective Anthropic engineering residency this year, building alongside Anthropic's own FDEs, and shares the practices that stuck: the full AI development lifecycle with Claude, evals that catch regressions before users do, cost/speed trade-offs, security and compliance sign-off, the executive demo, and a clean handover to the team that runs it.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/derekwbingham/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Richard Giles</div>
-      <div class="sp-title">How Far Can You Let the Agents Run?</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Exploring how far we can take autonomous software development before the human becomes the bottleneck — experimenting while building Primed, including systems that detect problems, attempt fixes and independently verify the results. Draws on feedback loops, where these systems break down, and which decisions still benefit from human judgement.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/richardgiles/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Aidan Morgan</div>
-      <div class="sp-title">Talk details to be confirmed</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Jack Taylor</div>
-      <div class="sp-title">Politics Will Never Be the Same</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">What happens when AI makes an entire political system searchable, measurable and accountable? GovScanner brings Western Australia's fragmented political data together in one place — political leaderboards, real-time monitoring and automated accountability tools, changing how journalists, researchers and everyday citizens scrutinise government.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/jacktaylor6/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Mash Prime &amp; Tim de Boer</div>
-      <div class="sp-title">Workshop Facilitators</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Workshop details TBA.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Charlotte Mawle</div>
-      <div class="sp-title">AI Adoption &amp; Change Management</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">The AI you find exciting may be someone else's deepest fear. Organisations are investing heavily in AI tools, data and governance, yet most of the value is lost at the human layer: in how people experience AI as a threat to their identity, status and job security. Drawing on behavioural science and over 20 years leading change in mining, banking and government, Charlotte shows why smart people quietly resist good technology, why middle managers are where adoption is won or lost, and why poorly managed AI change is now a recognised psychosocial risk under WA's work health and safety framework. Tech leaders and implementers will leave with practical moves to design rollouts people lean into rather than brace against.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text">Charlotte Mawle helps organisations and the people in them navigate uncertainty, disruption and transformation, and today that work centres on AI adoption. She is the creator of the Conscious AI Adoption Blueprint™, a behavioural science grounded approach that addresses the human side of AI so investment turns into lasting value.</p>
-      <p class="sp-text" style="margin-top:8px">Over more than 20 years, Charlotte has led and supported complex transformation for organisations including BHP, Newmont Mining, Horizon Power, St John of God and Elsevier as well as coaching leaders in local and state government organisations. She introduced Lean Change Management to Australia and New Zealand in 2015 and is an executive coach and founder of Future Fit Females, a program helping women lead with confidence through midlife. Charlotte is based in Perth.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Josh Qwek</div>
-      <div class="sp-title">From 20 Years in Cybersecurity to an AI Advisor</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">What if decades of enterprise cybersecurity experience could be made accessible to small businesses through AI? MeanCanvas is Josh's attempt to close that gap — an AI-powered platform built on more than 20 years of hands-on security strategy, architecture and advisory work, turning a business's context into a prioritised cybersecurity roadmap. A practical story about making valuable expertise available to people who previously couldn't afford it.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/joshuaqwek" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Jakub Suplicki</div>
-      <div class="sp-title">How a Chatbot Cost a Man His Italian Car Collection</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">John runs a small online shop in Perth and owns three magnificent cars. Drowning in customer questions, he vibe-codes an AI customer-service agent that can look up orders, issue refunds and create discount codes — with one security requirement: "make sure it never makes mistakes." A live demo opening John's shop in two universes, then letting his customers break it on stage. No security background needed, just a healthy fear for John's cars.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/jakub-suplicki/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Dr Yifei Ren</div>
-      <div class="sp-title">The Chat Is the New App Store</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Abstract coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Luca Intini</div>
-      <div class="sp-title">My 20 AI Employees Never Sleep</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Luca runs a one-person company with about 20 AI agents on a 2020 gaming laptop, building a road-trip storytelling app, a remote-jobs search engine, free tools for recruiters and founders, a trading lab, and the ops dashboards he uses in his day job — mostly while he slept. Live on stage, he'll ask his AI to start a brand new project while sharing tricks you can steal on Monday: don't buy it, build it; chain the AIs; scripts, not tokens; and projects that run themselves with one page of rules. Plus the funniest ways it all broke.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Angla Li</div>
-      <div class="sp-title">How Does GenAI Impact Employees' Wellbeing?</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Findings from interviews with software developers and other knowledge workers in Australia — what each group is going through as generative AI changes their work, where their experiences overlap, and how they differ in confidence, sense of professional value, and feelings about future job security. Closes with practical recommendations for employers on introducing AI and supporting employee wellbeing through the transition.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/angla-li-04a625252" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Vladimir Vorotilov</div>
-      <div class="sp-title">Digital Twins That Act</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">An agentic system is a digital twin that acts: it mirrors a piece of the operation, notices what changed and does something about it, inside limits a person set. Drawing on a digital twin of an open-pit haulage operation built this year, Vlad shows how the same pattern nests inside a business — events inside a process, a process inside a role, then team, department and company — and what held and broke applying this to the AI agents he builds at Forward Logic.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Lydia Dawe</div>
-      <div class="sp-title">Navigating Copyright and AI in the Australian Context</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Covers the basics of how copyright and AI intersect in Australia, and the key ethical and legal questions that must be considered before embarking on projects involving third-party intellectual property. Aimed at anyone who wants to learn more about copyright.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/lydia-dawe" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Bulat Almukhametov</div>
-      <div class="sp-title">AI in Physical Safety</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">AI adoption in Australian business has moved fast — but what does that look like inside the health and safety function, where the stakes are physical, not just financial? Drawing on two years of hands-on experiments, community workshops and conversations with safety professionals across 30+ countries, Bulat shares an honest picture of what's genuinely working, where the hype runs ahead of reality, and practical first steps businesses can take now.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/bulat-almukhametov/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Will Webster</div>
-      <div class="sp-title">Big-Firm Polish, Small-Firm Overheads</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">How tools such as AI have helped Will run his consultancy Cohezion and stay lean, yet professional — leveraging design systems, using projects to help with marketing strategies, building his own tools to save money on SaaS, and using AI to automate workflows.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Bright Qi</div>
-      <div class="sp-title">The Knowledge Your AI Will Never Have</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">In August, Bright put a room of accountants and engineers together and asked a simple question: tell me about a time you just knew something was off. Almost nobody could answer — not because they lacked experience, but because expert judgement is so automatic people can't see it in themselves. This talk shows a method borrowed from aviation and surgical debriefs to pull tacit knowledge out of an expert's head, then hands those questions to an agent live on stage.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Chris McKelt</div>
-      <div class="sp-title">Talk details to be confirmed</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Yina Liu</div>
-      <div class="sp-title">Beyond the Prototype</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Building an AI prototype has never been easier. But turning that prototype into something people trust, use and genuinely benefit from is a different challenge altogether. Drawing on seven years across software development, product management, healthcare research and government policy, Yina challenges the assumption that adoption is a problem to solve once the technology is ready — decisions made long before development begins often determine whether a solution is useful, trusted and sustainable.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/yina-liu-b646a5244/" target="_blank" rel="noopener">LinkedIn →</a>
-    </div>
-
-    <div class="speaker-card">
-      <div class="sp-name">Dr Sam Donegan</div>
-      <div class="sp-title">Locknote — MLAI, Melbourne</div>
-      <div class="sp-label">Abstract</div>
-      <p class="sp-text">Why the AI community matters: 3 years of MLAI and what's next in AI and community.</p>
-      <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-    </div>
-
-  </div>
+  <p style="text-align:center;font-size:14px;color:var(--grey);margin:0">Talk abstracts and speaker bios are on the <a href="/summit-2026/speakers" style="color:var(--purple);font-weight:700">Speaker Line-up</a> page.</p>
 
   <footer>
     Program subject to minor changes. Follow Perth AI for the latest updates.

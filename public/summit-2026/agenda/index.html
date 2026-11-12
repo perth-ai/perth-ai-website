@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disrupt Summit 2026 — Agenda</title>
+<style>
+  :root{
+    --navy:#0f1b2d;
+    --navy-light:#16263e;
+    --teal:#1fb6a7;
+    --amber:#e8a13a;
+    --purple:#7c6fe0;
+    --grey:#5c6b7a;
+    --ink:#1a2330;
+    --paper:#f7f8fa;
+    --line:#e3e7ec;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.45;
+  }
+  a{color:inherit;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:#fff;
+    padding:56px 24px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .back-link{
+    position:absolute;
+    top:14px;
+    left:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .hero .eyebrow{
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--teal);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    margin:0 0 10px;
+    font-size:clamp(28px,5vw,46px);
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .hero p.sub{
+    margin:0 auto;
+    max-width:620px;
+    color:#c7d0dc;
+    font-size:16px;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-top:22px;
+  }
+  .hero-meta span{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:7px 16px;
+    font-size:13.5px;
+    color:#e7ebf0;
+  }
+
+  /* CONTAINER */
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px 70px;}
+
+  /* NOTICE BAR */
+  .notice{
+    margin-top:-22px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    box-shadow:0 10px 30px -18px rgba(15,27,45,.35);
+    font-size:14px;
+    color:var(--grey);
+  }
+  .notice b{color:var(--ink);}
+
+  /* LEGEND */
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    justify-content:center;
+    margin:34px 0 10px;
+  }
+  .legend .item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--grey);}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .dot.tech{background:var(--teal);}
+  .dot.impact{background:var(--purple);}
+  .dot.hack{background:var(--amber);}
+
+  /* SECTION LABEL */
+  .day-label{
+    text-align:center;
+    margin:30px 0 18px;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--grey);
+    font-weight:700;
+  }
+
+  /* SCHEDULE */
+  .schedule{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .row{
+    display:grid;
+    grid-template-columns:96px 1fr 1fr 1fr;
+    gap:12px;
+    align-items:stretch;
+  }
+  .row.solo{
+    grid-template-columns:96px 1fr;
+  }
+  .time{
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    padding-top:14px;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .time .end{display:block;font-weight:400;color:var(--grey);font-size:11.5px;}
+
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .card.tech{border-top:3px solid var(--teal);}
+  .card.impact{border-top:3px solid var(--purple);}
+  .card.hack{border-top:3px solid var(--amber);}
+
+  .tag{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:999px;
+    margin-bottom:8px;
+  }
+  .tag.talk{background:#eef1f5;color:var(--grey);}
+  .tag.demo{background:#e4f8f5;color:#0e8a7c;}
+  .tag.lightning{background:#fdf1de;color:#a9731c;}
+  .tag.keynote{background:#efecfb;color:#5b4bc4;}
+  .tag.workshop{background:#fdeaea;color:#c14545;}
+  .tag.tbc{background:#f1f2f4;color:#8793a1;border:1px dashed #c7d1dc;}
+  .tag.handson{background:#e8f0fe;color:#2b5fad;}
+  .tag.duration{background:#f1f2f4;color:var(--navy-light);margin-left:4px;}
+
+  .speaker{font-weight:700;font-size:15.5px;color:var(--ink);}
+  .dur{font-weight:400;font-size:12px;color:var(--grey);}
+  .break .dur, .break .tag{white-space:nowrap;flex-shrink:0;}
+  .sub-slot + .sub-slot{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;}
+  .title{font-size:13.5px;color:var(--navy-light);margin:2px 0 6px;font-weight:600;}
+  .teaser{font-size:12.8px;color:var(--grey);margin:0;}
+
+  .break{
+    grid-column:2 / span 2;
+    background:#eef2f6;
+    border:1px dashed #c7d1dc;
+    border-radius:12px;
+    padding:13px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13.5px;
+    color:var(--grey);
+    font-weight:600;
+  }
+  .row.solo .break{grid-column:2;}
+  .break .loc{font-weight:400;color:#8793a1;}
+  .break.optional{background:#fbf8f1;border:1px dashed #e3c892;}
+  .break .opt-tag{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    padding:2px 8px;
+    border-radius:999px;
+    background:#fdf1de;
+    color:#a9731c;
+    margin-right:4px;
+  }
+
+  .empty-card{
+    border:1px dashed var(--line);
+    border-radius:12px;
+    background:transparent;
+  }
+
+  .cont-card{
+    border:1px dashed #e9d3a8;
+    background:#fffaf0;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:12px;
+    font-style:italic;
+    color:#b08a3e;
+    padding:14px 10px;
+  }
+
+  .note-row{
+    grid-column:2 / span 2;
+    text-align:center;
+    font-size:12.5px;
+    color:var(--grey);
+    font-style:italic;
+    padding:2px 0 4px;
+  }
+
+  /* TRACK HEADS */
+  .track-heads{
+    display:grid;
+    grid-template-columns:96px 1fr 1fr 1fr;
+    gap:12px;
+    margin:28px 0 12px;
+  }
+  .track-heads .th{
+    font-size:13px;
+    font-weight:800;
+    color:var(--white);
+    border-radius:10px;
+    padding:10px 14px;
+    text-align:center;
+  }
+  .track-heads .th.tech{background:var(--teal);}
+  .track-heads .th.impact{background:var(--purple);}
+  .track-heads .th.hack{background:var(--amber);}
+  .track-heads .th small{display:block;font-weight:500;opacity:.85;font-size:11px;margin-top:2px;}
+
+  /* SPEAKER DIRECTORY */
+  .speaker-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:16px;
+  }
+  .speaker-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+  }
+  .sp-name{font-weight:700;font-size:15px;color:var(--ink);}
+  .sp-title{font-size:12.5px;color:var(--navy-light);font-weight:600;margin:2px 0 10px;}
+  .sp-link{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12px;
+    font-weight:700;
+    color:var(--purple);
+    text-decoration:none;
+  }
+  .sp-link:hover{text-decoration:underline;}
+  .sp-label{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--grey);
+    margin:10px 0 4px;
+  }
+  .sp-label:first-of-type{margin-top:0;}
+  .sp-text{font-size:12.5px;color:var(--ink);line-height:1.5;margin:0;}
+  .sp-text.placeholder{color:#9aa3ad;font-style:italic;}
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    padding:30px 20px 60px;
+    font-size:13px;
+    color:var(--grey);
+  }
+  footer .sundowner{
+    margin-top:6px;
+    font-size:13px;
+  }
+
+  @media (max-width:720px){
+    .row, .row.solo{grid-template-columns:1fr;}
+    .break{flex-wrap:wrap;row-gap:6px;}
+    .time{text-align:left;padding-top:0;padding-bottom:4px;}
+    .break, .row.solo .break{grid-column:1;}
+    .note-row{grid-column:1;}
+    .track-heads{display:none;}
+    .card::before{
+      content:attr(data-track);
+      display:block;
+      font-size:10.5px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-bottom:6px;
+    }
+    .card.tech::before{color:var(--teal);}
+    .card.impact::before{color:var(--purple);}
+    .card.hack::before{color:var(--amber);}
+  }
+
+  /* DOWNLOAD BUTTON */
+  .download-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:24px;
+    padding:11px 22px;
+    background:var(--teal);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .download-btn:hover{background:#19a393;}
+
+  @media print{
+    .download-btn, .back-link{display:none;}
+    body{background:#fff;}
+    .card, .speaker-card, .row{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a>
+  <div class="eyebrow">Perth AI presents</div>
+  <h1>AI Disrupt Summit 2026</h1>
+  <p class="sub">A day of talks, demos and a live hackathon exploring how AI is changing the way we build, work and think.</p>
+  <div class="hero-meta">
+    <span>📅 Saturday, 12 December 2026</span>
+    <span>📍 Curtin University, Bentley Campus</span>
+    <span>🏛️ Tim Winton Lecture Theatres</span>
+  </div>
+  <button class="download-btn" onclick="window.print()">📥 Download Agenda (PDF)</button>
+</div>
+
+<div class="wrap">
+
+  <div class="legend">
+    <div class="item"><span class="dot tech"></span> Technical Track — Lecture Theatre 213.101</div>
+    <div class="item"><span class="dot impact"></span> Business &amp; Impact Track — Lecture Theatre 213.104</div>
+    <div class="item"><span class="dot hack"></span> Hackathon &amp; Workshops — B105, Level 4</div>
+  </div>
+
+  <!-- MORNING: shared -->
+  <div class="day-label">Morning</div>
+  <div class="schedule">
+
+    <div class="row solo">
+      <div class="time">8:45 AM<span class="end">45 min</span></div>
+      <div class="break optional"><span class="opt-tag">Optional</span>☀️ Get-to-Know-You Coffee <span class="loc">— La Vita Café, Curtin Uni · hosted by Jia</span></div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">9:30 AM<span class="end">30 min</span></div>
+      <div class="break">☕ Registration &amp; Morning Tea <span class="loc">— Tim Winton Foyer</span></div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">10:00 AM<span class="end">10 min</span></div>
+      <div class="break">👋 Welcome, Housekeeping &amp; Sponsor Message <span class="loc">— Perth AI and sponsors (Interfuze Consulting, Cohezion, ACS, WADSIH)</span></div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">10:10 AM<span class="end">20 min</span></div>
+      <div class="break">🎤 Opening Keynote — <b style="color:var(--ink)">Rafael Avigad</b> <span class="dur">10:10–10:30 AM</span><span class="tag keynote">20 MIN</span></div>
+    </div>
+
+  </div>
+
+  <!-- TRACK SESSIONS -->
+  <div class="day-label">Breakout Sessions — 25 Min Talks · ~7 Min Lightning Talks</div>
+  <div class="track-heads">
+    <div></div>
+    <div class="th tech">Technical Track<small>213.101</small></div>
+    <div class="th impact">Business &amp; Impact Track<small>213.104</small></div>
+    <div class="th hack">Hackathon &amp; Workshops<small>B105, Level 4</small></div>
+  </div>
+
+  <div class="schedule">
+
+    <div class="row">
+      <div class="time">10:35 AM<span class="end">11:00</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Jakub Suplicki <span class="dur">10:35–11:00 AM</span></div>
+        <div class="title">How a Chatbot Cost a Man His Italian Car Collection</div>
+        <p class="teaser">A live demo of what happens when an AI agent isn't checked on what it's allowed to do.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag tbc">Details TBC</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Alex Jenkins <span class="dur">10:35–11:00 AM</span></div>
+        <div class="title">Talk details to be confirmed</div>
+        <p class="teaser">More info coming soon — check back closer to the event.</p>
+      </div>
+      <div class="card empty-card" data-track="Hackathon & Workshops"></div>
+    </div>
+
+    <div class="row">
+      <div class="time">11:05 AM<span class="end">11:30</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Dr Camilo Pestana <span class="dur">11:05–11:30 AM</span></div>
+        <div class="title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
+        <p class="teaser">Live demo of an AI-built, explorable 3D world — and the engineering behind it.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Jimmy Li <span class="dur">11:05–11:30 AM</span></div>
+        <div class="title">AI in Practice: A Tech Visit to China</div>
+        <p class="teaser">Agents, open-source and robotics — notes from GOSIM Shenzhen 2026.</p>
+      </div>
+      <div class="card hack" data-track="Hackathon & Workshops">
+        <span class="tag workshop">Workshop</span>
+        <div class="speaker">Andy Spamer · Tim de Boer &amp; Mash Prime</div>
+        <div class="title">11:15 AM – 1:15 PM (2 hrs) · Rooms 1 &amp; 2</div>
+        <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim de Boer &amp; Mash Prime's workshop is TBA.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="time">11:35 AM<span class="end">12:00</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">John Marshall <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
+        <p class="teaser">How an agentic system reasons from a network alarm to a probable root cause.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag demo">Demo</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Jia Keatnuxsuo <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="title">Full Stack Sorcery</div>
+        <p class="teaser">Voice AI, sensors and glowing lights: building a physical "crystal ball" on stage.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Workshops continue</div>
+    </div>
+
+    <div class="row">
+      <div class="time">12:05 PM<span class="end">12:30</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Michelle Sandford <span class="dur">12:05–12:30 PM</span></div>
+        <div class="title">Building the AI Native Cloud</div>
+        <p class="teaser">What it takes to build cloud infrastructure that's AI-native from the ground up.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Richard Giles <span class="dur">12:05–12:30 PM</span></div>
+        <div class="title">How Far Can You Let the Agents Run?</div>
+        <p class="teaser">Exploring the feedback loops and limits of autonomous software development.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Workshops wrapping up (ends 1:15 PM)</div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">12:30 PM<span class="end">60 min</span></div>
+      <div class="break">🍽️ Networking Lunch <span class="loc">— Tim Winton Foyer / Lantern · Hackathon &amp; workshops continue through lunch</span></div>
+    </div>
+
+    <div class="row">
+      <div class="time">1:30 PM<span class="end">1:55</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Vladimir Vorotilov <span class="dur">1:30–1:55 PM</span></div>
+        <div class="title">Digital Twins That Act</div>
+        <p class="teaser">What building a digital twin of a mine haulage operation taught him about agentic AI.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Charlotte Mawle <span class="dur">1:30–1:55 PM</span></div>
+        <div class="title">AI Adoption &amp; Change Management</div>
+        <p class="teaser">Helping organisations actually adopt AI — the change management side of the rollout.</p>
+      </div>
+      <div class="card hack" data-track="Hackathon & Workshops">
+        <span class="tag talk">Hackathon</span>
+        <div class="speaker">Hackathon Build Time <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
+        <div class="title">1:15 PM – 3:25 PM</div>
+        <p class="teaser">Teams keep building — drop by the Hackathon Lab any time.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="time">2:00 PM<span class="end">2:25</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Aidan Morgan <span class="dur">2:00–2:25 PM</span></div>
+        <div class="title">Talk details to be confirmed</div>
+        <p class="teaser">More info coming soon — check back closer to the event.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Dr Stephanie Stoll <span class="dur">2:00–2:25 PM</span></div>
+        <div class="title">Brain Enshitification</div>
+        <p class="teaser">What happens to our thinking when we outsource it to AI?</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Hackathon build time continues</div>
+    </div>
+
+    <div class="row">
+      <div class="time">2:30 PM<span class="end">2:55</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Dr Kristina Gagalova <span class="dur">2:30–2:55 PM</span></div>
+        <div class="title">AI in Scientific Research: Copilots to Protein Design</div>
+        <p class="teaser">How AI is accelerating bioinformatics, from coding copilots to protein design.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Jack Taylor <span class="dur">2:30–2:55 PM</span></div>
+        <div class="title">Politics Will Never Be the Same</div>
+        <p class="teaser">Making WA's political data searchable, measurable and accountable with AI.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Hackathon build time continues</div>
+    </div>
+
+    <div class="row">
+      <div class="time">3:00 PM<span class="end">3:25</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Derek Bingham <span class="dur">3:00–3:25 PM</span></div>
+        <div class="title">Ship Like an FDE</div>
+        <p class="teaser">Lessons from an Anthropic engineering residency on shipping agents that survive production.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker">Lydia Dawe <span class="dur">3:00–3:25 PM</span></div>
+        <div class="title">Navigating Copyright and AI in the Australian Context</div>
+        <p class="teaser">The ethical and legal questions to weigh before using third-party IP in AI projects, under Australian copyright law.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Hackathon build time continues</div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">3:25 PM<span class="end">20 min</span></div>
+      <div class="break">☕ Afternoon Tea <span class="loc">— Tim Winton Foyer · Hackathon continues</span></div>
+    </div>
+
+    <div class="row">
+      <div class="time">3:45 PM<span class="end">3:52</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Chris McKelt <span class="dur">3:45–3:52 PM</span></div>
+        <div class="title">Talk details to be confirmed</div>
+        <p class="teaser">More info coming soon — check back closer to the event.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Angla Li <span class="dur">3:45–3:52 PM</span></div>
+        <div class="title">How Does GenAI Impact Employees' Wellbeing?</div>
+        <p class="teaser">Findings from interviews with Australian software developers and knowledge workers on confidence, value and job security.</p>
+      </div>
+      <div class="card hack" data-track="Hackathon & Workshops">
+        <span class="tag talk">Hackathon Voting</span>
+        <div class="speaker">Judging &amp; Demos <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
+        <div class="title">3:45 PM – 4:40 PM · Group A &amp; Group B</div>
+        <p class="teaser">Teams demo to judges. Winners announced at Close.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="time">3:57 PM<span class="end">4:04</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Luca Intini <span class="dur">3:57–4:04 PM</span></div>
+        <div class="title">My 20 AI Employees Never Sleep</div>
+        <p class="teaser">Running a one-person company with ~20 AI agents that build products while he sleeps.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Will Webster <span class="dur">3:57–4:04 PM</span></div>
+        <div class="title">Big-Firm Polish, Small-Firm Overheads</div>
+        <p class="teaser">How I run my consultancy Cohezion lean and professional by leveraging AI tools.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Judging continues</div>
+    </div>
+
+    <div class="row">
+      <div class="time">4:09 PM<span class="end">4:16</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Josh Qwek <span class="dur">4:09–4:16 PM</span></div>
+        <div class="title">From 20 Years in Cybersecurity to an AI Advisor</div>
+        <p class="teaser">Turning two decades of security expertise into an AI advisor for small business.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Marcus Holmes <span class="dur">4:09–4:16 PM</span></div>
+        <div class="title">The Democratisation of Coding</div>
+        <p class="teaser">The explosion of software now being built by non-technical creators.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Judging continues</div>
+    </div>
+
+    <div class="row">
+      <div class="time">4:21 PM<span class="end">4:28</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Bright Qi <span class="dur">4:21–4:28 PM</span></div>
+        <div class="title">The Knowledge Your AI Will Never Have</div>
+        <p class="teaser">A method for turning an expert's unwritten judgement into rules an agent can follow.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Dr Yifei Ren <span class="dur">4:21–4:28 PM</span></div>
+        <div class="title">The Chat Is the New App Store</div>
+        <p class="teaser">Abstract coming soon.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Judging continues</div>
+    </div>
+
+    <div class="row">
+      <div class="time">4:33 PM<span class="end">4:40</span></div>
+      <div class="card tech" data-track="Technical Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Yina Liu <span class="dur">4:33–4:40 PM</span></div>
+        <div class="title">Beyond the Prototype</div>
+        <p class="teaser">Why building an AI prototype is the easy half of the challenge.</p>
+      </div>
+      <div class="card impact" data-track="Business & Impact Track">
+        <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
+        <div class="speaker">Bulat Almukhametov <span class="dur">4:33–4:40 PM</span></div>
+        <div class="title">AI in Physical Safety</div>
+        <p class="teaser">Where AI is genuinely working in workplace health &amp; safety — and where the hype runs ahead.</p>
+      </div>
+      <div class="cont-card" data-track="Hackathon & Workshops">↳ Judging continues</div>
+    </div>
+
+  </div>
+
+  <!-- CLOSE -->
+  <div class="day-label">Close</div>
+  <div class="schedule">
+    <div class="row solo">
+      <div class="time">4:45 PM<span class="end">20 min</span></div>
+      <div class="break"><span>🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">5:05 PM<span class="end">20 min</span></div>
+      <div class="break">🎉 Closing Remarks, Hackathon Awards &amp; Thank You <span class="dur">5:05–5:25 PM</span><span class="tag duration">20 MIN</span> <span class="loc">— Perth AI</span></div>
+    </div>
+
+    <div class="row solo">
+      <div class="time">5:33 PM<span class="end">onwards</span></div>
+      <div class="break optional"><span class="opt-tag">Optional</span>🌇 Sundowner <span class="loc">— Varsity, Waterford · pay your own</span></div>
+    </div>
+
+  </div>
+
+  <!-- SPEAKERS -->
+  <div class="day-label">Speakers</div>
+  <div class="speaker-grid">
+
+    <div class="speaker-card">
+      <div class="sp-name">Rafael Avigad</div>
+      <div class="sp-title">Opening Keynote</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Andy Spamer</div>
+      <div class="sp-title">Workshop Facilitator</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Steve Yegge describes eight stages of agentic coding. They start at tab completion and stop at "building your own orchestrator." Andy leads this workshop (11:15 AM – 1:15 PM), speedrunning all eight: optimising 1 agent, scaling to multiple agents, and finishing with your own custom harness. Hands-on — bring a laptop and an AI subscription.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text">Perth-based agile coach and delivery lead with 20+ years in software engineering and technology delivery. Founder of Agile Dimensions, a consultancy working across mining, oil &amp; gas, finance and government. Now focused on the shift to agentic coding and embedded AI agents.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/andyspamer/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Alex Jenkins</div>
+      <div class="sp-title">Talk details to be confirmed</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Dr Camilo Pestana</div>
+      <div class="sp-title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">What if AI could build an entire interactive 3D world, test it, identify problems and iteratively improve it? Using an explorable 3D portfolio built with his custom AI harness, Camilo demonstrates how agents, reusable skills, automation loops and evaluation work together to build complex interactive experiences — the engineering behind the automation, not another vibe-coding demo. For AI engineers, software developers, technical founders and anyone interested in building reliable agentic systems.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/camilopestana/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Jimmy Li</div>
+      <div class="sp-title">AI in Practice: A Tech Visit to China</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">During a recent trip to China, Jimmy explored the AI and open-source community at GOSIM Shenzhen 2026, met fellow developers, and learned about emerging technologies and practical applications. An informal sharing of observations covering AI agents, AI-native software development, open-source projects and robotics — for developers, AI enthusiasts and anyone curious about what comes next.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Jia Keatnuxsuo</div>
+      <div class="sp-title">Full Stack Sorcery</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">"Build me a crystal ball" is a surprisingly serious engineering brief. Voice AI, touch sensors, glowing lights, and one stubborn physical world: here's what happens when AI-assisted coding leaves the screen.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">John Marshall</div>
+      <div class="sp-title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">A technical session showing how an agentic AI system on Amazon Bedrock AgentCore takes a network alarm to a probable root cause by reasoning across the telemetry a NOC already has.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/john-hr-marshall" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Marcus Holmes</div>
+      <div class="sp-title">The Democratisation of Coding</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">The explosion of software built by non-technical folks.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/gentlemantech/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Dr Stephanie Stoll</div>
+      <div class="sp-title">Brain Enshitification</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Cognitive outsourcing in the age of AI — how can we keep our brain going when we outsource our thinking to AI? And what are the implications for young people, education and the workforce?</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/stephanie-marlis-stoll/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Michelle Sandford</div>
+      <div class="sp-title">Building the AI Native Cloud</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Dr Kristina Gagalova</div>
+      <div class="sp-title">AI in Scientific Research: Copilots to Protein Design</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">AI is rapidly transforming scientific research. This talk explores two applications in bioinformatics: AI coding copilots that support scientific programming, workflow development and data analysis, and AI-driven protein design, where generative models enable the prediction and design of protein structures and interactions — practical examples of how these technologies enhance research productivity and open new opportunities in structural bioinformatics.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/kristina-gagalova/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Derek Bingham</div>
+      <div class="sp-title">Ship Like an FDE</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Forward deployed engineers (FDEs) take AI agents from a promising demo to a system that runs in production. Derek joined a selective Anthropic engineering residency this year, building alongside Anthropic's own FDEs, and shares the practices that stuck: the full AI development lifecycle with Claude, evals that catch regressions before users do, cost/speed trade-offs, security and compliance sign-off, the executive demo, and a clean handover to the team that runs it.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/derekwbingham/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Richard Giles</div>
+      <div class="sp-title">How Far Can You Let the Agents Run?</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Exploring how far we can take autonomous software development before the human becomes the bottleneck — experimenting while building Primed, including systems that detect problems, attempt fixes and independently verify the results. Draws on feedback loops, where these systems break down, and which decisions still benefit from human judgement.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/richardgiles/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Aidan Morgan</div>
+      <div class="sp-title">Talk details to be confirmed</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Jack Taylor</div>
+      <div class="sp-title">Politics Will Never Be the Same</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">What happens when AI makes an entire political system searchable, measurable and accountable? GovScanner brings Western Australia's fragmented political data together in one place — political leaderboards, real-time monitoring and automated accountability tools, changing how journalists, researchers and everyday citizens scrutinise government.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/jacktaylor6/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Mash Prime &amp; Tim de Boer</div>
+      <div class="sp-title">Workshop Facilitators</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Workshop details TBA.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Charlotte Mawle</div>
+      <div class="sp-title">AI Adoption &amp; Change Management</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">The AI you find exciting may be someone else's deepest fear. Organisations are investing heavily in AI tools, data and governance, yet most of the value is lost at the human layer: in how people experience AI as a threat to their identity, status and job security. Drawing on behavioural science and over 20 years leading change in mining, banking and government, Charlotte shows why smart people quietly resist good technology, why middle managers are where adoption is won or lost, and why poorly managed AI change is now a recognised psychosocial risk under WA's work health and safety framework. Tech leaders and implementers will leave with practical moves to design rollouts people lean into rather than brace against.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text">Charlotte Mawle helps organisations and the people in them navigate uncertainty, disruption and transformation, and today that work centres on AI adoption. She is the creator of the Conscious AI Adoption Blueprint™, a behavioural science grounded approach that addresses the human side of AI so investment turns into lasting value.</p>
+      <p class="sp-text" style="margin-top:8px">Over more than 20 years, Charlotte has led and supported complex transformation for organisations including BHP, Newmont Mining, Horizon Power, St John of God and Elsevier as well as coaching leaders in local and state government organisations. She introduced Lean Change Management to Australia and New Zealand in 2015 and is an executive coach and founder of Future Fit Females, a program helping women lead with confidence through midlife. Charlotte is based in Perth.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Josh Qwek</div>
+      <div class="sp-title">From 20 Years in Cybersecurity to an AI Advisor</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">What if decades of enterprise cybersecurity experience could be made accessible to small businesses through AI? MeanCanvas is Josh's attempt to close that gap — an AI-powered platform built on more than 20 years of hands-on security strategy, architecture and advisory work, turning a business's context into a prioritised cybersecurity roadmap. A practical story about making valuable expertise available to people who previously couldn't afford it.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/joshuaqwek" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Jakub Suplicki</div>
+      <div class="sp-title">How a Chatbot Cost a Man His Italian Car Collection</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">John runs a small online shop in Perth and owns three magnificent cars. Drowning in customer questions, he vibe-codes an AI customer-service agent that can look up orders, issue refunds and create discount codes — with one security requirement: "make sure it never makes mistakes." A live demo opening John's shop in two universes, then letting his customers break it on stage. No security background needed, just a healthy fear for John's cars.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/jakub-suplicki/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Dr Yifei Ren</div>
+      <div class="sp-title">The Chat Is the New App Store</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Abstract coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Luca Intini</div>
+      <div class="sp-title">My 20 AI Employees Never Sleep</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Luca runs a one-person company with about 20 AI agents on a 2020 gaming laptop, building a road-trip storytelling app, a remote-jobs search engine, free tools for recruiters and founders, a trading lab, and the ops dashboards he uses in his day job — mostly while he slept. Live on stage, he'll ask his AI to start a brand new project while sharing tricks you can steal on Monday: don't buy it, build it; chain the AIs; scripts, not tokens; and projects that run themselves with one page of rules. Plus the funniest ways it all broke.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Angla Li</div>
+      <div class="sp-title">How Does GenAI Impact Employees' Wellbeing?</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Findings from interviews with software developers and other knowledge workers in Australia — what each group is going through as generative AI changes their work, where their experiences overlap, and how they differ in confidence, sense of professional value, and feelings about future job security. Closes with practical recommendations for employers on introducing AI and supporting employee wellbeing through the transition.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/angla-li-04a625252" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Vladimir Vorotilov</div>
+      <div class="sp-title">Digital Twins That Act</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">An agentic system is a digital twin that acts: it mirrors a piece of the operation, notices what changed and does something about it, inside limits a person set. Drawing on a digital twin of an open-pit haulage operation built this year, Vlad shows how the same pattern nests inside a business — events inside a process, a process inside a role, then team, department and company — and what held and broke applying this to the AI agents he builds at Forward Logic.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Lydia Dawe</div>
+      <div class="sp-title">Navigating Copyright and AI in the Australian Context</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Covers the basics of how copyright and AI intersect in Australia, and the key ethical and legal questions that must be considered before embarking on projects involving third-party intellectual property. Aimed at anyone who wants to learn more about copyright.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/lydia-dawe" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Bulat Almukhametov</div>
+      <div class="sp-title">AI in Physical Safety</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">AI adoption in Australian business has moved fast — but what does that look like inside the health and safety function, where the stakes are physical, not just financial? Drawing on two years of hands-on experiments, community workshops and conversations with safety professionals across 30+ countries, Bulat shares an honest picture of what's genuinely working, where the hype runs ahead of reality, and practical first steps businesses can take now.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/bulat-almukhametov/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Will Webster</div>
+      <div class="sp-title">Big-Firm Polish, Small-Firm Overheads</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">How tools such as AI have helped Will run his consultancy Cohezion and stay lean, yet professional — leveraging design systems, using projects to help with marketing strategies, building his own tools to save money on SaaS, and using AI to automate workflows.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Bright Qi</div>
+      <div class="sp-title">The Knowledge Your AI Will Never Have</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">In August, Bright put a room of accountants and engineers together and asked a simple question: tell me about a time you just knew something was off. Almost nobody could answer — not because they lacked experience, but because expert judgement is so automatic people can't see it in themselves. This talk shows a method borrowed from aviation and surgical debriefs to pull tacit knowledge out of an expert's head, then hands those questions to an agent live on stage.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Chris McKelt</div>
+      <div class="sp-title">Talk details to be confirmed</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Yina Liu</div>
+      <div class="sp-title">Beyond the Prototype</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Building an AI prototype has never been easier. But turning that prototype into something people trust, use and genuinely benefit from is a different challenge altogether. Drawing on seven years across software development, product management, healthcare research and government policy, Yina challenges the assumption that adoption is a problem to solve once the technology is ready — decisions made long before development begins often determine whether a solution is useful, trusted and sustainable.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/yina-liu-b646a5244/" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+
+    <div class="speaker-card">
+      <div class="sp-name">Dr Sam Donegan</div>
+      <div class="sp-title">Locknote — MLAI, Melbourne</div>
+      <div class="sp-label">Abstract</div>
+      <p class="sp-text">Why the AI community matters: 3 years of MLAI and what's next in AI and community.</p>
+      <div class="sp-label">Bio</div>
+      <p class="sp-text placeholder">Bio coming soon.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    Program subject to minor changes. Follow Perth AI for the latest updates.
+  </footer>
+
+</div>
+
+</body>
+</html>

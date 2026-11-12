@@ -13,10 +13,10 @@ import site from '../data/site.json';
 <Base
   title="AI Disrupt Summit 2026"
   description="Join Perth AI's AI Disrupt Summit 2026, a day for AI builders, product and software engineers, founders and enterprise teams. Saturday 12 December at Curtin University, Bentley."
-  image="/images/2026/1212-disrupt-summit/disrupt-2026-image.webp"
+  image="/images/2026/1212-disrupt-summit/disrupt-2026-hero-tile.jpg"
   imageAlt="Pixel-art AI Disrupt Summit 2026 artwork showing the Perth skyline and a quokka mascot."
-  imageWidth="1672"
-  imageHeight="941"
+  imageWidth="1920"
+  imageHeight="1080"
 >
   <PageHero
     eyebrow="Our signature event"
@@ -272,12 +272,23 @@ import site from '../data/site.json';
               placeholder: 'What you do, and what people could see or try at your booth.',
             },
             {
+              name: 'ai_part',
+              label: 'What is the AI part of your product or demo?',
+              type: 'textarea',
+            },
+            {
               name: 'contribution',
               label: 'Able to contribute a donation or prize?',
               type: 'select',
               options: ['Yes, a donation', 'Yes, a prize', 'Yes, both', 'Not this time'],
             },
-            { name: 'link', label: 'Website or LinkedIn (optional)' },
+            {
+              name: 'contribution_details',
+              label: 'What could you contribute? (optional)',
+              placeholder: 'Vouchers, Lego, a merch pack, a dollar amount…',
+            },
+            { name: 'website', label: 'Website (optional)' },
+            { name: 'linkedin', label: 'LinkedIn (optional)' },
           ]}
         />
       </div>

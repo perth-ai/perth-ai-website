@@ -188,6 +188,7 @@
 
   .speaker{font-weight:700;font-size:15.5px;color:var(--ink);}
   .dur{font-weight:400;font-size:12px;color:var(--grey);}
+  .break .dur, .break .tag{white-space:nowrap;flex-shrink:0;}
   .sub-slot + .sub-slot{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;}
   .title{font-size:13.5px;color:var(--navy-light);margin:2px 0 6px;font-weight:600;}
   .teaser{font-size:12.8px;color:var(--grey);margin:0;}
@@ -319,6 +320,7 @@
 
   @media (max-width:720px){
     .row, .row.solo{grid-template-columns:1fr;}
+    .break{flex-wrap:wrap;row-gap:6px;}
     .time{text-align:left;padding-top:0;padding-bottom:4px;}
     .break, .row.solo .break{grid-column:1;}
     .note-row{grid-column:1;}
@@ -443,7 +445,7 @@
       <div class="time">11:05 AM<span class="end">11:30</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Camilo Pestana <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker">Dr Camilo Pestana <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
         <p class="teaser">Live demo of an AI-built, explorable 3D world — and the engineering behind it.</p>
       </div>
@@ -455,9 +457,9 @@
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag workshop">Workshop</span>
-        <div class="speaker">Andy Spamer · Tim &amp; Mash</div>
+        <div class="speaker">Andy Spamer · Tim de Boer &amp; Mash Prime</div>
         <div class="title">11:15 AM – 1:15 PM (2 hrs) · Rooms 1 &amp; 2</div>
-        <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim &amp; Mash's workshop is TBA.</p>
+        <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim de Boer &amp; Mash Prime's workshop is TBA.</p>
       </div>
     </div>
 
@@ -516,7 +518,7 @@
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon</span>
-        <div class="speaker">Hackathon Build Time <span class="dur">(run by Tim &amp; Mash)</span></div>
+        <div class="speaker">Hackathon Build Time <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
         <div class="title">1:15 PM – 3:25 PM</div>
         <p class="teaser">Teams keep building — drop by the Hackathon Lab any time.</p>
       </div>
@@ -532,7 +534,7 @@
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Stephanie Stoll <span class="dur">2:00–2:25 PM</span></div>
+        <div class="speaker">Dr Stephanie Stoll <span class="dur">2:00–2:25 PM</span></div>
         <div class="title">Brain Enshitification</div>
         <p class="teaser">What happens to our thinking when we outsource it to AI?</p>
       </div>
@@ -543,7 +545,7 @@
       <div class="time">2:30 PM<span class="end">2:55</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Kristina Gagalova <span class="dur">2:30–2:55 PM</span></div>
+        <div class="speaker">Dr Kristina Gagalova <span class="dur">2:30–2:55 PM</span></div>
         <div class="title">AI in Scientific Research: Copilots to Protein Design</div>
         <p class="teaser">How AI is accelerating bioinformatics, from coding copilots to protein design.</p>
       </div>
@@ -582,7 +584,7 @@
       <div class="time">3:45 PM<span class="end">3:52</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Chris Mckely <span class="dur">3:45–3:52 PM</span></div>
+        <div class="speaker">Chris McKelt <span class="dur">3:45–3:52 PM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
@@ -594,7 +596,7 @@
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon Voting</span>
-        <div class="speaker">Judging &amp; Demos <span class="dur">(run by Tim &amp; Mash)</span></div>
+        <div class="speaker">Judging &amp; Demos <span class="dur">(run by Tim de Boer &amp; Mash Prime)</span></div>
         <div class="title">3:45 PM – 4:40 PM · Group A &amp; Group B</div>
         <p class="teaser">Teams demo to judges. Winners announced at Close.</p>
       </div>
@@ -644,7 +646,7 @@
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker">Yifei Ren <span class="dur">4:21–4:28 PM</span></div>
+        <div class="speaker">Dr Yifei Ren <span class="dur">4:21–4:28 PM</span></div>
         <div class="title">The Chat Is the New App Store</div>
         <p class="teaser">Abstract coming soon.</p>
       </div>
@@ -675,12 +677,12 @@
   <div class="schedule">
     <div class="row solo">
       <div class="time">4:45 PM<span class="end">20 min</span></div>
-      <div class="break">🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> MLAI <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
+      <div class="break"><span>🎤 Locknote — <b style="color:var(--ink)">Dr Sam Donegan</b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
     </div>
 
     <div class="row solo">
-      <div class="time">5:05 PM<span class="end">15 min</span></div>
-      <div class="break">🎉 Closing Remarks, Hackathon Awards &amp; Thank You <span class="loc">— Perth AI</span></div>
+      <div class="time">5:05 PM<span class="end">20 min</span></div>
+      <div class="break">🎉 Closing Remarks, Hackathon Awards &amp; Thank You <span class="dur">5:05–5:25 PM</span><span class="tag duration">20 MIN</span> <span class="loc">— Perth AI</span></div>
     </div>
 
     <div class="row solo">
@@ -723,7 +725,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Camilo Pestana</div>
+      <div class="sp-name">Dr Camilo Pestana</div>
       <div class="sp-title">Beyond Vibe Coding: Building 3D Worlds with AI Harnesses</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text">What if AI could build an entire interactive 3D world, test it, identify problems and iteratively improve it? Using an explorable 3D portfolio built with his custom AI harness, Camilo demonstrates how agents, reusable skills, automation loops and evaluation work together to build complex interactive experiences — the engineering behind the automation, not another vibe-coding demo. For AI engineers, software developers, technical founders and anyone interested in building reliable agentic systems.</p>
@@ -771,7 +773,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Stephanie Stoll</div>
+      <div class="sp-name">Dr Stephanie Stoll</div>
       <div class="sp-title">Brain Enshitification</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text">Cognitive outsourcing in the age of AI — how can we keep our brain going when we outsource our thinking to AI? And what are the implications for young people, education and the workforce?</p>
@@ -790,7 +792,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Kristina Gagalova</div>
+      <div class="sp-name">Dr Kristina Gagalova</div>
       <div class="sp-title">AI in Scientific Research: Copilots to Protein Design</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text">AI is rapidly transforming scientific research. This talk explores two applications in bioinformatics: AI coding copilots that support scientific programming, workflow development and data analysis, and AI-driven protein design, where generative models enable the prediction and design of protein structures and interactions — practical examples of how these technologies enhance research productivity and open new opportunities in structural bioinformatics.</p>
@@ -839,7 +841,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Mash &amp; Tim</div>
+      <div class="sp-name">Mash Prime &amp; Tim de Boer</div>
       <div class="sp-title">Workshop Facilitators</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text placeholder">Workshop details TBA.</p>
@@ -851,9 +853,10 @@
       <div class="sp-name">Charlotte Mawle</div>
       <div class="sp-title">AI Adoption &amp; Change Management</div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text placeholder">Blurb coming soon.</p>
+      <p class="sp-text">The AI you find exciting may be someone else's deepest fear. Organisations are investing heavily in AI tools, data and governance, yet most of the value is lost at the human layer: in how people experience AI as a threat to their identity, status and job security. Drawing on behavioural science and over 20 years leading change in mining, banking and government, Charlotte shows why smart people quietly resist good technology, why middle managers are where adoption is won or lost, and why poorly managed AI change is now a recognised psychosocial risk under WA's work health and safety framework. Tech leaders and implementers will leave with practical moves to design rollouts people lean into rather than brace against.</p>
       <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
+      <p class="sp-text">Charlotte Mawle helps organisations and the people in them navigate uncertainty, disruption and transformation, and today that work centres on AI adoption. She is the creator of the Conscious AI Adoption Blueprint™, a behavioural science grounded approach that addresses the human side of AI so investment turns into lasting value.</p>
+      <p class="sp-text" style="margin-top:8px">Over more than 20 years, Charlotte has led and supported complex transformation for organisations including BHP, Newmont Mining, Horizon Power, St John of God and Elsevier as well as coaching leaders in local and state government organisations. She introduced Lean Change Management to Australia and New Zealand in 2015 and is an executive coach and founder of Future Fit Females, a program helping women lead with confidence through midlife. Charlotte is based in Perth.</p>
     </div>
 
     <div class="speaker-card">
@@ -877,7 +880,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Yifei Ren</div>
+      <div class="sp-name">Dr Yifei Ren</div>
       <div class="sp-title">The Chat Is the New App Store</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text placeholder">Abstract coming soon.</p>
@@ -952,7 +955,7 @@
     </div>
 
     <div class="speaker-card">
-      <div class="sp-name">Chris Mckely</div>
+      <div class="sp-name">Chris McKelt</div>
       <div class="sp-title">Talk details to be confirmed</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text placeholder">Blurb coming soon.</p>
@@ -972,7 +975,7 @@
 
     <div class="speaker-card">
       <div class="sp-name">Dr Sam Donegan</div>
-      <div class="sp-title">Locknote — MLAI</div>
+      <div class="sp-title">Locknote — MLAI, Melbourne</div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text">Why the AI community matters: 3 years of MLAI and what's next in AI and community.</p>
       <div class="sp-label">Bio</div>

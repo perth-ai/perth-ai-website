@@ -1,0 +1,121 @@
+/* ---------------------------------------------------------------------------
+   Perth AI brand theme for the summit agenda, speakers and sponsors pages.
+
+   Those pages are hand-made HTML with their own <style> block. This file is
+   linked AFTER that block and re-skins them to match the main site: the
+   palette from src/styles/global.css, Space Grotesk + Inter, and the same
+   navy hero as /summit-2026/info. Edit colours here, not in each page.
+
+   Contrast rules from CLAUDE.md apply: orange and cyan are fills with dark
+   labels; on light, coloured text is only orchid-500/700, azure-700 or
+   sunset-700.
+   --------------------------------------------------------------------------- */
+
+:root{
+  /* Old variable names, now pointing at brand tokens */
+  --navy:#0b132b;        /* ink-900 */
+  --navy-light:#232f52;  /* ink-700 */
+  --teal:#00c2ff;        /* azure-500: Technical track */
+  --purple:#7b3fe4;      /* orchid-500: Business & Impact track, links */
+  --amber:#ff9e2c;       /* sunset-500: Hackathon & workshops */
+  --grey:#3e4b6f;        /* ink-600 */
+  --ink:#0b132b;         /* ink-900 */
+  --paper:#f9fafb;       /* sand-50 */
+  --line:#e0e3eb;        /* ink-100 */
+  --white:#ffffff;
+}
+
+body{
+  font-family:'Inter Variable',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+/* Brand gradient strip, as on the info page */
+body::before{
+  content:"";
+  display:block;
+  height:6px;
+  background:linear-gradient(to right,#00c2ff 0%,#7b3fe4 50%,#ff6b8a 100%);
+}
+h1,h2,h3,h4,.sp-name,.speaker,.th,.day-label,.sponsor-name{
+  font-family:'Space Grotesk Variable','Inter Variable',ui-sans-serif,system-ui,sans-serif;
+}
+
+/* HERO — matches /summit-2026/info */
+.hero{
+  background:
+    radial-gradient(1100px 480px at 12% -15%,rgba(123,63,228,.45),transparent 60%),
+    radial-gradient(900px 460px at 105% -10%,rgba(0,194,255,.35),transparent 55%),
+    radial-gradient(800px 420px at 50% 125%,rgba(255,107,138,.3),transparent 60%),
+    #050a17;
+  overflow:hidden;
+}
+.hero .eyebrow{color:#ff9e2c;}
+.hero h1{font-weight:600;letter-spacing:-0.01em;}
+.hero p.sub{color:rgba(255,255,255,.82);}
+.hero-meta span{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);font-weight:600;}
+.back-link:focus-visible{outline-color:#ff9e2c;}
+
+/* Primary button: orange fill, dark label, like the site's Button */
+.download-btn{
+  background:#ff9e2c;
+  color:#050a17;
+  border-radius:12px;
+  font-weight:600;
+}
+.download-btn:hover{background:#dc7700;}
+.download-btn:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+
+/* Section labels */
+.day-label{color:#3e4b6f;letter-spacing:.14em;font-weight:600;}
+
+/* Cards: rounder, like the site's rounded-2xl cards */
+.card,.speaker-card,.sponsor{border-radius:16px;border-color:#e0e3eb;}
+.speaker-card:target,
+.card:has(.sp-link-name:target),
+.break:has(.sp-link-name:target){border-color:#7b3fe4;box-shadow:0 0 0 3px rgba(123,63,228,.25);}
+
+/* Track headers: cyan and orange take dark labels (white fails on both) */
+.track-heads .th{border-radius:12px;}
+.track-heads .th.tech{background:#00c2ff;color:#050a17;}
+.track-heads .th.impact{background:#7b3fe4;color:#fff;}
+.track-heads .th.hack{background:#ff9e2c;color:#050a17;}
+.track-heads .th small{opacity:1;}
+
+/* Tags: tinted fills with labels that clear 4.5:1 */
+.tag.talk{background:#e0e3eb;color:#232f52;}
+.tag.demo{background:#ccf3ff;color:#007195;}
+.tag.lightning{background:#ffecd6;color:#050a17;}
+.tag.keynote{background:#7b3fe4;color:#fff;}
+.tag.workshop{background:#ffd6df;color:#050a17;}
+.tag.tbc{background:#f0f2f5;color:#3e4b6f;border-color:#99a0b8;}
+.tag.handson{background:#e6dbfa;color:#571bc1;}
+.tag.duration{background:#f0f2f5;color:#232f52;}
+
+/* Breaks and continuation cards */
+.break{background:#f0f2f5;border-color:#c4c8d4;border-radius:16px;}
+.break .loc{color:#3e4b6f;}
+.break.optional{background:#fff;border-color:#ff9e2c;}
+.break .opt-tag{background:#ffecd6;color:#050a17;}
+.cont-card{background:#f9fafb;border-color:#ffc785;color:#a05600;border-radius:16px;}
+.empty-card{border-radius:16px;}
+
+/* Speaker cards */
+.sp-photo{background:#232f52;font-family:'Space Grotesk Variable',sans-serif;}
+.sp-text.placeholder{color:#3e4b6f;}
+.sp-label{color:#3e4b6f;}
+
+/* Links on light: orchid */
+.sp-link,.sp-more summary,.thanks a{color:#7b3fe4;}
+.sp-link-name:hover,.sp-name a:hover{color:#571bc1;text-decoration-color:#571bc1;}
+
+/* Mobile track labels are text on white: use the -700 steps */
+@media (max-width:720px){
+  .card.tech::before{color:#007195;}
+  .card.impact::before{color:#571bc1;}
+  .card.hack::before{color:#a05600;}
+}
+
+@media print{
+  body::before{display:none;}
+  .hero{background:#050a17;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}

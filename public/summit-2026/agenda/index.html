@@ -213,6 +213,11 @@
     font-weight:600;
   }
   .row.solo .break{grid-column:2;}
+  .agenda-photo{width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:middle;margin:-3px 8px 0 0;}
+  .agenda-photos{display:inline-flex;vertical-align:middle;margin-right:8px;}
+  .agenda-photos .agenda-photo{margin:0;}
+  .agenda-photos .agenda-photo + .agenda-photo{margin-left:-10px;border:2px solid #fff;}
+  .break-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;vertical-align:middle;margin-right:6px;}
   .break .loc{font-weight:400;color:#8793a1;}
   .break.optional{background:#fbf8f1;border:1px dashed #e3c892;}
   .break .opt-tag{
@@ -369,11 +374,15 @@
     .card, .speaker-card, .row{break-inside:avoid;}
   }
 </style>
+<link rel="stylesheet" href="/summit-2026/fonts.css">
+<link rel="stylesheet" href="/summit-2026/logo.css">
+<link rel="stylesheet" href="/summit-2026/theme.css">
 </head>
 <body>
 
 <div class="hero">
   <a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a>
+  <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
   <div class="eyebrow">Perth AI presents</div>
   <h1>AI Disrupt Summit 2026</h1>
   <p class="sub">A day of talks, demos and a live hackathon exploring how AI is changing the way we build, work and think.</p>
@@ -414,7 +423,7 @@
 
     <div class="row solo">
       <div class="time">10:10 AM<span class="end">20 min</span></div>
-      <div class="break">🎤 Opening Keynote — <b style="color:var(--ink)"><a class="sp-link-name" id="agenda-rafael-avigad" href="/summit-2026/speakers#rafael-avigad">Rafael Avigad</a></b> <span class="dur">10:10–10:30 AM</span><span class="tag keynote">20 MIN</span></div>
+      <div class="break">🎤 Opening Keynote — <img class="break-photo" src="/images/2026/1212-disrupt-summit/speakers/rafael-avigad.jpeg" alt="" width="200" height="200"><b style="color:var(--ink)"><a class="sp-link-name" id="agenda-rafael-avigad" href="/summit-2026/speakers#rafael-avigad">Rafael Avigad</a></b> <span class="dur">10:10–10:30 AM</span><span class="tag keynote">20 MIN</span></div>
     </div>
 
   </div>
@@ -434,13 +443,13 @@
       <div class="time">10:35 AM<span class="end">11:00</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-jakub-suplicki" href="/summit-2026/speakers#jakub-suplicki">Jakub Suplicki</a> <span class="dur">10:35–11:00 AM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/jakub-suplicki.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-jakub-suplicki" href="/summit-2026/speakers#jakub-suplicki">Jakub Suplicki</a> <span class="dur">10:35–11:00 AM</span></div>
         <div class="title">How a Chatbot Cost a Man His Italian Car Collection</div>
         <p class="teaser">A live demo of what happens when an AI agent isn't checked on what it's allowed to do.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag tbc">Details TBC</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-alex-jenkins" href="/summit-2026/speakers#alex-jenkins">Alex Jenkins</a> <span class="dur">10:35–11:00 AM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/team/alex-jenkins.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-alex-jenkins" href="/summit-2026/speakers#alex-jenkins">Alex Jenkins</a> <span class="dur">10:35–11:00 AM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
@@ -451,19 +460,19 @@
       <div class="time">11:05 AM<span class="end">11:30</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-camilo-pestana" href="/summit-2026/speakers#camilo-pestana">Dr Camilo Pestana</a> <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/camilo-pestana.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-camilo-pestana" href="/summit-2026/speakers#camilo-pestana">Dr Camilo Pestana</a> <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">Breaking AI: How to Hack Intelligent Systems</div>
         <p class="teaser">How adversarial examples and prompt injection make AI systems misbehave, and how to defend against them.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-jimmy-li" href="/summit-2026/speakers#jimmy-li">Jimmy Li</a> <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-jimmy-li" href="/summit-2026/speakers#jimmy-li">Jimmy Li</a> <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">AI in Practice: A Tech Visit to China</div>
         <p class="teaser">Agents, open-source and robotics — notes from GOSIM Shenzhen 2026.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag workshop">Workshop</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-andy-spamer" href="/summit-2026/speakers#andy-spamer">Andy Spamer</a> · <a class="sp-link-name" id="agenda-mash-prime-and-tim-de-boer" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/andy-spamer.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-andy-spamer" href="/summit-2026/speakers#andy-spamer">Andy Spamer</a> · <span class="agenda-photos"><img class="agenda-photo" src="/team/timothy-de-boer.jpg" alt="" width="64" height="64"><img class="agenda-photo" src="/team/mash-prime.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" id="agenda-mash-prime-and-tim-de-boer" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a></div>
         <div class="title">11:15 AM – 1:15 PM (2 hrs) · Rooms 1 &amp; 2</div>
         <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim de Boer &amp; Mash Prime's workshop is TBA.</p>
       </div>
@@ -473,13 +482,13 @@
       <div class="time">11:35 AM<span class="end">12:00</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-michelle-sandford" href="/summit-2026/speakers#michelle-sandford">Michelle Sandford</a> <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Michelle-Sandford.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-michelle-sandford" href="/summit-2026/speakers#michelle-sandford">Michelle Sandford</a> <span class="dur">11:35 AM–12:00 PM</span></div>
         <div class="title">Building the AI Native Cloud</div>
         <p class="teaser">What it takes to build cloud infrastructure that's AI-native from the ground up.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag demo">Demo</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-jia-keatnuxsuo" href="/summit-2026/speakers#jia-keatnuxsuo">Jia Keatnuxsuo</a> <span class="dur">11:35 AM–12:00 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/jia-keatnuxsuo.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-jia-keatnuxsuo" href="/summit-2026/speakers#jia-keatnuxsuo">Jia Keatnuxsuo</a> <span class="dur">11:35 AM–12:00 PM</span></div>
         <div class="title">Full Stack Sorcery</div>
         <p class="teaser">Voice AI, sensors and glowing lights: building a physical "crystal ball" on stage.</p>
       </div>
@@ -490,15 +499,14 @@
       <div class="time">12:05 PM<span class="end">12:30</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-vladimir-vorotilov" href="/summit-2026/speakers#vladimir-vorotilov">Vladimir Vorotilov</a> <span class="dur">12:05–12:30 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Vladimir-Vorotilov.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-vladimir-vorotilov" href="/summit-2026/speakers#vladimir-vorotilov">Vladimir Vorotilov</a> <span class="dur">12:05–12:30 PM</span></div>
         <div class="title">Digital Twins That Act</div>
         <p class="teaser">What building a digital twin of a mine haulage operation taught him about agentic AI.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-richard-giles" href="/summit-2026/speakers#richard-giles">Richard Giles</a> <span class="dur">12:05–12:30 PM</span></div>
-        <div class="title">How Far Can You Let the Agents Run?</div>
-        <p class="teaser">Exploring the feedback loops and limits of autonomous software development.</p>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Noal-Atkinson-profile.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-noal-atkinson" href="/summit-2026/speakers#noal-atkinson">Dr Noal Atkinson</a> <span class="dur">12:05–12:30 PM</span></div>
+        <div class="title">Silicon Valley, Shenzhen and the rest of us: What really fuels an AI Superpower</div>
       </div>
       <div class="cont-card" data-track="Hackathon & Workshops">↳ Workshops wrapping up (ends 1:15 PM)</div>
     </div>
@@ -512,19 +520,19 @@
       <div class="time">1:30 PM<span class="end">1:55</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-john-marshall" href="/summit-2026/speakers#john-marshall">John Marshall</a> <span class="dur">1:30–1:55 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/John-Marshall.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-john-marshall" href="/summit-2026/speakers#john-marshall">John Marshall</a> <span class="dur">1:30–1:55 PM</span></div>
         <div class="title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
         <p class="teaser">How an agentic system reasons from a network alarm to a probable root cause.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-charlotte-mawle" href="/summit-2026/speakers#charlotte-mawle">Charlotte Mawle</a> <span class="dur">1:30–1:55 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/charlotte-mawle.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-charlotte-mawle" href="/summit-2026/speakers#charlotte-mawle">Charlotte Mawle</a> <span class="dur">1:30–1:55 PM</span></div>
         <div class="title">AI Adoption &amp; Change Management</div>
         <p class="teaser">Helping organisations actually adopt AI — the change management side of the rollout.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon</span>
-        <div class="speaker">Hackathon Build Time <span class="dur">(run by <a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
+        <div class="speaker">Hackathon Build Time <span class="dur">(run by <span class="agenda-photos"><img class="agenda-photo" src="/team/timothy-de-boer.jpg" alt="" width="64" height="64"><img class="agenda-photo" src="/team/mash-prime.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
         <div class="title">1:15 PM – 3:25 PM</div>
         <p class="teaser">Teams keep building — drop by the Hackathon Lab any time.</p>
       </div>
@@ -533,14 +541,14 @@
     <div class="row">
       <div class="time">2:00 PM<span class="end">2:25</span></div>
       <div class="card tech" data-track="Technical Track">
-        <span class="tag tbc">Details TBC</span><span class="tag duration">25 MIN</span>
-        <div class="speaker">Speaker to be confirmed <span class="dur">2:00–2:25 PM</span></div>
-        <div class="title">Session details to be confirmed</div>
-        <p class="teaser">More info coming soon — check back closer to the event.</p>
+        <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/richard-giles.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-richard-giles" href="/summit-2026/speakers#richard-giles">Richard Giles</a> <span class="dur">2:00–2:25 PM</span></div>
+        <div class="title">How Far Can You Let the Agents Run?</div>
+        <p class="teaser">Exploring the feedback loops and limits of autonomous software development.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-stephanie-stoll" href="/summit-2026/speakers#stephanie-stoll">Dr Stephanie Stoll</a> <span class="dur">2:00–2:25 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Stephanie-Stoll.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-stephanie-stoll" href="/summit-2026/speakers#stephanie-stoll">Dr Stephanie Stoll</a> <span class="dur">2:00–2:25 PM</span></div>
         <div class="title">Brain Enshitification</div>
         <p class="teaser">What happens to our thinking when we outsource it to AI?</p>
       </div>
@@ -551,13 +559,13 @@
       <div class="time">2:30 PM<span class="end">2:55</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag handson">Hands-On</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-aidan-morgan" href="/summit-2026/speakers#aidan-morgan">Aidan Morgan</a> <span class="dur">2:30–2:55 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/aidan-morgan.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-aidan-morgan" href="/summit-2026/speakers#aidan-morgan">Aidan Morgan</a> <span class="dur">2:30–2:55 PM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-jack-taylor" href="/summit-2026/speakers#jack-taylor">Jack Taylor</a> <span class="dur">2:30–2:55 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Jack-Taylor.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-jack-taylor" href="/summit-2026/speakers#jack-taylor">Jack Taylor</a> <span class="dur">2:30–2:55 PM</span></div>
         <div class="title">Politics Will Never Be the Same</div>
         <p class="teaser">Making WA's political data searchable, measurable and accountable with AI.</p>
       </div>
@@ -568,13 +576,13 @@
       <div class="time">3:00 PM<span class="end">3:25</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-kristina-gagalova" href="/summit-2026/speakers#kristina-gagalova">Dr Kristina Gagalova</a> <span class="dur">3:00–3:25 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/team/kristina-gagalova.jpg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-kristina-gagalova" href="/summit-2026/speakers#kristina-gagalova">Dr Kristina Gagalova</a> <span class="dur">3:00–3:25 PM</span></div>
         <div class="title">AI in Scientific Research: Copilots to Protein Design</div>
         <p class="teaser">How AI is accelerating bioinformatics, from coding copilots to protein design.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-lydia-dawe" href="/summit-2026/speakers#lydia-dawe">Lydia Dawe</a> <span class="dur">3:00–3:25 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Lydia%20Dawe.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-lydia-dawe" href="/summit-2026/speakers#lydia-dawe">Lydia Dawe</a> <span class="dur">3:00–3:25 PM</span></div>
         <div class="title">Navigating Copyright and AI in the Australian Context</div>
         <p class="teaser">The ethical and legal questions to weigh before using third-party IP in AI projects, under Australian copyright law.</p>
       </div>
@@ -590,19 +598,19 @@
       <div class="time">3:45 PM<span class="end">3:52</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-chris-mckelt" href="/summit-2026/speakers#chris-mckelt">Chris McKelt</a> <span class="dur">3:45–3:52 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Chris-McKelt.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-chris-mckelt" href="/summit-2026/speakers#chris-mckelt">Chris McKelt</a> <span class="dur">3:45–3:52 PM</span></div>
         <div class="title">Talk details to be confirmed</div>
         <p class="teaser">More info coming soon — check back closer to the event.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-angla-li" href="/summit-2026/speakers#angla-li">Angla Li</a> <span class="dur">3:45–3:52 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Angla-Li.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-angla-li" href="/summit-2026/speakers#angla-li">Angla Li</a> <span class="dur">3:45–3:52 PM</span></div>
         <div class="title">How Does GenAI Impact Employees' Wellbeing?</div>
         <p class="teaser">Findings from interviews with Australian software developers and knowledge workers on confidence, value and job security.</p>
       </div>
       <div class="card hack" data-track="Hackathon & Workshops">
         <span class="tag talk">Hackathon Voting</span>
-        <div class="speaker">Judging &amp; Demos <span class="dur">(run by <a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
+        <div class="speaker">Judging &amp; Demos <span class="dur">(run by <span class="agenda-photos"><img class="agenda-photo" src="/team/timothy-de-boer.jpg" alt="" width="64" height="64"><img class="agenda-photo" src="/team/mash-prime.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a>)</span></div>
         <div class="title">3:45 PM – 4:40 PM · Group A &amp; Group B</div>
         <p class="teaser">Teams demo to judges. Winners announced at Close.</p>
       </div>
@@ -612,13 +620,13 @@
       <div class="time">3:57 PM<span class="end">4:04</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-luca-intini" href="/summit-2026/speakers#luca-intini">Luca Intini</a> <span class="dur">3:57–4:04 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/luca-intini.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-luca-intini" href="/summit-2026/speakers#luca-intini">Luca Intini</a> <span class="dur">3:57–4:04 PM</span></div>
         <div class="title">My 20 AI Employees Never Sleep</div>
         <p class="teaser">Running a one-person company with ~20 AI agents that build products while he sleeps.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-will-webster" href="/summit-2026/speakers#will-webster">Will Webster</a> <span class="dur">3:57–4:04 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/team/will-webster.jpg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-will-webster" href="/summit-2026/speakers#will-webster">Will Webster</a> <span class="dur">3:57–4:04 PM</span></div>
         <div class="title">Big-Firm Polish, Small-Firm Overheads</div>
         <p class="teaser">How I run my consultancy Cohezion lean and professional by leveraging AI tools.</p>
       </div>
@@ -629,13 +637,13 @@
       <div class="time">4:09 PM<span class="end">4:16</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-josh-qwek" href="/summit-2026/speakers#josh-qwek">Josh Qwek</a> <span class="dur">4:09–4:16 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/josh-qwek.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-josh-qwek" href="/summit-2026/speakers#josh-qwek">Josh Qwek</a> <span class="dur">4:09–4:16 PM</span></div>
         <div class="title">From 20 Years in Cybersecurity to an AI Advisor</div>
         <p class="teaser">Turning two decades of security expertise into an AI advisor for small business.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-marcus-holmes" href="/summit-2026/speakers#marcus-holmes">Marcus Holmes</a> <span class="dur">4:09–4:16 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/marcus-holmes.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-marcus-holmes" href="/summit-2026/speakers#marcus-holmes">Marcus Holmes</a> <span class="dur">4:09–4:16 PM</span></div>
         <div class="title">The Democratisation of Coding</div>
         <p class="teaser">The explosion of software now being built by non-technical creators.</p>
       </div>
@@ -646,13 +654,13 @@
       <div class="time">4:21 PM<span class="end">4:28</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-bright-qi" href="/summit-2026/speakers#bright-qi">Bright Qi</a> <span class="dur">4:21–4:28 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/bright-qi.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-bright-qi" href="/summit-2026/speakers#bright-qi">Bright Qi</a> <span class="dur">4:21–4:28 PM</span></div>
         <div class="title">The Knowledge Your AI Will Never Have</div>
         <p class="teaser">A method for turning an expert's unwritten judgement into rules an agent can follow.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-yifei-ren" href="/summit-2026/speakers#yifei-ren">Dr Yifei Ren</a> <span class="dur">4:21–4:28 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Yifei-Ren.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-yifei-ren" href="/summit-2026/speakers#yifei-ren">Dr Yifei Ren</a> <span class="dur">4:21–4:28 PM</span></div>
         <div class="title">The Chat Is the New App Store</div>
         <p class="teaser">Abstract coming soon.</p>
       </div>
@@ -663,13 +671,13 @@
       <div class="time">4:33 PM<span class="end">4:40</span></div>
       <div class="card tech" data-track="Technical Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-yina-liu" href="/summit-2026/speakers#yina-liu">Yina Liu</a> <span class="dur">4:33–4:40 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Yina-Liu.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-yina-liu" href="/summit-2026/speakers#yina-liu">Yina Liu</a> <span class="dur">4:33–4:40 PM</span></div>
         <div class="title">Beyond the Prototype</div>
         <p class="teaser">Why building an AI prototype is the easy half of the challenge.</p>
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag lightning">Lightning Talk</span><span class="tag duration">~7 MIN</span>
-        <div class="speaker"><a class="sp-link-name" id="agenda-bulat-almukhametov" href="/summit-2026/speakers#bulat-almukhametov">Bulat Almukhametov</a> <span class="dur">4:33–4:40 PM</span></div>
+        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/bulat-almukhametov.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-bulat-almukhametov" href="/summit-2026/speakers#bulat-almukhametov">Bulat Almukhametov</a> <span class="dur">4:33–4:40 PM</span></div>
         <div class="title">AI in Physical Safety</div>
         <p class="teaser">Where AI is genuinely working in workplace health &amp; safety — and where the hype runs ahead.</p>
       </div>
@@ -683,7 +691,7 @@
   <div class="schedule">
     <div class="row solo">
       <div class="time">4:45 PM<span class="end">20 min</span></div>
-      <div class="break"><span>🎤 Locknote — <b style="color:var(--ink)"><a class="sp-link-name" id="agenda-sam-donegan" href="/summit-2026/speakers#sam-donegan">Dr Sam Donegan</a></b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
+      <div class="break"><span>🎤 Locknote — <img class="break-photo" src="/images/2026/1212-disrupt-summit/speakers/Sam-Donegan.jpeg" alt="" width="64" height="64"><b style="color:var(--ink)"><a class="sp-link-name" id="agenda-sam-donegan" href="/summit-2026/speakers#sam-donegan">Dr Sam Donegan</a></b>, MLAI, Melbourne</span> <span class="dur">4:45–5:05 PM</span><span class="tag keynote">20 MIN</span> <span class="loc">— Why the AI community matters: 3 years of MLAI and what's next</span></div>
     </div>
 
     <div class="row solo">

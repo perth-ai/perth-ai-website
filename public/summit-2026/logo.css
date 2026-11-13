@@ -1,0 +1,39 @@
+/* Perth AI badge in the hero of the hand-made summit pages.
+   Same artwork as the site header: /perth-ai-badge.webp ("Main Logo - Perth AI
+   (white outline rotate)"). It carries its own white outline and PERTH AI
+   lettering, so nothing goes beside it. Links to the homepage. */
+.brand-logo{
+  display:inline-block;
+  margin:0 0 16px;
+  border-radius:50%;
+  line-height:0;
+}
+.brand-logo img{
+  width:96px;
+  height:96px;
+  display:block;
+  filter:drop-shadow(0 10px 18px rgba(5,10,23,.5));
+}
+@media (min-width:720px){
+  .brand-logo img{width:120px;height:120px;}
+}
+.brand-logo:hover img{transform:scale(1.03);transition:transform .15s;}
+.brand-logo:focus-visible{outline:2px solid #ff9e2c;outline-offset:4px;}
+@media print{.brand-logo img{filter:none;}}
+
+/* Two back links side by side at the top of the hero (speakers, sponsors, info) */
+.back-links{
+  position:absolute;
+  top:14px;
+  left:16px;
+  right:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.back-links .back-link{position:static;}
+/* On phones the two links stack, so push the badge down to clear them */
+@media (max-width:480px){
+  .hero:has(.back-links){padding-top:104px;}
+}
+@media print{.back-links{display:none;}}

@@ -315,6 +315,21 @@
   .sp-head + .sp-label{margin-top:0;}
   .sp-text{font-size:12.5px;color:var(--ink);line-height:1.5;margin:0;}
   .sp-text.placeholder{color:#9aa3ad;font-style:italic;}
+  .sp-text + .sp-text, .sp-more .sp-text{margin-top:8px;}
+  /* Long bios: first paragraph shows, the rest sits in a <details class="sp-more">. No JS. */
+  .sp-more summary{
+    display:inline-block;
+    margin-top:6px;
+    font-size:12px;
+    font-weight:700;
+    color:var(--purple);
+    cursor:pointer;
+    list-style:none;
+  }
+  .sp-more summary::-webkit-details-marker{display:none;}
+  .sp-more summary:hover{text-decoration:underline;}
+  .sp-more summary:focus-visible{outline:2px solid var(--purple);outline-offset:2px;border-radius:2px;}
+  .sp-more[open] summary{display:none;}
 
   /* FOOTER */
   footer{
@@ -371,13 +386,19 @@
     .download-btn, .back-link{display:none;}
     body{background:#fff;}
     .card, .speaker-card, .row{break-inside:avoid;}
+    .sp-more summary{display:none;}
+    .sp-more::details-content{content-visibility:visible;height:auto;}
   }
 </style>
+<link rel="stylesheet" href="/summit-2026/fonts.css">
+<link rel="stylesheet" href="/summit-2026/logo.css">
+<link rel="stylesheet" href="/summit-2026/theme.css">
 </head>
 <body>
 
 <div class="hero">
-  <a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a>
+  <nav class="back-links" aria-label="Summit pages"><a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a><a class="back-link" href="/summit-2026/agenda"><span aria-hidden="true">←</span> Back to the agenda</a></nav>
+  <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
   <div class="eyebrow">AI Disrupt Summit 2026</div>
   <h1>Speaker Line-up</h1>
   <p class="sub">Who's speaking, what they're talking about, and a bit about them. For times and rooms, see the <a href="/summit-2026/agenda" style="color:#fff;text-decoration:underline">agenda</a>.</p>
@@ -397,7 +418,7 @@
 
     <article class="speaker-card" id="rafael-avigad">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true"><img src="/team/rafael-avigad.png" alt=""></div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/rafael-avigad.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-rafael-avigad">Rafael Avigad</a></h2>
           <div class="sp-title">Opening Keynote</div>
@@ -412,7 +433,7 @@
 
     <article class="speaker-card" id="andy-spamer">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">AS</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/andy-spamer.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-andy-spamer">Andy Spamer</a></h2>
           <div class="sp-title">A 2-Hour Speedrun of Yegge's 8 Levels of Agentic Coding · Workshop Facilitator</div>
@@ -437,18 +458,23 @@
       <p class="sp-text placeholder">Blurb coming soon.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/alex-jenkins-4107074/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="camilo-pestana">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">CP</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/camilo-pestana.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-camilo-pestana">Dr Camilo Pestana</a></h2>
           <div class="sp-title">Breaking AI: How to Hack Intelligent Systems</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">What happens when someone deliberately tries to make an AI system behave in ways its developers never intended? AI applications introduce new attack surfaces that traditional software security practices don't fully address. From adversarial examples that fool computer vision models to prompt injection attacks that manipulate LLMs and autonomous agents, intelligent systems can fail in surprising ways. Drawing on his background in adversarial machine learning and AI security research, Camilo demonstrates how these attacks work, why they succeed, and what developers can do to defend against them — including why relying exclusively on model guardrails is insufficient. Expect technical demonstrations, real attack scenarios and practical lessons for building more secure AI systems. For AI engineers, security professionals, software developers and technical leaders deploying AI applications.</p>
+      <p class="sp-text">What happens when someone deliberately tries to make an AI system behave in ways its developers never intended? AI applications introduce new attack surfaces that traditional software security practices don't fully address.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">From adversarial examples that fool computer vision models to prompt injection attacks that manipulate LLMs and autonomous agents, intelligent systems can fail in surprising ways. Drawing on his background in adversarial machine learning and AI security research, Camilo demonstrates how these attacks work, why they succeed, and what developers can do to defend against them — including why relying exclusively on model guardrails is insufficient. Expect technical demonstrations, real attack scenarios and practical lessons for building more secure AI systems. For AI engineers, security professionals, software developers and technical leaders deploying AI applications.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
       <a class="sp-link" href="https://www.linkedin.com/in/camilopestana/" target="_blank" rel="noopener">LinkedIn →</a>
@@ -456,7 +482,7 @@
 
     <article class="speaker-card" id="jimmy-li">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JL</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jimmy-li">Jimmy Li</a></h2>
           <div class="sp-title">AI in Practice: A Tech Visit to China</div>
@@ -466,11 +492,12 @@
       <p class="sp-text">During a recent trip to China, Jimmy explored the AI and open-source community at GOSIM Shenzhen 2026, met fellow developers, and learned about emerging technologies and practical applications. An informal sharing of observations covering AI agents, AI-native software development, open-source projects and robotics — for developers, AI enthusiasts and anyone curious about what comes next.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/jimmyli96/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="jia-keatnuxsuo">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JK</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/jia-keatnuxsuo.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jia-keatnuxsuo">Jia Keatnuxsuo</a></h2>
           <div class="sp-title">Full Stack Sorcery</div>
@@ -480,11 +507,12 @@
       <p class="sp-text">"Build me a crystal ball" is a surprisingly serious engineering brief. Voice AI, touch sensors, glowing lights, and one stubborn physical world: here's what happens when AI-assisted coding leaves the screen.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/keatnuxsuo" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="john-marshall">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JM</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/John-Marshall.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-john-marshall">John Marshall</a></h2>
           <div class="sp-title">From Alarm to Root Cause: Agentic NetOps on AWS AgentCore</div>
@@ -499,7 +527,7 @@
 
     <article class="speaker-card" id="marcus-holmes">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">MH</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/marcus-holmes.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-marcus-holmes">Marcus Holmes</a></h2>
           <div class="sp-title">The Democratisation of Coding</div>
@@ -514,7 +542,7 @@
 
     <article class="speaker-card" id="stephanie-stoll">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">SS</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Stephanie-Stoll.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-stephanie-stoll">Dr Stephanie Stoll</a></h2>
           <div class="sp-title">Brain Enshitification</div>
@@ -529,7 +557,7 @@
 
     <article class="speaker-card" id="michelle-sandford">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">MS</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Michelle-Sandford.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-michelle-sandford">Michelle Sandford</a></h2>
           <div class="sp-title">Building the AI Native Cloud</div>
@@ -539,6 +567,7 @@
       <p class="sp-text placeholder">Blurb coming soon.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/michellesandford/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="kristina-gagalova">
@@ -558,9 +587,9 @@
 
     <article class="speaker-card" id="noal-atkinson">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">NA</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Noal-Atkinson-profile.jpeg" alt=""></div>
         <div>
-          <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-noal-atkinson">Noal Atkinson</a></h2>
+          <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-noal-atkinson">Dr Noal Atkinson</a></h2>
           <div class="sp-title">Silicon Valley, Shenzhen and the rest of us: What really fuels an AI Superpower</div>
         </div>
       </div>
@@ -573,7 +602,7 @@
 
     <article class="speaker-card" id="richard-giles">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">RG</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/richard-giles.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-richard-giles">Richard Giles</a></h2>
           <div class="sp-title">How Far Can You Let the Agents Run?</div>
@@ -583,14 +612,17 @@
       <p class="sp-text">Exploring how far we can take autonomous software development before the human becomes the bottleneck — experimenting while building Primed, including systems that detect problems, attempt fixes and independently verify the results. Draws on feedback loops, where these systems break down, and which decisions still benefit from human judgement.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text">Richard Giles is the CEO of Adapptor and founder of Primed, an AI endurance coaching startup. With around 30 years in technology, he has built and led businesses through successive waves of change, from the early web to mobile and now AI.</p>
-      <p class="sp-text">At Adapptor, Richard works with organisations to design, build and evolve digital products. He is exploring how AI changes not only the tools used to create software, but also the roles, decisions and accountability needed to deliver it well.</p>
-      <p class="sp-text">Primed brings his interests in technology and endurance sport together. Its AI coach helps athletes make sense of their training and ask questions about their progress. Richard is also building Primed using an AI-native software development approach, giving him a practical perspective on both sides of the AI shift: creating an AI product and changing how that product is made.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">At Adapptor, Richard works with organisations to design, build and evolve digital products. He is exploring how AI changes not only the tools used to create software, but also the roles, decisions and accountability needed to deliver it well.</p>
+        <p class="sp-text">Primed brings his interests in technology and endurance sport together. Its AI coach helps athletes make sense of their training and ask questions about their progress. Richard is also building Primed using an AI-native software development approach, giving him a practical perspective on both sides of the AI shift: creating an AI product and changing how that product is made.</p>
+      </details>
       <a class="sp-link" href="https://www.linkedin.com/in/richardgiles/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="aidan-morgan">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">AM</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/aidan-morgan.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-aidan-morgan">Aidan Morgan</a></h2>
           <div class="sp-title">Talk details to be confirmed</div>
@@ -600,11 +632,12 @@
       <p class="sp-text placeholder">Blurb coming soon.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/aidanjmorgan/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="jack-taylor">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JT</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Jack-Taylor.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jack-taylor">Jack Taylor</a></h2>
           <div class="sp-title">Politics Will Never Be the Same</div>
@@ -629,41 +662,55 @@
       <p class="sp-text placeholder">Workshop details TBA.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/mashjprime/" target="_blank" rel="noopener">Mash on LinkedIn →</a>
+      <a class="sp-link" href="https://www.linkedin.com/in/timothydeboer/" target="_blank" rel="noopener" style="margin-left:14px">Tim on LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="charlotte-mawle">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">CM</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/charlotte-mawle.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-charlotte-mawle">Charlotte Mawle</a></h2>
           <div class="sp-title">AI Adoption &amp; Change Management</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">The AI you find exciting may be someone else's deepest fear. Organisations are investing heavily in AI tools, data and governance, yet most of the value is lost at the human layer: in how people experience AI as a threat to their identity, status and job security. Drawing on behavioural science and over 20 years leading change in mining, banking and government, Charlotte shows why smart people quietly resist good technology, why middle managers are where adoption is won or lost, and why poorly managed AI change is now a recognised psychosocial risk under WA's work health and safety framework. Tech leaders and implementers will leave with practical moves to design rollouts people lean into rather than brace against.</p>
+      <p class="sp-text">The AI you find exciting may be someone else's deepest fear. Organisations are investing heavily in AI tools, data and governance, yet most of the value is lost at the human layer: in how people experience AI as a threat to their identity, status and job security.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Drawing on behavioural science and over 20 years leading change in mining, banking and government, Charlotte shows why smart people quietly resist good technology, why middle managers are where adoption is won or lost, and why poorly managed AI change is now a recognised psychosocial risk under WA's work health and safety framework. Tech leaders and implementers will leave with practical moves to design rollouts people lean into rather than brace against.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text">Charlotte Mawle helps organisations and the people in them navigate uncertainty, disruption and transformation, and today that work centres on AI adoption. She is the creator of the Conscious AI Adoption Blueprint™, a behavioural science grounded approach that addresses the human side of AI so investment turns into lasting value.</p>
-      <p class="sp-text" style="margin-top:8px">Over more than 20 years, Charlotte has led and supported complex transformation for organisations including BHP, Newmont Mining, Horizon Power, St John of God and Elsevier as well as coaching leaders in local and state government organisations. She introduced Lean Change Management to Australia and New Zealand in 2015 and is an executive coach and founder of Future Fit Females, a program helping women lead with confidence through midlife. Charlotte is based in Perth.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Over more than 20 years, Charlotte has led and supported complex transformation for organisations including BHP, Newmont Mining, Horizon Power, St John of God and Elsevier as well as coaching leaders in local and state government organisations. She introduced Lean Change Management to Australia and New Zealand in 2015 and is an executive coach and founder of Future Fit Females, a program helping women lead with confidence through midlife. Charlotte is based in Perth.</p>
+      </details>
+      <a class="sp-link" href="https://www.linkedin.com/in/charlottemawle/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="josh-qwek">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JQ</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/josh-qwek.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-josh-qwek">Josh Qwek</a></h2>
           <div class="sp-title">From 20 Years in Cybersecurity to an AI Advisor</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">What if decades of enterprise cybersecurity experience could be made accessible to small businesses through AI? MeanCanvas is Josh's attempt to close that gap — an AI-powered platform built on more than 20 years of hands-on security strategy, architecture and advisory work, turning a business's context into a prioritised cybersecurity roadmap. A practical story about making valuable expertise available to people who previously couldn't afford it.</p>
+      <p class="sp-text">What if decades of enterprise cybersecurity experience could be made accessible to small businesses through AI? MeanCanvas is Josh's attempt to close that gap — an AI-powered platform built on more than 20 years of hands-on security strategy, architecture and advisory work, turning a business's context into a prioritised cybersecurity roadmap.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">A practical story about making valuable expertise available to people who previously couldn't afford it.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/joshuaqwek" target="_blank" rel="noopener">LinkedIn →</a>
+      <a class="sp-link" href="https://www.linkedin.com/in/joshuaqwek/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="jakub-suplicki">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">JS</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/jakub-suplicki.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jakub-suplicki">Jakub Suplicki</a></h2>
           <div class="sp-title">How a Chatbot Cost a Man His Italian Car Collection</div>
@@ -678,7 +725,7 @@
 
     <article class="speaker-card" id="yifei-ren">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">YR</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Yifei-Ren.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-yifei-ren">Dr Yifei Ren</a></h2>
           <div class="sp-title">The Chat Is the New App Store</div>
@@ -688,32 +735,42 @@
       <p class="sp-text placeholder">Abstract coming soon.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/yifei-ren-8b021311a/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="luca-intini">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">LI</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/luca-intini.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-luca-intini">Luca Intini</a></h2>
           <div class="sp-title">My 20 AI Employees Never Sleep</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">Luca runs a one-person company with about 20 AI agents on a 2020 gaming laptop, building a road-trip storytelling app, a remote-jobs search engine, free tools for recruiters and founders, a trading lab, and the ops dashboards he uses in his day job — mostly while he slept. Live on stage, he'll ask his AI to start a brand new project while sharing tricks you can steal on Monday: don't buy it, build it; chain the AIs; scripts, not tokens; and projects that run themselves with one page of rules. Plus the funniest ways it all broke.</p>
+      <p class="sp-text">Luca runs a one-person company with about 20 AI agents on a 2020 gaming laptop, building a road-trip storytelling app, a remote-jobs search engine, free tools for recruiters and founders, a trading lab, and the ops dashboards he uses in his day job — mostly while he slept.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Live on stage, he'll ask his AI to start a brand new project while sharing tricks you can steal on Monday: don't buy it, build it; chain the AIs; scripts, not tokens; and projects that run themselves with one page of rules. Plus the funniest ways it all broke.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/lucaintini/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="angla-li">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">AL</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Angla-Li.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-angla-li">Angla Li</a></h2>
           <div class="sp-title">How Does GenAI Impact Employees' Wellbeing?</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">Findings from interviews with software developers and other knowledge workers in Australia — what each group is going through as generative AI changes their work, where their experiences overlap, and how they differ in confidence, sense of professional value, and feelings about future job security. Closes with practical recommendations for employers on introducing AI and supporting employee wellbeing through the transition.</p>
+      <p class="sp-text">Findings from interviews with software developers and other knowledge workers in Australia — what each group is going through as generative AI changes their work, where their experiences overlap, and how they differ in confidence, sense of professional value, and feelings about future job security.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Closes with practical recommendations for employers on introducing AI and supporting employee wellbeing through the transition.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
       <a class="sp-link" href="https://www.linkedin.com/in/angla-li-04a625252" target="_blank" rel="noopener">LinkedIn →</a>
@@ -721,21 +778,26 @@
 
     <article class="speaker-card" id="vladimir-vorotilov">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">VV</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Vladimir-Vorotilov.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-vladimir-vorotilov">Vladimir Vorotilov</a></h2>
           <div class="sp-title">Digital Twins That Act</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">An agentic system is a digital twin that acts: it mirrors a piece of the operation, notices what changed and does something about it, inside limits a person set. Drawing on a digital twin of an open-pit haulage operation built this year, Vlad shows how the same pattern nests inside a business — events inside a process, a process inside a role, then team, department and company — and what held and broke applying this to the AI agents he builds at Forward Logic.</p>
+      <p class="sp-text">An agentic system is a digital twin that acts: it mirrors a piece of the operation, notices what changed and does something about it, inside limits a person set.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Drawing on a digital twin of an open-pit haulage operation built this year, Vlad shows how the same pattern nests inside a business — events inside a process, a process inside a role, then team, department and company — and what held and broke applying this to the AI agents he builds at Forward Logic.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/vladimir-vorotilov/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="lydia-dawe">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">LD</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Lydia%20Dawe.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-lydia-dawe">Lydia Dawe</a></h2>
           <div class="sp-title">Navigating Copyright and AI in the Australian Context</div>
@@ -750,14 +812,18 @@
 
     <article class="speaker-card" id="bulat-almukhametov">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">BA</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/bulat-almukhametov.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-bulat-almukhametov">Bulat Almukhametov</a></h2>
           <div class="sp-title">AI in Physical Safety</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">AI adoption in Australian business has moved fast — but what does that look like inside the health and safety function, where the stakes are physical, not just financial? Drawing on two years of hands-on experiments, community workshops and conversations with safety professionals across 30+ countries, Bulat shares an honest picture of what's genuinely working, where the hype runs ahead of reality, and practical first steps businesses can take now.</p>
+      <p class="sp-text">AI adoption in Australian business has moved fast — but what does that look like inside the health and safety function, where the stakes are physical, not just financial?</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Drawing on two years of hands-on experiments, community workshops and conversations with safety professionals across 30+ countries, Bulat shares an honest picture of what's genuinely working, where the hype runs ahead of reality, and practical first steps businesses can take now.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
       <a class="sp-link" href="https://www.linkedin.com/in/bulat-almukhametov/" target="_blank" rel="noopener">LinkedIn →</a>
@@ -775,25 +841,31 @@
       <p class="sp-text">How tools such as AI have helped Will run his consultancy Cohezion and stay lean, yet professional — leveraging design systems, using projects to help with marketing strategies, building his own tools to save money on SaaS, and using AI to automate workflows.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/willwebster/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="bright-qi">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">BQ</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/bright-qi.webp" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-bright-qi">Bright Qi</a></h2>
           <div class="sp-title">The Knowledge Your AI Will Never Have</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">In August, Bright put a room of accountants and engineers together and asked a simple question: tell me about a time you just knew something was off. Almost nobody could answer — not because they lacked experience, but because expert judgement is so automatic people can't see it in themselves. This talk shows a method borrowed from aviation and surgical debriefs to pull tacit knowledge out of an expert's head, then hands those questions to an agent live on stage.</p>
+      <p class="sp-text">In August, Bright put a room of accountants and engineers together and asked a simple question: tell me about a time you just knew something was off. Almost nobody could answer — not because they lacked experience, but because expert judgement is so automatic people can't see it in themselves.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">This talk shows a method borrowed from aviation and surgical debriefs to pull tacit knowledge out of an expert's head, then hands those questions to an agent live on stage.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/bright-qi/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="chris-mckelt">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">CM</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Chris-McKelt.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-chris-mckelt">Chris McKelt</a></h2>
           <div class="sp-title">Talk details to be confirmed</div>
@@ -803,18 +875,23 @@
       <p class="sp-text placeholder">Blurb coming soon.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/chrismckelt/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="yina-liu">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">YL</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Yina-Liu.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-yina-liu">Yina Liu</a></h2>
           <div class="sp-title">Beyond the Prototype</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">Building an AI prototype has never been easier. But turning that prototype into something people trust, use and genuinely benefit from is a different challenge altogether. Drawing on seven years across software development, product management, healthcare research and government policy, Yina challenges the assumption that adoption is a problem to solve once the technology is ready — decisions made long before development begins often determine whether a solution is useful, trusted and sustainable.</p>
+      <p class="sp-text">Building an AI prototype has never been easier. But turning that prototype into something people trust, use and genuinely benefit from is a different challenge altogether.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Drawing on seven years across software development, product management, healthcare research and government policy, Yina challenges the assumption that adoption is a problem to solve once the technology is ready — decisions made long before development begins often determine whether a solution is useful, trusted and sustainable.</p>
+      </details>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
       <a class="sp-link" href="https://www.linkedin.com/in/yina-liu-b646a5244/" target="_blank" rel="noopener">LinkedIn →</a>
@@ -822,7 +899,7 @@
 
     <article class="speaker-card" id="sam-donegan">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true">SD</div>
+        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Sam-Donegan.jpeg" alt=""></div>
         <div>
           <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-sam-donegan">Dr Sam Donegan</a></h2>
           <div class="sp-title">Locknote — MLAI, Melbourne</div>
@@ -832,6 +909,7 @@
       <p class="sp-text">Why the AI community matters: 3 years of MLAI and what's next in AI and community.</p>
       <div class="sp-label">Bio</div>
       <p class="sp-text placeholder">Bio coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/samueldonegan/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 
   </div>

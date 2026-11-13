@@ -1,0 +1,17 @@
+/* Brand fonts for the hand-made summit pages, self-hosted so there are no
+   third-party font requests. Same files as the main site's @fontsource-variable
+   packages (latin subset), copied into /public/fonts. */
+@font-face{
+  font-family:'Inter Variable';
+  font-style:normal;
+  font-display:swap;
+  font-weight:100 900;
+  src:url('/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face{
+  font-family:'Space Grotesk Variable';
+  font-style:normal;
+  font-display:swap;
+  font-weight:300 700;
+  src:url('/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2-variations');
+}

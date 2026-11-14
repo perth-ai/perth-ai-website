@@ -329,7 +329,11 @@
   .sp-more summary::-webkit-details-marker{display:none;}
   .sp-more summary:hover{text-decoration:underline;}
   .sp-more summary:focus-visible{outline:2px solid var(--purple);outline-offset:2px;border-radius:2px;}
-  .sp-more[open] summary{display:none;}
+  /* Once open, the toggle moves below the text and reads "Less", so the card can be collapsed again. */
+  .sp-more{position:relative;}
+  .sp-more[open]{padding-bottom:22px;}
+  .sp-more[open] summary{position:absolute;left:0;bottom:0;font-size:0;}
+  .sp-more[open] summary::before{content:"Less";font-size:12px;}
 
   /* FOOTER */
   footer{
@@ -482,17 +486,18 @@
 
     <article class="speaker-card" id="jimmy-li">
       <div class="sp-head">
-        <div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt=""></div>
+        <div class="sp-photos"><div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt=""></div><div class="sp-photo" aria-hidden="true"><img src="/images/2026/1212-disrupt-summit/speakers/alex-james.jpeg" alt=""></div></div>
         <div>
-          <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jimmy-li">Jimmy Li</a></h2>
+          <h2 class="sp-name"><a href="/summit-2026/agenda#agenda-jimmy-li">Jimmy Li &amp; Alex James</a></h2>
           <div class="sp-title">AI in Practice: A Tech Visit to China</div>
         </div>
       </div>
       <div class="sp-label">Abstract</div>
       <p class="sp-text">During a recent trip to China, Jimmy explored the AI and open-source community at GOSIM Shenzhen 2026, met fellow developers, and learned about emerging technologies and practical applications. An informal sharing of observations covering AI agents, AI-native software development, open-source projects and robotics — for developers, AI enthusiasts and anyone curious about what comes next.</p>
       <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
-      <a class="sp-link" href="https://www.linkedin.com/in/jimmyli96/" target="_blank" rel="noopener">LinkedIn →</a>
+      <p class="sp-text placeholder">Bios coming soon.</p>
+      <a class="sp-link" href="https://www.linkedin.com/in/jimmyli96/" target="_blank" rel="noopener">Jimmy on LinkedIn →</a>
+      <a class="sp-link" href="https://www.linkedin.com/in/alex-james-79705b315/" target="_blank" rel="noopener" style="margin-left:14px">Alex on LinkedIn →</a>
     </article>
 
     <article class="speaker-card" id="jia-keatnuxsuo">
@@ -821,13 +826,19 @@
         </div>
       </div>
       <div class="sp-label">Abstract</div>
-      <p class="sp-text">AI adoption in Australian business has moved fast — but what does that look like inside the health and safety function, where the stakes are physical, not just financial?</p>
+      <p class="sp-text">AI now writes code, reads X-rays and drafts legal contracts. But on a factory floor, a construction site or an LNG plant, the only question that matters is whether it can stop someone getting hurt. In 2025, 222 Australian workers didn't come home — the highest toll since 2012.</p>
       <details class="sp-more">
         <summary>More</summary>
-        <p class="sp-text">Drawing on two years of hands-on experiments, community workshops and conversations with safety professionals across 30+ countries, Bulat shares an honest picture of what's genuinely working, where the hype runs ahead of reality, and practical first steps businesses can take now.</p>
+        <p class="sp-text">This lightning talk is a frontline safety professional's honest field report on AI in physical safety. Most EHS teams now use AI in some form, yet only a small fraction have it embedded in how safety actually runs. Bulat separates what is genuinely working — computer vision for PPE, vehicle and ergonomic risks — from what is still mostly slideware, and explains why data foundations, skills and a competent person signing off matter more than the model.</p>
+        <p class="sp-text">He then shares what Perth's SHEDAI community has been building and testing at its AI Safety Sandbox workshops: an AI investigation assistant, a local privacy firewall that strips personal data before anything reaches the cloud, and HSE chatbots built by AI and Safety professionals on Telegram and Microsoft Teams — all following one pattern: local first, privacy gate, cloud only for hard reasoning, human decides.</p>
+        <p class="sp-text">For decades, safety has been one of the most conservative professions there is, and for good reason. But conservative shouldn’t mean left behind. Maybe it’s time we led the change instead of waiting for it.</p>
       </details>
       <div class="sp-label">Bio</div>
-      <p class="sp-text placeholder">Bio coming soon.</p>
+      <p class="sp-text">Bulat Almukhametov is an HSE professional and AI enablement practitioner based in Perth, helping safety professionals work with AI, not around it. He brings more than ten years in dedicated HSE roles and almost two decades across Oil &amp; Gas, LNG, construction and manufacturing internationally.</p>
+      <details class="sp-more">
+        <summary>More</summary>
+        <p class="sp-text">Since 2022 he has been building the Australian chapter of his health and safety career at Holcim Australia in Perth. Outside his day job, Bulat builds practical AI prototypes for frontline safety and runs the first AI Safety Sandbox workshops in Perth, which are free in-person sessions for safety professionals. In 2024 he founded SHEDAI, an international community for safety professionals exploring Big data and AI, and mentors early-career practitioners. He holds an International NEBOSH and ISO certifications, an Advanced Diploma in Health, Safety &amp; Risk Management from Oxford Brookes University, and a Bachelor's degree in Applied IT and Economics from USATU.</p>
+      </details>
       <a class="sp-link" href="https://www.linkedin.com/in/bulat-almukhametov/" target="_blank" rel="noopener">LinkedIn →</a>
     </article>
 

@@ -166,6 +166,11 @@
   .card.tech{border-top:3px solid var(--teal);}
   .card.impact{border-top:3px solid var(--purple);}
   .card.hack{border-top:3px solid var(--amber);}
+  /* Two workshops side by side in the workshops column. Stacks when the column gets narrow. */
+  .split{display:grid;grid-template-columns:1fr;gap:8px;align-content:start;}
+  .split .card{padding:12px 13px;}
+  .split-note{grid-column:1/-1;margin:0;font-size:12px;color:var(--grey);}
+  @media (min-width:900px){.split{grid-template-columns:1fr 1fr;}}
 
   .tag{
     display:inline-block;
@@ -466,15 +471,24 @@
       </div>
       <div class="card impact" data-track="Business & Impact Track">
         <span class="tag talk">Talk</span><span class="tag duration">25 MIN</span>
-        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-jimmy-li" href="/summit-2026/speakers#jimmy-li">Jimmy Li</a> <span class="dur">11:05–11:30 AM</span></div>
+        <div class="speaker"><span class="agenda-photos"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/Jimmy-Li.jpeg" alt="" width="64" height="64"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/alex-james.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" id="agenda-jimmy-li" href="/summit-2026/speakers#jimmy-li">Jimmy Li &amp; Alex James</a> <span class="dur">11:05–11:30 AM</span></div>
         <div class="title">AI in Practice: A Tech Visit to China</div>
         <p class="teaser">Agents, open-source and robotics — notes from GOSIM Shenzhen 2026.</p>
       </div>
-      <div class="card hack" data-track="Hackathon & Workshops">
-        <span class="tag workshop">Workshop</span>
-        <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/andy-spamer.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-andy-spamer" href="/summit-2026/speakers#andy-spamer">Andy Spamer</a> · <span class="agenda-photos"><img class="agenda-photo" src="/team/timothy-de-boer.jpg" alt="" width="64" height="64"><img class="agenda-photo" src="/team/mash-prime.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" id="agenda-mash-prime-and-tim-de-boer" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a></div>
-        <div class="title">11:15 AM – 1:15 PM (2 hrs) · Rooms 1 &amp; 2</div>
-        <p class="teaser">Andy Spamer runs a workshop based on Steve Yegge's agentic coding levels; Tim de Boer &amp; Mash Prime's workshop is TBA.</p>
+      <div class="split" data-track="Hackathon & Workshops">
+        <div class="card hack" data-track="Hackathon & Workshops">
+          <span class="tag workshop">Workshop</span><span class="tag duration">2 HRS</span>
+          <div class="speaker"><img class="agenda-photo" src="/images/2026/1212-disrupt-summit/speakers/andy-spamer.webp" alt="" width="64" height="64"><a class="sp-link-name" id="agenda-andy-spamer" href="/summit-2026/speakers#andy-spamer">Andy Spamer</a> <span class="dur">11:15 AM–1:15 PM</span></div>
+          <div class="title">A 2-Hour Speedrun of Yegge's 8 Levels of Agentic Coding</div>
+          <p class="teaser">From tab completion to your own custom harness. Bring a laptop and an AI subscription.</p>
+        </div>
+        <div class="card hack" data-track="Hackathon & Workshops">
+          <span class="tag workshop">Workshop</span><span class="tag duration">2 HRS</span>
+          <div class="speaker"><span class="agenda-photos"><img class="agenda-photo" src="/team/timothy-de-boer.jpg" alt="" width="64" height="64"><img class="agenda-photo" src="/team/mash-prime.jpeg" alt="" width="64" height="64"></span><a class="sp-link-name" id="agenda-mash-prime-and-tim-de-boer" href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer &amp; Mash Prime</a> <span class="dur">11:15 AM–1:15 PM</span></div>
+          <div class="title">Hackathon Prep Workshop</div>
+          <p class="teaser">Techniques to help you blitz the afternoon hackathon, with an army of AI assistants on hand.</p>
+        </div>
+        <p class="split-note">Both workshops run in Rooms 1 &amp; 2.</p>
       </div>
     </div>
 

@@ -23,11 +23,13 @@ import site from '../data/site.json';
     title="AI Disrupt Summit 2026"
     lead="A day for people building with AI to share what they're making, learn from each other and meet the people shaping the work. Saturday 12 December, all day at Curtin University, Bentley."
   >
-    {/* Option 3: a small card with the brand gradient as its border. The
-        gradient does the attention work; the card itself stays quiet. */}
+    {/* A small card with the brand gradient as its border. The gradient
+        does the attention work; the card itself stays quiet. Below the
+        lead on small screens; at lg it moves up beside the title so the
+        hero stays short and the main image comes into view sooner. */}
     <a
       href="/summit"
-      class="group mt-8 inline-block rounded-2xl bg-linear-to-r from-azure-500 via-orchid-500 to-coral-500 p-0.5 shadow-sm transition-shadow hover:shadow-md"
+      class="group mt-8 inline-block lg:absolute lg:right-8 lg:top-36 lg:mt-0 rounded-2xl bg-linear-to-r from-azure-500 via-orchid-500 to-coral-500 p-0.5 shadow-sm transition-shadow hover:shadow-md"
     >
       <span class="flex items-center gap-4 rounded-[14px] bg-white px-5 py-3">
         <span class="text-xs font-semibold uppercase tracking-[0.14em] text-orchid-700">Last year</span>

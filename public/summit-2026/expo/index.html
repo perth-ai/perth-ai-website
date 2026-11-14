@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disrupt Summit 2026 — Start-up Expo</title>
+<meta name="description" content="The start-up expo at AI Disrupt Summit 2026: growth-stage start-ups from Perth and the wider Australian AI ecosystem. Saturday 12 December, Curtin University, Bentley.">
+<style>
+  /* Same base as /summit-2026/sponsors, plus the .panel and .timeline blocks
+     shared by the expo, hackathon and workshops pages. theme.css re-skins it. */
+  :root{
+    --navy:#0f1b2d;
+    --navy-light:#16263e;
+    --teal:#1fb6a7;
+    --purple:#7c6fe0;
+    --amber:#ff9e2c;
+    --grey:#5c6b7a;
+    --ink:#1a2330;
+    --paper:#f7f8fa;
+    --line:#e3e7ec;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:#fff;
+    padding:56px 24px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .hero .eyebrow{
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px);font-weight:800;}
+  .hero p.sub{margin:0 auto;max-width:620px;color:#c7d0dc;font-size:16px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;}
+  .hero-meta span{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:7px 16px;
+    font-size:13.5px;
+    color:#e7ebf0;
+  }
+
+  /* CONTAINER */
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 70px;}
+  .day-label{
+    text-align:center;
+    margin:34px 0 16px;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--grey);
+    font-weight:700;
+  }
+
+  /* PANELS */
+  .panel{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:14px;
+  }
+  .panel h2{margin:0 0 8px;font-size:19px;}
+  .panel p{margin:0 0 10px;font-size:15px;color:var(--ink);}
+  .panel p:last-child{margin-bottom:0;}
+  .panel ul{margin:0 0 10px;padding-left:20px;font-size:15px;}
+  .panel li + li{margin-top:4px;}
+  .muted{color:var(--grey) !important;}
+  .tbc{color:var(--grey);font-style:italic;}
+  .panel a:not(.btn){color:var(--purple);font-weight:600;}
+
+  /* TIMELINE: time on the left, what's on to the right. Stacks on phones. */
+  .timeline{list-style:none;margin:0;padding:0 !important;}
+  .timeline li{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0;border-top:1px solid var(--line);}
+  .timeline li:first-child{border-top:0;padding-top:0;}
+  .timeline li + li{margin-top:0;}
+  .timeline .t{font-weight:700;font-size:14px;color:var(--navy-light);white-space:nowrap;}
+  @media (min-width:560px){ .timeline li{grid-template-columns:170px 1fr;gap:16px;} }
+
+  /* BUTTONS: orange fill with a dark label (white on orange fails contrast) */
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:14.5px;
+    font-weight:600;
+    text-decoration:none;
+    background:#ff9e2c;
+    color:#050a17;
+  }
+  .btn:hover{background:#dc7700;}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #6c789d;}
+  .btn.ghost:hover{background:#f0f2f5;}
+  .btn:focus-visible{outline:2px solid #7b3fe4;outline-offset:2px;}
+
+  footer{text-align:center;padding:30px 20px 60px;font-size:13px;color:var(--grey);}
+  footer a{color:var(--purple);font-weight:700;}
+
+  /* SPONSOR BOOTHS: same logo tiles as /summit-2026/sponsors */
+  .sponsor-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:12px;}
+  @media (min-width:480px){ .sponsor-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:760px){ .sponsor-grid{grid-template-columns:repeat(4,1fr);} }
+  .sponsor{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+  .sponsor-logo{width:100%;height:80px;display:flex;align-items:center;justify-content:center;}
+  .sponsor-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+  .sponsor-logo.on-dark{background:var(--navy);border-radius:8px;padding:12px;}
+  /* Cohezion's dark brown-black, as on the sponsors page */
+  .sponsor-logo.cohezion{background:#28211e;}
+  .sponsor-logo.crop{overflow:hidden;}
+  .sponsor-logo.crop img{transform:scale(1.8);}
+  .sponsor-name{font-size:14px;font-weight:700;color:var(--ink);margin:0;}
+
+  /* EXHIBITORS: compact cards (logo, name, website). Clicking the logo or name
+     opens the full details. <details> only, no JS. */
+  .exhibitors{list-style:none;margin:0;padding:0 !important;display:grid;grid-template-columns:1fr;gap:12px;align-items:start;}
+  @media (min-width:480px){ .exhibitors{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:760px){ .exhibitors{grid-template-columns:repeat(3,1fr);} }
+  .exhibitors > li + li{margin-top:0;}
+  .exhibitor{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;}
+  .exhibitor:has(details[open]){grid-column:1/-1;}
+  .exhibitor summary{list-style:none;cursor:pointer;display:block;}
+  .exhibitor summary::-webkit-details-marker{display:none;}
+  .exhibitor summary:focus-visible{outline:2px solid #7b3fe4;outline-offset:4px;border-radius:8px;}
+  .ex-logo{height:100px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  .ex-logo img{max-width:85%;max-height:80%;object-fit:contain;}
+  .ex-name{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:16px;font-weight:700;}
+  .ex-toggle{font-size:12.5px;font-weight:600;color:#571bc1;white-space:nowrap;}
+  .ex-toggle::after{content:"More ▾";}
+  details[open] .ex-toggle::after{content:"Less ▴";}
+  .exhibitor summary:hover .ex-toggle{text-decoration:underline;}
+  .ex-body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);max-width:720px;}
+  .ex-stage{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin:0 0 8px !important;}
+  .exhibitor p{font-size:14.5px;}
+  .ex-links{margin:8px 0 0 !important;font-size:14px !important;}
+  .ex-links a{margin-right:14px;display:inline-block;}
+  /* MadeApt's wordmark is styled text on their site (madeapt.com), not an image.
+     Recreated here in their light blue on navy until we get a logo file. */
+  .ex-logo.madeapt{background:#0b132b;color:#96d4f5;display:flex;align-items:baseline;justify-content:center;padding-top:28px;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;}
+  .madeapt .w1{font-size:40px;line-height:1;}
+  .madeapt .w2{font-size:15px;margin-left:3px;text-shadow:0 0 12px rgba(150,212,245,.4);}
+  /* Logos link to each sponsor's home page */
+  a.sponsor-logo-link{display:block;width:100%;border-radius:8px;}
+  a.sponsor-logo-link:hover{opacity:.85;}
+  a.sponsor-logo-link:focus-visible{outline:2px solid #7b3fe4;outline-offset:3px;}
+</style>
+<link rel="stylesheet" href="/summit-2026/fonts.css">
+<link rel="stylesheet" href="/summit-2026/logo.css">
+<link rel="stylesheet" href="/summit-2026/theme.css">
+<link rel="stylesheet" href="/summit-2026/tabs.css">
+</head>
+<body>
+
+<div class="hero">
+  <nav class="back-links" aria-label="Summit pages"><a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a><a class="back-link" href="/summit-2026/agenda"><span aria-hidden="true">←</span> Back to the agenda</a></nav>
+  <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
+  <div class="eyebrow">AI Disrupt Summit 2026</div>
+  <h1>Start-up Expo</h1>
+  <p class="sub">Growth-stage start-ups from Perth and the wider Australian AI ecosystem, showing what they're building.</p>
+  <div class="hero-meta">
+    <span>📅 Saturday, 12 December 2026</span>
+    <span>📍 Library, Building 105 Level 4 (TBC)</span>
+  </div>
+</div>
+
+<!-- summit-tabs -->
+<nav class="summit-tabs" aria-labelledby="summit-tabs-title">
+  <div class="summit-tabs-box">
+    <h2 id="summit-tabs-title">Event information</h2>
+    <ul>
+      <li><a class="tab" href="/summit-2026/agenda">Agenda</a></li>
+      <li><a class="tab" href="/summit-2026/speakers">Speaker Line-up</a></li>
+      <li><a class="tab" href="/summit-2026/info#getting-there">Location &amp; Getting Around</a></li>
+      <li><a class="tab" href="/summit-2026/expo" aria-current="page">Expo</a></li>
+      <li><span class="tab-off" aria-disabled="true">Start-up Battle<span class="sr-only"> (coming soon)</span></span></li>
+      <li><span class="tab-off" aria-disabled="true">Demos<span class="sr-only"> (coming soon)</span></span></li>
+      <li><a class="tab" href="/summit-2026/hackathon">Hackathon</a></li>
+      <li><a class="tab" href="/summit-2026/workshops">Workshops</a></li>
+      <li><a class="tab" href="/summit-2026/sponsors">Sponsors</a></li>
+      <li><a class="tab" href="/summit-2026/info#bring">What to Bring</a></li>
+      <li><a class="tab" href="/summit-2026/info#other">Other Information</a></li>
+      <li><a class="tab" href="/summit-2026/info">Speaker and Exhibitor Information</a></li>
+    </ul>
+    <p>Greyed-out sections are coming soon.</p>
+  </div>
+</nav>
+<!-- /summit-tabs -->
+
+<div class="wrap">
+
+  <h2 class="day-label">What it is</h2>
+  <section class="panel">
+    <h2>Meet the start-ups</h2>
+    <p>After its success last year, the start-up expo returns to showcase the work of growth-stage start-ups. Drop by between sessions, see what they're building and talk to the people behind it.</p>
+    <p>The expo runs all day. Exhibitors aim to be at their tables during the breaks below.</p>
+  </section>
+
+  <h2 class="day-label">Best times to visit</h2>
+  <section class="panel">
+    <ul class="timeline">
+      <li><span class="t">9:30 – 10:00 AM</span><span>Registration &amp; morning tea</span></li>
+      <li><span class="t">12:30 – 1:30 PM</span><span>Networking lunch</span></li>
+      <li><span class="t">3:25 – 3:45 PM</span><span>Afternoon tea</span></li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">Exhibitors</h2>
+  <section class="panel">
+    <p class="muted" style="margin-bottom:14px">Click a start-up to find out more about them and their giveaways.</p>
+    <ul class="exhibitors">
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo madeapt" role="img" aria-label="MadeApt logo"><span class="w1" aria-hidden="true">made</span><span class="w2" aria-hidden="true">APT.</span></div>
+            <div class="ex-name"><span>MadeApt</span><span class="ex-toggle" aria-hidden="true"></span></div>
+          </summary>
+          <div class="ex-body">
+            <p>A Perth-founded fashion tech start-up where you design a garment and an independent tailor makes it to your measurements.</p>
+            <p>They'll ask you one question: what's one piece of clothing you wish you could find? Then they'll hand you the keyboard. Describe your idea, watch it take shape in their AI Design Studio, which can turn garments into 3D, and try a change of your own. Start with wide-leg trousers, then see them with a higher waist or a different print.</p>
+            <p><strong>The AI part:</strong> generative AI turns a written description into a garment visual you can refine in your own words. If you can picture what you want but can't sketch it, it's a way to show a tailor what you mean. Customers have already taken designs from the studio through to paid orders.</p>
+            <p><strong>Prize:</strong> an A$250 MadeApt voucher for one attendee, to design their own garment and have it made to their measurements by one of MadeApt's independent tailors. You can start designing it at the booth on the day.</p>
+            <p><strong>Giveaway:</strong> tote bags made by local artists and tailors.</p>
+          </div>
+        </details>
+        <p class="ex-stage" style="margin:8px 0 0 !important">Early stage · Founder Nina Karisik</p>
+        <p class="ex-links"><a href="https://madeapt.com" target="_blank" rel="noopener">madeapt.com →</a><a href="https://www.linkedin.com/in/nina-ajnira-karisik-6830879b/" target="_blank" rel="noopener">Nina on LinkedIn →</a></p>
+      </li>
+    </ul>
+    <p class="tbc" style="margin-top:12px">More exhibitors coming soon.</p>
+  </section>
+
+  <h2 class="day-label">Sponsor booths</h2>
+  <section class="panel">
+    <p>Our sponsors will be in the expo area too. Stop by and say hello. Their support is what makes the day possible.</p>
+    <ul class="sponsor-grid">
+      <li class="sponsor">
+        <a class="sponsor-logo-link" href="https://wadsih.org.au/" target="_blank" rel="noopener"><div class="sponsor-logo"><img src="/images/2026/1212-disrupt-summit/sponsors/WADSIH%20logo.png" alt="WA Data Science Innovation Hub website (opens in a new tab)"></div></a>
+        <p class="sponsor-name">WA Data Science Innovation Hub</p>
+      </li>
+      <li class="sponsor">
+        <a class="sponsor-logo-link" href="https://www.acs.org.au/" target="_blank" rel="noopener"><div class="sponsor-logo crop"><img src="/images/2026/1212-disrupt-summit/sponsors/ACS-Logo_ForWhiteBackground_StandardSpacing-RGB%20(1).png" alt="ACS website (opens in a new tab)"></div></a>
+        <p class="sponsor-name">ACS</p>
+      </li>
+      <li class="sponsor">
+        <a class="sponsor-logo-link" href="https://www.interfuze.com.au/" target="_blank" rel="noopener"><div class="sponsor-logo"><img src="/images/2026/1212-disrupt-summit/sponsors/interfuze-consulting.webp" alt="Interfuze Consulting website (opens in a new tab)"></div></a>
+        <p class="sponsor-name">Interfuze Consulting</p>
+      </li>
+      <li class="sponsor">
+        <a class="sponsor-logo-link" href="https://www.cohezion.com.au/" target="_blank" rel="noopener"><div class="sponsor-logo on-dark cohezion"><img src="/images/2026/1212-disrupt-summit/sponsors/Cohezion.webp" alt="Cohezion website (opens in a new tab)"></div></a>
+        <p class="sponsor-name">Cohezion</p>
+      </li>
+    </ul>
+    <p class="muted" style="margin-top:12px">See them all on the <a href="/summit-2026/sponsors">sponsors page</a>.</p>
+  </section>
+
+  <h2 class="day-label">Where</h2>
+  <section class="panel">
+    <h2>Library, Building 105 Level 4 (TBC)</h2>
+    <p class="muted">On the same floor as the hackathon and workshops.</p>
+    <div class="btns">
+      <a class="btn" href="https://campusmap.curtin.edu.au/bentley/?poi=1000462610" target="_blank" rel="noopener">Open the Library in Curtin Maps →</a>
+    </div>
+  </section>
+
+  <h2 class="day-label">Exhibiting</h2>
+  <section class="panel">
+    <h2>Running a start-up?</h2>
+    <p>Ask us for a booth. If you already have one, the exhibitor information covers set-up, power and what to bring.</p>
+    <div class="btns">
+      <a class="btn" href="/summit-2026#booth">Ask for a start-up booth</a>
+      <a class="btn ghost" href="/summit-2026/info#expo">Exhibitor information</a>
+    </div>
+  </section>
+
+  <footer>
+    See the <a href="/summit-2026/agenda">agenda</a>, the <a href="/summit-2026/hackathon">hackathon</a> and the <a href="/summit-2026/workshops">workshops</a>.
+  </footer>
+
+</div>
+
+</body>
+</html>

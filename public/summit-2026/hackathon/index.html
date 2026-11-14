@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disrupt Summit 2026 — Hackathon</title>
+<meta name="description" content="The AI Disrupt Summit 2026 hackathon: team up to turn an idea into an AI prototype. Saturday 12 December, Curtin University, Bentley.">
+<style>
+  /* Same base as /summit-2026/sponsors, plus the .panel and .timeline blocks
+     shared by the expo, hackathon and workshops pages. theme.css re-skins it. */
+  :root{
+    --navy:#0f1b2d;
+    --navy-light:#16263e;
+    --teal:#1fb6a7;
+    --purple:#7c6fe0;
+    --amber:#ff9e2c;
+    --grey:#5c6b7a;
+    --ink:#1a2330;
+    --paper:#f7f8fa;
+    --line:#e3e7ec;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:#fff;
+    padding:56px 24px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .hero .eyebrow{
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px);font-weight:800;}
+  .hero p.sub{margin:0 auto;max-width:620px;color:#c7d0dc;font-size:16px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;}
+  .hero-meta span{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:7px 16px;
+    font-size:13.5px;
+    color:#e7ebf0;
+  }
+
+  /* CONTAINER */
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 70px;}
+  .day-label{
+    text-align:center;
+    margin:34px 0 16px;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--grey);
+    font-weight:700;
+  }
+
+  /* PANELS */
+  .panel{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:14px;
+  }
+  .panel h2{margin:0 0 8px;font-size:19px;}
+  .panel p{margin:0 0 10px;font-size:15px;color:var(--ink);}
+  .panel p:last-child{margin-bottom:0;}
+  .panel ul{margin:0 0 10px;padding-left:20px;font-size:15px;}
+  .panel li + li{margin-top:4px;}
+  .muted{color:var(--grey) !important;}
+  .tbc{color:var(--grey);font-style:italic;}
+  .panel a:not(.btn){color:var(--purple);font-weight:600;}
+
+  /* TIMELINE: time on the left, what's on to the right. Stacks on phones. */
+  .timeline{list-style:none;margin:0;padding:0 !important;}
+  .timeline li{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0;border-top:1px solid var(--line);}
+  .timeline li:first-child{border-top:0;padding-top:0;}
+  .timeline li + li{margin-top:0;}
+  .timeline .t{font-weight:700;font-size:14px;color:var(--navy-light);white-space:nowrap;}
+  @media (min-width:560px){ .timeline li{grid-template-columns:170px 1fr;gap:16px;} }
+
+  /* BUTTONS: orange fill with a dark label (white on orange fails contrast) */
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:14.5px;
+    font-weight:600;
+    text-decoration:none;
+    background:#ff9e2c;
+    color:#050a17;
+  }
+  .btn:hover{background:#dc7700;}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #6c789d;}
+  .btn.ghost:hover{background:#f0f2f5;}
+  .btn:focus-visible{outline:2px solid #7b3fe4;outline-offset:2px;}
+
+  footer{text-align:center;padding:30px 20px 60px;font-size:13px;color:var(--grey);}
+  footer a{color:var(--purple);font-weight:700;}
+</style>
+<link rel="stylesheet" href="/summit-2026/fonts.css">
+<link rel="stylesheet" href="/summit-2026/logo.css">
+<link rel="stylesheet" href="/summit-2026/theme.css">
+<link rel="stylesheet" href="/summit-2026/tabs.css">
+</head>
+<body>
+
+<div class="hero">
+  <nav class="back-links" aria-label="Summit pages"><a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a><a class="back-link" href="/summit-2026/agenda"><span aria-hidden="true">←</span> Back to the agenda</a></nav>
+  <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
+  <div class="eyebrow">AI Disrupt Summit 2026</div>
+  <h1>Hackathon</h1>
+  <p class="sub">Team up to turn an idea into an AI prototype, then share what you build.</p>
+  <div class="hero-meta">
+    <span>📅 Saturday, 12 December 2026</span>
+    <span>📍 Library, Building 105 Level 4 (TBC)</span>
+    <span>🏆 Run by Tim de Boer &amp; Mash Prime</span>
+  </div>
+</div>
+
+<!-- summit-tabs -->
+<nav class="summit-tabs" aria-labelledby="summit-tabs-title">
+  <div class="summit-tabs-box">
+    <h2 id="summit-tabs-title">Event information</h2>
+    <ul>
+      <li><a class="tab" href="/summit-2026/agenda">Agenda</a></li>
+      <li><a class="tab" href="/summit-2026/speakers">Speaker Line-up</a></li>
+      <li><a class="tab" href="/summit-2026/info#getting-there">Location &amp; Getting Around</a></li>
+      <li><a class="tab" href="/summit-2026/expo">Expo</a></li>
+      <li><span class="tab-off" aria-disabled="true">Start-up Battle<span class="sr-only"> (coming soon)</span></span></li>
+      <li><span class="tab-off" aria-disabled="true">Demos<span class="sr-only"> (coming soon)</span></span></li>
+      <li><a class="tab" href="/summit-2026/hackathon" aria-current="page">Hackathon</a></li>
+      <li><a class="tab" href="/summit-2026/workshops">Workshops</a></li>
+      <li><a class="tab" href="/summit-2026/sponsors">Sponsors</a></li>
+      <li><a class="tab" href="/summit-2026/info#bring">What to Bring</a></li>
+      <li><a class="tab" href="/summit-2026/info#other">Other Information</a></li>
+      <li><a class="tab" href="/summit-2026/info">Speaker and Exhibitor Information</a></li>
+    </ul>
+    <p>Greyed-out sections are coming soon.</p>
+  </div>
+</nav>
+<!-- /summit-tabs -->
+
+<div class="wrap">
+
+  <h2 class="day-label">How the day runs</h2>
+  <section class="panel">
+    <ul class="timeline">
+      <li><span class="t">11:15 AM – 1:15 PM</span><span><strong>Warm up at the workshops.</strong> Tim &amp; Mash's workshop is built to help you blitz the afternoon. <a href="/summit-2026/workshops">See the workshops</a>.</span></li>
+      <li><span class="t">1:15 – 3:25 PM</span><span><strong>Build time.</strong> Teams keep building, and carry on through afternoon tea. Drop by the Hackathon Lab any time.</span></li>
+      <li><span class="t">3:45 – 4:40 PM</span><span><strong>Judging &amp; demos.</strong> Teams demo to the judges, in Group A and Group B.</span></li>
+      <li><span class="t">5:05 – 5:25 PM</span><span><strong>Hackathon awards</strong> at the closing session.</span></li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">Still to come</h2>
+  <section class="panel">
+    <p>We'll post these here as they're confirmed:</p>
+    <ul>
+      <li>How to sign up</li>
+      <li>How teams are formed</li>
+      <li>The hackathon challenge</li>
+      <li>Mentors and judges</li>
+      <li>Sponsors and prizes</li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">What to bring</h2>
+  <section class="panel">
+    <ul>
+      <li>A laptop. You'll need it to take part.</li>
+      <li>Your charger, and an HDMI adapter if you have a Mac.</li>
+      <li>A water bottle.</li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">Where</h2>
+  <section class="panel">
+    <h2>Library, Building 105 Level 4 (TBC)</h2>
+    <p class="muted">Room sponsor: Interfuze Consulting.</p>
+    <div class="btns">
+      <a class="btn" href="https://campusmap.curtin.edu.au/bentley/?poi=1000462610" target="_blank" rel="noopener">Open the Library in Curtin Maps →</a>
+    </div>
+  </section>
+
+  <h2 class="day-label">Get involved</h2>
+  <section class="panel">
+    <h2>Mentor or judge</h2>
+    <p>We're looking for hackathon mentors and judges. If that's you, email <a href="mailto:hello@perthai.org">hello@perthai.org</a>.</p>
+  </section>
+
+  <footer>
+    See the <a href="/summit-2026/agenda">agenda</a>, the <a href="/summit-2026/workshops">workshops</a> and the <a href="/summit-2026/expo">start-up expo</a>.
+  </footer>
+
+</div>
+
+</body>
+</html>

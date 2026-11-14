@@ -38,7 +38,8 @@
         "href": "/summit-2026/info#getting-there"
       },
       {
-        "label": "Expo"
+        "label": "Expo",
+        "href": "/summit-2026/expo"
       },
       {
         "label": "Start-up Battle"
@@ -47,10 +48,12 @@
         "label": "Demos"
       },
       {
-        "label": "Hackathon"
+        "label": "Hackathon",
+        "href": "/summit-2026/hackathon"
       },
       {
-        "label": "Workshops"
+        "label": "Workshops",
+        "href": "/summit-2026/workshops"
       },
       {
         "label": "Sponsors",

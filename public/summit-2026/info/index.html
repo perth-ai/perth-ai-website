@@ -114,45 +114,35 @@
     margin:0 auto;
     padding:0 20px 80px;
   }
+  /* "On this page": plain text links, so it doesn't read as a second copy of the
+     "Event information" tab bar above it (tabs.css). */
   nav.toc{
-    margin:-26px auto 40px;
+    margin:22px auto 32px;
     max-width:840px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:18px 22px;
-    box-shadow:0 12px 30px -16px rgba(5,10,23,0.25);
-    position:relative;
-    z-index:2;
+    padding:0 2px 14px;
+    border-bottom:1px solid var(--line);
   }
   nav.toc h2{
+    display:inline;
     font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:.1em;
     color:var(--ink-600);
-    margin:0 0 12px;
+    margin:0 8px 0 0;
     font-family:'Inter Variable', sans-serif;
     font-weight:700;
   }
-  nav.toc ul{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 10px;
-  }
+  nav.toc ul{list-style:none;margin:0;padding:0;display:inline;}
+  nav.toc li{display:inline;margin:0;}
+  nav.toc li + li::before{content:"·";margin:0 8px;color:var(--ink-600);}
   nav.toc a{
-    display:inline-block;
-    font-size:13.5px;
-    font-weight:600;
-    color:var(--ink-700);
-    text-decoration:none;
-    background:var(--ink-100);
-    padding:7px 13px;
-    border-radius:999px;
+    font-size:14px;
+    font-weight:500;
+    color:#571bc1; /* orchid-700 */
+    text-decoration:underline;
+    text-underline-offset:3px;
+    line-height:1.9;
   }
-  nav.toc a:hover{background:var(--orchid);color:#fff;}
+  nav.toc a:hover{color:var(--ink-900, #0b132b);}
+  nav.toc a:focus-visible{outline:2px solid #7b3fe4;outline-offset:2px;border-radius:2px;}
 
   section.card{
     background:var(--card);
@@ -318,6 +308,7 @@
     padding:30px 20px 50px;
   }
 </style>
+<link rel="stylesheet" href="/summit-2026/tabs.css">
 </head>
 <body>
 <div class="topbar"></div>
@@ -334,6 +325,29 @@
     <div class="pill">🌐 perthai.org/summit-2026</div>
   </div>
 </div>
+
+<!-- summit-tabs -->
+<nav class="summit-tabs" aria-labelledby="summit-tabs-title">
+  <div class="summit-tabs-box">
+    <h2 id="summit-tabs-title">Event information</h2>
+    <ul>
+      <li><a class="tab" href="/summit-2026/agenda">Agenda</a></li>
+      <li><a class="tab" href="/summit-2026/speakers">Speaker Line-up</a></li>
+      <li><a class="tab" href="/summit-2026/info#getting-there">Location &amp; Getting Around</a></li>
+      <li><a class="tab" href="/summit-2026/expo">Expo</a></li>
+      <li><span class="tab-off" aria-disabled="true">Start-up Battle<span class="sr-only"> (coming soon)</span></span></li>
+      <li><span class="tab-off" aria-disabled="true">Demos<span class="sr-only"> (coming soon)</span></span></li>
+      <li><a class="tab" href="/summit-2026/hackathon">Hackathon</a></li>
+      <li><a class="tab" href="/summit-2026/workshops">Workshops</a></li>
+      <li><a class="tab" href="/summit-2026/sponsors">Sponsors</a></li>
+      <li><a class="tab" href="/summit-2026/info#bring">What to Bring</a></li>
+      <li><a class="tab" href="/summit-2026/info#other">Other Information</a></li>
+      <li><a class="tab" href="/summit-2026/info" aria-current="page">Speaker and Exhibitor Information</a></li>
+    </ul>
+    <p>Greyed-out sections are coming soon.</p>
+  </div>
+</nav>
+<!-- /summit-tabs -->
 
 <div class="wrap">
 

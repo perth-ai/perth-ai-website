@@ -12,7 +12,8 @@ const { eyebrow, title, lead } = Astro.props;
       76px past the banner and lands right where the eyebrow sits, so the
       eyebrow needs to start below it. Nothing to do at smaller widths — the
       overhang is only 20-48px there and py-16/20 already clears it. */}
-  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:pt-28">
+  <div class="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:pt-28">
+    <slot name="top" />
     {
       eyebrow && (
         <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sunset-700">{eyebrow}</p>
@@ -20,5 +21,6 @@ const { eyebrow, title, lead } = Astro.props;
     }
     <h1 class="mt-3 max-w-3xl font-display text-4xl font-semibold sm:text-5xl">{title}</h1>
     {lead && <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-600 text-pretty">{lead}</p>}
+    <slot />
   </div>
 </div>

@@ -14,7 +14,7 @@ import site from '../data/site.json';
   title="AI Disrupt Summit 2026"
   description="Join Perth AI's AI Disrupt Summit 2026, a day for AI builders, product and software engineers, founders and enterprise teams. Saturday 12 December at Curtin University, Bentley."
   image="/images/2026/1212-disrupt-summit/disrupt-2026-hero-tile.png"
-  imageAlt="AI Disrupt Summit 2026 by Perth AI, part of West Tech Fest. Build, learn, connect. Saturday 12 December, all day, Tim Winton Lecture Theatre, Curtin University. Pixel-art Perth skyline at sunset with a quokka in sunglasses, and sponsor logos for ACS, WA Data Science Innovation Hub, Interfuze and Cohezion."
+  imageAlt="AI Disrupt Summit 2026 by Perth AI, part of West Tech Fest. Build, learn, connect. Saturday 12 December, all day, Tim Winton Lecture Theatre and TL Robertson Library, Curtin University. Pixel-art Perth skyline at sunset with a quokka in sunglasses, and sponsor logos for ACS, WA Data Science Innovation Hub, Interfuze and Cohezion."
   imageWidth="1920"
   imageHeight="1080"
 >
@@ -79,14 +79,14 @@ import site from '../data/site.json';
     <figure>
       <img
         src="/images/2026/1212-disrupt-summit/disrupt-2026-hero-tile.png"
-        alt="AI Disrupt Summit 2026 by Perth AI, part of West Tech Fest. Build, learn, connect. Saturday 12 December, all day, Tim Winton Lecture Theatre, Curtin University. Pixel-art Perth skyline at sunset with a quokka in sunglasses, and sponsor logos for ACS, WA Data Science Innovation Hub, Interfuze and Cohezion."
+        alt="AI Disrupt Summit 2026 by Perth AI, part of West Tech Fest. Build, learn, connect. Saturday 12 December, all day, Tim Winton Lecture Theatre and TL Robertson Library, Curtin University. Pixel-art Perth skyline at sunset with a quokka in sunglasses, and sponsor logos for ACS, WA Data Science Innovation Hub, Interfuze and Cohezion."
         width="1920"
         height="1080"
         class="w-full rounded-3xl object-cover"
         fetchpriority="high"
       />
       <figcaption class="mt-4 text-sm text-ink-600">
-        Saturday 12 December 2026, all day. Tim Winton Lecture Theatre, Curtin University, Bentley.
+        Saturday 12 December 2026, all day. Tim Winton Lecture Theatre and TL Robertson Library, Curtin University, Bentley.
       </figcaption>
     </figure>
 
@@ -164,9 +164,25 @@ import site from '../data/site.json';
         </dl>
         <div class="mt-6 flex flex-wrap gap-3">
           <Button href={site.summit.registrationUrl}>
-            Register on Luma
+            Register for AI Disrupt Summit 2026
             <Icon name="arrow" class="h-4 w-4" />
           </Button>
+        </div>
+        <p class="mt-4 text-sm text-ink-600">
+          Workshops and the hackathon are included in your AI Disrupt Summit ticket. Register for the
+          workshops and the hackathon below.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-3">
+          {
+            site.summit.extraRegistrations.map((r) => (
+              <Button href={r.url}>
+                {r.label}
+                <Icon name="arrow" class="h-4 w-4" />
+              </Button>
+            ))
+          }
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
           <Button href="#booth" variant="ghost">
             Ask for a start-up booth
           </Button>

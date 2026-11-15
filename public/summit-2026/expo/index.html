@@ -164,12 +164,17 @@
   .ex-stage{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin:0 0 8px !important;}
   .exhibitor p{font-size:14.5px;}
   .ex-links{margin:8px 0 0 !important;font-size:14px !important;}
+  .ex-heading{margin:16px 0 6px;font-size:16px;}
+  .ex-prize{margin:4px 0 0 !important;font-size:13.5px !important;color:var(--ink);}
   .ex-links a{margin-right:14px;display:inline-block;}
   /* MadeApt's wordmark is styled text on their site (madeapt.com), not an image.
      Recreated here in their light blue on navy until we get a logo file. */
   .ex-logo.madeapt{background:#0b132b;color:#96d4f5;display:flex;align-items:baseline;justify-content:center;padding-top:28px;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;}
   .madeapt .w1{font-size:40px;line-height:1;}
   .madeapt .w2{font-size:15px;margin-left:3px;text-shadow:0 0 12px rgba(150,212,245,.4);}
+  /* AdaL's logo is pink (#FF5898), too faint on white. Navy tile behind it. */
+  .ex-logo.adal{background:var(--navy);}
+  .ex-logo.adal img{max-width:60%;height:auto;}
   /* Logos link to each sponsor's home page */
   a.sponsor-logo-link{display:block;width:100%;border-radius:8px;}
   a.sponsor-logo-link:hover{opacity:.85;}
@@ -239,22 +244,42 @@
   <section class="panel">
     <p class="muted" style="margin-bottom:14px">Click a start-up to find out more about them and their giveaways.</p>
     <ul class="exhibitors">
+      <!-- Keep exhibitors in alphabetical order by name. -->
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo adal"><img src="/images/2026/1212-disrupt-summit/expo/adal-logo-horizontal-pink.svg" alt="AdaL logo" width="840" height="195"></div>
+            <div class="ex-name"><span>AdaL</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong>Giveaway:</strong> 70 t-shirts for those who attended Jax's session in November</p>
+          </summary>
+          <div class="ex-body">
+            <p><a href="https://www.linkedin.com/in/jaxkoh/" target="_blank" rel="noopener">Jax Koh</a> from AdaL gave a talk to the Perth AI community in November. He's back in San Francisco now so he can't make it to Disrupt, but he sent over 70 AdaL t-shirts for everyone who came along, as a thank you.</p>
+            <p>See photos from Jax's Perth AI visit on the <a href="https://adalagent.ai/community" target="_blank" rel="noopener">AdaL community page</a>.</p>
+            <h3 class="ex-heading">What AdaL does</h3>
+            <p>A San Francisco start-up building a video agent for taking your product to market. General-purpose agents got good at code. AdaL does the same for video.</p>
+            <p>Give it a prompt and point it at your product: a changelog, a screen recording, a few screenshots. It plans the cut, then generates the voice-over, music, images and captions, and edits it all into a video. Launch videos, product demos, UGC ads, event recaps, customer stories and explainers.</p>
+            <p><strong>The AI part:</strong> one agent runs language, image, audio and video models together. Every cut is versioned, so you can branch off to try an idea and go back in a second. Every file it makes or imports lands in one library that shows where it came from and which videos use it.</p>
+            <p class="ex-links"><a href="https://adalagent.ai/" target="_blank" rel="noopener">adalagent.ai →</a><a href="https://www.linkedin.com/company/adalagent/" target="_blank" rel="noopener">AdaL on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
       <li class="exhibitor">
         <details>
           <summary>
             <div class="ex-logo madeapt" role="img" aria-label="MadeApt logo"><span class="w1" aria-hidden="true">made</span><span class="w2" aria-hidden="true">APT.</span></div>
             <div class="ex-name"><span>MadeApt</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong>Prize:</strong> $250 voucher for AI garment + tote bag giveaway</p>
           </summary>
           <div class="ex-body">
+            <p class="ex-stage">Early stage · Founder Nina Karisik</p>
             <p>A Perth-founded fashion tech start-up where you design a garment and an independent tailor makes it to your measurements.</p>
             <p>They'll ask you one question: what's one piece of clothing you wish you could find? Then they'll hand you the keyboard. Describe your idea, watch it take shape in their AI Design Studio, which can turn garments into 3D, and try a change of your own. Start with wide-leg trousers, then see them with a higher waist or a different print.</p>
             <p><strong>The AI part:</strong> generative AI turns a written description into a garment visual you can refine in your own words. If you can picture what you want but can't sketch it, it's a way to show a tailor what you mean. Customers have already taken designs from the studio through to paid orders.</p>
             <p><strong>Prize:</strong> an A$250 MadeApt voucher for one attendee, to design their own garment and have it made to their measurements by one of MadeApt's independent tailors. You can start designing it at the booth on the day.</p>
             <p><strong>Giveaway:</strong> tote bags made by local artists and tailors.</p>
+            <p class="ex-links"><a href="https://madeapt.com" target="_blank" rel="noopener">madeapt.com →</a><a href="https://www.linkedin.com/in/nina-ajnira-karisik-6830879b/" target="_blank" rel="noopener">Nina on LinkedIn →</a></p>
           </div>
         </details>
-        <p class="ex-stage" style="margin:8px 0 0 !important">Early stage · Founder Nina Karisik</p>
-        <p class="ex-links"><a href="https://madeapt.com" target="_blank" rel="noopener">madeapt.com →</a><a href="https://www.linkedin.com/in/nina-ajnira-karisik-6830879b/" target="_blank" rel="noopener">Nina on LinkedIn →</a></p>
       </li>
     </ul>
     <p class="tbc" style="margin-top:12px">More exhibitors coming soon.</p>

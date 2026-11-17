@@ -5,7 +5,9 @@
 
    Colours are brand tokens from src/styles/global.css:
    ink-200 #c4c8d4, ink-400 #6c789d, ink-600 #3e4b6f, ink-800 #141f3d,
-   sand-200 #e6e9ef, orchid-500 #7b3fe4, orchid-700 #571bc1.
+   sand-200 #e6e9ef, orchid-500 #7b3fe4, orchid-700 #571bc1,
+   sunset-100 #ffecd6, sunset-500 #ff9e2c, sunset-600 #dc7700, ink-950 #050a17.
+   The ticket button is orange with a dark label: white on sunset-500 fails.
    --------------------------------------------------------------------------- */
 
 .summit-tabs{max-width:1040px;margin:24px auto 0;padding:0 20px;}
@@ -25,6 +27,21 @@
   text-transform:uppercase;
   color:#3e4b6f;
 }
+.summit-tabs-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;}
+.summit-tabs .ticket-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#ff9e2c;color:#050a17;
+  border-radius:16px;
+  padding:12px 24px;
+  box-shadow:0 0 0 4px #ffecd6,0 4px 10px rgba(11,19,43,.15);
+  font-family:'Space Grotesk Variable','Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  font-size:17px;font-weight:700;line-height:1.3;
+  text-decoration:none;
+  transition:background-color .15s;
+}
+.summit-tabs .ticket-cta:hover{background:#dc7700;}
+.summit-tabs .ticket-cta:focus-visible{outline:2px solid #050a17;outline-offset:4px;}
+@media (max-width:560px){ .summit-tabs .ticket-cta{width:100%;justify-content:center;} }
 .summit-tabs ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
 .summit-tabs li{margin:0;}
 .summit-tabs .tab,

@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pagesDir = join(root, 'public', 'summit-2026');
-const { tabs } = JSON.parse(readFileSync(join(root, 'src', 'data', 'site.json'), 'utf8')).summit;
+const { tabs, registrationUrl } = JSON.parse(readFileSync(join(root, 'src', 'data', 'site.json'), 'utf8')).summit;
 
 const START = '<!-- summit-tabs -->';
 const END = '<!-- /summit-tabs -->';
@@ -33,7 +33,10 @@ function tabBar(pagePath) {
     START,
     '<nav class="summit-tabs" aria-labelledby="summit-tabs-title">',
     '  <div class="summit-tabs-box">',
-    '    <h2 id="summit-tabs-title">Event information</h2>',
+    '    <div class="summit-tabs-head">',
+    '      <h2 id="summit-tabs-title">Event information</h2>',
+    `      <a class="ticket-cta" href="${esc(registrationUrl)}" rel="noopener">Get your summit ticket <span aria-hidden="true">→</span></a>`,
+    '    </div>',
     '    <ul>',
     ...items,
     '    </ul>',

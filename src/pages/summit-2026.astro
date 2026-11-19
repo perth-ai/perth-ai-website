@@ -331,6 +331,26 @@ import site from '../data/site.json';
               label: 'What could you contribute? (optional)',
               placeholder: 'Vouchers, Lego, a merch pack, a dollar amount…',
             },
+            {
+              name: 'tickets',
+              label: 'Have your booth members registered for the summit yet?',
+              type: 'select',
+              required: true,
+              options: ['Yes, all of us', 'Some of us', 'Not yet'],
+            },
+            {
+              name: 'table',
+              label: 'Are you able to bring a table?',
+              type: 'select',
+              required: true,
+              options: ['Yes', 'No', 'Not sure yet'],
+            },
+            {
+              name: 'logo',
+              label: 'Link to your logo (optional)',
+              type: 'url',
+              placeholder: 'Google Drive, Dropbox or your website. Or email it to us.',
+            },
             { name: 'website', label: 'Website (optional)' },
             { name: 'linkedin', label: 'LinkedIn (optional)' },
           ]}

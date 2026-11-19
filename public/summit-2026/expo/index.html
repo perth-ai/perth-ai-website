@@ -166,6 +166,8 @@
   .ex-links{margin:8px 0 0 !important;font-size:14px !important;}
   .ex-heading{margin:16px 0 6px;font-size:16px;}
   .ex-prize{margin:4px 0 0 !important;font-size:13.5px !important;color:var(--ink);}
+  /* "Prize:" and "Giveaway:" in brand purple (#7B3FE4, 5.47:1 on white). */
+  .prize-label{color:#7b3fe4;}
   .ex-links a{margin-right:14px;display:inline-block;}
   /* MadeApt's wordmark is styled text on their site (madeapt.com), not an image.
      Recreated here in their light blue on navy until we get a logo file. */
@@ -177,7 +179,32 @@
   .ex-logo.adal img{max-width:60%;height:auto;}
   .ex-logo.k3{background:#000;}
   .ex-logo.k3 img{max-height:100%;}
-  /* Logos link to each sponsor's home page */
+  /* Keluvia's logo sits on its own dark navy. Tile matches it so the edges disappear. */
+  .ex-logo.keluvia{background:#0c1d27;}
+  /* Coursebox's official logo has a solid white background, so the tile is white. */
+  .ex-logo.coursebox{background:#fff;border:1px solid var(--line);}
+  /* Podyssey's wordmark is peach on their near-black site background. */
+  .ex-logo.podyssey{background:#141414;}
+  .ex-logo.podyssey img{width:70%;height:auto;}
+  /* ROGR's logo is a mascot on a transparent background. Light tile, full height. */
+  .ex-logo.rogr{background:#f4f5f8;}
+  .ex-logo.rogr img{max-height:90%;}
+  .ex-logo.casemate{background:#f4f5f8;}
+  /* Start-up Battle placeholder slots: a big number on a navy tile. */
+  .ex-logo.battle-num{background:var(--navy);color:#fff;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:48px;font-weight:700;line-height:1;}
+  .battle-slots .tbc{margin:4px 0 0;font-size:13.5px;}
+  /* Community partners without a logo file yet: name set as text on a navy tile. */
+  .ex-logo.partner-name{background:var(--navy);color:#fff;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:30px;font-weight:700;letter-spacing:.04em;}
+  /* Senstrali's white logo on their site navy. */
+  .ex-logo.senstrali{background:#0c2032;}
+  .ex-logo.senstrali img{width:70%;height:auto;}
+  /* Signal 11's wordmark is white on black. */
+  .ex-logo.signal11{background:#000;}
+  .ex-logo.signal11 img{max-width:70%;}
+  /* fmsg's official logo is the green bird mark only. Their site sets "fmsg.ai" as text, so we do too.
+     The logo file has a solid white background, so the tile is white. */
+  .ex-logo.fmsg{gap:12px;background:#fff;border:1px solid var(--line);color:var(--navy);font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:34px;font-weight:700;}
+  .ex-logo.fmsg img{width:56px;height:56px;}  /* Logos link to each sponsor's home page */
   a.sponsor-logo-link{display:block;width:100%;border-radius:8px;}
   a.sponsor-logo-link:hover{opacity:.85;}
   a.sponsor-logo-link:focus-visible{outline:2px solid #7b3fe4;outline-offset:3px;}
@@ -255,7 +282,7 @@
           <summary>
             <div class="ex-logo adal"><img src="/images/2026/1212-disrupt-summit/expo/adal-logo-horizontal-pink.svg" alt="AdaL logo" width="840" height="195"></div>
             <div class="ex-name"><span>AdaL</span><span class="ex-toggle" aria-hidden="true"></span></div>
-            <p class="ex-prize"><strong>Giveaway:</strong> 70 t-shirts for those who attended Jax's session in October</p>
+            <p class="ex-prize"><strong class="prize-label">Giveaway:</strong> 70 t-shirts for those who attended Jax's session in October</p>
           </summary>
           <div class="ex-body">
             <p><a href="https://www.linkedin.com/in/jaxkoh/" target="_blank" rel="noopener">Jax Koh</a> from AdaL gave a talk to the Perth AI community in October. He's back in San Francisco now so he can't make it to Disrupt, but he sent over 70 AdaL t-shirts for everyone who came along, as a thank you.</p>
@@ -271,13 +298,103 @@
       <li class="exhibitor">
         <details>
           <summary>
+            <div class="ex-logo casemate"><img src="/images/2026/1212-disrupt-summit/expo/casemate-logo.webp" alt="CaseMate logo" width="800" height="118"></div>
+            <div class="ex-name"><span>CaseMate</span><span class="ex-toggle" aria-hidden="true"></span></div>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Growth stage · Drishti Binda</p>
+            <p>A legal technology platform that fills the gap between generic AI tools and what it's actually like to go through a legal process. It's built for people representing themselves, and for the legal professionals who work with them.</p>
+            <p>Pick where you are (separation, parenting, property, protection orders, visiting Australia) and CaseMate turns the official process into a path you can follow: what happens, which forms are involved, what they ask for, what they cost and what comes next. Forms are broken down field by field, legal terms are explained in plain English, and every step cites the official source. It's an information and navigation tool, not a legal service. The Western Australian Family Violence Restraining Order path is free.</p>
+            <p>At the booth, try the live platform. Work through a real user journey: find the right court or tribunal, get to the official forms and resources, and see what the procedure needs and what happens next. The team will be there to talk about where AI fits in access to justice.</p>
+            <p><strong>The AI part:</strong> AI combined with structured, jurisdiction-specific procedural information, so answers come from the official process rather than a generic model's best guess. The aim is to make complex systems easier to navigate and cut down procedural errors. CaseMate doesn't use your information to train AI models.</p>
+            <p class="ex-links"><a href="https://casemate.info/" target="_blank" rel="noopener">casemate.info →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo coursebox"><img src="/images/2026/1212-disrupt-summit/expo/coursebox-logo.webp" alt="Coursebox logo" width="800" height="178"></div>
+            <div class="ex-name"><span>Coursebox</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Growth stage · Alexandra Cserta</p>
+            <p>An AI course creator and learning management system, built in Perth. Give it a topic or a document and it builds an interactive course, which you can deliver in your own branded learning portal or export to the LMS you already use. More than 300,000 courses have been made with it, in 180-plus countries and over 100 languages.</p>
+            <p>At the booth, type a topic or drop in a document and watch Coursebox build a full course in a few minutes: sections, lessons, quizzes and an AI tutor. Then change it by chatting with the AI Editor and see it live in a branded learning portal.</p>
+            <p><strong>The AI part:</strong></p>
+            <ul>
+              <li>Ask Coursebox turns a prompt or a document into a course structure, then generates the lessons, images and quizzes.</li>
+              <li>The AI Editor rewrites pages and adds interactive blocks from a chat.</li>
+              <li>The AI Tutor answers each learner's questions inside the course, based on the course content.</li>
+              <li>Learners can also practise in AI-run scenarios, where the AI plays the other person and gives feedback on their choices, and courses can include presenter-led videos with AI avatars.</li>
+            </ul>
+            <p><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+            <p class="ex-links"><a href="https://www.coursebox.ai/" target="_blank" rel="noopener">coursebox.ai →</a><a href="https://www.linkedin.com/company/courseboxai" target="_blank" rel="noopener">Coursebox on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo fmsg" role="img" aria-label="fmsg.ai logo"><img src="/images/2026/1212-disrupt-summit/expo/fmsg-logo.webp" alt="" width="200" height="184"><span aria-hidden="true">fmsg.ai</span></div>
+            <div class="ex-name"><span>fmsg</span><span class="ex-toggle" aria-hidden="true"></span></div>          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage · Mark Mennell</p>
+            <p>Messaging for the AI era. fmsg gives every person and every program its own address, so people and AI agents can message each other securely. Think email, minus the spam, the quoted thread histories and the vendor lock-in.</p>
+            <p>At the booth, see an interactive demo: AI agents working together live over fmsg.ai, and you can join the conversation yourself. Humans are participants, not spectators.</p>
+            <p><strong>The AI part:</strong> agents get their own addresses, often as a sub-address of yours like <code>@you_claude@fmsg.ai</code>, and connect through a hosted MCP server, a web API or a CLI. Every message has a verified sender and is cryptographically linked so it can't be altered. Allow lists, rate limits and anomaly and loop detection control who can message whom, which matters once agents start talking to other agents.</p>
+            <p>It's built on fmsg, an open standard anyone can host, with a published specification and an IETF Internet-Draft. Made in Australia, and the full stack can run on your own premises.</p>
+            <p class="ex-links"><a href="https://fmsg.ai/" target="_blank" rel="noopener">fmsg.ai →</a><a href="https://fmsg.org/" target="_blank" rel="noopener">The fmsg protocol →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
             <div class="ex-logo k3"><img src="/images/2026/1212-disrupt-summit/expo/k3-team-logo.webp" alt="K3 Team logo" width="400" height="400"></div>
             <div class="ex-name"><span>K3 Team</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
           </summary>
           <div class="ex-body">
             <p class="ex-stage">Pavel Kuksa</p>
-            <p class="tbc">More details coming soon.</p>
-            <p class="ex-links"><a href="https://www.linkedin.com/company/k3-team/" target="_blank" rel="noopener">K3 Team on LinkedIn →</a><a href="https://www.linkedin.com/in/pavelkuksa/" target="_blank" rel="noopener">Pavel on LinkedIn →</a></p>
+            <p>A Perth team that designs CRM and ERP systems and AI-powered workflows for Australian businesses, so they spend less time, money and effort on admin. They set up and customise the tools that run a business, from sales and customer relationships to inventory and accounting, so it all works in one place.</p>
+            <p>They implement Odoo, Planfix and Resto Soft, and automate work between apps with n8n and Make.com. They've also built CRM4Agencies, a CRM for migration and education agencies that tracks leads, visa applications and expiry dates, and client documents.</p>
+            <p><strong>The AI part:</strong> AI-powered workflows built into the systems they set up. They also set up AI Employees for businesses on the Newo AI platform.</p>
+            <p>K3-Team started in 2010, has passed 500 projects, and opened in Australia in 2021.</p>
+            <p class="tbc">Booth details coming soon.</p>
+            <p><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+            <p class="ex-links"><a href="https://www.k3-team.com/" target="_blank" rel="noopener">k3-team.com →</a><a href="https://www.linkedin.com/company/k3-team/" target="_blank" rel="noopener">K3 Team on LinkedIn →</a><a href="https://www.linkedin.com/in/pavelkuksa/" target="_blank" rel="noopener">Pavel on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo keluvia"><img src="/images/2026/1212-disrupt-summit/expo/keluvia-logo.webp" alt="Keluvia logo" width="800" height="285"></div>
+            <div class="ex-name"><span>Keluvia</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage · Muthu Murugesan</p>
+            <p>A meeting tool for business analysts, product managers, project managers and consultants. It records the conversation in your browser, with no bot joining the call, and turns it into the outputs that kind of meeting should produce.</p>
+            <p>At the booth you can:</p>
+            <ul>
+              <li>Run a short mock requirements meeting with them and watch it turn into requirements, user stories, assumptions, open questions and a process map in a couple of minutes.</li>
+              <li>Ask questions of a past meeting ("what did we decide about X?") and get the exact quote, speaker and timestamp.</li>
+              <li>Try meeting prep: set a goal and get an agenda or focus areas to run the meeting with.</li>
+              <li>Bring a real project problem and work through it with them live.</li>
+            </ul>
+            <p><strong>The AI part:</strong> the output changes with the type of meeting. A requirements session, a stakeholder review and a change impact meeting each give different results, not one generic summary.</p>
+            <ul>
+              <li>Speech-to-text transcription with speaker labels.</li>
+              <li>Claude models that pull out requirements, decisions, risks and actions, and build BPMN process maps and customer journey maps from the conversation.</li>
+              <li>A project knowledge base using embeddings and retrieval (RAG), so you can ask questions across meetings and documents and get answers tied to a source.</li>
+              <li>AI-assisted meeting prep that works from the goal you set and the documents you upload.</li>
+            </ul>
+            <p>It's built for privacy. Audio is deleted after transcription, there's zero data retention with their AI providers, and there's an Australian data residency option.</p>
+            <p><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+            <p class="ex-links"><a href="https://www.linkedin.com/in/muthumurugesan/" target="_blank" rel="noopener">Muthu on LinkedIn →</a></p>
           </div>
         </details>
       </li>
@@ -286,21 +403,123 @@
           <summary>
             <div class="ex-logo madeapt" role="img" aria-label="MadeApt logo"><span class="w1" aria-hidden="true">made</span><span class="w2" aria-hidden="true">APT.</span></div>
             <div class="ex-name"><span>MadeApt</span><span class="ex-toggle" aria-hidden="true"></span></div>
-            <p class="ex-prize"><strong>Prize:</strong> $250 voucher for AI garment + tote bag giveaway</p>
+            <p class="ex-prize"><strong class="prize-label">Prize:</strong> $250 voucher for AI garment + tote bag giveaway</p>
           </summary>
           <div class="ex-body">
             <p class="ex-stage">Early stage · Founder Nina Karisik</p>
             <p>A Perth-founded fashion tech start-up where you design a garment and an independent tailor makes it to your measurements.</p>
             <p>They'll ask you one question: what's one piece of clothing you wish you could find? Then they'll hand you the keyboard. Describe your idea, watch it take shape in their AI Design Studio, which can turn garments into 3D, and try a change of your own. Start with wide-leg trousers, then see them with a higher waist or a different print.</p>
             <p><strong>The AI part:</strong> generative AI turns a written description into a garment visual you can refine in your own words. If you can picture what you want but can't sketch it, it's a way to show a tailor what you mean. Customers have already taken designs from the studio through to paid orders.</p>
-            <p><strong>Prize:</strong> an A$250 MadeApt voucher for one attendee, to design their own garment and have it made to their measurements by one of MadeApt's independent tailors. You can start designing it at the booth on the day.</p>
-            <p><strong>Giveaway:</strong> tote bags made by local artists and tailors.</p>
+            <p><strong class="prize-label">Prize:</strong> an A$250 MadeApt voucher for one attendee, to design their own garment and have it made to their measurements by one of MadeApt's independent tailors. You can start designing it at the booth on the day.</p>
+            <p><strong class="prize-label">Giveaway:</strong> tote bags made by local artists and tailors.</p>
             <p class="ex-links"><a href="https://madeapt.com" target="_blank" rel="noopener">madeapt.com →</a><a href="https://www.linkedin.com/in/nina-ajnira-karisik-6830879b/" target="_blank" rel="noopener">Nina on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo podyssey"><img src="/images/2026/1212-disrupt-summit/expo/podyssey-logo.svg" alt="Podyssey logo" width="149" height="40"></div>
+            <div class="ex-name"><span>Podyssey</span><span class="ex-toggle" aria-hidden="true"></span></div>
+            <p class="ex-prize"><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage · Ahmad Saleem</p>
+            <p>A search engine for podcasts. Podyssey scans millions of podcasts for conversations and mentions, and listeners can curate their own content from what it finds.</p>
+            <p>Their new B2B platform is for marketing agencies, brands and PR teams. It transcribes podcasts as they publish, in 32 languages, and finds every time your brand or a competitor is named, pinned to the second with the audio behind it. Each mention is read for tone, so a host praising a rival counts for the rival. Alerts land in Slack, Teams, email or a webhook, and share of voice is weighted by chart position and reach. It has matched more than 61,000 mentions so far.</p>
+            <p>At the booth, see how the platform works. They say there's nothing else like it out there.</p>
+            <p><strong>The AI part:</strong> the backend runs on a language model Podyssey built to process and ingest audio. Various other AI models then stitch the content together.</p>
+            <p><strong class="prize-label">Prize:</strong> to be revealed soon!</p>
+            <p class="ex-links"><a href="https://podyssey.com/" target="_blank" rel="noopener">podyssey.com →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo rogr"><img src="/images/2026/1212-disrupt-summit/expo/rogr-logo.webp" alt="ROGR logo, a yellow and black tracked robot" width="321" height="300"></div>
+            <div class="ex-name"><span>ROGR</span><span class="ex-toggle" aria-hidden="true"></span></div>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage · Co-founder Tasveer Mann</p>
+            <p>Compliance and booking software for mining and labour hire contractors. Before a worker can go to site they need drug and alcohol tests, medicals and tickets. Right now mobilisation officers track all of that by hand, across emails, spreadsheets and phone calls to clinics. ROGR shows who's ready for site, what's missing and what's about to expire, checked against each client's own site rules.</p>
+            <p>At the booth, try the ROGR browser extension live: check a crew against site rules, see who's blocked and why, send booking links to workers and confirm their results. Their pilot client, a WA crane hire contractor, is using it now.</p>
+            <p><strong>The AI part:</strong> ROGR reads messy schedule spreadsheets and worker documents in any format and pulls out the compliance data. It checks each worker against the client and site rules, applying whichever is strictest, and explains every flag in plain English. It also writes the messages to workers, labour agencies and clinics. A person approves everything before it goes out, so the mobilisation officer stays accountable and still saves hours every day.</p>
+            <p>Built by co-founders Tasveer and Roshan Mann, with backing from Venture, the University of Western Australia's incubator.</p>
+            <p class="ex-links"><a href="https://rogr.com.au/" target="_blank" rel="noopener">rogr.com.au →</a><a href="https://www.linkedin.com/in/tasveer-mann-2b915237a/" target="_blank" rel="noopener">Tasveer on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo senstrali"><img src="/images/2026/1212-disrupt-summit/expo/senstrali-logo-white.svg" alt="Senstrali logo" width="108" height="30"></div>
+            <div class="ex-name"><span>Senstrali</span><span class="ex-toggle" aria-hidden="true"></span></div>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage · Founder Jason Milne</p>
+            <p>A Perth start-up building early warning for conveyor roller failure. Today someone walks the belt and listens for faults, which only catches damage once it's loud enough to hear from the walkway, and misses rollers that fail between walks. Senstrali Triage listens continuously with contact ultrasound and vibration sensors, grades each zone of the conveyor against its own baseline, and gives maintenance teams more confidence in the stop-or-run call.</p>
+            <p>At the booth, see the physical hardware with live sensor demos, and a screen showing the AI side: agentic coding workflows, and electronics enclosures designed with AI and 3D printed.</p>
+            <p><strong>The AI part:</strong> Senstrali is a one-person start-up that leans heavily on AI to speed up the engineering. That covers firmware and software, sensor hardware design, signal processing and machine learning, as well as the website, brainstorming and marketing. Jason has spent 20 years designing sensors for extreme environments.</p>
+            <p class="ex-links"><a href="https://senstrali.com.au/" target="_blank" rel="noopener">senstrali.com.au →</a><a href="https://www.linkedin.com/in/jason-milne-phd" target="_blank" rel="noopener">Jason on LinkedIn →</a></p>
+          </div>
+        </details>
+      </li>
+      <li class="exhibitor">
+        <details>
+          <summary>
+            <div class="ex-logo signal11"><img src="/images/2026/1212-disrupt-summit/expo/signal11-logo.webp" alt="Signal 11 logo" width="640" height="164"></div>
+            <div class="ex-name"><span>Signal 11</span><span class="ex-toggle" aria-hidden="true"></span></div>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-stage">Early stage</p>
+            <p>An Australian offensive cybersecurity company. Signal 11 does penetration testing across web, mobile, cloud, APIs, networks and IoT hardware, plus red and purple team exercises and secure code review.</p>
+            <p>At the booth, see ShadowCell, their sovereign, AI-powered penetration testing platform. Australian researchers manually verify the findings on your app before release, monitor your applications year-round, and prove every single finding.</p>
+            <p><strong>The AI part:</strong> ShadowCell is built to find, validate and explore vulnerabilities on its own across complex environments: AI-driven vulnerability discovery, exploit validation and attack simulation. Human researchers then check every finding before it reaches you.</p>
+            <p class="ex-links"><a href="https://signal11.io/" target="_blank" rel="noopener">signal11.io →</a><a href="https://signal11.io/#shadowcell" target="_blank" rel="noopener">About ShadowCell →</a></p>
           </div>
         </details>
       </li>
     </ul>
     <p class="tbc" style="margin-top:12px">More exhibitors coming soon.</p>
+  </section>
+
+  <h2 class="day-label" id="community-partners">Community partners</h2>
+  <section class="panel">
+    <p>Perth AI doesn't do this alone. Our community partners will have tables in the expo area too. Come and meet the groups that help keep Perth's tech community going, and find your next meet-up.</p>
+    <ul class="exhibitors" style="margin-top:14px">
+      <!-- Keep community partners in alphabetical order by name. -->
+      <li class="exhibitor">
+        <div class="ex-logo partner-name" role="img" aria-label="SHEDAI"><span aria-hidden="true">SHEDAI</span></div>
+        <div class="ex-name"><span>SHEDAI</span></div>
+        <p class="ex-prize">Run by Bulat Almukhametov</p>
+        <p class="tbc" style="margin:4px 0 0">More details coming soon.</p>
+        <p class="ex-links"><a href="https://www.linkedin.com/in/bulat-almukhametov/" target="_blank" rel="noopener">Bulat on LinkedIn →</a></p>
+      </li>
+    </ul>
+    <p class="tbc" style="margin-top:12px">More community partners coming soon.</p>
+  </section>
+
+  <h2 class="day-label" id="battle">Start-up Battle</h2>
+  <section class="panel">
+    <h2>Early-stage start-ups, battling it out</h2>
+    <p>The Start-up Battle is for the earliest start-ups in the room: no revenue yet, and some are still an idea. Up to 12 of them will demo at their tables through the day, and the top three get to pitch.</p>
+    <p>Come and see what they're building, ask hard questions and tell them what you think. At this stage, that's the most useful thing you can give them.</p>
+    <!-- Placeholder slots. Replace each with an exhibitor-style card as start-ups are confirmed. -->
+    <ul class="exhibitors battle-slots" style="margin-top:14px">
+      <li class="exhibitor"><div class="ex-logo battle-num">1</div><div class="ex-name"><span>Start-up 1</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">2</div><div class="ex-name"><span>Start-up 2</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">3</div><div class="ex-name"><span>Start-up 3</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">4</div><div class="ex-name"><span>Start-up 4</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">5</div><div class="ex-name"><span>Start-up 5</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">6</div><div class="ex-name"><span>Start-up 6</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">7</div><div class="ex-name"><span>Start-up 7</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">8</div><div class="ex-name"><span>Start-up 8</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">9</div><div class="ex-name"><span>Start-up 9</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">10</div><div class="ex-name"><span>Start-up 10</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">11</div><div class="ex-name"><span>Start-up 11</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">12</div><div class="ex-name"><span>Start-up 12</span></div><p class="tbc">Coming soon</p></li>
+    </ul>
   </section>
 
   <h2 class="day-label">Sponsor booths</h2>

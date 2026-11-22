@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disrupt Summit 2026 — Start-up Battle</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The Start-up Battle at AI Disrupt Summit 2026: Perth's earliest-stage AI start-ups demo through the day, and the top three pitch. Saturday 12 December, Curtin University, Bentley.">
+<style>
+  /* Same base as /summit-2026/sponsors, plus the .panel and .timeline blocks
+     shared by the expo, hackathon and workshops pages. theme.css re-skins it. */
+  :root{
+    --navy:#0f1b2d;
+    --navy-light:#16263e;
+    --teal:#1fb6a7;
+    --purple:#7c6fe0;
+    --amber:#ff9e2c;
+    --grey:#5c6b7a;
+    --ink:#1a2330;
+    --paper:#f7f8fa;
+    --line:#e3e7ec;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:#fff;
+    padding:56px 24px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(255,255,255,0.88);
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .back-link:hover{background:rgba(255,255,255,0.12);color:#fff;}
+  .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .hero .eyebrow{
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px);font-weight:800;}
+  .hero p.sub{margin:0 auto;max-width:620px;color:#c7d0dc;font-size:16px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;}
+  .hero-meta span{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:7px 16px;
+    font-size:13.5px;
+    color:#e7ebf0;
+  }
+
+  /* CONTAINER */
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 70px;}
+  .day-label{
+    text-align:center;
+    margin:34px 0 16px;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--grey);
+    font-weight:700;
+  }
+
+  /* PANELS */
+  .panel{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:14px;
+  }
+  .panel h2{margin:0 0 8px;font-size:19px;}
+  .panel p{margin:0 0 10px;font-size:15px;color:var(--ink);}
+  .panel p:last-child{margin-bottom:0;}
+  .panel ul{margin:0 0 10px;padding-left:20px;font-size:15px;}
+  .panel li + li{margin-top:4px;}
+  .muted{color:var(--grey) !important;}
+  .tbc{color:var(--grey);font-style:italic;}
+  .panel a:not(.btn){color:var(--purple);font-weight:600;}
+
+  /* TIMELINE: time on the left, what's on to the right. Stacks on phones. */
+  .timeline{list-style:none;margin:0;padding:0 !important;}
+  .timeline li{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0;border-top:1px solid var(--line);}
+  .timeline li:first-child{border-top:0;padding-top:0;}
+  .timeline li + li{margin-top:0;}
+  .timeline .t{font-weight:700;font-size:14px;color:var(--navy-light);white-space:nowrap;}
+  @media (min-width:560px){ .timeline li{grid-template-columns:170px 1fr;gap:16px;} }
+
+  /* BUTTONS: orange fill with a dark label (white on orange fails contrast) */
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:14.5px;
+    font-weight:600;
+    text-decoration:none;
+    background:#ff9e2c;
+    color:#050a17;
+  }
+  .btn:hover{background:#dc7700;}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid #6c789d;}
+  .btn.ghost:hover{background:#f0f2f5;}
+  .btn:focus-visible{outline:2px solid #7b3fe4;outline-offset:2px;}
+
+  footer{text-align:center;padding:30px 20px 60px;font-size:13px;color:var(--grey);}
+  footer a{color:var(--purple);font-weight:700;}
+
+  /* SPONSOR BOOTHS: same logo tiles as /summit-2026/sponsors */
+  .sponsor-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:12px;}
+  @media (min-width:480px){ .sponsor-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:760px){ .sponsor-grid{grid-template-columns:repeat(4,1fr);} }
+  .sponsor{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+  .sponsor-logo{width:100%;height:80px;display:flex;align-items:center;justify-content:center;}
+  .sponsor-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+  .sponsor-logo.on-dark{background:var(--navy);border-radius:8px;padding:12px;}
+  /* Cohezion's dark brown-black, as on the sponsors page */
+  .sponsor-logo.cohezion{background:#28211e;}
+  .sponsor-logo.crop{overflow:hidden;}
+  .sponsor-logo.crop img{transform:scale(1.8);}
+  .sponsor-name{font-size:14px;font-weight:700;color:var(--ink);margin:0;}
+
+  /* EXHIBITORS: compact cards (logo, name, website). Clicking the logo or name
+     opens the full details. <details> only, no JS. */
+  .exhibitors{list-style:none;margin:0;padding:0 !important;display:grid;grid-template-columns:1fr;gap:12px;align-items:start;}
+  @media (min-width:480px){ .exhibitors{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:760px){ .exhibitors{grid-template-columns:repeat(3,1fr);} }
+  .exhibitors > li + li{margin-top:0;}
+  .exhibitor{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;}
+  .exhibitor:has(details[open]){grid-column:1/-1;}
+  .exhibitor summary{list-style:none;cursor:pointer;display:block;}
+  .exhibitor summary::-webkit-details-marker{display:none;}
+  .exhibitor summary:focus-visible{outline:2px solid #7b3fe4;outline-offset:4px;border-radius:8px;}
+  .ex-logo{height:100px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  .ex-logo img{max-width:85%;max-height:80%;object-fit:contain;}
+  .ex-name{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:16px;font-weight:700;}
+  .ex-toggle{font-size:12.5px;font-weight:600;color:#571bc1;white-space:nowrap;}
+  .ex-toggle::after{content:"More ▾";}
+  details[open] .ex-toggle::after{content:"Less ▴";}
+  .exhibitor summary:hover .ex-toggle{text-decoration:underline;}
+  .ex-body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);max-width:720px;}
+  .ex-stage{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);margin:0 0 8px !important;}
+  .exhibitor p{font-size:14.5px;}
+  .ex-links{margin:8px 0 0 !important;font-size:14px !important;}
+  .ex-heading{margin:16px 0 6px;font-size:16px;}
+  .ex-prize{margin:4px 0 0 !important;font-size:13.5px !important;color:var(--ink);}
+  /* "Prize:" and "Giveaway:" in brand purple (#7B3FE4, 5.47:1 on white). */
+  .prize-label{color:#7b3fe4;}
+  .ex-links a{margin-right:14px;display:inline-block;}
+  /* MadeApt's wordmark is styled text on their site (madeapt.com), not an image.
+     Recreated here in their light blue on navy until we get a logo file. */
+  .ex-logo.madeapt{background:#0b132b;color:#96d4f5;display:flex;align-items:baseline;justify-content:center;padding-top:28px;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;}
+  .madeapt .w1{font-size:40px;line-height:1;}
+  .madeapt .w2{font-size:15px;margin-left:3px;text-shadow:0 0 12px rgba(150,212,245,.4);}
+  /* AdaL's logo is pink (#FF5898), too faint on white. Navy tile behind it. */
+  .ex-logo.adal{background:var(--navy);}
+  .ex-logo.adal img{max-width:60%;height:auto;}
+  .ex-logo.k3{background:#000;}
+  .ex-logo.k3 img{max-height:100%;}
+  /* Keluvia's logo sits on its own dark navy. Tile matches it so the edges disappear. */
+  .ex-logo.keluvia{background:#0c1d27;}
+  /* Podyssey's wordmark is peach on their near-black site background. */
+  .ex-logo.podyssey{background:#141414;}
+  .ex-logo.podyssey img{width:70%;height:auto;}
+  /* ROGR's logo is a yellow speech bubble on a transparent background, made for dark backgrounds. */
+  .ex-logo.rogr{background:var(--navy);}
+  .ex-logo.rogr img{max-width:70%;height:auto;}
+  .ex-logo.casemate{background:#f4f5f8;}
+  /* Start-up Battle placeholder slots: a big number on a navy tile. */
+  .ex-logo.battle-num{background:var(--navy);color:#fff;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:48px;font-weight:700;line-height:1;}
+  .battle-slots .tbc{margin:4px 0 0;font-size:13.5px;}
+  /* Community partners without a logo file yet: name set as text on a navy tile. */
+  .ex-logo.partner-name{background:var(--navy);color:#fff;font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:30px;font-weight:700;letter-spacing:.04em;}
+  /* Senstrali's white logo on their site navy. */
+  .ex-logo.senstrali{background:#0c2032;}
+  .ex-logo.senstrali img{width:70%;height:auto;}
+  /* Signal 11's wordmark is white on black. */
+  .ex-logo.signal11{background:#000;}
+  .ex-logo.signal11 img{max-width:70%;}
+  /* fmsg's official logo is the green bird mark only. Their site sets "fmsg.ai" as text, so we do too.
+     The logo file has a solid white background, so the tile is white. */
+  .ex-logo.fmsg{gap:12px;background:#fff;border:1px solid var(--line);color:var(--navy);font-family:'Space Grotesk Variable',ui-rounded,system-ui,sans-serif;font-size:34px;font-weight:700;}
+  .ex-logo.fmsg img{width:56px;height:56px;}  /* Logos link to each sponsor's home page */
+  a.sponsor-logo-link{display:block;width:100%;border-radius:8px;}
+  a.sponsor-logo-link:hover{opacity:.85;}
+  a.sponsor-logo-link:focus-visible{outline:2px solid #7b3fe4;outline-offset:3px;}
+</style>
+<link rel="stylesheet" href="/summit-2026/fonts.css">
+<link rel="stylesheet" href="/summit-2026/logo.css">
+<link rel="stylesheet" href="/summit-2026/theme.css">
+<link rel="stylesheet" href="/summit-2026/tabs.css">
+</head>
+<body>
+
+<div class="hero">
+  <nav class="back-links" aria-label="Summit pages"><a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a><a class="back-link" href="/summit-2026/agenda"><span aria-hidden="true">←</span> Back to the agenda</a></nav>
+  <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
+  <div class="eyebrow">AI Disrupt Summit 2026</div>
+  <h1>Start-up Battle</h1>
+  <p class="sub">Early-stage start-ups, battling it out. Up to 12 demo through the day, and the top three pitch.</p>
+  <div class="hero-meta">
+    <span>📅 Saturday, 12 December 2026</span>
+    <span>📍 Library, Building 105 Level 4 (TBC)</span>
+  </div>
+</div>
+
+<!-- summit-tabs -->
+<nav class="summit-tabs" aria-labelledby="summit-tabs-title">
+  <div class="summit-tabs-box">
+    <div class="summit-tabs-head">
+      <h2 id="summit-tabs-title">Event information</h2>
+      <a class="ticket-cta" href="https://luma.com/50dna1ry" rel="noopener">Get your summit ticket <span aria-hidden="true">→</span></a>
+    </div>
+    <ul>
+      <li><a class="tab" href="/summit-2026/agenda">Agenda</a></li>
+      <li><a class="tab" href="/summit-2026/speakers">Speaker Line-up</a></li>
+      <li><a class="tab" href="/summit-2026/info#getting-there">Location &amp; Getting Around</a></li>
+      <li><a class="tab" href="/summit-2026/expo">Expo</a></li>
+      <li><span class="tab-off" aria-disabled="true">Start-up Battle<span class="sr-only"> (coming soon)</span></span></li>
+      <li><span class="tab-off" aria-disabled="true">Demos<span class="sr-only"> (coming soon)</span></span></li>
+      <li><a class="tab" href="/summit-2026/hackathon">Hackathon</a></li>
+      <li><a class="tab" href="/summit-2026/workshops">Workshops</a></li>
+      <li><a class="tab" href="/summit-2026/sponsors">Sponsors</a></li>
+      <li><a class="tab" href="/summit-2026/info#bring">What to Bring</a></li>
+      <li><a class="tab" href="/summit-2026/info#other">Other Information</a></li>
+      <li><a class="tab" href="/summit-2026/info">Speaker and Exhibitor Information</a></li>
+    </ul>
+    <p>Greyed-out sections are coming soon.</p>
+  </div>
+</nav>
+<!-- /summit-tabs -->
+
+<div class="wrap">
+
+  <!-- Unlisted page: not linked from the tabs yet (the Start-up Battle tab stays greyed out).
+       To launch it, add "href": "/summit-2026/battle" to that tab in src/data/site.json, update the
+       hand-written tab lists in the summit pages, and remove the noindex here and in public/_headers. -->
+  <h2 class="day-label" id="battle">What it is</h2>
+  <section class="panel">
+    <h2>Early-stage start-ups, battling it out</h2>
+    <p>The Start-up Battle is for the earliest start-ups in the room: no revenue yet, and some are still an idea. Up to 12 of them will demo at their tables through the day, and the top three get to pitch.</p>
+    <p>Come and see what they're building, ask hard questions and tell them what you think. At this stage, that's the most useful thing you can give them.</p>
+    <!-- Placeholder slots. Replace each with an exhibitor-style card as start-ups are confirmed. -->
+    <ul class="exhibitors battle-slots" style="margin-top:14px">
+      <li class="exhibitor"><div class="ex-logo battle-num">1</div><div class="ex-name"><span>Start-up 1</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">2</div><div class="ex-name"><span>Start-up 2</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">3</div><div class="ex-name"><span>Start-up 3</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">4</div><div class="ex-name"><span>Start-up 4</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">5</div><div class="ex-name"><span>Start-up 5</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">6</div><div class="ex-name"><span>Start-up 6</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">7</div><div class="ex-name"><span>Start-up 7</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">8</div><div class="ex-name"><span>Start-up 8</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">9</div><div class="ex-name"><span>Start-up 9</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">10</div><div class="ex-name"><span>Start-up 10</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">11</div><div class="ex-name"><span>Start-up 11</span></div><p class="tbc">Coming soon</p></li>
+      <li class="exhibitor"><div class="ex-logo battle-num">12</div><div class="ex-name"><span>Start-up 12</span></div><p class="tbc">Coming soon</p></li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">Where</h2>
+  <section class="panel">
+    <h2>Library, Building 105 Level 4 (TBC)</h2>
+    <p class="muted">In the expo area, on the same floor as the hackathon and workshops.</p>
+    <div class="btns">
+      <a class="btn" href="https://campusmap.curtin.edu.au/bentley/?poi=1000462610" target="_blank" rel="noopener">Open the Library in Curtin Maps →</a>
+    </div>
+  </section>
+
+  <footer>
+    See the <a href="/summit-2026/agenda">agenda</a>, the <a href="/summit-2026/expo">start-up expo</a> and the <a href="/summit-2026/hackathon">hackathon</a>.
+  </footer>
+
+</div>
+
+</body>
+</html>

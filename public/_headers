@@ -24,6 +24,13 @@
 /summit-2026/info/*
   X-Robots-Tag: noindex, nofollow
 
+# The Start-up Battle page is unlisted until the start-ups are confirmed. Same rules
+# as the info pack: direct link only, no robots.txt line. Remove this block at launch.
+/summit-2026/battle
+  X-Robots-Tag: noindex, nofollow
+/summit-2026/battle/*
+  X-Robots-Tag: noindex, nofollow
+
 # The kiosk's service worker: always check for a new one, so a fix (or the
 # off switch) reaches booth devices on their next load.
 /ddd-2026/sw.js

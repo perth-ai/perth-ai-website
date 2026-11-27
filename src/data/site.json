@@ -25,8 +25,7 @@
     "registrationUrl": "https://luma.com/50dna1ry",
     "extraRegistrations": [
       { "label": "Register for Andy Spamer's workshop", "url": "https://luma.com/d6nrse2y" },
-      { "label": "Register for Tim and Mash's workshop", "url": "https://luma.com/swd6m43t" },
-      { "label": "Register for the hackathon", "url": "https://luma.com/idp8g2cb" }
+      { "label": "Join the hackathon", "url": "/summit-2026/hackathon" }
     ],
     "_tabs": "Quick links at the top of /summit-2026. A tab with no href shows greyed out as coming soon. Add an href to switch it on.",
     "tabs": [

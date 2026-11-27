@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Disrupt Summit 2026 — Hackathon</title>
-<meta name="description" content="The AI Disrupt Summit 2026 hackathon: team up to turn an idea into an AI prototype. Saturday 12 December, Curtin University, Bentley.">
+<title>AI Disrupt Summit 2026 — The SToPPING ARF Hackathon</title>
+<meta name="description" content="The SToPPING ARF Hackathon at AI Disrupt Summit 2026: mixed teams use AI to help prevent rheumatic heart disease, with the Heart Foundation, The University of Queensland and CSIRO. Saturday 12 December, Curtin University, Bentley.">
 <style>
   /* Same base as /summit-2026/sponsors, plus the .panel and .timeline blocks
      shared by the expo, hackathon and workshops pages. theme.css re-skins it. */
@@ -125,6 +125,35 @@
   .btn.ghost:hover{background:#f0f2f5;}
   .btn:focus-visible{outline:2px solid #7b3fe4;outline-offset:2px;}
 
+  /* JUDGES: name, then organisation on its own line */
+  .panel ul.judges{list-style:none;padding:0;margin:0 0 12px;display:grid;grid-template-columns:1fr;gap:10px;}
+  .panel ul.judges li + li{margin-top:0;}
+  @media (min-width:768px){ .panel ul.judges{grid-template-columns:1fr 1fr;} }
+  .judges li{border-left:3px solid var(--amber);padding:2px 0 2px 12px;}
+  .judges strong{display:block;}
+  .judges span{display:block;font-size:14px;color:var(--grey);}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  /* PARTNER LOGOS: one column on phones, three across from md up */
+  .panel ul.partners{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:14px;}
+  .panel ul.partners li + li{margin-top:0;}
+  @media (min-width:768px){ .panel ul.partners{grid-template-columns:repeat(3,1fr);} }
+  .partner-logo{
+    display:flex;align-items:center;justify-content:center;
+    height:100px;padding:14px;
+    border:1px solid var(--line);border-radius:12px;
+    background:var(--white);text-decoration:none;
+  }
+  .partner-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+  .partner-logo:hover{border-color:#6c789d;}
+  .partner-logo:focus-visible{outline:2px solid #7b3fe4;outline-offset:3px;}
+  .panel a.partner-logo .partner-name{font-size:17px;font-weight:800;color:var(--navy-light);text-align:center;line-height:1.25;}
+  .partner-note{margin:8px 0 0 !important;font-size:13px !important;color:var(--grey) !important;text-align:center;}
+  .support{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:14px;}
+  .support img{height:28px;width:auto;display:block;}
+  .support a:focus-visible{outline:2px solid #7b3fe4;outline-offset:3px;}
+
   footer{text-align:center;padding:30px 20px 60px;font-size:13px;color:var(--grey);}
   footer a{color:var(--purple);font-weight:700;}
 </style>
@@ -139,11 +168,11 @@
   <nav class="back-links" aria-label="Summit pages"><a class="back-link" href="/summit-2026"><span aria-hidden="true">←</span> Back to the summit</a><a class="back-link" href="/summit-2026/agenda"><span aria-hidden="true">←</span> Back to the agenda</a></nav>
   <a class="brand-logo" href="/"><img src="/perth-ai-badge.webp" alt="Perth AI home" width="384" height="384"></a>
   <div class="eyebrow">AI Disrupt Summit 2026</div>
-  <h1>Hackathon</h1>
-  <p class="sub">Team up to turn an idea into an AI prototype, then share what you build.</p>
+  <h1>The SToPPING ARF Hackathon</h1>
+  <p class="sub">Spend the day in a mixed team, using AI to help prevent rheumatic heart disease. With the Heart Foundation, The University of Queensland and CSIRO.</p>
   <div class="hero-meta">
     <span>📅 Saturday, 12 December 2026</span>
-    <span>📍 Library, Building 105 Level 4 (TBC)</span>
+    <span>📍 Library, Building 105 Level 4</span>
     <span>🏆 Run by Tim de Boer &amp; Mash Prime</span>
   </div>
 </div>
@@ -176,40 +205,91 @@
 
 <div class="wrap">
 
-  <h2 class="day-label">How the day runs</h2>
+  <h2 class="day-label">In partnership with</h2>
   <section class="panel">
-    <ul class="timeline">
-      <li><span class="t">11:15 AM – 1:15 PM</span><span><strong>Warm up at the workshops.</strong> Tim &amp; Mash's workshop is built to help you blitz the afternoon. <a href="/summit-2026/workshops">See the workshops</a>.</span></li>
-      <li><span class="t">1:15 – 3:25 PM</span><span><strong>Build time.</strong> Teams keep building, and carry on through afternoon tea. Drop by the Hackathon Lab any time.</span></li>
-      <li><span class="t">3:45 – 4:40 PM</span><span><strong>Judging &amp; demos.</strong> Teams demo to the judges, in Group A and Group B.</span></li>
-      <li><span class="t">5:05 – 5:25 PM</span><span><strong>Hackathon awards</strong> at the closing session.</span></li>
+    <p>We're running the hackathon with:</p>
+    <!-- Partner logos live in /images/2026/1212-disrupt-summit/partners/, copied from each
+         partner's own site header. Swap in official brand files if the partners send them. -->
+    <ul class="partners">
+      <li>
+        <a class="partner-logo" href="https://www.heartfoundation.org.au/" target="_blank" rel="noopener"><img src="/images/2026/1212-disrupt-summit/partners/heart-foundation.svg" alt="Heart Foundation website (opens in a new tab)" width="144" height="58"></a>
+      </li>
+      <li>
+        <a class="partner-logo" href="https://www.uq.edu.au/" target="_blank" rel="noopener"><img src="/images/2026/1212-disrupt-summit/partners/uq.svg" alt="The University of Queensland website (opens in a new tab)"></a>
+        <p class="partner-note">Through the Poche Centre for Indigenous Health, which hosts the SToPPING ARF trial</p>
+      </li>
+      <li>
+        <a class="partner-logo" href="https://www.csiro.au/" target="_blank" rel="noopener"><img src="/images/2026/1212-disrupt-summit/partners/csiro.png" alt="CSIRO website (opens in a new tab)" width="85" height="85"></a>
+      </li>
     </ul>
   </section>
 
-  <h2 class="day-label">Still to come</h2>
+  <h2 class="day-label">The focus: preventing rheumatic heart disease</h2>
   <section class="panel">
-    <p>We'll post these here as they're confirmed:</p>
+    <p>Acute rheumatic fever (ARF) can follow an untreated Group A Strep (Strep A) infection, and it can permanently damage the heart's valves. That lasting damage is rheumatic heart disease (RHD). In Australia, ARF and RHD persist almost entirely in Aboriginal and Torres Strait Islander communities, because of continued high rates of Strep A exposure.</p>
+    <p>Stopping Strep A infections early is how you stop ARF and RHD. The SToPPING ARF trial is testing for Strep A at the point of care in remote communities, where sending samples to a lab is slow. Faster testing gives a clearer picture of where infections are happening, and that picture is what helps prevent them.</p>
+    <p><a href="https://research.csiro.au/ihp/home-2/projects/preventing-rheumatic-heart-disease/" target="_blank" rel="noopener">Read about the project at CSIRO</a>.</p>
+  </section>
+
+  <h2 class="day-label">The challenge</h2>
+  <section class="panel">
+    <p>Teams spend the day using AI to build something that helps the people working on this problem. You'll work with a synthetic dataset made for the day, so no real patient data is used.</p>
+    <p>We'll share the full challenge brief on the day.</p>
+  </section>
+
+  <h2 class="day-label">Who should come</h2>
+  <section class="panel">
+    <p>The best teams will be a mix. We want:</p>
     <ul>
-      <li>How to sign up</li>
-      <li>How teams are formed</li>
-      <li>The hackathon challenge</li>
-      <li>Mentors and judges</li>
-      <li>Sponsors and prizes</li>
+      <li>Health researchers and public health people</li>
+      <li>Developers, data people and AI practitioners</li>
+      <li>Students</li>
+      <li>Start-up founders, designers and business people</li>
     </ul>
+    <p>You don't need any AI experience. Come with a team, or find one on the day.</p>
+  </section>
+
+  <h2 class="day-label">Prizes</h2>
+  <section class="panel">
+    <p>There are two awards:</p>
+    <ul>
+      <li><strong>Best on the day.</strong> The strongest team output at demo time.</li>
+      <li><strong>Best to take it further.</strong> The team best placed to keep going after the summit, backed by business coaching and help with grant applications.</li>
+    </ul>
+  </section>
+
+  <h2 class="day-label">Judges</h2>
+  <section class="panel">
+    <ul class="judges">
+      <li><strong><a href="https://people.csiro.au/M/R/Ray-Mahoney" target="_blank" rel="noopener">Professor Ray Mahoney<span class="sr-only"> (CSIRO profile, opens in a new tab)</span></a></strong><span>CSIRO</span></li>
+      <li><strong>Mario D'Orazio</strong><span>Heart Foundation</span></li>
+      <li><strong><a href="/summit-2026/speakers#alex-jenkins">Alex Jenkins</a></strong><span>Director, WA Data Science Innovation Hub</span></li>
+      <li><strong><a href="/summit-2026/speakers#michelle-sandford">Michelle Sandford</a></strong><span>Microsoft</span></li>
+      <li><strong><a href="/summit-2026/speakers#mash-prime-and-tim-de-boer">Tim de Boer</a></strong><span>CEO, Interfuze</span></li>
+    </ul>
+    <p class="muted">More judges to be announced.</p>
+  </section>
+
+  <h2 class="day-label">How to sign up</h2>
+  <section class="panel">
+    <p>Get your summit ticket, and say yes to the hackathon when you register. That's it.</p>
+    <div class="btns">
+      <a class="btn" href="https://luma.com/50dna1ry" rel="noopener">Get your summit ticket →</a>
+    </div>
   </section>
 
   <h2 class="day-label">What to bring</h2>
   <section class="panel">
     <ul>
       <li>A laptop. You'll need it to take part.</li>
-      <li>Your charger, and an HDMI adapter if you have a Mac.</li>
+      <li>Your charger.</li>
       <li>A water bottle.</li>
     </ul>
   </section>
 
   <h2 class="day-label">Where</h2>
   <section class="panel">
-    <h2>Library, Building 105 Level 4 (TBC)</h2>
+    <h2>Library, Building 105 Level 4</h2>
     <p class="muted">Room sponsor: Interfuze Consulting.</p>
     <div class="btns">
       <a class="btn" href="https://campusmap.curtin.edu.au/bentley/?poi=1000462610" target="_blank" rel="noopener">Open the Library in Curtin Maps →</a>
@@ -220,6 +300,13 @@
   <section class="panel">
     <h2>Mentor or judge</h2>
     <p>We're looking for hackathon mentors and judges. If that's you, email <a href="mailto:hello@perthai.org">hello@perthai.org</a>.</p>
+  </section>
+
+  <section class="panel">
+    <div class="support">
+      <span class="muted">With support from</span>
+      <a href="https://www.interfuze.com.au/" target="_blank" rel="noopener"><img src="/images/2026/1212-disrupt-summit/sponsors/interfuze-consulting.webp" alt="Interfuze Consulting website (opens in a new tab)" width="330" height="56"></a>
+    </div>
   </section>
 
   <footer>

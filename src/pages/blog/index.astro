@@ -33,7 +33,7 @@ const formatDate = (date: Date) =>
         <ul class="grid gap-6 md:grid-cols-2">
           {posts.map((post) => (
             <li class="group flex flex-col rounded-2xl border border-ink-200 p-7 transition-colors hover:border-sunset-500">
-              <p class="text-xs font-semibold uppercase tracking-wider text-ink-400">
+              <p class="text-xs font-semibold uppercase tracking-wider text-ink-600">
                 <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
                 {' · '}
                 {post.data.author}

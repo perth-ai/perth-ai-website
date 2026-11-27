@@ -25,7 +25,7 @@ const photos =
 
 <Base title={event.title} description={event.summary} image={event.image} imageAlt={event.imageAlt}>
   <PageHero
-    eyebrow={`2026 Events | ${event.date}`}
+    eyebrow={`${event.dateTime.slice(0, 4)} Events | ${event.date}`}
     title={event.title}
     lead={event.summary}
   />

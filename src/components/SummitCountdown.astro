@@ -1,0 +1,83 @@
+---
+/* Countdown to the summit on the homepage.
+
+   It needs client JavaScript to tick, which is why it's a component on its own.
+   With JS off, or once the start time has passed, it stays hidden and the card
+   falls back to the plain date underneath. */
+interface Props {
+  startsAt: string;
+}
+const { startsAt } = Astro.props;
+
+const units = [
+  { key: 'days', label: 'Days' },
+  { key: 'hours', label: 'Hours' },
+  { key: 'minutes', label: 'Mins' },
+  { key: 'seconds', label: 'Secs' },
+];
+---
+
+<div data-summit-countdown data-starts-at={startsAt} class="mb-5" hidden>
+  <p class="sr-only" data-countdown-label></p>
+  <ol class="grid grid-cols-4 gap-2 sm:gap-3" aria-hidden="true">
+    {
+      units.map((unit) => (
+        <li class="flex min-w-16 flex-col items-center rounded-xl bg-ink-800 px-2 py-3 sm:min-w-18">
+          <span
+            class="font-display text-2xl font-semibold tabular-nums text-white sm:text-3xl"
+            data-unit={unit.key}
+          >
+            00
+          </span>
+          <span class="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-azure-300">
+            {unit.label}
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<script>
+  for (const el of document.querySelectorAll<HTMLElement>('[data-summit-countdown]')) {
+    const target = Date.parse(el.dataset.startsAt ?? '');
+    if (Number.isNaN(target)) continue;
+
+    const label = el.querySelector<HTMLElement>('[data-countdown-label]');
+    const cells = {
+      days: el.querySelector<HTMLElement>('[data-unit="days"]'),
+      hours: el.querySelector<HTMLElement>('[data-unit="hours"]'),
+      minutes: el.querySelector<HTMLElement>('[data-unit="minutes"]'),
+      seconds: el.querySelector<HTMLElement>('[data-unit="seconds"]'),
+    };
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    let timer: number | undefined;
+    const tick = () => {
+      const left = target - Date.now();
+      if (left <= 0) {
+        el.hidden = true;
+        window.clearInterval(timer);
+        return;
+      }
+      const s = Math.floor(left / 1000);
+      const days = Math.floor(s / 86400);
+      const hours = Math.floor((s % 86400) / 3600);
+      const minutes = Math.floor((s % 3600) / 60);
+      const seconds = s % 60;
+      if (cells.days) cells.days.textContent = String(days);
+      if (cells.hours) cells.hours.textContent = pad(hours);
+      if (cells.minutes) cells.minutes.textContent = pad(minutes);
+      if (cells.seconds) cells.seconds.textContent = pad(seconds);
+      // Screen readers get a sentence, updated by the minute rather than every second.
+      if (label && seconds === 59) label.textContent = '';
+      if (label && !label.textContent) {
+        label.textContent = `${days} days, ${hours} hours and ${minutes} minutes until the summit.`;
+      }
+      el.hidden = false;
+    };
+
+    tick();
+    timer = window.setInterval(tick, 1000);
+  }
+</script>

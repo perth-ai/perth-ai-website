@@ -6,6 +6,7 @@ import Icon from '../components/Icon.astro';
 import LumaEmbed from '../components/LumaEmbed.astro';
 import MailingList from '../components/MailingList.astro';
 import PixelSprite from '../components/PixelSprite.astro';
+import SummitCountdown from '../components/SummitCountdown.astro';
 import site from '../data/site.json';
 import segments from '../data/segments.json';
 import eventTypes from '../data/eventTypes.json';
@@ -113,6 +114,7 @@ const accentRing = {
         </p>
       </div>
       <div class="lg:justify-self-end">
+        <SummitCountdown startsAt={site.summit.startsAt} />
         <p class="text-sm text-ink-400">{site.summit.when}</p>
         <Button href={site.summit.url} variant="onDark" class="mt-3">
           About the summit

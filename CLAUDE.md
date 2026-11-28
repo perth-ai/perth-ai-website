@@ -142,6 +142,13 @@ npm 11 prunes optional platform packages differently and produces a lockfile `np
 
 - **Never invent real people, sponsors, or partner organisations.** If content needs a real name,
   a date, a price or a URL you can't verify, leave a clear placeholder and say so in the PR.
+- **Never make up a logo or brand identity for another organisation.** Exhibitor, sponsor,
+  partner and speaker logos must come from the organisation itself: a file they sent us, or the
+  file as published on their own website or official profile. Don't draw, trace, recreate,
+  recolour or "tidy up" a logo, and don't invent brand colours, taglines or wordmarks for them.
+  Resizing or converting the format (to webp, say) is fine; changing what it looks like isn't. If
+  there's no logo, use the neutral `partner-name` tile on the expo page (their name in our own
+  font on navy) and ask them for one. In the commit message, say where each logo came from.
 - **Don't commit secrets.** There aren't any yet and it should stay that way — form endpoints in
   `forms.json` are public by design, so only use services where a public endpoint is fine.
 - **`site` in `astro.config.mjs`** must match the real domain, or canonical URLs go wrong.
